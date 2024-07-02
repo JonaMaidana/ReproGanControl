@@ -5,12 +5,76 @@
       "PackagePath": "staticwebassets\\ReproGanControl.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\apple.png",
+      "PackagePath": "staticwebassets\\assets\\apple.png"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\avatar.png",
+      "PackagePath": "staticwebassets\\assets\\avatar.png"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\background.jpg",
+      "PackagePath": "staticwebassets\\assets\\background.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\google.png",
+      "PackagePath": "staticwebassets\\assets\\google.png"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\laplace.svg",
+      "PackagePath": "staticwebassets\\assets\\laplace.svg"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\returns.png",
+      "PackagePath": "staticwebassets\\assets\\returns.png"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\vacas.jpg",
+      "PackagePath": "staticwebassets\\assets\\vacas.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\sidebars.css",
+      "PackagePath": "staticwebassets\\css\\sidebars.css"
+    },
+    {
       "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
       "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\logo11.JPG",
+      "PackagePath": "staticwebassets\\img\\logo11.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini.jpg",
+      "PackagePath": "staticwebassets\\img\\mini.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini2.jpg",
+      "PackagePath": "staticwebassets\\img\\mini2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini3.jpg",
+      "PackagePath": "staticwebassets\\img\\mini3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\animales-1.0.0.js",
+      "PackagePath": "staticwebassets\\js\\animales-1.0.0.js"
+    },
+    {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\sidebars.js",
+      "PackagePath": "staticwebassets\\js\\sidebars.js"
     },
     {
       "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\site.js",

@@ -1,9 +1,13 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ReproGanControl.Models;
+using ReproGanControl.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ReproGanControl.Controllers;
 
+[Authorize]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

@@ -20,3 +20,58 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.nav-item-custom {
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.nav-item-custom:hover {
+  background-color: #1dc425; /* Cambia el color de fondo al pasar el mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade una sombra */
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link i {
+  margin-right: 8px; /* Espacio entre el icono y el texto */
+}
+
+.nav-custom {
+  list-style: none;
+  padding-left: 0;
+}
+
+.nav-custom .nav-item {
+  margin-bottom: 10px;
+}
+
+.nav-custom .nav-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  background-color: #3ccc3c;
+  border: 1px solid #ddd;
+  border-radius: 1px;
+  transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.nav-custom .nav-link:hover {
+  background-color: #e9ecef;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #66ff00;
+}
+
+.nav-custom .nav-link i {
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+.nav-custom .nav-link.active {
+  background-color: #4650d8;
+  color: #fff;
+}
+

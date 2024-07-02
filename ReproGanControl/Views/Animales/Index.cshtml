@@ -1,0 +1,66 @@
+@{
+    ViewData["Title"] = "Animales";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Animales</h1>
+    <br>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAnimales">
+  Agregar Animal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" data-bs-backdrop="static" id="modalAnimales" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="tituloAnimales"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModalAnimal()"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <input type="hidden" class="form-control" id="AnimalID" value="0">
+
+          <label for="Caravana" class="form-label">Caravana</label>
+          <input type="text" class="form-control" id="Caravana" placeholder="Nro de la caravana">
+
+          <label for="TipoAnimalDescripcion" class="form-label">Tipo de Animal</label>
+          <input type="text" class="form-control" id="TipoAnimalDescripcion" placeholder="">
+
+          <label for="EstadoDescripcion" class="form-label">Estado</label>
+          <input type="text" class="form-control" id="EstadoDescripcion" placeholder="">
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="LimpiarModalAnimal()" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="GuardarAnimal()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Nro Caravana</th>
+            <th scope="col">Tipo de Animal</th>
+            <th scope="col">Estado</th>
+            <th scope="col" style="width: 80px;"></th>
+            <th scope="col" style="width: 80px;"></th>
+        </tr>
+    </thead>
+    <tbody id="tbody-animales">
+    </tbody>
+</table>
+
+
+@section Scripts {
+    <script src="~/js/animales-1.0.0.js"></script>
+}

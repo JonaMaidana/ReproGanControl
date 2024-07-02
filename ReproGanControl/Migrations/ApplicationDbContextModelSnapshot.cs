@@ -224,6 +224,218 @@ namespace ReproGanControl.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ReproGanControl.Models.Animal", b =>
+                {
+                    b.Property<int>("AnimalID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AnimalID"));
+
+                    b.Property<string>("Caravana")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EstadoID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoAnimalID")
+                        .HasColumnType("int");
+
+                    b.HasKey("AnimalID");
+
+                    b.HasIndex("EstadoID");
+
+                    b.HasIndex("TipoAnimalID");
+
+                    b.ToTable("Animales");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Estado", b =>
+                {
+                    b.Property<int>("EstadoID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EstadoID"));
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EstadoID");
+
+                    b.ToTable("Estados");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Evento", b =>
+                {
+                    b.Property<int>("EventoID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EventoID"));
+
+                    b.Property<int>("AnimalID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FechaAproximada")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaEvento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TipoCria")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TipoEventoID")
+                        .HasColumnType("int");
+
+                    b.HasKey("EventoID");
+
+                    b.HasIndex("AnimalID");
+
+                    b.HasIndex("TipoEventoID");
+
+                    b.ToTable("Eventos");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Localidad", b =>
+                {
+                    b.Property<int>("LocalidadID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocalidadID"));
+
+                    b.Property<string>("CodigoPostal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProvinciaID")
+                        .HasColumnType("int");
+
+                    b.HasKey("LocalidadID");
+
+                    b.HasIndex("ProvinciaID");
+
+                    b.ToTable("Localidades");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Persona", b =>
+                {
+                    b.Property<int>("PersonaID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PersonaID"));
+
+                    b.Property<string>("Apellido")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LocalidadID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Tel")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioID")
+                        .HasColumnType("int");
+
+                    b.HasKey("PersonaID");
+
+                    b.HasIndex("LocalidadID");
+
+                    b.ToTable("Personas");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Provincia", b =>
+                {
+                    b.Property<int>("ProvinciaID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProvinciaID"));
+
+                    b.Property<string>("CodigoPostal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProvinciaID");
+
+                    b.ToTable("Provincias");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.RegistroMedico", b =>
+                {
+                    b.Property<int>("RegistroMedicoID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RegistroMedicoID"));
+
+                    b.Property<int>("AnimalID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApellidoVeterinario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NombreVeterinario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Tel")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Tratamiento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RegistroMedicoID");
+
+                    b.HasIndex("AnimalID");
+
+                    b.ToTable("RegistroMedicos");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.TipoAnimal", b =>
+                {
+                    b.Property<int>("TipoAnimalID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TipoAnimalID"));
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TipoAnimalID");
+
+                    b.ToTable("TipoAnimales");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.TipoEvento", b =>
+                {
+                    b.Property<int>("TipoEventoID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TipoEventoID"));
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TipoEventoID");
+
+                    b.ToTable("TipoEventos");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -273,6 +485,109 @@ namespace ReproGanControl.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Animal", b =>
+                {
+                    b.HasOne("ReproGanControl.Models.Estado", "Estado")
+                        .WithMany("Animales")
+                        .HasForeignKey("EstadoID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ReproGanControl.Models.TipoAnimal", "TipoAnimal")
+                        .WithMany("Animales")
+                        .HasForeignKey("TipoAnimalID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Estado");
+
+                    b.Navigation("TipoAnimal");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Evento", b =>
+                {
+                    b.HasOne("ReproGanControl.Models.Animal", "Animal")
+                        .WithMany("Eventos")
+                        .HasForeignKey("AnimalID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ReproGanControl.Models.TipoEvento", "TipoEvento")
+                        .WithMany("Eventos")
+                        .HasForeignKey("TipoEventoID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Animal");
+
+                    b.Navigation("TipoEvento");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Localidad", b =>
+                {
+                    b.HasOne("ReproGanControl.Models.Provincia", "Provincia")
+                        .WithMany("Localidades")
+                        .HasForeignKey("ProvinciaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Provincia");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Persona", b =>
+                {
+                    b.HasOne("ReproGanControl.Models.Localidad", "Localidad")
+                        .WithMany("Personas")
+                        .HasForeignKey("LocalidadID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Localidad");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.RegistroMedico", b =>
+                {
+                    b.HasOne("ReproGanControl.Models.Animal", "Animal")
+                        .WithMany("RegistroMedicos")
+                        .HasForeignKey("AnimalID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Animal");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Animal", b =>
+                {
+                    b.Navigation("Eventos");
+
+                    b.Navigation("RegistroMedicos");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Estado", b =>
+                {
+                    b.Navigation("Animales");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Localidad", b =>
+                {
+                    b.Navigation("Personas");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Provincia", b =>
+                {
+                    b.Navigation("Localidades");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.TipoAnimal", b =>
+                {
+                    b.Navigation("Animales");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.TipoEvento", b =>
+                {
+                    b.Navigation("Eventos");
                 });
 #pragma warning restore 612, 618
         }

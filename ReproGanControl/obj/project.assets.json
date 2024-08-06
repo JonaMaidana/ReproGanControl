@@ -8471,11 +8471,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jona\\Desktop\\Nueva carpeta\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
+      "projectUniqueName": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
       "projectName": "ReproGanControl",
-      "projectPath": "C:\\Users\\Jona\\Desktop\\Nueva carpeta\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
+      "projectPath": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
       "packagesPath": "C:\\Users\\Jona\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jona\\Desktop\\Nueva carpeta\\ReproGanControl\\ReproGanControl\\obj\\",
+      "outputPath": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jona\\AppData\\Roaming\\NuGet\\NuGet.Config"

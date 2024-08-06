@@ -1,0 +1,59 @@
+@{
+    ViewData["Title"] = "Tipo de Animales";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Tipo de Animales</h1>
+    <br>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTipoAnimal" onclick="NuevoTituloTipoAnimal()">
+    Agregar Tipo de Animal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" data-bs-backdrop="static" id="modalTipoAnimal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="tituloTipoAnimal"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModalTipoAnimal()"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <input type="hidden" id="TipoAnimalID" value="0" />
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" id="Descripcion" style="text-transform:uppercase"
+                            placeholder="Nombre del tipo de actividad">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="LimpiarModalTipoAnimal()"
+                    data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="GuardarTipoAnimal()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Descripcion</th>
+            <th scope="col" style="width: 80px;"></th>
+            <th scope="col" style="width: 80px;"></th>
+        </tr>
+    </thead>
+    <tbody id="tbody-tipoAnimales">
+    </tbody>
+</table>
+
+
+@section Scripts {
+    <script src="~/js/tipoAnimales-1.0.0.js"></script>
+}

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jjiZCGISX6n82d+N5MMd5DsIkTw/l0Xs/EZGjEsoD42VQsTYOnqt20g0R3rc76twK0GPJFEjxQoHpnXZ5YQSdw==",
+  "dgSpecHash": "almHwcko1N6l5y9JaEgqd+YoOYnG1tKkWk8+WqnfPyz9UTmXVECpOOMv0t0JDZCOPJoJrGwDoHscUjCSk6n4Zg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
+  "projectFilePath": "C:\\Users\\Jona\\Desktop\\Nueva carpeta\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jona\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Jona\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

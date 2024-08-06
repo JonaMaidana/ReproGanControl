@@ -14,4 +14,5 @@ public class Evento
 
     public virtual TipoEvento TipoEvento { get; set; }
     public virtual Animal Animal { get; set; }
+    public virtual Estado Estado { get; set; }
 }

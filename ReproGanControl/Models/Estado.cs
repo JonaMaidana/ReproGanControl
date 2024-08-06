@@ -7,5 +7,5 @@ public class Estado
     [Key]
     public int EstadoID { get; set; }
     public string? Descripcion { get; set; }
-    public virtual ICollection<Animal> Animales { get; set;}
+    public virtual ICollection<Evento> Eventos { get; set;}
 }

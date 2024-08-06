@@ -1,95 +1,141 @@
-window.onload = ListadoAnimales ();
+window.onload = ListadoAnimales();
 
-function ListadoAnimales() {
+function ListadoAnimales(){
     $.ajax({
         url: '../../Animales/ListadoAnimales',
-        data: {},
-        type: 'POST',
+        type: 'GET',
         dataType: 'json',
+        success: function (animalesMostrar) {
+            $("#ModalAnimal").modal("hide");
+            LimpiarModal();
+            let contenidoTabla = ``;
 
-        success: function (listadoAnimales) {
-            $("#modalAnimales").modal("hide");
-            LimpiarModalAnimal();
-            
-            let tabla = ``;
-
-            $.each(listadoAnimales, function (index, listaAnimales) {
-                tabla += `
+            $.each(animalesMostrar, function (index, animal) {  
+                contenidoTabla += `
                 <tr>
-                    <td>${listaAnimales.caravana}</td>
-                    <td>${listaAnimales.tipoAnimal}</td>
-                    <td>${listaAnimales.estado}</td>
-                    <td>
-                    <button type="button" class="btn btn-warning" onclick="EditarAnimal(${listaAnimales.animalID})">Editar</button>
+                    <td>${animal.caravana}</td>
+                    <td>${animal.tipoAnimalNombre}</td>
+                    <td>${animal.apodo}</td>
+                    <td>${animal.nombrePadre}</td>
+                    <td>${animal.nombreMadre}</td>
+                    <td>${animal.establecimiento}</td>
+                    <td>${animal.fechaNacimientoString}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-success btn-sm" onclick="ModalEditarAnimal(${animal.animalID})">
+                            <i class="fa-solid fa-marker">Editar</i>
+                        </button>
                     </td>
-                    <td>
-                    <button type="button" class="btn btn-danger" onclick="ValidarEliminar(${listaAnimales.animalID})">Eliminar</button>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-danger btn-sm" onclick="EliminarAnimal(${animal.animalID})">
+                            <i class="fa-solid fa-trash">Eliminar</i>
+                        </button>
                     </td>
                 </tr>
                 `;
             });
 
-            document.getElementById("tbody-animales").innerHTML = tabla;
+            document.getElementById("tbody-animales").innerHTML = contenidoTabla;
         },
         error: function (xhr, status) {
-            console.log('Ocurrio un proble al consultar el listado')
+            console.log('Disculpe, existió un problema al cargar el listado de animales');
         }
     });
 }
 
-function GuardarAnimal() {
+function LimpiarModal(){
+    document.getElementById("AnimalID").value = 0;
+    document.getElementById("TipoAnimalID").value = 0;
+    document.getElementById("Caravana").value = "";
+    document.getElementById("Apodo").value = "";
+    document.getElementById("NombrePadre").value = "";
+    document.getElementById("NombreMadre").value = "";
+    document.getElementById("Establecimiento").value = "";
+}
+
+function NuevoAnimal(){
+    $("#ModalTitulo").text("Nuevo Animal");
+}
+
+function GuardarAnimal(){
     let animalID = document.getElementById("AnimalID").value;
-    let estadoDescripcion = document.getElementById("EstadoDescripcion").value;
-    let tipoAnimalDescripcion = document.getElementById("TipoAnimalDescripcion").value;
+    let tipoAnimalID = document.getElementById("TipoAnimalID").value;
     let caravana = document.getElementById("Caravana").value;
-   
+    let apodo = document.getElementById("Apodo").value;
+    let nombrePadre = document.getElementById("NombrePadre").value;
+    let nombreMadre = document.getElementById("NombreMadre").value;
+    let establecimiento = document.getElementById("Establecimiento").value;
+    let fechaNacimiento = document.getElementById("FechaNacimiento").value;
+
     $.ajax({
         url: '../../Animales/GuardarAnimales',
-        data: {
-            AnimalID: animalID,
-            EstadoDescripcion: estadoDescripcion,
-            TipoAnimalDescripcion: tipoAnimalDescripcion,
-            Caravana: caravana
+        data: { 
+            animalID: animalID,
+            tipoAnimalID: tipoAnimalID,
+            caravana: caravana,
+            apodo: apodo,
+            nombrePadre: nombrePadre,
+            nombreMadre: nombreMadre,
+            establecimiento: establecimiento,
+            fechaNacimiento: fechaNacimiento
         },
         type: 'POST',
         dataType: 'json',
         success: function (resultado) {
-            if (resultado != "") {
+            if(resultado != ""){
                 alert(resultado);
             }
             ListadoAnimales();
         },
         error: function (xhr, status) {
-            console.log('ocurrio un error al guardar')
+            console.log('Disculpe, existió un problema al guardar el animal');
         }
-    });
+    });    
 }
 
-function ValidarEliminar(animalID) {
-    let eliminarAnimal = confirm("Ta seguro vo de eliminar esto?")
-    if (eliminarAnimal == true) {
-        EliminarAnimal(animalID);
-    }
-}
-function EliminarAnimal(animalID) {
-    console.log("Animal ID:", animalID); // Verifica que animalID tenga un valor válido aquí
+function ModalEditarAnimal(animalID){
+    
     $.ajax({
-        url: '../../Animales/EliminarAnimales',
-        data: { animalID: animalID },
+        url: '../../Animales/ListadoAnimales',
+        data: { id: animalID},
         type: 'POST',
         dataType: 'json',
-        success: function (resultado) {
-            ListadoAnimales();
+
+        success: function (animalesMostrar) {
+            let animal = animalesMostrar[0];
+
+            document.getElementById("AnimalID").value = animalID;
+            document.getElementById("TipoAnimalID").value = animal.tipoAnimalID;
+            document.getElementById("Caravana").value = animal.caravana;
+            document.getElementById("Apodo").value = animal.apodo;
+            document.getElementById("NombrePadre").value = animal.nombrePadre;
+            document.getElementById("NombreMadre").value = animal.nombreMadre;        
+            document.getElementById("Establecimiento").value = animal.establecimiento;
+            document.getElementById("FechaNacimiento").value = animal.fechaNacimiento;
+
+            $("#ModalTitulo").text("Editar Animal");
+            $("#ModalAnimal").modal("show");
         },
+
         error: function (xhr, status) {
-            console.log('Ocurrió un error al eliminar:', status);
+            console.log('Disculpe, existió un problema al consultar el listado para ser modificado.');
         }
     });
 }
 
-function LimpiarModalAnimal(){
-    document.getElementById("AnimalID").value = 0;
-    document.getElementById("EstadoDescripcion").value =  "";
-    document.getElementById("TipoAnimalDescripcion").value =  "";
-    document.getElementById("Caravana").value = "";
+function EliminarAnimal(animalID){
+    $.ajax({
+        url: '../../Animales/EliminarAnimales',
+        data: { animalID: animalID},
+        type: 'POST',
+        dataType: 'json',
+
+        success: function (resultado) {           
+            ListadoAnimales();
+        },
+
+        error: function (xhr, status) {
+            console.log('Disculpe, existió un problema al eliminar el animal.');
+        }
+    });    
+
 }

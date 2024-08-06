@@ -1,16 +1,17 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ReproGanControl.Data;
 using ReproGanControl.Models;
+using ReproGanControl.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ReproGanControl.Controllers;
-[Authorize]
+
 public class AnimalesController : Controller
 {
     private ApplicationDbContext _context;
 
+    //CONSTRUCTOR
     public AnimalesController(ApplicationDbContext context)
     {
         _context = context;
@@ -18,6 +19,85 @@ public class AnimalesController : Controller
 
     public IActionResult Index()
     {
+        var tipoAnimales = _context.TipoAnimales.ToList();
+        tipoAnimales.Add(new TipoAnimal { TipoAnimalID = 0, Descripcion = "[SELECCIONE]" });
+        ViewBag.TipoAnimalID = new SelectList(tipoAnimales.OrderBy(d => d.Descripcion), "TipoAnimalID", "Descripcion");
         return View();
+    }
+
+    public JsonResult ListadoAnimales(int? id)
+    {
+        var animales = _context.Animales.Include(t => t.TipoAnimal).ToList();
+        if (id != null)
+        {
+            animales = animales.Where(t => t.AnimalID == id).ToList();
+        }
+
+        var animalesMostrar = animales
+        .Select(a => new VistaAnimales
+        {
+            AnimalID = a.AnimalID,
+            TipoAnimalID = a.TipoAnimalID,
+            TipoAnimalNombre = a.TipoAnimal.Descripcion,
+            Caravana = a.Caravana,
+            Apodo = a.Apodo,
+            NombrePadre = a.NombrePadre,
+            NombreMadre = a.NombreMadre,
+            Establecimiento = a.Establecimiento,
+            FechaNacimiento = a.FechaNacimiento,
+            FechaNacimientoString = a.FechaNacimiento.ToString("dd/MM/yyyy"),
+            
+        })
+        .ToList();
+
+        return Json(animalesMostrar);
+    }
+
+    public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravana, string apodo, string nombrePadre, string nombreMadre, string establecimiento, DateTime fechaNacimiento)
+    {
+
+        if (animalID == 0)
+        {
+            var animal = new Animal
+            {
+                TipoAnimalID = tipoAnimalID,
+                Caravana = caravana,
+                Apodo = apodo,
+                NombrePadre = nombrePadre,
+                NombreMadre = nombreMadre,
+                Establecimiento = establecimiento,
+                FechaNacimiento = fechaNacimiento
+
+            };
+            _context.Add(animal);
+            _context.SaveChanges();
+
+        }
+        else
+        {
+            var animalEditar = _context.Animales.Where(t => t.AnimalID == animalID).SingleOrDefault();
+            if (animalEditar != null)
+            {
+                animalEditar.TipoAnimalID = tipoAnimalID;
+                animalEditar.Caravana = caravana;
+                animalEditar.Apodo = apodo;
+                animalEditar.NombrePadre = nombrePadre;
+                animalEditar.NombreMadre = nombreMadre;
+                animalEditar.Establecimiento = establecimiento;
+                animalEditar.FechaNacimiento = fechaNacimiento;
+
+                _context.SaveChanges();
+            }
+        }
+        return Json(true);
+    }
+
+    public JsonResult EliminarAnimales(int animalID)
+    {
+        var animal = _context.Animales.Find(animalID);
+        _context.Remove(animal);
+        _context.SaveChanges();
+
+        return Json(true);
     }
 }

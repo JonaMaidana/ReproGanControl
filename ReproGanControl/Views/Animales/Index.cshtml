@@ -4,62 +4,82 @@
 
 <div class="text-center">
     <h1 class="display-4">Animales</h1>
-    <br>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAnimales">
-  Agregar Animal
-</button>
+<div class="mb-2">
+    <button type="button" class="btn btn-success" onclick="NuevoAnimal()" data-bs-toggle="modal"
+        data-bs-target="#ModalAnimal">
+         Nuevo Animal
+    </button>
+</div>
 
-<!-- Modal -->
-<div class="modal fade" data-bs-backdrop="static" id="modalAnimales" tabindex="-1" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="tituloAnimales"></h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModalAnimal()"
-          aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-
-          <input type="hidden" class="form-control" id="AnimalID" value="0">
-
-          <label for="Caravana" class="form-label">Caravana</label>
-          <input type="text" class="form-control" id="Caravana" placeholder="Nro de la caravana">
-
-          <label for="TipoAnimalDescripcion" class="form-label">Tipo de Animal</label>
-          <input type="text" class="form-control" id="TipoAnimalDescripcion" placeholder="">
-
-          <label for="EstadoDescripcion" class="form-label">Estado</label>
-          <input type="text" class="form-control" id="EstadoDescripcion" placeholder="">
-
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" onclick="LimpiarModalAnimal()" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" onclick="GuardarAnimal()">Guardar</button>
-      </div>
+<div class="modal fade" data-bs-backdrop="static" id="ModalAnimal"  tabindex="-1" aria-labelledby="animalModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalTitulo"></h5>
+                <button type="button"  class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="AnimalID" value="0" />
+                    <div class="mb-3">
+                        <label for="caravana" class="form-label">Caravana</label>
+                        <input type="text" class="form-control" id="Caravana" style="text-transform:uppercase"
+                            placeholder="Número de caravana">
+                    </div>
+                    <div class="mb-3">
+                        <label for="TipoAnimalID" class="form-label">Tipo de Animal</label>
+                        @Html.DropDownList("TipoAnimalID", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label for="apodo" class="form-label">Apodo</label>
+                        <input type="text" class="form-control" id="Apodo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombrePadre" class="form-label">Nombre del Padre</label>
+                        <input type="text" class="form-control" id="NombrePadre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombreMadre" class="form-label">Nombre de la Madre</label>
+                        <input type="text" class="form-control" id="NombreMadre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="establecimiento" class="form-label">Establecimiento</label>
+                        <input type="text" class="form-control" id="Establecimiento">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" id="FechaNacimiento">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="LimpiarModal()" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="GuardarAnimal()" class="btn btn-success">Guardar</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<table class="table table-bordered">
-    <thead class="table-dark">
+<table class="table table-sm table-bordered table-striped">
+    <thead>
         <tr>
-            <th scope="col">Nro Caravana</th>
-            <th scope="col">Tipo de Animal</th>
-            <th scope="col">Estado</th>
-            <th scope="col" style="width: 80px;"></th>
-            <th scope="col" style="width: 80px;"></th>
+            <th>Caravana</th>
+            <th>Tipo de Animal</th>
+            <th>Apodo</th>
+            <th>Nombre del Padre</th>
+            <th>Nombre de la Madre</th>
+            <th>Establecimiento</th>
+            <th>Fecha de nacimiento</th>
+            <th style="width: 70px"></th>
+            <th style="width: 70px"></th>
         </tr>
     </thead>
     <tbody id="tbody-animales">
     </tbody>
 </table>
-
 
 @section Scripts {
     <script src="~/js/animales-1.0.0.js"></script>

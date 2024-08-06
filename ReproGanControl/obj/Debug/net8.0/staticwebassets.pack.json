@@ -73,6 +73,10 @@
       "PackagePath": "staticwebassets\\js\\animales-1.0.0.js"
     },
     {
+      "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\estado-1.0.0.js",
+      "PackagePath": "staticwebassets\\js\\estado-1.0.0.js"
+    },
+    {
       "Id": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\sidebars.js",
       "PackagePath": "staticwebassets\\js\\sidebars.js"
     },

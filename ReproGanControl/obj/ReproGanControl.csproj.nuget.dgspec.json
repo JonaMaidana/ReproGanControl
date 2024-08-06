@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\obj\\",
+=======
+    "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
+        "projectName": "ReproGanControl",
+        "projectPath": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
+        "packagesPath": "C:\\Users\\Jona\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\obj\\",
+>>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,8 +1,72 @@
 @{
-    ViewData["Title"] = "Personas";
+    ViewData["Title"] = "Eventos";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Personas</h1>
-    <br>
+    <h1 class="display-4">Eventos</h1>
 </div>
+
+<div class="mb-2">
+    <button type="button" class="btn btn-success" onclick="NuevoEvento()" data-bs-toggle="modal"
+        data-bs-target="#ModalEvento">
+        Nuevo Evento
+    </button>
+</div>
+
+<div class="modal fade" data-bs-backdrop="static" id="ModalEvento" tabindex="-1" aria-labelledby="animalModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalTituloEvento"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModalEvento()"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="EventoID" value="0" />
+                    <div class="mb-3">
+                        <label for="AnimalID" class="form-label">Caravana</label>
+                        @Html.DropDownList("AnimalID", (SelectList)ViewBag.AnimalID, htmlAttributes: new {@class ="form-control"})
+                    </div>
+                    <div class="mb-3">
+                        <label for="EstadoID" class="form-label">Estado</label>
+                        @Html.DropDownList("EstadoID", (SelectList)ViewBag.EstadoID, htmlAttributes: new {@class = "form-control"})
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaEvento" class="form-label">Fecha de evento</label>
+                        <input type="date" class="form-control" id="FechaEvento">
+                    </div>
+                    <div class="mb-3">
+                        <label for="observacion" class="form-label">Observacion</label>
+                        <input type="text" class="form-control" id="Observacion">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="LimpiarModalEvento()" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="GuardarEvento()" class="btn btn-success">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Caravana</th>
+            <th>Estado</th>
+            <th>Fecha de evento</th>
+            <th>Observacion</th>
+            <th style="width: 70px"></th>
+            <th style="width: 70px"></th>
+        </tr>
+    </thead>
+    <tbody id="tbody-eventos">
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="~/js/eventos-1.0.0.js"></script>
+}

@@ -1,0 +1,58 @@
+@{
+    ViewData["Title"] = "Estados";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Estados</h1>
+    <br>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEstado" onclick="NuevoTituloEstado()">
+    Agregar Estado
+</button>
+
+<!-- Modal -->
+<div class="modal fade" data-bs-backdrop="static" id="modalEstado" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="tituloEstado"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModalEstado()"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <input type="hidden" id="EstadoID" value="0" />
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" id="Descripcion" style="text-transform:uppercase">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="LimpiarModalEstado()"
+                    data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="GuardarEstado()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Descripcion</th>
+            <th scope="col" style="width: 80px;"></th>
+            <th scope="col" style="width: 80px;"></th>
+        </tr>
+    </thead>
+    <tbody id="tbody-estados">
+    </tbody>
+</table>
+
+
+@section Scripts {
+    <script src="~/js/estado-1.0.0.js"></script>
+}

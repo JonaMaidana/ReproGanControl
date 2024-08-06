@@ -290,25 +290,17 @@ namespace ReproGanControl.Migrations
                     b.Property<int>("EstadoID")
                         .HasColumnType("int");
 
-                    b.Property<string>("FechaAproximada")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("FechaEvento")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TipoCria")
+                    b.Property<string>("Observacion")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TipoEventoID")
-                        .HasColumnType("int");
 
                     b.HasKey("EventoID");
 
                     b.HasIndex("AnimalID");
 
                     b.HasIndex("EstadoID");
-
-                    b.HasIndex("TipoEventoID");
 
                     b.ToTable("Eventos");
                 });
@@ -435,22 +427,6 @@ namespace ReproGanControl.Migrations
                     b.ToTable("TipoAnimales");
                 });
 
-            modelBuilder.Entity("ReproGanControl.Models.TipoEvento", b =>
-                {
-                    b.Property<int>("TipoEventoID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TipoEventoID"));
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TipoEventoID");
-
-                    b.ToTable("TipoEventos");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -527,17 +503,9 @@ namespace ReproGanControl.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ReproGanControl.Models.TipoEvento", "TipoEvento")
-                        .WithMany("Eventos")
-                        .HasForeignKey("TipoEventoID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Animal");
 
                     b.Navigation("Estado");
-
-                    b.Navigation("TipoEvento");
                 });
 
             modelBuilder.Entity("ReproGanControl.Models.Localidad", b =>
@@ -598,11 +566,6 @@ namespace ReproGanControl.Migrations
             modelBuilder.Entity("ReproGanControl.Models.TipoAnimal", b =>
                 {
                     b.Navigation("Animales");
-                });
-
-            modelBuilder.Entity("ReproGanControl.Models.TipoEvento", b =>
-                {
-                    b.Navigation("Eventos");
                 });
 #pragma warning restore 612, 618
         }

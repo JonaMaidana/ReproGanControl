@@ -21,13 +21,13 @@ function ListadoAnimales(){
                     <td>${animal.establecimiento}</td>
                     <td>${animal.fechaNacimientoString}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm" onclick="ModalEditarAnimal(${animal.animalID})">
-                            <i class="fa-solid fa-marker">Editar</i>
+                        <button type="button" class="edit-button" onclick="ModalEditarAnimal(${animal.animalID})">
+                            Editar</i>
                         </button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-danger btn-sm" onclick="EliminarAnimal(${animal.animalID})">
-                            <i class="fa-solid fa-trash">Eliminar</i>
+                        <button type="button" class="delete-button" onclick="EliminarAnimal(${animal.animalID})">
+                            Eliminar</i>
                         </button>
                     </td>
                 </tr>

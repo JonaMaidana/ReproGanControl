@@ -2,13 +2,12 @@
     ViewData["Title"] = "Tipo de Animales";
 }
 
-<div class="text-center">
+<div>
     <h1 class="display-4">Tipo de Animales</h1>
-    <br>
 </div>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTipoAnimal" onclick="NuevoTituloTipoAnimal()">
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTipoAnimal" onclick="NuevoTituloTipoAnimal()">
     Agregar Tipo de Animal
 </button>
 
@@ -41,12 +40,12 @@
     </div>
 </div>
 
-<table class="table table-bordered">
+<table class="content-table">
     <thead class="table-dark">
         <tr>
             <th scope="col">Descripcion</th>
-            <th scope="col" style="width: 80px;"></th>
-            <th scope="col" style="width: 80px;"></th>
+            <th scope="col" style="width: 70px;"></th>
+            <th scope="col" style="width: 70px;"></th>
         </tr>
     </thead>
     <tbody id="tbody-tipoAnimales">

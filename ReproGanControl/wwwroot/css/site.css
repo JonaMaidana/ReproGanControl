@@ -26,8 +26,8 @@ body {
 }
 
 .nav-item-custom:hover {
-  background-color: #1dc425; /* Cambia el color de fondo al pasar el mouse */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade una sombra */
+  background-color: #1dc425; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 .nav-link {
@@ -36,7 +36,7 @@ body {
 }
 
 .nav-link i {
-  margin-right: 8px; /* Espacio entre el icono y el texto */
+  margin-right: 8px; 
 }
 
 .nav-custom {
@@ -67,11 +67,104 @@ body {
 }
 
 .nav-custom .nav-link i {
-  margin-right: 10px; /* Espacio entre el icono y el texto */
+  margin-right: 10px; 
 }
 
 .nav-custom .nav-link.active {
   background-color: #4650d8;
   color: #fff;
 }
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 100%;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
 
+.content-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 8px 10px;
+  border-right: 1px solid #dddddd; 
+}
+
+.content-table th:last-child,
+.content-table td:last-child {
+  border-right: none; 
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+  color: #009879;
+}
+
+.content-table tbody tr:hover {
+  background-color: #009879;
+  color: #ffffff;
+}
+
+.edit-button {
+  background-color: #4CAF50; 
+  border: none;
+  color: white; 
+  padding: 3px 10px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #45a049;
+}
+
+.edit-button:active {
+  background-color: #388e3c; 
+}
+
+.delete-button {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 3px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+.delete-button:active {
+  background-color: #c62828;
+}

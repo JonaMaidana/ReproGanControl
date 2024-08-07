@@ -1,10 +1,6 @@
 {
   "Version": 1,
-<<<<<<< HEAD
-  "Hash": "Ychs4E0eu7Jofj3ucnmW8/VPAz5LwDHJRJUfXLabxc8=",
-=======
-  "Hash": "9+03wUdFb+IiKwrxtERcJyrdvHNkKwZjdNlonxgb5d4=",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+  "Hash": "2yq5njinBB9hxC5C+wDfXn6sRQz+HHnmx1c3gEnA8Aw=",
   "Source": "ReproGanControl",
   "BasePath": "_content/ReproGanControl",
   "Mode": "Default",
@@ -14,11 +10,7 @@
     {
       "Name": "ReproGanControl\\wwwroot",
       "Source": "ReproGanControl",
-<<<<<<< HEAD
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "Pattern": "**"
     }
@@ -1165,17 +1157,10 @@
       "OriginalItemSpec": "C:\\Users\\lucas\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\8.0.3\\staticwebassets\\V5\\lib\\jquery\\LICENSE.txt"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ReproGanControl.styles.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ReproGanControl.styles.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ReproGanControl.styles.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "ReproGanControl.styles.css",
       "AssetKind": "All",
@@ -1188,23 +1173,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
-      "OriginalItemSpec": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ReproGanControl.styles.css"
+      "OriginalItemSpec": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ReproGanControl.styles.css"
     },
     {
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ReproGanControl.bundle.scp.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ReproGanControl.bundle.scp.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
-=======
-      "OriginalItemSpec": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ReproGanControl.styles.css"
-    },
-    {
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ReproGanControl.bundle.scp.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "ReproGanControl.bundle.scp.css",
       "AssetKind": "All",
@@ -1217,23 +1192,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
-      "OriginalItemSpec": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ReproGanControl.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ReproGanControl.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\apple.png",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\apple.png",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "OriginalItemSpec": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ReproGanControl.bundle.scp.css"
-    },
-    {
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\apple.png",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "assets/apple.png",
       "AssetKind": "All",
@@ -1249,17 +1214,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\apple.png"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\avatar.png",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\avatar.png",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\avatar.png",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "assets/avatar.png",
       "AssetKind": "All",
@@ -1275,17 +1233,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\avatar.png"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\background.jpg",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\background.jpg",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\background.jpg",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "assets/background.jpg",
       "AssetKind": "All",
@@ -1301,17 +1252,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\background.jpg"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\google.png",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\google.png",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\google.png",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "assets/google.png",
       "AssetKind": "All",
@@ -1327,17 +1271,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\google.png"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\laplace.svg",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\laplace.svg",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\laplace.svg",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "assets/laplace.svg",
       "AssetKind": "All",
@@ -1353,17 +1290,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\laplace.svg"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\returns.png",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\returns.png",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\returns.png",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "assets/returns.png",
       "AssetKind": "All",
@@ -1379,17 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\returns.png"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\vacas.jpg",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\vacas.jpg",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\assets\\vacas.jpg",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "assets/vacas.jpg",
       "AssetKind": "All",
@@ -1405,17 +1328,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\vacas.jpg"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\login.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\login.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\login.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "css/login.css",
       "AssetKind": "All",
@@ -1431,17 +1347,10 @@
       "OriginalItemSpec": "wwwroot\\css\\login.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\sidebars.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\sidebars.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\sidebars.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "css/sidebars.css",
       "AssetKind": "All",
@@ -1457,17 +1366,10 @@
       "OriginalItemSpec": "wwwroot\\css\\sidebars.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\site.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\site.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -1483,17 +1385,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\style.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\style.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\style.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "css/style.css",
       "AssetKind": "All",
@@ -1509,17 +1404,10 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\favicon.ico",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\favicon.ico",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -1535,17 +1423,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\logo11.JPG",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\logo11.JPG",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\logo11.JPG",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "img/logo11.JPG",
       "AssetKind": "All",
@@ -1561,17 +1442,10 @@
       "OriginalItemSpec": "wwwroot\\img\\logo11.JPG"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini.jpg",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini.jpg",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini.jpg",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "img/mini.jpg",
       "AssetKind": "All",
@@ -1587,17 +1461,10 @@
       "OriginalItemSpec": "wwwroot\\img\\mini.jpg"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini2.jpg",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini2.jpg",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini2.jpg",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "img/mini2.jpg",
       "AssetKind": "All",
@@ -1613,17 +1480,10 @@
       "OriginalItemSpec": "wwwroot\\img\\mini2.jpg"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini3.jpg",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini3.jpg",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini3.jpg",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "img/mini3.jpg",
       "AssetKind": "All",
@@ -1639,17 +1499,10 @@
       "OriginalItemSpec": "wwwroot\\img\\mini3.jpg"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\animales-1.0.0.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\animales-1.0.0.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\animales-1.0.0.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "js/animales-1.0.0.js",
       "AssetKind": "All",
@@ -1665,16 +1518,10 @@
       "OriginalItemSpec": "wwwroot\\js\\animales-1.0.0.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\sidebars.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\estado-1.0.0.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\estado-1.0.0.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "js/estado-1.0.0.js",
       "AssetKind": "All",
@@ -1690,10 +1537,10 @@
       "OriginalItemSpec": "wwwroot\\js\\estado-1.0.0.js"
     },
     {
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\eventos-1.0.0.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\eventos-1.0.0.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "js/eventos-1.0.0.js",
       "AssetKind": "All",
@@ -1709,11 +1556,67 @@
       "OriginalItemSpec": "wwwroot\\js\\eventos-1.0.0.js"
     },
     {
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\sidebars.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\jspdf\\jspdf.debug.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
+      "BasePath": "_content/ReproGanControl",
+      "RelativePath": "js/jspdf/jspdf.debug.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jspdf\\jspdf.debug.js"
+    },
+    {
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\jspdf\\jspdf.min.js",
+      "SourceId": "ReproGanControl",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
+      "BasePath": "_content/ReproGanControl",
+      "RelativePath": "js/jspdf/jspdf.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jspdf\\jspdf.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\jspdf\\jspdf.plugin.autotable.js",
+      "SourceId": "ReproGanControl",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
+      "BasePath": "_content/ReproGanControl",
+      "RelativePath": "js/jspdf/jspdf.plugin.autotable.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jspdf\\jspdf.plugin.autotable.js"
+    },
+    {
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\sidebars.js",
+      "SourceId": "ReproGanControl",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "js/sidebars.js",
       "AssetKind": "All",
@@ -1729,17 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\js\\sidebars.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\site.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\site.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -1755,17 +1651,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\tipoAnimales-1.0.0.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\tipoAnimales-1.0.0.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\tipoAnimales-1.0.0.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "js/tipoAnimales-1.0.0.js",
       "AssetKind": "All",
@@ -1781,17 +1670,10 @@
       "OriginalItemSpec": "wwwroot\\js\\tipoAnimales-1.0.0.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -1807,17 +1689,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -1833,17 +1708,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -1859,17 +1727,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -1885,17 +1746,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -1911,17 +1765,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -1937,17 +1784,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -1963,17 +1803,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -1989,17 +1822,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -2015,17 +1841,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -2041,17 +1860,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -2067,17 +1879,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -2093,17 +1898,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -2119,17 +1917,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -2145,17 +1936,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -2171,17 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -2197,17 +1974,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -2223,17 +1993,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -2249,17 +2012,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -2275,17 +2031,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -2301,17 +2050,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -2327,17 +2069,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -2353,17 +2088,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -2379,17 +2107,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -2405,17 +2126,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -2431,17 +2145,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -2457,17 +2164,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -2483,17 +2183,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -2509,17 +2202,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -2535,17 +2221,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -2561,17 +2240,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -2587,17 +2259,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -2613,17 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -2639,17 +2297,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -2665,17 +2316,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -2691,17 +2335,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -2717,17 +2354,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -2743,17 +2373,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -2769,17 +2392,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -2795,17 +2411,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -2821,17 +2430,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -2847,17 +2449,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -2873,17 +2468,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -2899,17 +2487,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -2925,17 +2506,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\LICENSE",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -2951,17 +2525,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -2977,17 +2544,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -3003,17 +2563,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -3029,17 +2582,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -3055,17 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -3081,17 +2620,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -3107,17 +2639,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -3133,17 +2658,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -3159,17 +2677,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -3185,17 +2696,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -3211,17 +2715,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -3237,17 +2734,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "ReproGanControl",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\wwwroot\\",
-=======
-      "Identity": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\LICENSE.txt",
-      "SourceId": "ReproGanControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\wwwroot\\",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+      "ContentRoot": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\",
       "BasePath": "_content/ReproGanControl",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",

@@ -2,7 +2,7 @@
     ViewData["Title"] = "Eventos";
 }
 
-<div class="text-center">
+<div>
     <h1 class="display-4">Eventos</h1>
 </div>
 
@@ -15,7 +15,7 @@
 
 <div class="modal fade" data-bs-backdrop="static" id="ModalEvento" tabindex="-1" aria-labelledby="animalModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="ModalTituloEvento"></h5>
@@ -25,34 +25,53 @@
             <div class="modal-body">
                 <form>
                     <input type="hidden" id="EventoID" value="0" />
-                    <div class="mb-3">
-                        <label for="AnimalID" class="form-label">Caravana</label>
-                        @Html.DropDownList("AnimalID", (SelectList)ViewBag.AnimalID, htmlAttributes: new {@class ="form-control"})
-                    </div>
-                    <div class="mb-3">
-                        <label for="EstadoID" class="form-label">Estado</label>
-                        @Html.DropDownList("EstadoID", (SelectList)ViewBag.EstadoID, htmlAttributes: new {@class = "form-control"})
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="AnimalID" class="form-label">Caravana</label>
+                            @Html.DropDownList("AnimalID", (SelectList)ViewBag.AnimalID, htmlAttributes: new
+                                {
+                                    @class
+                                     = "form-control"
+                                })
+                        </div>
+                        <div class="col">
+                            <label for="EstadoID" class="form-label">Estado</label>
+                            @Html.DropDownList("EstadoID", (SelectList)ViewBag.EstadoID, htmlAttributes: new
+                                {
+                                    @class =
+                                     "form-control"
+                                })
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="fechaEvento" class="form-label">Fecha de evento</label>
-                        <input type="date" class="form-control" id="FechaEvento">
+                        <div class="col-sm-6"> <!-- Ajusta el ancho aquí -->
+                            <input type="date" class="form-control" id="FechaEvento">
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label for="observacion" class="form-label">Observacion</label>
-                        <input type="text" class="form-control" id="Observacion">
+                        <label for="observacion" class="form-label">Observación</label>
+                        <textarea class="form-control" id="Observacion" placeholder="Observación del evento." rows="3"
+                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px';"></textarea>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" onclick="LimpiarModalEvento()" class="btn btn-secondary"
-                    data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" onclick="GuardarEvento()" class="btn btn-success">Guardar</button>
+            <div class="modal-footer" style="display: flex; justify-content: flex-start; align-items: center;">
+                <p style="font-weight: bold; text-transform: uppercase; color: black; margin: 0;">
+                    *Completa todos los campos requeridos antes de guardar.
+                </p>
+                <div style="margin-left: auto;">
+                    <button type="button" onclick="LimpiarModalEvento()" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" onclick="GuardarEvento()" class="btn btn-success">Guardar</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<table class="table table-sm table-bordered table-striped">
+
+<table class="content-table">
     <thead>
         <tr>
             <th>Caravana</th>

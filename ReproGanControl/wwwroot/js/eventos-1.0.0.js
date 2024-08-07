@@ -18,13 +18,13 @@ function ListadoEventos(){
                     <td>${evento.fechaEventoString}</td>
                     <td>${evento.observacion}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm" onclick="ModalEditarEventos(${evento.eventoID})">
-                            <i class="fa-solid fa-marker">Editar</i>
+                        <button type="button" class="edit-button" onclick="ModalEditarEventos(${evento.eventoID})">
+                            Editar</i>
                         </button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-danger btn-sm" onclick="EliminarEventos(${evento.eventoID})">
-                            <i class="fa-solid fa-trash">Eliminar</i>
+                        <button type="button" class="delete-button" onclick="EliminarEventos(${evento.eventoID})">
+                            Eliminar</i>
                         </button>
                     </td>
                 </tr>
@@ -57,7 +57,18 @@ function GuardarEvento(){
     let fechaEvento = document.getElementById("FechaEvento").value;
     let observacion = document.getElementById("Observacion").value;
 
+    // Verificar si alguno de los campos está vacío
+    if (!eventoID || !animalID || !estadoID || !fechaEvento || !observacion) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Faltan campos',
+            text: 'Por favor, complete todos los campos para guardar el evento.',
+            confirmButtonText: 'OK'
+        });
+        return; // Salir de la función si falta algún campo
+    }
 
+    // Si todos los campos están completos, proceder con la solicitud AJAX
     $.ajax({
         url: '../../Eventos/GuardarEventos',
         data: { 
@@ -70,16 +81,26 @@ function GuardarEvento(){
         type: 'POST',
         dataType: 'json',
         success: function (resultado) {
-            if(resultado != ""){
-                alert(resultado);
-            }
-            ListadoEventos();
+            Swal.fire({
+                icon: 'success',
+                title: 'Guardado correctamente',
+                text: 'El evento se ha guardado exitosamente.',
+                confirmButtonText: 'OK'
+            });
+            ListadoEventos(); // Llamar a la función para listar eventos después de guardar
         },
         error: function (xhr, status) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Disculpe, existió un problema al guardar el evento.',
+                confirmButtonText: 'OK'
+            });
             console.log('Disculpe, existió un problema al guardar el evento');
         }
     });    
 }
+
 
 function ModalEditarEventos(eventoID){
     
@@ -110,20 +131,39 @@ function ModalEditarEventos(eventoID){
     });
 }
 
-function EliminarEventos(eventoID){
-    $.ajax({
-        url: '../../Eventos/EliminarEvento',
-        data: { eventoID: eventoID},
-        type: 'POST',
-        dataType: 'json',
-
-        success: function (resultado) {           
-            ListadoEventos();
-        },
-
-        error: function (xhr, status) {
-            console.log('Disculpe, existió un problema al eliminar el evento.');
+function EliminarEventos(eventoID) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡No podrás deshacer esta acción!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Confirmado, proceder con la eliminación
+            $.ajax({
+                url: '../../Eventos/EliminarEvento',
+                data: { eventoID: eventoID },
+                type: 'POST',
+                dataType: 'json',
+                success: function (resultado) {
+                    ListadoEventos(); // Actualiza el listado de eventos
+                    Swal.fire(
+                        '¡Eliminado!',
+                        'El evento ha sido eliminado.',
+                        'success'
+                    );
+                },
+                error: function (xhr, status) {
+                    Swal.fire(
+                        'Error',
+                        'Disculpe, existió un problema al eliminar el evento.',
+                        'error'
+                    );
+                }
+            });
         }
-    });    
-
+    });
 }

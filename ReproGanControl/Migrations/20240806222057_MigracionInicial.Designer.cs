@@ -12,8 +12,8 @@ using ReproGanControl.Data;
 namespace ReproGanControl.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240806210321_TodosLosModelos")]
-    partial class TodosLosModelos
+    [Migration("20240806222057_MigracionInicial")]
+    partial class MigracionInicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

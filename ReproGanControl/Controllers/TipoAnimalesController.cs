@@ -31,65 +31,82 @@ public class TipoAnimalesController : Controller
         return Json(tipoDeAnimales);
     }
 
-    public JsonResult GuardarTipoAnimal(int tipoAnimalID, string descripcion)
+public JsonResult GuardarTipoAnimal(int tipoAnimalID, string descripcion)
+{
+    if (string.IsNullOrEmpty(descripcion))
     {
-    
-        string resultado = "";
+        return Json(new { success = false, mensaje = "DEBE INGRESAR UNA DESCRIPCIÓN." });
+    }
 
-        if (!String.IsNullOrEmpty(descripcion))
+    descripcion = descripcion.ToUpper();
+    
+    if (tipoAnimalID == 0)
+    {
+        bool existeTipoAnimal = _context.TipoAnimales.Any(t => t.Descripcion == descripcion);
+        if (!existeTipoAnimal)
         {
-            descripcion = descripcion.ToUpper();
-         
-            if (tipoAnimalID == 0)
+            var tipoAnimal = new TipoAnimal
             {
-                var existeTipoAnimal = _context.TipoAnimales.Where(t => t.Descripcion == descripcion).Count();
-                if (existeTipoAnimal == 0)
-                {
-                    var tipoAnimal = new TipoAnimal
-                    {
-                        Descripcion = descripcion
-                    };
-                    _context.Add(tipoAnimal);
-                    _context.SaveChanges();
-                }
-                else
-                {
-                    resultado = "YA EXISTE UN ANIMAL CON LA MISMA DESCRIPCIÓN";
-                }
+                Descripcion = descripcion
+            };
+            _context.Add(tipoAnimal);
+            _context.SaveChanges();
+            return Json(new { success = true, mensaje = "Tipo de animal guardado correctamente." });
+        }
+        else
+        {
+            return Json(new { success = false, mensaje = "YA EXISTE UN ANIMAL CON LA MISMA DESCRIPCIÓN." });
+        }
+    }
+    else
+    {
+        var tipoAnimalEditar = _context.TipoAnimales.SingleOrDefault(t => t.TipoAnimalID == tipoAnimalID);
+        if (tipoAnimalEditar != null)
+        {
+            bool existeTipoAnimal = _context.TipoAnimales.Any(t => t.Descripcion == descripcion && t.TipoAnimalID != tipoAnimalID);
+            if (!existeTipoAnimal)
+            {
+                tipoAnimalEditar.Descripcion = descripcion;
+                _context.SaveChanges();
+                return Json(new { success = true, mensaje = "Tipo de animal guardado correctamente." });
             }
             else
             {
-                var tipoAnimalEditar = _context.TipoAnimales.Where(t => t.TipoAnimalID == tipoAnimalID).SingleOrDefault();
-                if (tipoAnimalEditar != null)
-                {
-                    var existeTipoAnimal = _context.TipoAnimales.Where(t => t.Descripcion == descripcion && t.TipoAnimalID != tipoAnimalID).Count();
-                    if (existeTipoAnimal == 0)
-                    {
-                        tipoAnimalEditar.Descripcion = descripcion;
-                        _context.SaveChanges();
-                    }
-                    else
-                    {
-                        resultado = "YA EXISTE UN ANIMAL CON LA MISMA DESCRIPCIÓN";
-                    }
-                }
+                return Json(new { success = false, mensaje = "YA EXISTE UN ANIMAL CON LA MISMA DESCRIPCIÓN." });
             }
         }
         else
         {
-            resultado = "DEBE INGRESAR UNA DESCRIPCIÓN.";
+            return Json(new { success = false, mensaje = "Tipo de animal no encontrado." });
         }
-
-        return Json(resultado);
     }
+}
 
-    public JsonResult EliminarTipoAnimal (int tipoAnimalID)
+
+public JsonResult EliminarTipoAnimal(int tipoAnimalID)
+{
+    var tipoAnimal = _context.TipoAnimales.Find(tipoAnimalID);
+
+    // Verificar si el tipo de animal está asociado a algún animal
+    bool tieneAnimalesAsociados = _context.Animales.Any(a => a.TipoAnimalID == tipoAnimalID);
+
+    if (tieneAnimalesAsociados)
     {
-        var eliminarTipoAnimal = _context.TipoAnimales.Find(tipoAnimalID);
-        _context.Remove(eliminarTipoAnimal);
-        _context.SaveChanges();
-
-        return Json(true);
+        // Si hay animales asociados, retornar un JSON indicando que no se puede eliminar
+        return Json(new { success = false, mensaje = "Este tipo de animal no se puede eliminar porque está asociado a uno o más animales." });
     }
+
+    if (tipoAnimal != null)
+    {
+        _context.TipoAnimales.Remove(tipoAnimal);
+        _context.SaveChanges();
+        // Retornar éxito si la eliminación fue exitosa
+        return Json(new { success = true, mensaje = "Tipo de animal eliminado correctamente." });
+    }
+
+    // Retornar error si el tipo de animal no se encontró
+    return Json(new { success = false, mensaje = "Tipo de animal no encontrado." });
+}
+
 
  }

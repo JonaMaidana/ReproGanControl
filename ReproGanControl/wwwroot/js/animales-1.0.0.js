@@ -56,7 +56,7 @@ function NuevoAnimal(){
     $("#ModalTitulo").text("Nuevo Animal");
 }
 
-function GuardarAnimal(){
+function GuardarAnimal() {
     let animalID = document.getElementById("AnimalID").value;
     let tipoAnimalID = document.getElementById("TipoAnimalID").value;
     let caravana = document.getElementById("Caravana").value;
@@ -65,6 +65,28 @@ function GuardarAnimal(){
     let nombreMadre = document.getElementById("NombreMadre").value;
     let establecimiento = document.getElementById("Establecimiento").value;
     let fechaNacimiento = document.getElementById("FechaNacimiento").value;
+
+    // Construir el mensaje de error
+    let camposFaltantes = [];
+    if (!animalID) camposFaltantes.push("ID del Animal");
+    if (!tipoAnimalID) camposFaltantes.push("Tipo de Animal");
+    if (!caravana) camposFaltantes.push("Caravana");
+    if (!apodo) camposFaltantes.push("Apodo");
+    if (!nombrePadre) camposFaltantes.push("Nombre del Padre");
+    if (!nombreMadre) camposFaltantes.push("Nombre de la Madre");
+    if (!establecimiento) camposFaltantes.push("Establecimiento");
+    if (!fechaNacimiento) camposFaltantes.push("Fecha de Nacimiento");
+
+    // Verificar si hay campos faltantes
+    if (camposFaltantes.length > 0) {
+        Swal.fire({
+            icon: 'error',
+            title: '¡Error!',
+            text: 'Debe completar los siguientes campos: ' + camposFaltantes.join(", "),
+            confirmButtonText: 'OK'
+        });
+        return; // Detener la ejecución si hay campos vacíos
+    }
 
     $.ajax({
         url: '../../Animales/GuardarAnimales',
@@ -81,16 +103,36 @@ function GuardarAnimal(){
         type: 'POST',
         dataType: 'json',
         success: function (resultado) {
-            if(resultado != ""){
-                alert(resultado);
+            if (!resultado.success) {
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    text: resultado.message,
+                    confirmButtonText: 'OK'
+                });
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Guardado!',
+                    text: 'El animal se ha guardado correctamente.',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    ListadoAnimales();
+                });
             }
-            ListadoAnimales();
         },
         error: function (xhr, status) {
+            Swal.fire({
+                icon: 'error',
+                title: '¡Error!',
+                text: 'Disculpe, existió un problema al guardar el animal.',
+                confirmButtonText: 'OK'
+            });
             console.log('Disculpe, existió un problema al guardar el animal');
         }
     });    
 }
+
 
 function ModalEditarAnimal(animalID){
     
@@ -122,20 +164,39 @@ function ModalEditarAnimal(animalID){
     });
 }
 
-function EliminarAnimal(animalID){
+function EliminarAnimal(animalID) {
     $.ajax({
         url: '../../Animales/EliminarAnimales',
-        data: { animalID: animalID},
+        data: { animalID: animalID },
         type: 'POST',
         dataType: 'json',
-
-        success: function (resultado) {           
-            ListadoAnimales();
+        success: function (resultado) {
+            if (resultado.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Eliminado!',
+                    text: 'El animal se ha eliminado correctamente.',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    ListadoAnimales();
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    text: resultado.message || 'No se pudo eliminar el animal. Puede estar siendo usado en otra parte.',
+                    confirmButtonText: 'OK'
+                });
+            }
         },
-
         error: function (xhr, status) {
+            Swal.fire({
+                icon: 'error',
+                title: '¡Error!',
+                text: 'Disculpe, existió un problema al eliminar el animal.',
+                confirmButtonText: 'OK'
+            });
             console.log('Disculpe, existió un problema al eliminar el animal.');
         }
-    });    
-
+    });
 }

@@ -21,13 +21,13 @@ function ListadoEstados() {
                 <tr>
                     <td>${estado.descripcion}</td>
                     <td class="text-center">
-                    <button type="button" class="btn btn-success btn-sm" onclick="ModalEditarEstado(${estado.estadoID})">
-                    <i class="fa-solid fa-marker">Editar</i>
+                    <button type="button" class="edit-button" onclick="ModalEditarEstado(${estado.estadoID})">
+                    Editar</i>
                     </button>
                     </td>
                     <td class="text-center">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="EliminarEstado(${estado.estadoID})">
-                    <i class="fa-solid fa-trash">Eliminar</i>
+                    <button type="button" class="delete-button" onclick="EliminarEstado(${estado.estadoID})">
+                    Eliminar</i>
                     </button>
                     </td>
                 </tr>
@@ -46,12 +46,10 @@ function ListadoEstados() {
 }
 
 function GuardarEstado() {
-
     let estadoID = document.getElementById("EstadoID").value;
     let descripcion = document.getElementById("Descripcion").value;
 
     $.ajax({
-
         url: '../../Estados/GuardarEstados',
         data: {
             estadoID: estadoID,
@@ -59,16 +57,28 @@ function GuardarEstado() {
         },
         type: 'POST',
         dataType: 'json',
-
         success: function (resultado) {
-
-            if (resultado != "") {
-                alert(resultado);
+            if (resultado.exito) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: resultado.mensaje
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: resultado.mensaje
+                });
             }
             ListadoEstados();
         },
-
         error: function (xhr, status) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Disculpe, existió un problema al guardar el estado.'
+            });
             console.log('Disculpe, existió un problema al guardar el estado');
         }
     });
@@ -98,19 +108,27 @@ function ModalEditarEstado(estadoID) {
 
 function EliminarEstado(estadoID) {
     $.ajax({
-
         url: '../../Estados/EliminarEstados',
         data: { estadoID: estadoID },
         type: 'POST',
         dataType: 'json',
-
         success: function (resultado) {
-            if (!resultado) {
-                alert("");
+            if (resultado.exito) {
+                Swal.fire({
+                    title: 'Éxito',
+                    text: 'El estado se eliminó correctamente.',
+                    icon: 'success'
+                }).then(() => {
+                    ListadoEstados();
+                });
+            } else if (resultado.exito === false) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'No se puede eliminar el estado porque está en uso.',
+                    icon: 'error'
+                });
             }
-            ListadoEstados();
         },
-
         error: function (xhr, status) {
             console.log('Disculpe, existió un problema al eliminar el estado.');
         }

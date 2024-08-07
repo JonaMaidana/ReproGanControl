@@ -168,3 +168,37 @@ body {
 .delete-button:active {
   background-color: #c62828;
 }
+.modal-header {
+  background-color: #007bff;
+  color: white;
+}
+.modal-footer {
+  background-color: #f1f1f1;
+}
+.modal-title {
+  font-weight: bold;
+}
+.form-label {
+  font-weight: bold;
+}
+.form-control {
+  border-radius: 0.25rem;
+}
+.btn-success {
+  background-color: #28a745;
+  color: #000; /* Color del texto negro */
+}
+.btn-secondary {
+  background-color: #f00101;
+}
+.mb-3 label {
+  font-size: 0.9rem;
+}
+.modal-content {
+  border-radius: 0.5rem;
+}
+.btn-warning {
+  background-color: #f0d90f;
+}
+
+

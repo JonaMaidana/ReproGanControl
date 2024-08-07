@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "q9iQpIctiKtlJvNrRCalHcrtSO75vG5qC5dSfQauPuiHtbVxMy/rIkcscU5JRn8v7rse151y797ILtMQt8HQbw==",
+  "dgSpecHash": "qwI6y4FHww7gnRD1GEvSSpHIhZ5ote1fweoORzzEJ63UWmLtb9ciXzP0Wg/+rb33cbytD0uDUiry5XCG4UVPhA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproGan\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
-=======
-  "dgSpecHash": "jjiZCGISX6n82d+N5MMd5DsIkTw/l0Xs/EZGjEsoD42VQsTYOnqt20g0R3rc76twK0GPJFEjxQoHpnXZ5YQSdw==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Jona\\Desktop\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
->>>>>>> 2d8d69f9d569f3d9e710fd888849fbc90ed2bee8
+  "projectFilePath": "C:\\Users\\lucas\\Desktop\\Carpetas\\ReproFinal\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

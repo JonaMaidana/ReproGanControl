@@ -53,51 +53,69 @@ public class AnimalesController : Controller
         return Json(animalesMostrar);
     }
 
-    public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravana, string apodo, string nombrePadre, string nombreMadre, string establecimiento, DateTime fechaNacimiento)
+public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravana, string apodo, string nombrePadre, string nombreMadre, string establecimiento, DateTime fechaNacimiento)
+{
+    // Verificar si ya existe un animal con la misma caravana
+    bool existeCaravana = _context.Animales.Any(a => a.Caravana == caravana && a.AnimalID != animalID);
+    if (existeCaravana)
     {
-
-        if (animalID == 0)
-        {
-            var animal = new Animal
-            {
-                TipoAnimalID = tipoAnimalID,
-                Caravana = caravana,
-                Apodo = apodo,
-                NombrePadre = nombrePadre,
-                NombreMadre = nombreMadre,
-                Establecimiento = establecimiento,
-                FechaNacimiento = fechaNacimiento
-
-            };
-            _context.Add(animal);
-            _context.SaveChanges();
-
-        }
-        else
-        {
-            var animalEditar = _context.Animales.Where(t => t.AnimalID == animalID).SingleOrDefault();
-            if (animalEditar != null)
-            {
-                animalEditar.TipoAnimalID = tipoAnimalID;
-                animalEditar.Caravana = caravana;
-                animalEditar.Apodo = apodo;
-                animalEditar.NombrePadre = nombrePadre;
-                animalEditar.NombreMadre = nombreMadre;
-                animalEditar.Establecimiento = establecimiento;
-                animalEditar.FechaNacimiento = fechaNacimiento;
-
-                _context.SaveChanges();
-            }
-        }
-        return Json(true);
+        return Json(new { success = false, message = "No se puede crear el animal porque ya existe uno con la misma caravana." });
     }
 
-    public JsonResult EliminarAnimales(int animalID)
+    if (animalID == 0)
     {
-        var animal = _context.Animales.Find(animalID);
-        _context.Remove(animal);
+        var animal = new Animal
+        {
+            TipoAnimalID = tipoAnimalID,
+            Caravana = caravana,
+            Apodo = apodo,
+            NombrePadre = nombrePadre,
+            NombreMadre = nombreMadre,
+            Establecimiento = establecimiento,
+            FechaNacimiento = fechaNacimiento
+        };
+        _context.Add(animal);
         _context.SaveChanges();
-
-        return Json(true);
     }
+    else
+    {
+        var animalEditar = _context.Animales.Where(t => t.AnimalID == animalID).SingleOrDefault();
+        if (animalEditar != null)
+        {
+            animalEditar.TipoAnimalID = tipoAnimalID;
+            animalEditar.Caravana = caravana;
+            animalEditar.Apodo = apodo;
+            animalEditar.NombrePadre = nombrePadre;
+            animalEditar.NombreMadre = nombreMadre;
+            animalEditar.Establecimiento = establecimiento;
+            animalEditar.FechaNacimiento = fechaNacimiento;
+
+            _context.SaveChanges();
+        }
+    }
+    return Json(new { success = true });
+}
+
+public JsonResult EliminarAnimales(int animalID)
+{
+    // Verificar si el animal está en uso en otras tablas
+    bool isInUse = _context.Eventos.Any(o => o.AnimalID == animalID);
+
+    if (isInUse)
+    {
+        return Json(new { success = false, message = "El animal tiene un evento activo por lo cual no puede ser eliminado." });
+    }
+
+    var animal = _context.Animales.Find(animalID);
+    
+    if (animal == null)
+    {
+        return Json(new { success = false, message = "Animal no encontrado." });
+    }
+
+    _context.Animales.Remove(animal);
+    _context.SaveChanges();
+
+    return Json(new { success = true });
+}
 }

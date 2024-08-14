@@ -40,9 +40,9 @@ public class AnimalesController : Controller
             TipoAnimalID = a.TipoAnimalID,
             TipoAnimalNombre = a.TipoAnimal.Descripcion,
             Caravana = a.Caravana,
-            Apodo = a.Apodo,
-            NombrePadre = a.NombrePadre,
-            NombreMadre = a.NombreMadre,
+            Apodo = string.IsNullOrEmpty(a.Apodo) ? "NINGUNO" : a.Apodo,
+            NombrePadre = string.IsNullOrEmpty(a.NombrePadre) ? "NINGUNO" : a.NombrePadre,
+            NombreMadre = string.IsNullOrEmpty(a.NombreMadre) ? "NINGUNO" : a.NombreMadre,
             Establecimiento = a.Establecimiento,
             FechaNacimiento = a.FechaNacimiento,
             FechaNacimientoString = a.FechaNacimiento.ToString("dd/MM/yyyy"),
@@ -61,6 +61,10 @@ public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravan
     {
         return Json(new { success = false, message = "No se puede crear el animal porque ya existe uno con la misma caravana." });
     }
+
+    apodo = string.IsNullOrEmpty(apodo) ? "NINGUNO" : apodo;
+    nombrePadre = string.IsNullOrEmpty(nombrePadre) ? "NINGUNO" : nombrePadre;
+    nombreMadre = string.IsNullOrEmpty(nombreMadre) ? "NINGUNO" : nombreMadre;
 
     if (animalID == 0)
     {

@@ -44,7 +44,7 @@
                             <input type="hidden" id="AnimalID" value="0" />
                             <div class="row">
                                 <div class="col-md-4 mb-3">
-                                    <label for="caravana" class="form-label">Caravana</label>
+                                    <label for="caravana" class="form-label">Caravana <span class="required-asterisk">*</span></label>
                                     <input type="text" class="form-control" id="Caravana" style="text-transform:uppercase" placeholder="Número de caravana" maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '')">
                                 </div>
                                 <div class="col-md-4 mb-3">
@@ -52,7 +52,7 @@
                                     <input type="text" class="form-control" id="Apodo" style="text-transform:uppercase" placeholder="Apodo" maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '')">
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="TipoAnimalID" class="form-label">Tipo de Animal</label>
+                                    <label for="TipoAnimalID" class="form-label">Tipo de Animal <span class="required-asterisk">*</span></label>
                                     @Html.DropDownList("TipoAnimalID", null, htmlAttributes: new { @class = "form-control" })
                                 </div>
                             </div>
@@ -68,19 +68,19 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="establecimiento" class="form-label">Establecimiento</label>
+                                    <label for="establecimiento" class="form-label">Establecimiento <span class="required-asterisk">*</span></label>
                                     <input type="text" class="form-control" id="Establecimiento" style="text-transform:uppercase" placeholder="Establecimiento del animal" maxlength="20" oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '')">
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                                    <label for="fechaNacimiento" class="form-label">Fecha de nacimiento <span class="required-asterisk">*</span></label>
                                     <input type="date" class="form-control" id="FechaNacimiento">
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer" style="display: flex; justify-content: flex-start; align-items: center;">
-                        <p style="font-weight: bold; text-transform: uppercase; color: black; margin: 0;">
-                            *Completa todos los campos requeridos antes de guardar.
+                        <p style="font-weight: bold; text-transform: uppercase; color: rgb(19, 18, 18); margin: 0;">
+                            Completa los campos requeridos antes de guardar <span class="required-asterisk">*</span>
                         </p>
                         <div style="margin-left: auto;">
                             <button type="button" onclick="LimpiarModal()" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

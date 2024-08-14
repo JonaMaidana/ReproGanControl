@@ -34,29 +34,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-
-document.addEventListener("DOMContentLoaded", function() {
-  const contentWrapper = document.getElementById('page-content-wrapper');
-  
-  function fadeOutContent() {
-      contentWrapper.classList.add('fade-out');
-  }
-
-  function fadeInContent() {
-      contentWrapper.classList.remove('fade-out');
-  }
-
-  // Llama a fadeOutContent antes de hacer la transición
-  // y fadeInContent después de que el contenido esté listo
-  document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', function(event) {
-          event.preventDefault(); // Evita el comportamiento por defecto del enlace
-          fadeOutContent();
-
-          // Espera la duración de la transición antes de cambiar el contenido
-          setTimeout(() => {
-              window.location.href = this.href; // Navega a la nueva URL
-          }, 500); // Tiempo de espera igual al tiempo de la transición
-      });
-  });
-});

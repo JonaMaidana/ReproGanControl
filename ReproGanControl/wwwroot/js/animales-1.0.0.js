@@ -80,14 +80,13 @@ function GuardarAnimal() {
     let establecimiento = document.getElementById("Establecimiento").value;
     let fechaNacimiento = document.getElementById("FechaNacimiento").value;
 
-    // Construir el mensaje de error
+    // mensaje de error
     let camposFaltantes = [];
     if (!animalID) camposFaltantes.push("ID del Animal");
     if (!tipoAnimalID) camposFaltantes.push("Tipo de Animal");
     if (!caravana) camposFaltantes.push("Caravana");
-    if (!apodo) camposFaltantes.push("Apodo");
-    if (!nombrePadre) camposFaltantes.push("Nombre del Padre");
-    if (!nombreMadre) camposFaltantes.push("Nombre de la Madre");
+    
+    
     if (!establecimiento) camposFaltantes.push("Establecimiento");
     if (!fechaNacimiento) camposFaltantes.push("Fecha de Nacimiento");
 

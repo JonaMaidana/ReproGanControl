@@ -506,3 +506,9 @@ main {
   font-size: 1.3rem; /* Tamaño del texto */
   font-weight: bold; /* Negrita */
 }
+
+.required-asterisk {
+  color: red; 
+  font-size: 1.5em;  
+  font-weight: bold;
+}

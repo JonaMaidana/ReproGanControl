@@ -5,36 +5,48 @@
 <!-- Contenedor Principal con Padding -->
 <div class="container-fluid px-4">
     <!-- Título de la Página -->
-<div class="mb-4">
-    <h3 class="display-6" style=" color: #555; font-family: 'Arial', sans-serif;">Tipo de Animales</h3>
-</div>
+    <div class="mb-4">
+        <h3 class="display-6" style=" color: #555; font-family: 'Arial', sans-serif;">Tipo de Animales</h3>
+    </div>
 
 
-<!-- Botón Flotante para Activar Modal -->
-<button type="button" class="btn btn-dark custom-btn-size position-fixed bottom-0 end-0 m-5" data-bs-toggle="modal" data-bs-target="#modalTipoAnimal" onclick="NuevoTituloTipoAnimal()">
-    <i class="fas fa-plus fa-2x"></i>
-</button>
+    <!-- Botón Flotante para Activar Modal -->
+    <button type="button" class="btn btn-dark custom-btn-size position-fixed bottom-0 end-0 m-5" data-bs-toggle="modal"
+        data-bs-target="#modalTipoAnimal" onclick="NuevoTituloTipoAnimal()">
+        <i class="fas fa-plus fa-2x"></i>
+    </button>
 
     <!-- Modal para Agregar Tipo de Animal -->
-    <div class="modal fade" data-bs-backdrop="static" id="modalTipoAnimal" tabindex="-1" aria-labelledby="modalTipoAnimalLabel" aria-hidden="true">
+    <div class="modal fade" data-bs-backdrop="static" id="modalTipoAnimal" tabindex="-1"
+        aria-labelledby="modalTipoAnimalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTipoAnimalLabel">Nuevo Tipo de Animal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModalTipoAnimal()" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModalTipoAnimal()"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
                             <input type="hidden" id="TipoAnimalID" value="0" />
-                            <label for="descripcion" class="form-label">Descripción</label>
-                            <input type="text" class="form-control" id="Descripcion" style="text-transform:uppercase" placeholder="Descripción">
+                            <label for="descripcion" class="form-label">Descripción <span
+                                    class="required-asterisk">*</span></label>
+                            <input type="text" class="form-control" id="Descripcion" style="text-transform:uppercase"
+                                placeholder="Descripción">
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="LimpiarModalTipoAnimal()" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" onclick="GuardarTipoAnimal()">Guardar</button>
+                <div class="modal-footer" style="display: flex; justify-content: flex-start; align-items: center;">
+                    <p style="font-weight: bold;  text-transform: uppercase; color: black; margin: 0;">
+                        Complete el campo requerido antes de guardar<span class="required-asterisk">*</span>
+                    </p>
+                    <div style="margin-left: auto;">
+                        <button type="button" class="btn btn-secondary" onclick="LimpiarModalTipoAnimal()"
+                            data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success" onclick="GuardarTipoAnimal()">Guardar</button>
+                    </div>
+
                 </div>
             </div>
         </div>

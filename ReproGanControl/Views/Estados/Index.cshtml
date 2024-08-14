@@ -10,33 +10,44 @@
     </div>
 
     <!-- Botón Flotante para Activar Modal -->
-    <button type="button" class="btn btn-dark custom-btn-size position-fixed bottom-0 end-0 m-5" data-bs-toggle="modal" data-bs-target="#modalEstado" onclick="NuevoTituloEstado()">
+    <button type="button" class="btn btn-dark custom-btn-size position-fixed bottom-0 end-0 m-5" data-bs-toggle="modal"
+        data-bs-target="#modalEstado" onclick="NuevoTituloEstado()">
         <i class="fas fa-plus fa-2x"></i>
     </button>
 
     <!-- Modal para Agregar Estado -->
-    <div class="modal fade" data-bs-backdrop="static" id="modalEstado" tabindex="-1" aria-labelledby="modalEstadoLabel" aria-hidden="true">
+    <div class="modal fade" data-bs-backdrop="static" id="modalEstado" tabindex="-1" aria-labelledby="modalEstadoLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalEstadoLabel">Nuevo Estado</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModalEstado()" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModalEstado()"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
                             <input type="hidden" id="EstadoID" value="0" />
-                            <label for="descripcion" class="form-label">Descripción<span class="required-asterisk">*</span></label>
-                            <input type="text" class="form-control" id="Descripcion" style="text-transform:uppercase" placeholder="Nombre del estado">
+                            <label for="descripcion" class="form-label">Descripción<span
+                                    class="required-asterisk">*</span></label>
+                            <input type="text" class="form-control" id="Descripcion" style="text-transform:uppercase"
+                                placeholder="Nombre del estado">
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <p  style="font-weight: bold; text-transform: uppercase; color: black; margin: 0; ">
-                        Complete el campo requerido antes de guardar. </p>
-                    <button type="button" class="btn btn-secondary" onclick="LimpiarModalEstado()" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success" onclick="GuardarEstado()">Guardar</button>
+                <div class="modal-footer" style="display: flex; justify-content: flex-start; align-items: center;">
+                    <p style="font-weight: bold; text-transform: uppercase; color: black; margin: 0; ">
+                        Complete el campo requerido antes de guardar<span class="required-asterisk">*</span> </p>
+
+                    <div style="margin-left: auto;">
+                        <button type="button" class="btn btn-secondary" onclick="LimpiarModalEstado()"
+                            data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success" onclick="GuardarEstado()">Guardar</button>
+                    </div>
+
                 </div>
+
             </div>
         </div>
     </div>

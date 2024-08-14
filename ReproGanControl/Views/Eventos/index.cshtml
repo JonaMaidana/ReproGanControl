@@ -46,16 +46,16 @@
                             <input type="hidden" id="EventoID" value="0" />
                             <div class="row mb-3">
                                 <div class="col">
-                                    <label for="AnimalID" class="form-label">Caravana</label>
+                                    <label for="AnimalID" class="form-label">Caravana <span class="required-asterisk">*</span> </label>
                                     @Html.DropDownList("AnimalID", (SelectList)ViewBag.AnimalID, htmlAttributes: new { @class = "form-control" })
                                 </div>
                                 <div class="col">
-                                    <label for="EstadoID" class="form-label">Estado</label>
+                                    <label for="EstadoID" class="form-label">Estado <span class="required-asterisk">*</span> </label>
                                     @Html.DropDownList("EstadoID", (SelectList)ViewBag.EstadoID, htmlAttributes: new { @class = "form-control" })
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="fechaEvento" class="form-label">Fecha de evento</label>
+                                <label for="fechaEvento" class="form-label">Fecha de evento <span class="required-asterisk">*</span> </label>
                                 <div class="col-sm-6">
                                     <input type="date" class="form-control" id="FechaEvento">
                                 </div>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="modal-footer" style="display: flex; justify-content: flex-start; align-items: center;">
                         <p style="font-weight: bold; text-transform: uppercase; color: black; margin: 0;">
-                            *Completa todos los campos requeridos antes de guardar.
+                            Completa los campos requeridos antes de guardar <span class="required-asterisk">*</span> 
                         </p>
                         <div style="margin-left: auto;">
                             <button type="button" onclick="LimpiarModalEvento()" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

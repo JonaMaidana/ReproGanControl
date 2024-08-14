@@ -1,0 +1,54 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<div class="form-wrapper">
+    <main class="form-side">
+        <form id="account" method="post" class="my-form" style="border-radius: 8px; box-shadow: 0 2px 4px rgba(157, 49, 230, 0.829); padding: 20px;">
+    <div class="form-welcome-row">
+        <h1>Bienvenido!</h1>
+        <h2>Ingresa a tu cuenta!</h2>
+    </div>
+    <div class="divider">
+        <div class="divider-line"></div>
+        <a href="/" class="text-dark text-decoration-none">
+            <img src="~/img/logo11.jpg" alt="Logo" width="70" style="border-radius: 10%; display: inline-block; border: 2px solid rgb(161, 26, 223);">
+        </a>
+        <div class="divider-line"></div>
+    </div>
+    <div class="text-field">
+        <label asp-for="Input.Email" class="form-label">Email</label>
+        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="you@example.com" required />
+        <div class="error-message" asp-validation-for="Input.Email">El formato del email es incorrecto</div>
+    </div>
+    <div class="text-field">
+        <label asp-for="Input.Password" class="form-label">Contraseña</label>
+        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Contraseña" required />
+        <div class="error-message" asp-validation-for="Input.Password">Ingresa tu contraseña</div>
+    </div>
+    <button id="login-submit" class="my-form__button" type="submit">Ingresar</button>
+    <div class="my-form__actions">
+        <div class="my-form__row">
+            <span>No tienes cuenta?</span>
+            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" title="Sign Up">Registrate</a>
+        </div>
+    </div>
+</form>
+
+    </main>
+    <aside class="info-side" style="background: url('/img/vacas.jpg') no-repeat center center / cover;">
+    </aside>
+
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

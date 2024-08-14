@@ -1,0 +1,614 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+
+}
+
+.nav-item-custom {
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link i {
+  margin-right: 8px; 
+}
+
+.nav-custom {
+  list-style: none;
+  padding-left: 0;
+}
+
+.nav-custom .nav-item {
+  margin-bottom: 10px;
+}
+
+.nav-custom .nav-link {
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 0.675rem;
+  transition: all 0.2s ease-in-out;
+  color: #fff; /* Color de texto por defecto para los enlaces */
+  margin-bottom: 12px; /* Aumenta el margen inferior */
+}
+
+/* Estilos para el estado hover, focus, y active */
+.nav-custom .nav-link:hover, 
+.nav-custom .nav-link:focus {
+  background-color: #e9ecef42;
+  color: #fff; /* Color de texto para el estado activo */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Sombra gris más suave */
+}
+
+/* Estilo para íconos dentro de nav-link */
+.nav-custom .nav-link i {
+  margin-right: 10px; 
+}
+
+/* Estilo para el estado activo */
+.nav-custom .nav-link.active {
+  background-color: #e9ecef42;
+  color: #fff; /* Color de texto para el estado activo */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Sombra gris más suave */
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 100%;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #153a61;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 8px 10px;
+  border-right: 1px solid #dddddd; 
+}
+
+.content-table th:last-child,
+.content-table td:last-child {
+  border-right: none; 
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+  color: #009879;
+}
+
+.content-table tbody tr:hover {
+  background-color: #009879;
+  color: #ffffff;
+}
+
+.edit-button {
+  background-color: #4CAF50; 
+  border: none;
+  color: white; 
+  padding: 3px 10px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #45a049;
+}
+
+.edit-button:active {
+  background-color: #388e3c; 
+}
+
+.delete-button {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 3px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+.delete-button:active {
+  background-color: #c62828;
+}
+.modal-header {
+  background-color: #153a61;
+  color: white;
+}
+.modal-footer {
+  background-color: #f1f1f1;
+}
+.modal-title {
+  font-weight: bold;
+}
+.form-label {
+  font-weight: bold;
+}
+.form-control {
+  border-radius: 0.25rem;
+}
+.btn-success {
+  background-color: #28a745;
+}
+.btn-danger {
+  background-color: #f00101;
+}
+.mb-3 label {
+  font-size: 0.9rem;
+}
+.modal-content {
+  border-radius: 0.5rem;
+}
+.btn-descargar {
+background-color: #009879;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+/* Estilos para el wrapper */
+#wrapper {
+  display: flex;
+  height: 100vh; /* Altura completa de la ventana */
+  overflow: hidden; /* Evita el desbordamiento en el contenedor principal */
+}
+
+/* Estilos para el sidebar */
+#sidebar {
+  width: 250px;
+  height: 100%;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease;
+  transform: translateX(0); /* Mostrar por defecto */
+  z-index: 1000; /* Asegura que el sidebar esté encima del contenido */
+  overflow: hidden; /* Evita el desbordamiento del contenido */
+}
+
+#sidebar.closed {
+  transform: translateX(-100%); /* Ocultar cuando está cerrado */
+}
+
+#sidebar .nav-custom {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#sidebar .nav-item {
+  margin: 0;
+}
+
+#sidebar .nav-link {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+}
+
+#sidebar .nav-link.active {
+  background-color: #e9ecef42;
+}
+
+#sidebar .nav-link:hover, 
+#sidebar .nav-link:focus, 
+#sidebar .nav-link:active {
+  background-color: #e9ecef42;
+  color: white;
+}
+
+/* Estilos para el botón de abrir/cerrar */
+#sidebar .toggle-btn {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+}
+
+#sidebar .toggle-btn:hover {
+  background-color: #555;
+}
+
+/* Estilos para el contenedor del contenido principal */
+#page-content-wrapper {
+  margin-left: 250px; /* Deja espacio para el sidebar */
+  flex: 1; /* Se estira para llenar el espacio restante */
+  overflow: auto; /* Permite el desplazamiento si el contenido es más grande que el contenedor */
+  transition: margin-left 0.3s ease;
+  height: 100vh; /* Altura completa de la ventana */
+}
+
+#sidebar.closed + #page-content-wrapper {
+  margin-left: 0; /* Ajusta el margen cuando el sidebar está cerrado */
+}
+
+/* Estilos para el contenido principal */
+.container-fluid.d-flex {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1; /* Se estira para llenar el espacio restante */
+  overflow-y: auto; /* Permite el desplazamiento vertical */
+}
+
+
+/* Estilo para el botón transparente de abrir/cerrar */
+#toggle-btn {
+  background-color: transparent; /* Botón transparente */
+  border: none; /* Sin bordes */
+  padding: 0; /* Sin padding para que la imagen ocupe todo el espacio */
+  cursor: pointer; /* Manito al pasar el ratón */
+  display: flex; /* Para centrar la imagen */
+  align-items: center; /* Centrado vertical */
+  justify-content: center; /* Centrado horizontal */
+  position: relative; /* Cambia a relative para que no se desplace fuera del contenedor */
+  bottom: 0; /* Alinea con el fondo del contenedor */
+  left: 0; /* Máximo a la izquierda */
+}
+
+/* Tamaño del icono */
+#toggle-btn img {
+  width: 32px; /* Tamaño del icono */
+  height: 32px;
+}
+
+/* Efecto al pasar el ratón */
+#toggle-btn:hover img {
+  opacity: 0.8; /* Suaviza el icono al pasar el ratón */
+}
+
+/* Ajustes adicionales */
+#toggle-btn:focus {
+  outline: none; /* Elimina el borde azul predeterminado al hacer clic */
+}
+
+
+
+/* Estilo para la paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-top: 20px;
+    list-style: none;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    display: block;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #007bff;
+    background-color: #fff;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.pagination .page-link:hover {
+    background-color: #e9ecef;
+    border-color: #ddd;
+    color: #0056b3;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    pointer-events: none; /* Desactiva el clic en el botón activo */
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #f8f9fa;
+    border-color: #ddd;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+/* Estilo para la paginación */
+.pagination {
+  display: flex;
+  justify-content: flex-end; /* Alinea a la derecha */
+  padding: 0;
+  margin-top: 15px;
+  list-style: none;
+}
+
+.pagination .page-item {
+  margin: 0 3px;
+}
+
+.pagination .page-link {
+  display: block;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #333;
+  background-color: #f8f9fa;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+}
+
+.pagination .page-link:hover {
+  background-color: #e2e6ea;
+  border-color: #bbb;
+  color: #000;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #6c757d;
+  color: #fff;
+  border-color: #6c757d;
+  pointer-events: none; /* Desactiva el clic en el botón activo */
+}
+
+.pagination .page-item.disabled .page-link {
+  background-color: #e9ecef;
+  border-color: #ccc;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+/* Estilo para la paginación */
+.pagination {
+  display: flex;
+  padding: 0;
+  margin: 0; /* Elimina el margen para alinear con el contador */
+  list-style: none;
+}
+
+.pagination .page-item {
+  margin: 0 3px;
+}
+
+.pagination .page-link {
+  display: block;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #333;
+  background-color: #f8f9fa;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+}
+
+.pagination .page-link:hover {
+  background-color: #e2e6ea;
+  border-color: #bbb;
+  color: #000;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #6c757d;
+  color: #fff;
+  border-color: #6c757d;
+  pointer-events: none; /* Desactiva el clic en el botón activo */
+}
+
+.pagination .page-item.disabled .page-link {
+  background-color: #e9ecef;
+  border-color: #ccc;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Estilo para el contador de elementos */
+#table-info {
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  color: #6c757d; /* Color de texto gris */
+}
+#table-info-tipoAnimales {
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  color: #6c757d; /* Color de texto gris */
+}
+
+/* Estilo para pantallas pequeñas */
+@media (max-width: 767px) {
+  #sidebar {
+      width: 70px; /* Ancho reducido del sidebar en pantallas móviles */
+      /* Puedes ajustar este valor según tus necesidades */
+      overflow: hidden; /* Asegúrate de que el contenido adicional no se desborde */
+  }
+  
+  #sidebar .nav-link {
+      display: flex;
+      justify-content: center; /* Centra los íconos */
+      padding: 10px; /* Espaciado alrededor del ícono */
+  }
+
+  #sidebar .nav-item span {
+      display: none; /* Oculta el texto en pantallas móviles */
+  }
+
+  #sidebar .nav-link i {
+      font-size: 20px; /* Tamaño de los íconos */
+  }
+
+}
+
+/* Estilo para pantallas pequeñas */
+@media (max-width: 767px) {
+  #page-content-wrapper {
+      margin-left: 70px; /* Ajusta el margen para pantallas móviles */
+      /* Ajusta este valor según el ancho del sidebar en pantallas móviles */
+  }
+
+  #sidebar {
+      width: 70px; /* Asegúrate de que el sidebar tenga el ancho adecuado en pantallas móviles */
+      /* Ajusta el ancho del sidebar según sea necesario */
+  }
+}
+
+.info-box {
+  background-color: #ffffff; /* Fondo blanco */
+  border: 1px solid #ddd; /* Borde sutil */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interno */
+  margin: 20px auto; /* Margen automático para centrar */
+  max-width: 800px; /* Ancho máximo para no estirar demasiado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  font-family: Arial, sans-serif; /* Tipografía legible */
+}
+
+.texto {
+  color: #555; /* Color del texto */
+  line-height: 1.6; /* Espaciado entre líneas */
+  font-size: 16px; /* Tamaño de fuente */
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  border: none;
+  position: relative;
+  margin-bottom: 15px; /* Reduce el espacio entre tarjetas */
+  box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
+  transition: transform 0.3s ease-in-out; /* Transición suave para el efecto de escala */
+}
+
+.card.special-card {
+  transition: transform 0.3s ease-in-out; /* Transición suave para el efecto de escala */
+}
+
+.card.special-card:hover {
+  transform: scale(1.05); /* Aumenta el tamaño al pasar el cursor */
+}
+
+.card-small {
+  padding: 10px; /* Reduce el padding interno de la tarjeta */
+  font-size: 0.875rem; /* Reduce el tamaño de la fuente */
+}
+
+.custom-card-bg-cherry {
+  background: linear-gradient(to right, #493240, #e74c3c) !important;
+  color: #fff;
+}
+
+.custom-card-bg-blue {
+  background: linear-gradient(to right, #373b44, #4286f4) !important;
+  color: #fff;
+}
+
+.custom-card-bg-green {
+  background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+  color: #fff;
+}
+
+.custom-card-bg-orange {
+  background: linear-gradient(to right, #a86008, #f4d03f) !important;
+  color: #fff;
+}
+
+.card .card-statistic .card-icon {
+  text-align: center;
+  line-height: 40px; /* Ajusta la línea de altura del ícono */
+  margin-left: 10px;
+  position: absolute;
+  right: 10px; /* Ajusta la posición del ícono */
+  top: 10px; /* Ajusta la posición del ícono */
+  opacity: 0.1;
+}
+
+.card .icon-image {
+  width: 60px; /* Ajusta el tamaño de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  display: block;
+  margin: 0 auto;
+}
+
+    /* Clase personalizada para el botón flotante */
+    .custom-btn-size {
+      font-size: 1.5rem; /* Tamaño de texto más grande */
+      width: 70px; /* Ancho del botón */
+      height: 70px; /* Altura del botón */
+      border-radius: 50%; /* Bordes redondeados */
+      display: flex; /* Flexbox para centrar el ícono */
+      align-items: center; /* Alinea verticalmente el ícono */
+      justify-content: center; /* Alinea horizontalmente el ícono */
+      background-color: #343a40; /* Color de fondo oscuro */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición suave */
+  }
+
+  .custom-btn-size:hover {
+      transform: scale(1.1); /* Aumenta el tamaño del botón en un 10% al pasar el mouse */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más prominente al pasar el mouse */
+  }
+
+  .custom-btn-size:focus, .custom-btn-size:active {
+      outline: none; /* Elimina el contorno predeterminado en el foco */
+  }
+  
+  

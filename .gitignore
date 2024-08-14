@@ -1,0 +1,5 @@
+# Excluimos los archivos OBJ, BIN y la carpeta .vs ya que se crean nuevamente al ejecutarse.
+/ReproGanControl/ReproGanControl/bin/
+/ReproGanControl/ReproGanControl/obj/
+/.vs
+/ReproGanControl/.vs

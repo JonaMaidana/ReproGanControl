@@ -3,18 +3,25 @@
 }
 <div class="text-center">
   <h1 class="titulo" style="color: #000000">ReproGan</h1>
-  <br>
 </div>
 <br>
+<div>
+  <p class="descripcion">ReproGan es un sistema de gestión y control diseñado específicamente para el manejo de la
+    reproducción del ganado.
+    Este sistema lo que permite es controlar y monitorizar de manera efectiva las actividades reproductivas del ganado,
+    asegurando una mayor eficiencia
+    y precisión en las operaciones ganaderas. Es una herramienta esencial para mejorar las prácticas reproductivas,
+    además de permitir
+    una mejor calidad de vida para los animales y mayor rentabilidad para los propietarios.</p>
+</div>
 <br>
 <div class="row justify-content-center">
   <div class="col-md-3 d-flex justify-content-center">
     <div class="card shadow-lg mi-div" style="width: 18rem;">
       <img class="card-img-top" src="img/mini.jpg" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Animales</h5>
-        <p class="card-text">Permite cargar animales con todos los datos necesarios y verlos en un listado.</p>
-        <br> 
+        <h5>Animales</h5>
+        <p class="textop">Permite cargar animales con todos los datos necesarios y verlos en un listado.</p>
         <a href="@Url.Action("Index", "Animales")" class="btn btn-success btn-custom" aria-current="page">
           <i class="fa-solid fa-cow"></i>
           Animales
@@ -26,11 +33,10 @@
     <div class="card shadow-lg mi-div" style="width: 18rem;">
       <img class="card-img-top" src="img/mini2.jpg" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Eventos</h5>
-        <p class="card-text">Permite seleccionar algún animal para realizar un evento reproductivo específico.
-        </p>
+        <h5>Eventos</h5>
+        <p class="textop">Permite seleccionar un animal para realizar algún evento reproductivo específico.</p>
         <a href="@Url.Action("Index", "Animales")" class="btn btn-success btn-custom" aria-current="page">
-          <i class="fa-solid fa-calendar-days"></i>
+          <i class="fa-solid fa-cow"></i>
           Eventos
         </a>
       </div>
@@ -40,12 +46,11 @@
     <div class="card shadow-lg mi-div" style="width: 18rem;">
       <img class="card-img-top" src="img/mini3.jpg" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Registros Medicos</h5>
-        <p class="card-text">Permite ingresar, monitorear los registros médicos y el profesional que los realizó.</p>
-        <br> 
+        <h5>Registros Medicos</h5>
+        <p class="textop">Permite ingresar, monitorear los registros médicos y el profesional que los realizó.</p>
         <a href="@Url.Action("Index", "Animales")" class="btn btn-success btn-custom" aria-current="page">
-          <i class="fa-solid fa-notes-medical"></i>
-          Registros 
+          <i class="fa-solid fa-cow"></i>
+          Registros
         </a>
       </div>
     </div>

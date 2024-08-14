@@ -20,12 +20,20 @@ function ListadoTipoAnimal() {
                 contenidoCards += `
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                     <div class="card special-card ${cardClass} card-small" data-id="${tipoDeAnimal.tipoAnimalID}">
-                        <div class="card-statistic p-3">
-                            <div class="card-icon card-icon-large">
+                        <div class="card-statistic p-3 d-flex align-items-center">
+                            <div class="card-icon card-icon-large me-3">
                                 <img src="/img/Pezuna.png" alt="Pezuna" class="icon-image"/>
                             </div>
-                            <div class="mb-2">
+                            <div class="flex-grow-1">
                                 <h5 class="card-title mb-0">${tipoDeAnimal.descripcion}</h5>
+                            </div>
+                            <div class="d-flex flex-column align-items-end ms-3" style="z-index: 1;">
+                                <button class="btn btn-outline-light btn-icon btn-sm mb-1" onclick="ModalEditarTipoAnimal(${tipoDeAnimal.tipoAnimalID})">
+                                    <i class="fa-regular fa-pen-to-square icon-size"></i>
+                                </button>
+                                <button class="btn btn-outline-light btn-icon btn-sm" onclick="EliminarTipoAnimal(${tipoDeAnimal.tipoAnimalID})">
+                                    <i class="fa-solid fa-trash-can icon-size"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -40,7 +48,6 @@ function ListadoTipoAnimal() {
         }
     });
 }
-
 
 
 function GuardarTipoAnimal() {

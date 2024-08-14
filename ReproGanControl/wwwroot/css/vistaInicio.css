@@ -7,21 +7,33 @@
     transform: scale(1.05); 
 }
 
-.texto{
-    font-size: 20px;
-    font-family: 'Arial', sans-serif;
-    text-align: justify;
-    border: 30%;
-}
-
 .btn-custom {
-    font-size: 15px; /* Tamaño del texto del botón */
-    padding: 8px 18px; /* Espaciado interno (alto y ancho) */
-    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px;
+    padding: 10px 20px; 
+    border-radius: 6px;
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.titulo{
-    font-size: 45px;
-    font-family: Arial, Helvetica, sans-serif;
+.titulo {
+    font-size: 48px;
     font-weight: bold;
+    margin-bottom: 20px; 
+}
+
+.descripcion {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #333;
+    margin: 20px 0; 
+    padding: 15px;
+    background-color: #f9f9f9; 
+    border-left: 5px solid #24ca77; 
+    border-right: 5px solid #24ca77;
+    border-radius: 5px; 
+}
+
+.textop {
+    font-size: medium;
 }

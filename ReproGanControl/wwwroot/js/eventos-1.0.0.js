@@ -1,7 +1,5 @@
 window.onload = ListadoEventos();
 
-let currentPageEventos = 1;
-const itemsPerPageEventos = 4;
 let eventosMostrar = [];
 
 function ListadoEventos() {
@@ -13,9 +11,8 @@ function ListadoEventos() {
             $("#ModalEvento").modal("hide");
             LimpiarModalEvento();
             eventosMostrar = data;
+            renderTableEventos();
             updateTotalItemsEventos();
-            renderTableEventos(currentPageEventos);
-            renderPaginationEventos();
         },
         error: function (xhr, status) {
             console.log('Disculpe, existió un problema al cargar el listado de eventos');
@@ -23,13 +20,10 @@ function ListadoEventos() {
     });
 }
 
-function renderTableEventos(page) {
-    const start = (page - 1) * itemsPerPageEventos;
-    const end = start + itemsPerPageEventos;
-    const paginatedData = eventosMostrar.slice(start, end);
+function renderTableEventos() {
     let contenidoTabla = ``;
 
-    $.each(paginatedData, function (index, evento) {  
+    $.each(eventosMostrar, function (index, evento) {  
         contenidoTabla += `
         <tr>
             <td>${evento.animalCaravana}</td>
@@ -53,27 +47,6 @@ function renderTableEventos(page) {
     document.getElementById("tbody-eventos").innerHTML = contenidoTabla;
 }
 
-function renderPaginationEventos() {
-    const pageCount = Math.ceil(eventosMostrar.length / itemsPerPageEventos);
-    let paginationHtml = '';
-
-    for (let i = 1; i <= pageCount; i++) {
-        paginationHtml += `
-        <li class="page-item ${i === currentPageEventos ? 'active' : ''}">
-            <a class="page-link" href="#" onclick="goToPageEventos(${i})">${i}</a>
-        </li>
-        `;
-    }
-
-    document.getElementById("pagination-eventos").innerHTML = paginationHtml;
-}
-
-function goToPageEventos(page) {
-    currentPageEventos = page;
-    renderTableEventos(currentPageEventos);
-    renderPaginationEventos();
-}
-
 function updateTotalItemsEventos() {
     const totalItems = eventosMostrar.length;
     document.getElementById("total-items-eventos").textContent = `Eventos cargados: ${totalItems}`;
@@ -91,7 +64,14 @@ function NuevoEvento(){
     $("#ModalTituloEvento").text("Nuevo Evento");
 }
 
-function GuardarEvento(){
+function configurarFechaActual() {
+    const fechaInput = document.getElementById("FechaEvento");
+    const hoy = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato YYYY-MM-DD
+    fechaInput.value = hoy; // Establecer la fecha actual como valor predeterminado
+    fechaInput.setAttribute('min', hoy); // Restringir la selección a partir de la fecha actual
+}
+
+function GuardarEvento() {
     let eventoID = document.getElementById("EventoID").value;
     let animalID = document.getElementById("AnimalID").value;
     let estadoID = document.getElementById("EstadoID").value;
@@ -142,30 +122,36 @@ function GuardarEvento(){
     });    
 }
 
+// Llamar a la función para configurar la fecha al cargar la página
+document.addEventListener('DOMContentLoaded', configurarFechaActual);
 
-function ModalEditarEventos(eventoID){
-    
+
+
+function ModalEditarEventos(eventoID) {
     $.ajax({
         url: '../../Eventos/ListadoEventos',
-        data: { id: eventoID},
+        data: { id: eventoID },
         type: 'POST',
         dataType: 'json',
-
         success: function (eventosMostrar) {
             let evento = eventosMostrar[0];
 
-            console.log(eventosMostrar)
+            console.log(eventosMostrar);
 
             document.getElementById("EventoID").value = eventoID;
             document.getElementById("AnimalID").value = evento.animalID;
             document.getElementById("EstadoID").value = evento.estadoID;
-            document.getElementById("FechaEvento").value = evento.fechaEvento;
+
+            // Asegurarse de que la fecha esté en formato YYYY-MM-DD
+            let fechaEvento = new Date(evento.fechaEvento);
+            let fechaFormato = fechaEvento.toISOString().split('T')[0];
+            document.getElementById("FechaEvento").value = fechaFormato;
+
             document.getElementById("Observacion").value = evento.observacion;
 
             $("#ModalTituloEvento").text("Editar Evento");
             $("#ModalEvento").modal("show");
         },
-
         error: function (xhr, status) {
             console.log('Disculpe, existió un problema al consultar el listado para ser modificado.');
         }

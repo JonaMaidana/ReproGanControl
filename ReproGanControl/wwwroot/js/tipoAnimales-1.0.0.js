@@ -65,11 +65,16 @@ function GuardarTipoAnimal() {
         success: function (resultado) {
             if (resultado.success) {
                 Swal.fire({
+                    position: 'bottom', // Posición en la parte inferior central
                     icon: 'success',
-                    title: 'Éxito',
-                    text: resultado.mensaje,
+                    title: '¡Guardado exitosamente!',
+                    showConfirmButton: false,
+                    timer: 500, // Temporizador reducido a 1 segundo
+                    toast: true, // Hace que la alerta sea más pequeña y tipo "toast"
                 }).then(() => {
-                    ListadoTipoAnimal();
+                    // Cerrar el modal
+                    $('#myModal').modal('hide');
+                    ListadoTipoAnimal(); // Actualiza el listado
                 });
             } else {
                 Swal.fire({
@@ -88,6 +93,7 @@ function GuardarTipoAnimal() {
         }
     });
 }
+
 
 
 function ModalEditarTipoAnimal(tipoAnimalID) {
@@ -113,37 +119,55 @@ function ModalEditarTipoAnimal(tipoAnimalID) {
 }
 
 function EliminarTipoAnimal(tipoAnimalID) {
-    $.ajax({
-        url: '../../TipoAnimales/EliminarTipoAnimal',
-        data: { tipoAnimalID: tipoAnimalID },
-        type: 'POST',
-        dataType: 'json',
-        success: function (resultado) {
-            if (resultado.success) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Éxito',
-                    text: resultado.mensaje,
-                }).then(() => {
-                    ListadoTipoAnimal();
-                });
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: resultado.mensaje,
-                });
-            }
-        },
-        error: function (xhr, status) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Disculpe, existió un problema al eliminar el tipo de animal.',
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡No podrás deshacer esta acción!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Confirmado, proceder con la eliminación
+            $.ajax({
+                url: '../../TipoAnimales/EliminarTipoAnimal',
+                data: { tipoAnimalID: tipoAnimalID },
+                type: 'POST',
+                dataType: 'json',
+                success: function (resultado) {
+                    if (resultado.success) {
+                        Swal.fire({
+                            position: 'bottom', // Posición en la parte inferior central
+                            icon: 'success',
+                            title: '¡Eliminado exitosamente!',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            toast: true, // Hace que la alerta sea más pequeña y tipo "toast"
+                        }).then(() => {
+                            ListadoTipoAnimal(); // Actualiza el listado de tipo de animales
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: resultado.mensaje,
+                        });
+                    }
+                },
+                error: function (xhr, status) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Disculpe, existió un problema al eliminar el tipo de animal.',
+                    });
+                }
             });
         }
     });
 }
+
+
 
 
 function LimpiarModalTipoAnimal() {

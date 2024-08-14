@@ -1,9 +1,5 @@
 window.onload = ListadoEstados();
 
-let currentPageEstados = 1;
-const itemsPerPageEstados = 4;
-let estadosMostrar = [];
-
 function ListadoEstados() {
     $.ajax({
         url: '../../Estados/ListadoEstados',
@@ -13,9 +9,7 @@ function ListadoEstados() {
             $("#modalEstado").modal("hide");
             LimpiarModalEstado();
             estadosMostrar = data;
-            updateTotalItemsEstados();
-            renderTableEstados(currentPageEstados);
-            renderPaginationEstados();
+            renderCardEstados(); // Renderizar como cards
         },
         error: function (xhr, status) {
             console.log('Disculpe, existió un problema al cargar el listado de estados');
@@ -23,58 +17,40 @@ function ListadoEstados() {
     });
 }
 
-function renderTableEstados(page) {
-    const start = (page - 1) * itemsPerPageEstados;
-    const end = start + itemsPerPageEstados;
-    const paginatedData = estadosMostrar.slice(start, end);
-    let contenidoTabla = ``;
+function renderCardEstados() {
+    let contenidoCards = '';
 
-    $.each(paginatedData, function (index, estado) {  
-        contenidoTabla += `
-        <tr>
-            <td>${estado.descripcion}</td>
-            <td class="text-center">
-                <button type="button" class="edit-button" onclick="ModalEditarEstado(${estado.estadoID})">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-            </td>
-            <td class="text-center">
-                <button type="button" class="delete-button" onclick="EliminarEstado(${estado.estadoID})">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </td>
-        </tr>
-        `;
+    $.each(estadosMostrar, function (index, estado) {
+        const colors = ['custom-card-bg-blue', 'custom-card-bg-green', 'custom-card-bg-orange', 'custom-card-bg-cherry'];
+        const cardClass = colors[index % colors.length];
+
+        contenidoCards += `
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                    <div class="card special-card ${cardClass} card-small" data-id="${estado.estadoID}">
+                        <div class="card-statistic p-3 d-flex align-items-center">
+                            <div class="card-icon card-icon-large me-4">
+                                <img src="/img/estado.png" alt="Pezuna" class="icon-image"/>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h5 class="card-title mb-0">${estado.descripcion}</h5>
+                            </div>
+                            <div class="d-flex flex-column align-items-end ms-3" style="z-index: 1;">
+                                <button class="btn btn-outline-light btn-icon btn-sm mb-1" onclick="ModalEditarEstado(${estado.estadoID})">
+                                    <i class="fa-regular fa-pen-to-square icon-size"></i>
+                                </button>
+                                <button class="btn btn-outline-light btn-icon btn-sm" onclick="EliminarEstado(${estado.estadoID})">
+                                    <i class="fa-solid fa-trash-can icon-size"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
     });
 
-    document.getElementById("tbody-estados").innerHTML = contenidoTabla;
+    document.getElementById("contenedor-estados").innerHTML = contenidoCards;
 }
 
-function renderPaginationEstados() {
-    const pageCount = Math.ceil(estadosMostrar.length / itemsPerPageEstados);
-    let paginationHtml = '';
 
-    for (let i = 1; i <= pageCount; i++) {
-        paginationHtml += `
-        <li class="page-item ${i === currentPageEstados ? 'active' : ''}">
-            <a class="page-link" href="#" onclick="goToPageEstados(${i})">${i}</a>
-        </li>
-        `;
-    }
-
-    document.getElementById("pagination-estados").innerHTML = paginationHtml;
-}
-
-function goToPageEstados(page) {
-    currentPageEstados = page;
-    renderTableEstados(currentPageEstados);
-    renderPaginationEstados();
-}
-
-function updateTotalItemsEstados() {
-    const totalItems = estadosMostrar.length;
-    document.getElementById("total-items-estados").textContent = `Estados cargados: ${totalItems}`;
-}
 
 
 function GuardarEstado() {
@@ -92,29 +68,34 @@ function GuardarEstado() {
         success: function (resultado) {
             if (resultado.exito) {
                 Swal.fire({
+                    position: 'bottom', // Posición en la parte inferior central
                     icon: 'success',
-                    title: 'Éxito',
-                    text: resultado.mensaje
+                    title: '¡Guardado exitosamente!',
+                    showConfirmButton: false,
+                    timer: 500, // Temporizador reducido a 500 ms
+                    toast: true, // Hace que la alerta sea más pequeña y tipo "toast"
+                }).then(() => {
+                    ListadoEstados(); // Actualiza el listado
                 });
             } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: resultado.mensaje
+                    text: resultado.mensaje,
                 });
             }
-            ListadoEstados();
         },
         error: function (xhr, status) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Disculpe, existió un problema al guardar el estado.'
+                text: 'Disculpe, existió un problema al guardar el estado.',
             });
             console.log('Disculpe, existió un problema al guardar el estado');
         }
     });
 }
+
 
 function ModalEditarEstado(estadoID) {
 
@@ -139,33 +120,54 @@ function ModalEditarEstado(estadoID) {
 }
 
 function EliminarEstado(estadoID) {
-    $.ajax({
-        url: '../../Estados/EliminarEstados',
-        data: { estadoID: estadoID },
-        type: 'POST',
-        dataType: 'json',
-        success: function (resultado) {
-            if (resultado.exito) {
-                Swal.fire({
-                    title: 'Éxito',
-                    text: 'El estado se eliminó correctamente.',
-                    icon: 'success'
-                }).then(() => {
-                    ListadoEstados();
-                });
-            } else if (resultado.exito === false) {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'No se puede eliminar el estado porque está en uso.',
-                    icon: 'error'
-                });
-            }
-        },
-        error: function (xhr, status) {
-            console.log('Disculpe, existió un problema al eliminar el estado.');
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡No podrás deshacer esta acción!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Confirmado, proceder con la eliminación
+            $.ajax({
+                url: '../../Estados/EliminarEstados',
+                data: { estadoID: estadoID },
+                type: 'POST',
+                dataType: 'json',
+                success: function (resultado) {
+                    if (resultado.exito) {
+                        Swal.fire({
+                            position: 'bottom', // Posición en la parte inferior central
+                            icon: 'success',
+                            title: '¡Eliminado exitosamente!',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            toast: true, // Hace que la alerta sea más pequeña y tipo "toast"
+                        }).then(() => {
+                            ListadoEstados(); // Actualiza el listado de estados
+                        });
+                    } else if (resultado.exito === false) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se puede eliminar el estado porque está en uso.',
+                        });
+                    }
+                },
+                error: function (xhr, status) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Disculpe, existió un problema al eliminar el estado.',
+                    });
+                }
+            });
         }
     });
 }
+
 
 function LimpiarModalEstado() {
     document.getElementById("EstadoID").value = 0;

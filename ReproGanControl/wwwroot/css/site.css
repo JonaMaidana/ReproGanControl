@@ -27,7 +27,7 @@ background-size: cover;
 }
 
 .nav-item-custom {
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: background-color 1s, box-shadow 1s;
 }
 
 .nav-link {
@@ -120,11 +120,11 @@ background-size: cover;
 }
 
 .content-table tbody tr.active-row {
-  color: #009879;
+  color: #153a61;
 }
 
 .content-table tbody tr:hover {
-  background-color: #009879;
+  background-color: #153a617a;
   color: #ffffff;
 }
 
@@ -224,7 +224,6 @@ html, body {
   position: fixed;
   top: 0;
   left: 0;
-  transition: transform 0.3s ease;
   transform: translateX(0); /* Mostrar por defecto */
   z-index: 1000; /* Asegura que el sidebar esté encima del contenido */
   overflow: hidden; /* Evita el desbordamiento del contenido */
@@ -285,7 +284,13 @@ html, body {
   flex: 1; /* Se estira para llenar el espacio restante */
   overflow: auto; /* Permite el desplazamiento si el contenido es más grande que el contenedor */
   transition: margin-left 0.3s ease;
+  transition: opacity 0.5s ease-in-out; /* Puedes ajustar el tiempo y el tipo de transición */
   height: 100vh; /* Altura completa de la ventana */
+}
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
 }
 
 #sidebar.closed + #page-content-wrapper {
@@ -301,7 +306,6 @@ html, body {
 
 main {
   flex: 1; /* Se estira para llenar el espacio restante */
-  overflow-y: auto; /* Permite el desplazamiento vertical */
 }
 
 
@@ -336,137 +340,6 @@ main {
 }
 
 
-
-/* Estilo para la paginación */
-.pagination {
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin-top: 20px;
-    list-style: none;
-}
-
-.pagination .page-item {
-    margin: 0 5px;
-}
-
-.pagination .page-link {
-    display: block;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #007bff;
-    background-color: #fff;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-}
-
-.pagination .page-link:hover {
-    background-color: #e9ecef;
-    border-color: #ddd;
-    color: #0056b3;
-}
-
-.pagination .page-item.active .page-link {
-    background-color: #007bff;
-    color: #fff;
-    border-color: #007bff;
-    pointer-events: none; /* Desactiva el clic en el botón activo */
-}
-
-.pagination .page-item.disabled .page-link {
-    background-color: #f8f9fa;
-    border-color: #ddd;
-    color: #6c757d;
-    cursor: not-allowed;
-}
-/* Estilo para la paginación */
-.pagination {
-  display: flex;
-  justify-content: flex-end; /* Alinea a la derecha */
-  padding: 0;
-  margin-top: 15px;
-  list-style: none;
-}
-
-.pagination .page-item {
-  margin: 0 3px;
-}
-
-.pagination .page-link {
-  display: block;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  text-decoration: none;
-  color: #333;
-  background-color: #f8f9fa;
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-  font-size: 14px; /* Tamaño de fuente más pequeño */
-}
-
-.pagination .page-link:hover {
-  background-color: #e2e6ea;
-  border-color: #bbb;
-  color: #000;
-}
-
-.pagination .page-item.active .page-link {
-  background-color: #6c757d;
-  color: #fff;
-  border-color: #6c757d;
-  pointer-events: none; /* Desactiva el clic en el botón activo */
-}
-
-.pagination .page-item.disabled .page-link {
-  background-color: #e9ecef;
-  border-color: #ccc;
-  color: #6c757d;
-  cursor: not-allowed;
-}
-/* Estilo para la paginación */
-.pagination {
-  display: flex;
-  padding: 0;
-  margin: 0; /* Elimina el margen para alinear con el contador */
-  list-style: none;
-}
-
-.pagination .page-item {
-  margin: 0 3px;
-}
-
-.pagination .page-link {
-  display: block;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  text-decoration: none;
-  color: #333;
-  background-color: #f8f9fa;
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-  font-size: 14px; /* Tamaño de fuente más pequeño */
-}
-
-.pagination .page-link:hover {
-  background-color: #e2e6ea;
-  border-color: #bbb;
-  color: #000;
-}
-
-.pagination .page-item.active .page-link {
-  background-color: #6c757d;
-  color: #fff;
-  border-color: #6c757d;
-  pointer-events: none; /* Desactiva el clic en el botón activo */
-}
-
-.pagination .page-item.disabled .page-link {
-  background-color: #e9ecef;
-  border-color: #ccc;
-  color: #6c757d;
-  cursor: not-allowed;
-}
 
 /* Estilo para el contador de elementos */
 #table-info {
@@ -556,7 +429,7 @@ main {
 }
 
 .custom-card-bg-cherry {
-  background: linear-gradient(to right, #493240, #e74c3c) !important;
+  background: linear-gradient(to right, #2c3e50, #909497) !important;
   color: #fff;
 }
 
@@ -571,7 +444,7 @@ main {
 }
 
 .custom-card-bg-orange {
-  background: linear-gradient(to right, #a86008, #f4d03f) !important;
+  background: linear-gradient(to right, #a04000, #e59866) !important;
   color: #fff;
 }
 
@@ -624,5 +497,12 @@ main {
     justify-content: center;
 }
 
-
+#total-items {
+  font-size: 1.3rem; /* Tamaño del texto */
+  font-weight: bold; /* Negrita */
+}
   
+#total-items-eventos {
+  font-size: 1.3rem; /* Tamaño del texto */
+  font-weight: bold; /* Negrita */
+}

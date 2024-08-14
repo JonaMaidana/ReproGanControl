@@ -12,12 +12,25 @@
         </div>
     </div>
     <div class="card-body">
-        <div class="d-flex justify-content-between align-items-center mb-2">
+        <div class="d-flex justify-content-between align-items-center mb-3">
             <!-- Botón de Imprimir -->
             <button class="btn btn-dark" onclick="Imprimir()">
                 <i class="fa-solid fa-download"></i>
             </button>
+            <!-- Contenedor para contador y paginación -->
+            <div class="d-flex align-items-center">
+                <!-- Contador de elementos -->
+                <div id="table-info" class="me-3">
+                    <span id="total-items-eventos">Eventos cargados: 0</span>
+                </div>
 
+                <!-- Paginación -->
+                <nav aria-label="Page navigation example">
+                    <ul id="pagination-eventos" class="pagination mb-0">
+                        <!-- Los enlaces de paginación se generarán aquí -->
+                    </ul>
+                </nav>
+            </div>
         </div>
 
         <!-- Modal de Información del Evento -->
@@ -66,40 +79,23 @@
             </div>
         </div>
 
-
-       <!-- Tabla de Animales -->
-<div class="table-responsive">
-    <table id="tabla-imprimir" class="content-table mt-4">
-        <thead>
-            <tr>
-                    <th>Caravana</th>
-                    <th>Estado</th>
-                    <th>Fecha de evento</th>
-                    <th>Observación</th>
-                    <th style="width: 70px"></th>
-                    <th style="width: 70px"></th>
-            </tr>
-        </thead>
-        <tbody id="tbody-eventos">
-        </tbody>
-    </table>
-</div>
-
-<!-- Contenedor para contador y paginación -->
-<div class="d-flex justify-content-between align-items-center mt-3">
-    <!-- Contador de elementos -->
-    <div id="table-info">
-        <span id="total-items-eventos">Eventos cargados: 0</span>
-    </div>
-
-    <!-- Paginación -->
-    <nav aria-label="Page navigation example">
-        <ul id="pagination-eventos" class="pagination mb-0">
-            <!-- Los enlaces de paginación se generarán aquí -->
-        </ul>
-    </nav>
-</div>
-
+       <!-- Tabla de Eventos -->
+        <div class="table-responsive mt-2">
+            <table id="tabla-imprimir2" class="content-table">
+                <thead>
+                    <tr>
+                        <th>Caravana</th>
+                        <th>Estado</th>
+                        <th>Fecha de evento</th>
+                        <th>Observación</th>
+                        <th style="width: 70px"></th>
+                        <th style="width: 70px"></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-eventos">
+                </tbody>
+            </table>
+        </div>
 
     </div>
 </div>

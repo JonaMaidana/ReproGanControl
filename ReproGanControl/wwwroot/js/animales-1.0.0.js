@@ -1,7 +1,5 @@
 window.onload = ListadoAnimales();
 
-let currentPage = 1;
-const itemsPerPage = 4;
 let animalesMostrar = [];
 
 function ListadoAnimales() {
@@ -13,9 +11,8 @@ function ListadoAnimales() {
             $("#ModalAnimal").modal("hide");
             LimpiarModal();
             animalesMostrar = data;
+            renderTable();
             updateTotalItems();
-            renderTable(currentPage);
-            renderPagination();
         },
         error: function (xhr, status) {
             console.log('Disculpe, existió un problema al cargar el listado de animales');
@@ -23,13 +20,10 @@ function ListadoAnimales() {
     });
 }
 
-function renderTable(page) {
-    const start = (page - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    const paginatedData = animalesMostrar.slice(start, end);
+function renderTable() {
     let contenidoTabla = ``;
 
-    $.each(paginatedData, function (index, animal) {  
+    $.each(animalesMostrar, function (index, animal) {  
         contenidoTabla += `
         <tr>
             <td>${animal.caravana}</td>
@@ -54,27 +48,6 @@ function renderTable(page) {
     });
 
     document.getElementById("tbody-animales").innerHTML = contenidoTabla;
-}
-
-function renderPagination() {
-    const pageCount = Math.ceil(animalesMostrar.length / itemsPerPage);
-    let paginationHtml = '';
-
-    for (let i = 1; i <= pageCount; i++) {
-        paginationHtml += `
-        <li class="page-item ${i === currentPage ? 'active' : ''}">
-            <a class="page-link" href="#" onclick="goToPage(${i})">${i}</a>
-        </li>
-        `;
-    }
-
-    document.getElementById("pagination").innerHTML = paginationHtml;
-}
-
-function goToPage(page) {
-    currentPage = page;
-    renderTable(currentPage);
-    renderPagination();
 }
 
 function updateTotalItems() {
@@ -206,38 +179,51 @@ function ModalEditarAnimal(animalID){
 }
 
 function EliminarAnimal(animalID) {
-    $.ajax({
-        url: '../../Animales/EliminarAnimales',
-        data: { animalID: animalID },
-        type: 'POST',
-        dataType: 'json',
-        success: function (resultado) {
-            if (resultado.success) {
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Eliminado!',
-                    text: 'El animal se ha eliminado correctamente.',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    ListadoAnimales();
-                });
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: '¡Error!',
-                    text: resultado.message || 'No se pudo eliminar el animal. Puede estar siendo usado en otra parte.',
-                    confirmButtonText: 'OK'
-                });
-            }
-        },
-        error: function (xhr, status) {
-            Swal.fire({
-                icon: 'error',
-                title: '¡Error!',
-                text: 'Disculpe, existió un problema al eliminar el animal.',
-                confirmButtonText: 'OK'
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡No podrás deshacer esta acción!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Confirmado, proceder con la eliminación
+            $.ajax({
+                url: '../../Animales/EliminarAnimales',
+                data: { animalID: animalID },
+                type: 'POST',
+                dataType: 'json',
+                success: function (resultado) {
+                    if (resultado.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Eliminado!',
+                            text: 'El animal se ha eliminado correctamente.',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            ListadoAnimales(); // Actualiza el listado de animales
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '¡Error!',
+                            text: resultado.message || 'No se pudo eliminar el animal. Puede estar siendo usado en otra parte.',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                },
+                error: function (xhr, status) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: 'Disculpe, existió un problema al eliminar el animal.',
+                        confirmButtonText: 'OK'
+                    });
+                    console.log('Disculpe, existió un problema al eliminar el animal.');
+                }
             });
-            console.log('Disculpe, existió un problema al eliminar el animal.');
         }
     });
 }

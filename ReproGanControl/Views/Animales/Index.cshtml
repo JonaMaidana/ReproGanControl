@@ -10,13 +10,26 @@
         </button>
     </div>
     <div class="card-body">
-    <div class="d-flex justify-content-between align-items-center mb-2">
-        <!-- Botón de Imprimir -->
-        <button class="btn btn-dark" onclick="Imprimir()">
-            <i class="fa-solid fa-download"></i>
-        </button>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- Botón de Imprimir -->
+            <button class="btn btn-dark" onclick="Imprimir()">
+                <i class="fa-solid fa-download"></i>
+            </button>
+            <!-- Contenedor para contador y paginación -->
+            <div class="d-flex align-items-center">
+                <!-- Contador de elementos -->
+                <div id="table-info" class="me-3">
+                  <span id="total-items">Animales cargados: 0</span>
+                </div>
 
-    </div>
+                <!-- Paginación -->
+                <nav aria-label="Page navigation example">
+                    <ul id="pagination" class="pagination mb-0">
+                        <!-- Los enlaces de paginación se generarán aquí -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
 
         <!-- Modal de Información del Animal -->
         <div class="modal fade" data-bs-backdrop="static" id="ModalAnimal" tabindex="-1" aria-labelledby="animalModalLabel" aria-hidden="true">
@@ -36,7 +49,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="apodo" class="form-label">Apodo</label>
-                                    <input type="text" class="form-control" id="Apodo" style="text-transform:uppercase" placeholder="Apodo del animal" maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '')">
+                                    <input type="text" class="form-control" id="Apodo" style="text-transform:uppercase" placeholder="Apodo" maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '')">
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="TipoAnimalID" class="form-label">Tipo de Animal</label>
@@ -45,12 +58,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="nombrePadre" class="form-label">Nombre del Padre</label>
-                                    <input type="text" class="form-control" id="NombrePadre" style="text-transform:uppercase" placeholder="Nombre del padre del animal" maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '')">
+                                    <label for="nombrePadre" class="form-label">Datos del Padre</label>
+                                    <input type="text" class="form-control" id="NombrePadre" style="text-transform:uppercase" placeholder="Datos del padre" maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '')">
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="nombreMadre" class="form-label">Nombre de la Madre</label>
-                                    <input type="text" class="form-control" id="NombreMadre" style="text-transform:uppercase" placeholder="Nombre de la madre del animal" maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '')">
+                                    <label for="nombreMadre" class="form-label">Datos de la Madre</label>
+                                    <input type="text" class="form-control" id="NombreMadre" style="text-transform:uppercase" placeholder="Datos de la madre" maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '')">
                                 </div>
                             </div>
                             <div class="row">
@@ -79,40 +92,28 @@
         </div>
 
         <!-- Tabla de Animales -->
-<div class="table-responsive">
-    <table id="tabla-imprimir" class="content-table mt-4">
-        <thead>
-            <tr>
-                <th>Caravana</th>
-                <th>Tipo</th>
-                <th>Apodo</th>
-                <th>Padre</th>
-                <th>Madre</th>
-                <th>Establecimiento</th>
-                <th>Fecha de nacimiento</th>
-                <th style="width: 70px"></th>
-                <th style="width: 70px"></th>
-            </tr>
-        </thead>
-        <tbody id="tbody-animales">
-        </tbody>
-    </table>
-</div>
-
-<!-- Contenedor para contador y paginación -->
-<div class="d-flex justify-content-between align-items-center mt-3">
-    <!-- Contador de elementos -->
-    <div id="table-info">
-        <span id="total-items">Animales cargados: 0</span>
+        <div class="table-responsive mt-2">
+            <table id="tabla-imprimir" class="content-table">
+                <thead>
+                    <tr>
+                        <th>Caravana</th>
+                        <th>Tipo</th>
+                        <th>Apodo</th>
+                        <th>Padre</th>
+                        <th>Madre</th>
+                        <th>Establecimiento</th>
+                        <th>Fecha de nacimiento</th>
+                        <th style="width: 70px"></th>
+                        <th style="width: 70px"></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-animales">
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <!-- Paginación -->
-    <nav aria-label="Page navigation example">
-        <ul id="pagination" class="pagination mb-0">
-            <!-- Los enlaces de paginación se generarán aquí -->
-        </ul>
-    </nav>
 </div>
+
 
 
 

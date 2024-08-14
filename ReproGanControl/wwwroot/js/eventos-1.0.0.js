@@ -83,7 +83,7 @@ function GuardarEvento() {
         Swal.fire({
             icon: 'warning',
             title: 'Faltan campos',
-            text: 'Por favor, complete todos los campos para guardar el evento.',
+            text: 'Por favor, completa  los campos requeridos para guardar el evento.',
             confirmButtonText: 'OK'
         });
         return; // Salir de la función si falta algún campo

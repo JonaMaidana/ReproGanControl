@@ -47,7 +47,7 @@ public class EventosController : Controller
             EstadoDescripcion = e.Estado.Descripcion,
             FechaEvento = e.FechaEvento,
             FechaEventoString = e.FechaEvento.ToString("dd/MM/yyyy"),
-            Observacion = e.Observacion
+            Observacion = string.IsNullOrEmpty(e.Observacion) ? "NINGUNO" : e.Observacion,
 
         })
         .ToList();
@@ -57,6 +57,8 @@ public class EventosController : Controller
 
     public JsonResult GuardarEventos(int eventoID, int animalID, int estadoID, DateTime fechaEvento, string observacion)
     {
+
+        observacion = string.IsNullOrEmpty(observacion) ? "NINGUNO" : observacion;
 
         if (eventoID == 0)
         {

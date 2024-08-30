@@ -13,7 +13,6 @@ public class ApplicationDbContext : IdentityDbContext
 
     
     public DbSet<Animal> Animales { get; set; }
-    public DbSet<Estado> Estados { get; set; }
     public DbSet<Evento> Eventos { get; set; }
     public DbSet<Localidad> Localidades { get; set; }
     public DbSet<Persona> Personas { get; set; }

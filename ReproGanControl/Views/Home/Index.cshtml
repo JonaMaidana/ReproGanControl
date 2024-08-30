@@ -1,16 +1,16 @@
 ﻿@{
   ViewData["Title"] = "Home Page";
 }
-<div class="text-center">
-  <h1 class="titulo" style="color: #000000">ReproGan</h1>
-</div>
 <br>
-<div>
-  <p class="descripcion">ReproGan es un sistema de gestión y control diseñado específicamente para el manejo de la
-    reproducción del ganado. Este sistema permite controlar y monitorear de manera efectiva las actividades
-    reproductivas, asegurando una mayor eficiencia y precisión en las operaciones ganaderas. Es una herramienta esencial
-    para optimizar las prácticas reproductivas, mejorar la calidad de vida de los animales y aumentar la rentabilidad
-    para los propietarios.</p>
+<div class="dropdown-container">
+    <label for="establecimientos">Establecimientos:</label>
+    <select id="establecimientos" name="establecimientos">
+        <option value="">Selecciona un establecimiento</option>
+        <option value="establecimiento1">Las Marias</option>
+        <option value="establecimiento2">Don Juan</option>
+        <option value="establecimiento3">Los Primos</option>
+        <!-- Agrega más opciones según sea necesario -->
+    </select>
 </div>
 <br>
 <div class="row justify-content-center">

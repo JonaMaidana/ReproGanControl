@@ -12,8 +12,8 @@ using ReproGanControl.Data;
 namespace ReproGanControl.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240806222057_MigracionInicial")]
-    partial class MigracionInicial
+    [Migration("20240827215749_1ermigracion")]
+    partial class _1ermigracion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -263,22 +263,6 @@ namespace ReproGanControl.Migrations
                     b.ToTable("Animales");
                 });
 
-            modelBuilder.Entity("ReproGanControl.Models.Estado", b =>
-                {
-                    b.Property<int>("EstadoID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EstadoID"));
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("EstadoID");
-
-                    b.ToTable("Estados");
-                });
-
             modelBuilder.Entity("ReproGanControl.Models.Evento", b =>
                 {
                     b.Property<int>("EventoID")
@@ -290,7 +274,7 @@ namespace ReproGanControl.Migrations
                     b.Property<int>("AnimalID")
                         .HasColumnType("int");
 
-                    b.Property<int>("EstadoID")
+                    b.Property<int>("Estado")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaEvento")
@@ -302,8 +286,6 @@ namespace ReproGanControl.Migrations
                     b.HasKey("EventoID");
 
                     b.HasIndex("AnimalID");
-
-                    b.HasIndex("EstadoID");
 
                     b.ToTable("Eventos");
                 });
@@ -500,15 +482,7 @@ namespace ReproGanControl.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ReproGanControl.Models.Estado", "Estado")
-                        .WithMany("Eventos")
-                        .HasForeignKey("EstadoID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Animal");
-
-                    b.Navigation("Estado");
                 });
 
             modelBuilder.Entity("ReproGanControl.Models.Localidad", b =>
@@ -549,11 +523,6 @@ namespace ReproGanControl.Migrations
                     b.Navigation("Eventos");
 
                     b.Navigation("RegistroMedicos");
-                });
-
-            modelBuilder.Entity("ReproGanControl.Models.Estado", b =>
-                {
-                    b.Navigation("Eventos");
                 });
 
             modelBuilder.Entity("ReproGanControl.Models.Localidad", b =>

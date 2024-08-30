@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ReproGanControl.Migrations
 {
     /// <inheritdoc />
-    public partial class MigracionInicial : Migration
+    public partial class _1ermigracion : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -48,19 +48,6 @@ namespace ReproGanControl.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Estados",
-                columns: table => new
-                {
-                    EstadoID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Estados", x => x.EstadoID);
                 });
 
             migrationBuilder.CreateTable(
@@ -272,7 +259,7 @@ namespace ReproGanControl.Migrations
                     EventoID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AnimalID = table.Column<int>(type: "int", nullable: false),
-                    EstadoID = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
                     FechaEvento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Observacion = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -284,12 +271,6 @@ namespace ReproGanControl.Migrations
                         column: x => x.AnimalID,
                         principalTable: "Animales",
                         principalColumn: "AnimalID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Eventos_Estados_EstadoID",
-                        column: x => x.EstadoID,
-                        principalTable: "Estados",
-                        principalColumn: "EstadoID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -367,11 +348,6 @@ namespace ReproGanControl.Migrations
                 column: "AnimalID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Eventos_EstadoID",
-                table: "Eventos",
-                column: "EstadoID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Localidades_ProvinciaID",
                 table: "Localidades",
                 column: "ProvinciaID");
@@ -419,9 +395,6 @@ namespace ReproGanControl.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Estados");
 
             migrationBuilder.DropTable(
                 name: "Localidades");

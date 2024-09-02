@@ -72,6 +72,7 @@ public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravan
     nombrePadre = nombrePadre.ToUpper();
     nombreMadre = nombreMadre.ToUpper();
     
+    
     if (animalID == 0)
     {
         var animal = new Animal

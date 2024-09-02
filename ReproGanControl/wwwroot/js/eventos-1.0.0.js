@@ -144,13 +144,12 @@ function ModalEditarEventos(eventoID) {
             if (response && response.length > 0) {
                 let evento = response[0];
 
-                console.log(evento);
-
                 document.getElementById("EventoID").value = evento.eventoID;
                 document.getElementById("AnimalID").value = evento.animalID;
-                document.getElementById("Estado").value = evento.estadoString; // Usa estadoString aquí
 
-                // Asegúrate de que la fecha esté en formato YYYY-MM-DD
+                // Asigna el valor correcto al dropdown del Estado
+                document.getElementById("Estado").value = evento.estado;
+
                 let fechaEvento = new Date(evento.fechaEvento);
                 let fechaFormato = fechaEvento.toISOString().split('T')[0];
                 document.getElementById("FechaEvento").value = fechaFormato;
@@ -160,7 +159,6 @@ function ModalEditarEventos(eventoID) {
                 $("#ModalTituloEvento").text("Editar Evento");
                 $("#ModalEvento").modal("show");
             } else {
-                console.log('No se encontró el evento.');
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
@@ -170,7 +168,6 @@ function ModalEditarEventos(eventoID) {
             }
         },
         error: function (xhr, status) {
-            console.log('Disculpe, existió un problema al consultar el listado para ser modificado.');
             Swal.fire({
                 icon: 'error',
                 title: 'Error',

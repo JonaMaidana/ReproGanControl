@@ -31,6 +31,7 @@ public class VistaEventos
     public int EventoID { get; set; }
     public int AnimalID { get; set; }
     public string? AnimalCaravana { get; set; }
+    public EstadoEnum Estado{ get; set; }
     public string? EstadoString { get; set; }
     public DateTime FechaEvento { get; set; }
     public string? FechaEventoString { get; set; }

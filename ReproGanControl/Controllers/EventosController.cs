@@ -21,33 +21,34 @@ public class EventosController : Controller
 
 
     public IActionResult Index()
+    {
+        // Crear una lista de SelectListItem que incluya el elemento adicional
+        var estadoSelectListItems = new List<SelectListItem>
 {
-    // Crear una lista de SelectListItem que incluya el elemento adicional
-    var estadoSelectListItems = new List<SelectListItem>
-    {
-        new SelectListItem { Value = "0", Text = "[SELECCIONE...]" }
-    };
+    new SelectListItem { Value = "0", Text = "[SELECCIONE...]" }
+};
 
-    // Obtener todas las opciones del enum
-    var enumValues = Enum.GetValues(typeof(EstadoEnum)).Cast<EstadoEnum>();
+        // Obtener todas las opciones del enum
+        var enumValues = Enum.GetValues(typeof(EstadoEnum)).Cast<EstadoEnum>();
 
-    // Convertir las opciones del enum en SelectListItem
-    estadoSelectListItems.AddRange(enumValues.Select(e => new SelectListItem
-    {
-        Value = e.ToString(),
-        Text = e.ToString().ToUpper()
-    }));
+        // Convertir las opciones del enum en SelectListItem
+        // Convertir las opciones del enum en SelectListItem
+        estadoSelectListItems.AddRange(enumValues.Select(e => new SelectListItem
+        {
+            Value = ((int)e).ToString(), // Usa la conversión a entero si trabajas con valores numéricos
+            Text = e.ToString().ToUpper()
+        }));
 
-    // Configurar ViewBag para los estados
-    ViewBag.EstadoID = new SelectList(estadoSelectListItems, "Value", "Text");
+        // Configurar ViewBag para los estados
+        ViewBag.EstadoID = new SelectList(estadoSelectListItems, "Value", "Text");
 
-    // Obtener todos los animales y configurar el dropdown para el AnimalID
-    var animales = _context.Animales.ToList();
-    animales.Add(new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" });
-    ViewBag.AnimalID = new SelectList(animales.OrderBy(d => d.Caravana), "AnimalID", "Caravana");
+        // Obtener todos los animales y configurar el dropdown para el AnimalID
+        var animales = _context.Animales.ToList();
+        animales.Add(new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" });
+        ViewBag.AnimalID = new SelectList(animales.OrderBy(d => d.Caravana), "AnimalID", "Caravana");
 
-    return View();
-}
+        return View();
+    }
 
     public JsonResult ListadoEventos(int? id)
     {
@@ -57,70 +58,68 @@ public class EventosController : Controller
             eventos = eventos.Where(e => e.EventoID == id).ToList();
         }
 
-    var eventosMostrar = eventos
-        .Select(e => new VistaEventos
-        {
-            EventoID = e.EventoID,
-            AnimalID = e.AnimalID,
-            AnimalCaravana = e.Animal.Caravana,
-            EstadoString = e.Estado.ToString(),
-            FechaEvento = e.FechaEvento,  
-            FechaEventoString = e.FechaEvento.ToString("dd/MM/yyyy"), 
-            Observacion = string.IsNullOrEmpty(e.Observacion) ? "NINGUNA" : e.Observacion,
-        })
-        .ToList();
+        var eventosMostrar = eventos
+            .Select(e => new VistaEventos
+            {
+                EventoID = e.EventoID,
+                AnimalID = e.AnimalID,
+                AnimalCaravana = e.Animal.Caravana,
+                Estado = e.Estado,
+                EstadoString = e.Estado.ToString().ToUpper(),
+                FechaEvento = e.FechaEvento,
+                FechaEventoString = e.FechaEvento.ToString("dd/MM/yyyy"),
+                Observacion = string.IsNullOrEmpty(e.Observacion) ? "NINGUNA" : e.Observacion,
+            })
+            .ToList();
 
         return Json(eventosMostrar);
     }
 
-public JsonResult GuardarEventos(int eventoID, int animalID, EstadoEnum estado, DateTime fechaEvento, string observacion)
-{
-    // Validar si el estado es válido
-    if (estado == null || !Enum.IsDefined(typeof(EstadoEnum), estado))
+    public JsonResult GuardarEventos(int eventoID, int animalID, EstadoEnum estado, DateTime fechaEvento, string observacion)
     {
-        return Json(new { success = false, message = "El estado es obligatorio." });
-    }
-
-    observacion = string.IsNullOrEmpty(observacion) ? "NINGUNA" : observacion;
-
-    // Validar si el AnimalID ya está registrado en otro evento
-    bool animalIDExistente = _context.Eventos
-        .Any(e => e.AnimalID == animalID && e.EventoID != eventoID);
-
-    if (animalIDExistente)
-    {
-        return Json(new { success = false, message = "Este Animal ya tiene un evento." });
-    }
-
-    if (eventoID == 0)
-    {
-        var evento = new Evento
+        // Validar si el estado es válido
+        if (estado == null || !Enum.IsDefined(typeof(EstadoEnum), estado))
         {
-            AnimalID = animalID,
-            Estado = estado,
-            FechaEvento = fechaEvento,
-            Observacion = observacion
-        };
-        _context.Add(evento);
-        _context.SaveChanges();
-    }
-    else
-    {
-        var eventoEditar = _context.Eventos.Where(e => e.EventoID == eventoID).SingleOrDefault();
-        if (eventoEditar != null)
-        {
-            eventoEditar.AnimalID = animalID;
-            eventoEditar.Estado = estado;
-            eventoEditar.FechaEvento = fechaEvento;
-            eventoEditar.Observacion = observacion;
+            return Json(new { success = false, message = "El estado es obligatorio." });
+        }
 
+        observacion = string.IsNullOrEmpty(observacion) ? "NINGUNA" : observacion;
+        observacion = observacion.ToUpper();
+        // Validar si el AnimalID ya está registrado en otro evento
+        bool animalIDExistente = _context.Eventos.Any(e => e.AnimalID == animalID && e.EventoID != eventoID);
+
+        if (animalIDExistente)
+        {
+            return Json(new { success = false, message = "Este Animal ya tiene un evento." });
+        }
+
+        if (eventoID == 0)
+        {
+            var evento = new Evento
+            {
+                AnimalID = animalID,
+                Estado = estado,
+                FechaEvento = fechaEvento,
+                Observacion = observacion
+            };
+            _context.Add(evento);
             _context.SaveChanges();
         }
+        else
+        {
+            var eventoEditar = _context.Eventos.Where(e => e.EventoID == eventoID).SingleOrDefault();
+            if (eventoEditar != null)
+            {
+                eventoEditar.AnimalID = animalID;
+                eventoEditar.Estado = estado;
+                eventoEditar.FechaEvento = fechaEvento;
+                eventoEditar.Observacion = observacion;
+
+                _context.SaveChanges();
+            }
+        }
+        return Json(new { success = true });
     }
-    return Json(new { success = true });
-}
-
-
 
     public JsonResult EliminarEvento(int eventoID)
     {
@@ -130,5 +129,5 @@ public JsonResult GuardarEventos(int eventoID, int animalID, EstadoEnum estado, 
 
         return Json(true);
     }
-    
+
 }

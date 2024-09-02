@@ -54,9 +54,9 @@ public class RegistroMedicosController : Controller
      public JsonResult GuardarRegistrosMedicos(int registroMedicoID, int animalID, DateTime fecha, string enfermedad, string tratamiento, string observacion)
     {
 
-       
-
-
+        enfermedad = enfermedad.ToUpper();
+        tratamiento = tratamiento.ToUpper();
+        observacion = observacion.ToUpper();
         observacion = string.IsNullOrEmpty(observacion) ? "NINGUNA" : observacion;
 
         if (registroMedicoID == 0)

@@ -66,6 +66,12 @@ public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravan
     nombrePadre = string.IsNullOrEmpty(nombrePadre) ? "DESCONOCIDO" : nombrePadre;
     nombreMadre = string.IsNullOrEmpty(nombreMadre) ? "DESCONOCIDO" : nombreMadre;
 
+    apodo = apodo.ToUpper();
+    caravana = caravana.ToUpper();
+    establecimiento = establecimiento.ToUpper();
+    nombrePadre = nombrePadre.ToUpper();
+    nombreMadre = nombreMadre.ToUpper();
+    
     if (animalID == 0)
     {
         var animal = new Animal

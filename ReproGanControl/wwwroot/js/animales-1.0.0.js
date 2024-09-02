@@ -64,6 +64,7 @@ function LimpiarModal(){
     document.getElementById("NombrePadre").value = "";
     document.getElementById("NombreMadre").value = "";
     document.getElementById("Establecimiento").value = "";
+    document.getElementById("FechaNacimiento").value = "";
 }
 
 function NuevoAnimal(){
@@ -165,7 +166,15 @@ function ModalEditarAnimal(animalID){
             document.getElementById("NombrePadre").value = animal.nombrePadre;
             document.getElementById("NombreMadre").value = animal.nombreMadre;        
             document.getElementById("Establecimiento").value = animal.establecimiento;
-            document.getElementById("FechaNacimiento").value = animal.fechaNacimiento;
+            
+            
+            let fechaNacimiento = new Date(animal.fechaNacimiento);
+            let year = fechaNacimiento.getFullYear();
+            let month = ("0" + (fechaNacimiento.getMonth() + 1)).slice(-2);
+            let day = ("0" + fechaNacimiento.getDate()).slice(-2);
+            let formattedDate = `${year}-${month}-${day}`;
+
+            document.getElementById("FechaNacimiento").value = formattedDate;
 
             $("#ModalTitulo").text("Editar Animal");
             $("#ModalAnimal").modal("show");

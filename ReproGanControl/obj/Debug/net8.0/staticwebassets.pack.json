@@ -1,327 +1,327 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ReproGanControl.bundle.scp.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ReproGanControl.bundle.scp.css",
       "PackagePath": "staticwebassets\\ReproGanControl.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\login.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\login.css",
       "PackagePath": "staticwebassets\\css\\login.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\site.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\style.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\vistaInicio.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\css\\vistaInicio.css",
       "PackagePath": "staticwebassets\\css\\vistaInicio.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\Pezuna.png",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\Pezuna.png",
       "PackagePath": "staticwebassets\\img\\Pezuna.png"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\abrir.png",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\abrir.png",
       "PackagePath": "staticwebassets\\img\\abrir.png"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\cerrar.png",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\cerrar.png",
       "PackagePath": "staticwebassets\\img\\cerrar.png"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\estado.png",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\estado.png",
       "PackagePath": "staticwebassets\\img\\estado.png"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\logo11.JPG",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\logo11.JPG",
       "PackagePath": "staticwebassets\\img\\logo11.JPG"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini.jpg",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini.jpg",
       "PackagePath": "staticwebassets\\img\\mini.jpg"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini2.jpg",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini2.jpg",
       "PackagePath": "staticwebassets\\img\\mini2.jpg"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini3.jpg",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\mini3.jpg",
       "PackagePath": "staticwebassets\\img\\mini3.jpg"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\vacas.jpg",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\vacas.jpg",
       "PackagePath": "staticwebassets\\img\\vacas.jpg"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\animales-1.0.0.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\animales-1.0.0.js",
       "PackagePath": "staticwebassets\\js\\animales-1.0.0.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\eventos-1.0.0.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\eventos-1.0.0.js",
       "PackagePath": "staticwebassets\\js\\eventos-1.0.0.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\jspdf\\jspdf.debug.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\jspdf\\jspdf.debug.js",
       "PackagePath": "staticwebassets\\js\\jspdf\\jspdf.debug.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\jspdf\\jspdf.min.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\jspdf\\jspdf.min.js",
       "PackagePath": "staticwebassets\\js\\jspdf\\jspdf.min.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\jspdf\\jspdf.plugin.autotable.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\jspdf\\jspdf.plugin.autotable.js",
       "PackagePath": "staticwebassets\\js\\jspdf\\jspdf.plugin.autotable.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\registroMedicos-1.0.0.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\registroMedicos-1.0.0.js",
       "PackagePath": "staticwebassets\\js\\registroMedicos-1.0.0.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\sidebars.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\sidebars.js",
       "PackagePath": "staticwebassets\\js\\sidebars.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\tipoAnimales-1.0.0.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\tipoAnimales-1.0.0.js",
       "PackagePath": "staticwebassets\\js\\tipoAnimales-1.0.0.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {

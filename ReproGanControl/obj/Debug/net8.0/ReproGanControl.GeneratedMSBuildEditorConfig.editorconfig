@@ -17,107 +17,107 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ReproGanControl
 build_property.RootNamespace = ReproGanControl
-build_property.ProjectDir = C:\Users\Jona\Desktop\Programación\ReproGanControl\ReproGanControl\
+build_property.ProjectDir = C:\Users\Educacion\Desktop\Jona Progrmacion\ReproGanControl\ReproGanControl\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Jona\Desktop\Programación\ReproGanControl\ReproGanControl
+build_property.MSBuildProjectDirectory = C:\Users\Educacion\Desktop\Jona Progrmacion\ReproGanControl\ReproGanControl
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/Login.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/Logout.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/Register.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Areas/Identity/Pages/_ViewImports.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Views/Animales/Index.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Views/Animales/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Views/Eventos/index.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Views/Eventos/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRvc1xpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Views/Home/Index.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Views/Home/Privacy.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Views/RegistroMedicos/index.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Views/RegistroMedicos/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cm9NZWRpY29zXGluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Views/Shared/Error.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Views/TipoAnimales/Index.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Views/TipoAnimales/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb0FuaW1hbGVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Views/_ViewImports.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Views/_ViewStart.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jona/Desktop/Programación/ReproGanControl/ReproGanControl/Views/Shared/_Layout.cshtml]
+[C:/Users/Educacion/Desktop/Jona Progrmacion/ReproGanControl/ReproGanControl/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-2l4yyucb63

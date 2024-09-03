@@ -57,16 +57,7 @@ function LimpiarModalEvento() {
     document.getElementById("AnimalID").value = 0;
     document.getElementById("Estado").value = 0;
     document.getElementById("Observacion").value = "";
-    document.getElementById("inputsParto").value = "";
-    document.getElementById("inputsAborto").value = "";
-    document.getElementById("inputsServicio").value = "";
-    document.getElementById("inputsCelo").value = "";
-    document.getElementById("inputsSecado").value = "";
-    document.getElementById("inputsVenta").value = "";
-    document.getElementById("inputsRechazo").value = "";
-    document.getElementById("inputsMuerte").value = "";
-    document.getElementById("inputsOtros").value = "";
-    
+
 }
 
 function NuevoEvento() {
@@ -291,6 +282,31 @@ function toggleInputs() {
     }
 
 }
+
+function limpiarInputs() {
+    const inputsParto = document.getElementById("inputsParto");
+    const inputsAborto = document.getElementById("inputsAborto");
+
+    // Limpiar los valores de los inputs en la sección de Parto
+    inputsParto.querySelectorAll('input').forEach(input => input.value = '');
+
+    // Limpiar los valores de los inputs en la sección de Aborto
+    inputsAborto.querySelectorAll('input').forEach(input => input.value = '');
+
+    // Opcional: Ocultar todas las secciones
+    inputsParto.style.display = "none";
+    inputsAborto.style.display = "none";
+}
+
+// Asignar la limpieza cuando el modal se cierra
+$("#ModalEvento").on("hidden", function () {
+    limpiarInputs();
+});
+
+// Asignar la limpieza cuando el modal se abre (opcional, dependiendo del flujo de tu aplicación)
+$("#ModalEvento").on("show", function () {
+    limpiarInputs();
+});
 
 // Llama a la función cuando la página cargue y cada vez que cambie de selección
 document.addEventListener('DOMContentLoaded', function () {

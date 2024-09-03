@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ReproGanControl")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06bc16a4e3a6243f0363e327dd3e57b5ccb70fce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a9089b9ab1621b15bbf17d066c5c42a149c61d6")]
 [assembly: System.Reflection.AssemblyProductAttribute("ReproGanControl")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ReproGanControl")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -12,8 +12,7 @@
 
     <!-- Botón Flotante para Activar Modal -->
     <button type="button" class="btn btn-dark custom-btn-size position-fixed bottom-0 end-0 m-5" data-bs-toggle="modal"
-         title="Agregar Tipo Animal" 
-        data-bs-target="#modalTipoAnimal" onclick="NuevoTituloTipoAnimal()">
+        title="Agregar Tipo Animal" data-bs-target="#modalTipoAnimal" onclick="NuevoTituloTipoAnimal()">
         <i class="fas fa-plus fa-2x"></i>
     </button>
 
@@ -34,7 +33,7 @@
                             <label for="descripcion" class="form-label">Descripción <span
                                     class="required-asterisk">*</span></label>
                             <input type="text" class="form-control" id="Descripcion" style="text-transform:uppercase"
-                                placeholder="Descripción">
+                                placeholder="Descripción" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                         </div>
                     </form>
                 </div>

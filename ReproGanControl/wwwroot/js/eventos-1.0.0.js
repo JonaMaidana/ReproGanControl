@@ -23,7 +23,7 @@ function ListadoEventos() {
 function renderTableEventos() {
     let contenidoTabla = ``;
 
-    $.each(eventosMostrar, function (index, evento) {  
+    $.each(eventosMostrar, function (index, evento) {
         contenidoTabla += `
         <tr>
             <td>${evento.animalCaravana}</td>
@@ -53,10 +53,20 @@ function updateTotalItemsEventos() {
 }
 
 function LimpiarModalEvento() {
-    
+
     document.getElementById("AnimalID").value = 0;
     document.getElementById("Estado").value = 0;
     document.getElementById("Observacion").value = "";
+    document.getElementById("inputsParto").value = "";
+    document.getElementById("inputsAborto").value = "";
+    document.getElementById("inputsServicio").value = "";
+    document.getElementById("inputsCelo").value = "";
+    document.getElementById("inputsSecado").value = "";
+    document.getElementById("inputsVenta").value = "";
+    document.getElementById("inputsRechazo").value = "";
+    document.getElementById("inputsMuerte").value = "";
+    document.getElementById("inputsOtros").value = "";
+    
 }
 
 function NuevoEvento() {
@@ -73,7 +83,7 @@ function configurarFechaActual() {
 function GuardarEvento() {
     let eventoID = document.getElementById("EventoID").value;
     let animalID = document.getElementById("AnimalID").value;
-    let estado = document.getElementById("Estado").value; 
+    let estado = document.getElementById("Estado").value;
     let fechaEvento = document.getElementById("FechaEvento").value;
     let observacion = document.getElementById("Observacion").value;
 
@@ -90,7 +100,7 @@ function GuardarEvento() {
     // Si todos los campos están completos, proceder con la solicitud AJAX
     $.ajax({
         url: '../../Eventos/GuardarEventos',
-        data: { 
+        data: {
             eventoID: eventoID,
             animalID: animalID,
             estado: estado, // Enviar estado
@@ -125,7 +135,7 @@ function GuardarEvento() {
             });
             console.log('Disculpe, existió un problema al guardar el evento');
         }
-    });    
+    });
 }
 
 
@@ -214,3 +224,78 @@ function EliminarEventos(eventoID) {
         }
     });
 }
+
+function toggleInputs() {
+    const estadoSelect = document.getElementById("Estado");
+
+    const inputsParto = document.getElementById("inputsParto");
+    const inputsAborto = document.getElementById("inputsAborto");
+    const inputsServicio = document.getElementById("inputsServicio");
+    const inputsCelo = document.getElementById("inputsCelo");
+    const inputsSecado = document.getElementById("inputsSecado");
+    const inputsVenta = document.getElementById("inputsVenta");
+    const inputsRechazo = document.getElementById("inputsRechazo");
+    const inputsMuerte = document.getElementById("inputsMuerte");
+    const inputsOtros = document.getElementById("inputsOtros");
+
+
+    const selectedValue = estadoSelect.value;
+
+    // console.log('Estado seleccionado:', selectedValue); // Para depuración
+
+    //(ajusta según enum)
+    if (selectedValue === "1") { // Cambia por el valor entero correcto
+        inputsParto.style.display = "block";
+    } else {
+        inputsParto.style.display = "none";
+    }
+    if (selectedValue === "2") { // Cambia por el valor entero correcto
+        inputsAborto.style.display = "block";
+    } else {
+        inputsAborto.style.display = "none";
+    }
+    if (selectedValue === "3") { // Cambia por el valor entero correcto
+        inputsServicio.style.display = "block";
+    } else {
+        inputsServicio.style.display = "none";
+    }
+    if (selectedValue === "4") { // Cambia por el valor entero correcto
+        inputsCelo.style.display = "block";
+    } else {
+        inputsCelo.style.display = "none";
+    }
+    if (selectedValue === "5") { // Cambia por el valor entero correcto
+        inputsSecado.style.display = "block";
+    } else {
+        inputsSecado.style.display = "none";
+    }
+    if (selectedValue === "6") { // Cambia por el valor entero correcto
+        inputsVenta.style.display = "block";
+    } else {
+        inputsVenta.style.display = "none";
+    }
+    if (selectedValue === "7") { // Cambia por el valor entero correcto
+        inputsRechazo.style.display = "block";
+    } else {
+        inputsRechazo.style.display = "none";
+    }
+    if (selectedValue === "8") { // Cambia por el valor entero correcto
+        inputsMuerte.style.display = "block";
+    } else {
+        inputsMuerte.style.display = "none";
+    }
+    if (selectedValue === "9") { // Cambia por el valor entero correcto
+        inputsOtros.style.display = "block";
+    } else {
+        inputsOtros.style.display = "none";
+    }
+
+}
+
+// Llama a la función cuando la página cargue y cada vez que cambie de selección
+document.addEventListener('DOMContentLoaded', function () {
+    toggleInputs();
+
+    const estadoSelect = document.getElementById("Estado");
+    estadoSelect.addEventListener('change', toggleInputs);
+});

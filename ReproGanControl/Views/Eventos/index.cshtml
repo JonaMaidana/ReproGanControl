@@ -49,13 +49,90 @@
                             <input type="hidden" id="EventoID" value="0" />
                             <div class="row mb-3">
                                 <div class="col">
-                                     <label for="AnimalID" class="form-label">Caravana <span class="required-asterisk">*</span></label>
-                                        @Html.DropDownList("AnimalID", (SelectList)ViewBag.AnimalID, htmlAttributes: new{ @class = "form-control" })
+                                    <label for="AnimalID" class="form-label">Caravana <span
+                                            class="required-asterisk">*</span></label>
+                                    @Html.DropDownList("AnimalID", (SelectList)ViewBag.AnimalID, htmlAttributes: new
+                                        {
+                                            @class = "form-control"
+                                        })
                                 </div>
                                 <div class="col">
-                                    <label for="Estado" class="form-label">Estado <span class="required-asterisk">*</span></label>
-                                        @Html.DropDownList("Estado", (SelectList)ViewBag.EstadoID, htmlAttributes: new { @class = "form-control" })
+                                    <label for="Estado" class="form-label">Estado <span
+                                            class="required-asterisk">*</span></label>
+                                    @Html.DropDownList("Estado", (SelectList)ViewBag.EstadoID, htmlAttributes: new
+                                        {
+                                            @class = "form-control"
+                                        })
                                 </div>
+                                <!-- Inputs que deben aparecer solo cuando se selecciona "Parto" -->
+                                <div id="inputsParto" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="SexoCria" class="form-label">Sexo de la cría</label>
+                                        <input type="text" class="form-control"
+                                            placeholder="Ingrese el sexo de la cria">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="TipoParto" class="form-label">Tipo de parto</label>
+                                        <input type="text" class="form-control" placeholder="Ingrese tipo de parto">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="EstadoCria" class="form-label">Estado de la cria</label>
+                                        <input type="text" class="form-control"
+                                            placeholder="Ingresi si esta vivo o muerto">
+                                    </div>
+                                </div>
+                                <div id="inputsAborto" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="CausaAborto" id="inputsAborto" class="form-label">Causa</label>
+                                        <input type="text" class="form-control"
+                                            placeholder="Ingrese la causa del aborto">
+                                    </div>
+                                </div>
+                                <div id="inputsServicio" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="Servicio" class="form-label">Servicio</label>
+                                        <input type="text" class="form-control" placeholder="Ingrese">
+                                    </div>
+                                </div>
+                                <div id="inputsCelo" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="Celo" class="form-label">Celo</label>
+                                        <input type="text" class="form-control" placeholder="Ingrese">
+                                    </div>
+                                </div>
+                                <div id="inputsSecado" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="Secado" class="form-label">Especificación</label>
+                                        <input type="text" class="form-control" placeholder="Especifique">
+                                    </div>
+                                </div>
+                                <div id="inputsVenta" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="Venta" class="form-label">Venta</label>
+                                        <input type="text" class="form-control" placeholder="Motivo Venta">
+                                    </div>
+                                </div>
+                                <div id="inputsMuerte" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="Muerte" class="form-label">Muerte</label>
+                                        <input type="text" class="form-control" placeholder="Especificacion">
+                                    </div>
+                                </div>
+                                <div id="inputsRechazo" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="CausaRechazo" class="form-label">Causa</label>
+                                        <input type="text" class="form-control"
+                                            placeholder="Ingrese la causa del rechazo">
+                                    </div>
+                                </div>
+                                <div id="inputsOtros" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="CausaRechazo" class="form-label">Otros</label>
+                                        <input type="text" class="form-control" placeholder="Ingrese especificacion">
+                                    </div>
+                                </div>
+
+
                             </div>
                             <div class="mb-3">
                                 <label for="fechaEvento" class="form-label">Fecha de evento <span
@@ -65,9 +142,16 @@
                                 </div>
                             </div>
                             <div class="mb-3">
+                                <label for="fechaEvento" class="form-label">Tipo de Evento <span
+                                        class="required-asterisk">*</span> </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="FechaEvento">
+                                </div>
+                            </div>
+                            <div class="mb-3">
                                 <label for="observacion" class="form-label">Observación</label>
-                                <textarea class="form-control" id="Observacion" style="text-transform: uppercase;" placeholder="Observación del evento."
-                                    rows="3"
+                                <textarea class="form-control" id="Observacion" style="text-transform: uppercase;"
+                                    placeholder="Observación del evento." rows="3"
                                     oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px';"></textarea>
                             </div>
                         </form>

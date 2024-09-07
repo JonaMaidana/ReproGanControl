@@ -7,14 +7,14 @@ function ListadoAnimales() {
     let buscarCaravana = $("#BuscarCaravana").val();
     let buscarEstablecimiento = $("#BuscarEstablecimiento").val();
     let buscarApodo = $("#BuscarApodo").val();
-    
+
     $.ajax({
         url: '../../Animales/ListadoAnimales',
         type: 'GET',
         dataType: 'json',
         data: {
             BuscarTipoAnimalID: buscarTipoAnimalID,
-            caravana: buscarCaravana,
+            Caravana: buscarCaravana,
             BuscarEstablecimiento: buscarEstablecimiento,
             BuscarApodo: buscarApodo
         },
@@ -158,6 +158,14 @@ function GuardarAnimal() {
     });
 }
 
+function configurarFechaNacimiento() {
+    const fechaInput = document.getElementById("FechaNacimiento");
+    const hoy = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato YYYY-MM-DD
+    fechaInput.setAttribute('max', hoy); // Restringir la selección de fechas futuras
+}
+
+// Llamar a la función para configurar la fecha al cargar la página
+document.addEventListener('DOMContentLoaded', configurarFechaNacimiento);
 
 function ModalEditarAnimal(animalID) {
 
@@ -246,3 +254,18 @@ function EliminarAnimal(animalID) {
         }
     });
 }
+
+// function toggleInputs() {
+//     const container = document.getElementById("inputFiltros");
+//     if (container.classList.contains("d-none")) {
+//         container.classList.remove("d-none");
+//         container.classList.add("d-block");
+//     } else {
+//         container.classList.remove("d-block");
+//         container.classList.add("d-none");
+//     }
+// }
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.getElementById("show-button").addEventListener("click", toggleInputs);
+// });

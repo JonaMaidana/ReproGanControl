@@ -32,7 +32,6 @@
             </div>
         </div>
 
-
         <div class="row">
             <div class="mb-3 col-2">
                 <label for="BuscarCaravana" class="form-label">Caravana</label>
@@ -41,8 +40,8 @@
             </div>
             <div class="mb-3 col-2">
                 <label for="BuscarApodo" class="form-label">Apodo</label>
-                <input type="text" id="BuscarApodo" onchange="ListadoAnimales()" placeholder="Buscar por apodo" class="form-control"
-                    style="text-transform: uppercase;" />
+                <input type="text" id="BuscarApodo" onchange="ListadoAnimales()" class="form-control"
+                    style="text-transform: uppercase;" placeholder="Buscar por apodo" />
             </div>
             <div class="mb-3 col-2">
                 <label for="BuscarTipoAnimalID" class="form-label">Tipo Animal</label>
@@ -55,7 +54,6 @@
                          new { @class = "form-control", @onchange = "ListadoAnimales()" })
             </div>
         </div>
-
 
         <!-- Modal de Información del Animal -->
         <div class="modal fade" data-bs-backdrop="static" id="ModalAnimal" tabindex="-1"
@@ -160,9 +158,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 @section Scripts {
     <script src="~/js/animales-1.0.0.js"></script>

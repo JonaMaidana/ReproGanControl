@@ -129,9 +129,6 @@ function GuardarEvento() {
     });
 }
 
-
-
-
 // Llamar a la función para configurar la fecha al cargar la página
 document.addEventListener('DOMContentLoaded', configurarFechaActual);
 

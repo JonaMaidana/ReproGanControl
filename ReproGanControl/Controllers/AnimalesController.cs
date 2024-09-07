@@ -50,7 +50,14 @@ public class AnimalesController : Controller
 
         if (!string.IsNullOrEmpty(caravana))
         {
-            animales = animales.Where(a => a.Caravana.Contains(caravana)).ToList();
+            var caravanaUpper = caravana.ToUpper();
+            animales = animales.Where(a => a.Caravana.ToUpper().Contains(caravanaUpper)).ToList();
+        }
+
+         if (!string.IsNullOrEmpty(BuscarApodo))
+        {
+            var buscarApodoUpper  = BuscarApodo.ToUpper();
+            animales = animales.Where(a => a.Apodo.ToUpper().Contains(buscarApodoUpper)).ToList();
         }
 
         if (!string.IsNullOrEmpty(BuscarEstablecimiento) && BuscarEstablecimiento != "[SELECCIONE]")
@@ -58,10 +65,7 @@ public class AnimalesController : Controller
             animales = animales.Where(e => e.Establecimiento == BuscarEstablecimiento).ToList();
         }
 
-        if (!string.IsNullOrEmpty(BuscarApodo))
-        {
-            animales = animales.Where(a => a.Apodo.Contains(BuscarApodo)).ToList();
-        }
+       
         
         var animalesMostrar = animales
         .Select(a => new VistaAnimales

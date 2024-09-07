@@ -22,10 +22,20 @@ public class AnimalesController : Controller
         var tipoAnimales = _context.TipoAnimales.ToList();
         tipoAnimales.Add(new TipoAnimal { TipoAnimalID = 0, Descripcion = "[SELECCIONE]" });
         ViewBag.TipoAnimalID = new SelectList(tipoAnimales.OrderBy(d => d.Descripcion), "TipoAnimalID", "Descripcion");
+
+        var buscarTipoAnimal = _context.TipoAnimales.ToList();
+        buscarTipoAnimal.Add(new TipoAnimal { TipoAnimalID = 0, Descripcion = "[SELECCIONE]" });
+        ViewBag.BuscarTipoAnimalID = new SelectList(buscarTipoAnimal.OrderBy(d => d.Descripcion), "TipoAnimalID", "Descripcion");
+
+        var buscarEstablecimiento = _context.Animales.Where(a => !string.IsNullOrEmpty(a.Establecimiento)).Select(a => a.Establecimiento).Distinct().OrderBy(e => e).ToList();
+
+        buscarEstablecimiento.Insert(0, "[SELECCIONE]");
+        ViewBag.BuscarEstablecimiento = new SelectList(buscarEstablecimiento);
+
         return View();
     }
 
-    public JsonResult ListadoAnimales(int? id)
+    public JsonResult ListadoAnimales(int? id, int? BuscarTipoAnimalID, string? caravana, string? BuscarEstablecimiento, string? BuscarApodo)
     {
         var animales = _context.Animales.Include(t => t.TipoAnimal).ToList();
         if (id != null)
@@ -33,6 +43,26 @@ public class AnimalesController : Controller
             animales = animales.Where(t => t.AnimalID == id).ToList();
         }
 
+        if (BuscarTipoAnimalID != null && BuscarTipoAnimalID != 0)
+        {
+            animales = animales.Where(e => e.TipoAnimalID == BuscarTipoAnimalID).ToList();
+        }
+
+        if (!string.IsNullOrEmpty(caravana))
+        {
+            animales = animales.Where(a => a.Caravana.Contains(caravana)).ToList();
+        }
+
+        if (!string.IsNullOrEmpty(BuscarEstablecimiento) && BuscarEstablecimiento != "[SELECCIONE]")
+        {
+            animales = animales.Where(e => e.Establecimiento == BuscarEstablecimiento).ToList();
+        }
+
+        if (!string.IsNullOrEmpty(BuscarApodo))
+        {
+            animales = animales.Where(a => a.Apodo.Contains(BuscarApodo)).ToList();
+        }
+        
         var animalesMostrar = animales
         .Select(a => new VistaAnimales
         {
@@ -46,87 +76,88 @@ public class AnimalesController : Controller
             Establecimiento = a.Establecimiento,
             FechaNacimiento = a.FechaNacimiento,
             FechaNacimientoString = a.FechaNacimiento.ToString("dd/MM/yyyy"),
-            
+
         })
+        .OrderBy(c => c.Caravana)
         .ToList();
 
         return Json(animalesMostrar);
     }
 
-public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravana, string apodo, string nombrePadre, string nombreMadre, string establecimiento, DateTime fechaNacimiento)
-{
-    // Verificar si ya existe un animal con la misma caravana
-    bool existeCaravana = _context.Animales.Any(a => a.Caravana == caravana && a.AnimalID != animalID);
-    if (existeCaravana)
+    public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravana, string apodo, string nombrePadre, string nombreMadre, string establecimiento, DateTime fechaNacimiento)
     {
-        return Json(new { success = false, message = "No se puede crear el animal porque ya existe uno con la misma caravana." });
-    }
-
-    apodo = string.IsNullOrEmpty(apodo) ? "" : apodo;
-    nombrePadre = string.IsNullOrEmpty(nombrePadre) ? "DESCONOCIDO" : nombrePadre;
-    nombreMadre = string.IsNullOrEmpty(nombreMadre) ? "DESCONOCIDO" : nombreMadre;
-
-    apodo = apodo.ToUpper();
-    caravana = caravana.ToUpper();
-    establecimiento = establecimiento.ToUpper();
-    nombrePadre = nombrePadre.ToUpper();
-    nombreMadre = nombreMadre.ToUpper();
-    
-    
-    if (animalID == 0)
-    {
-        var animal = new Animal
+        // Verificar si ya existe un animal con la misma caravana
+        bool existeCaravana = _context.Animales.Any(a => a.Caravana == caravana && a.AnimalID != animalID);
+        if (existeCaravana)
         {
-            TipoAnimalID = tipoAnimalID,
-            Caravana = caravana,
-            Apodo = apodo,
-            NombrePadre = nombrePadre,
-            NombreMadre = nombreMadre,
-            Establecimiento = establecimiento,
-            FechaNacimiento = fechaNacimiento
-        };
-        _context.Add(animal);
-        _context.SaveChanges();
-    }
-    else
-    {
-        var animalEditar = _context.Animales.Where(t => t.AnimalID == animalID).SingleOrDefault();
-        if (animalEditar != null)
-        {
-            animalEditar.TipoAnimalID = tipoAnimalID;
-            animalEditar.Caravana = caravana;
-            animalEditar.Apodo = apodo;
-            animalEditar.NombrePadre = nombrePadre;
-            animalEditar.NombreMadre = nombreMadre;
-            animalEditar.Establecimiento = establecimiento;
-            animalEditar.FechaNacimiento = fechaNacimiento;
+            return Json(new { success = false, message = "No se puede crear el animal porque ya existe uno con la misma caravana." });
+        }
 
+        apodo = string.IsNullOrEmpty(apodo) ? "" : apodo;
+        nombrePadre = string.IsNullOrEmpty(nombrePadre) ? "DESCONOCIDO" : nombrePadre;
+        nombreMadre = string.IsNullOrEmpty(nombreMadre) ? "DESCONOCIDO" : nombreMadre;
+
+        apodo = apodo.ToUpper();
+        caravana = caravana.ToUpper();
+        establecimiento = establecimiento.ToUpper();
+        nombrePadre = nombrePadre.ToUpper();
+        nombreMadre = nombreMadre.ToUpper();
+
+
+        if (animalID == 0)
+        {
+            var animal = new Animal
+            {
+                TipoAnimalID = tipoAnimalID,
+                Caravana = caravana,
+                Apodo = apodo,
+                NombrePadre = nombrePadre,
+                NombreMadre = nombreMadre,
+                Establecimiento = establecimiento,
+                FechaNacimiento = fechaNacimiento
+            };
+            _context.Add(animal);
             _context.SaveChanges();
         }
+        else
+        {
+            var animalEditar = _context.Animales.Where(t => t.AnimalID == animalID).SingleOrDefault();
+            if (animalEditar != null)
+            {
+                animalEditar.TipoAnimalID = tipoAnimalID;
+                animalEditar.Caravana = caravana;
+                animalEditar.Apodo = apodo;
+                animalEditar.NombrePadre = nombrePadre;
+                animalEditar.NombreMadre = nombreMadre;
+                animalEditar.Establecimiento = establecimiento;
+                animalEditar.FechaNacimiento = fechaNacimiento;
+
+                _context.SaveChanges();
+            }
+        }
+        return Json(new { success = true });
     }
-    return Json(new { success = true });
-}
 
-public JsonResult EliminarAnimales(int animalID)
-{
-    // Verificar si el animal está en uso en otras tablas
-    bool isInUse = _context.Eventos.Any(o => o.AnimalID == animalID);
-
-    if (isInUse)
+    public JsonResult EliminarAnimales(int animalID)
     {
-        return Json(new { success = false, message = "El animal tiene un evento activo por lo cual no puede ser eliminado." });
+        // Verificar si el animal está en uso en otras tablas
+        bool isInUse = _context.Eventos.Any(o => o.AnimalID == animalID);
+
+        if (isInUse)
+        {
+            return Json(new { success = false, message = "El animal tiene un evento activo por lo cual no puede ser eliminado." });
+        }
+
+        var animal = _context.Animales.Find(animalID);
+
+        if (animal == null)
+        {
+            return Json(new { success = false, message = "Animal no encontrado." });
+        }
+
+        _context.Animales.Remove(animal);
+        _context.SaveChanges();
+
+        return Json(new { success = true });
     }
-
-    var animal = _context.Animales.Find(animalID);
-    
-    if (animal == null)
-    {
-        return Json(new { success = false, message = "Animal no encontrado." });
-    }
-
-    _context.Animales.Remove(animal);
-    _context.SaveChanges();
-
-    return Json(new { success = true });
-}
 }

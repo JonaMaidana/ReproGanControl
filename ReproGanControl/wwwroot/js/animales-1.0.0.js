@@ -3,10 +3,21 @@ window.onload = ListadoAnimales();
 let animalesMostrar = [];
 
 function ListadoAnimales() {
+    let buscarTipoAnimalID = $("#BuscarTipoAnimalID").val();
+    let buscarCaravana = $("#BuscarCaravana").val();
+    let buscarEstablecimiento = $("#BuscarEstablecimiento").val();
+    let buscarApodo = $("#BuscarApodo").val();
+    
     $.ajax({
         url: '../../Animales/ListadoAnimales',
         type: 'GET',
         dataType: 'json',
+        data: {
+            BuscarTipoAnimalID: buscarTipoAnimalID,
+            caravana: buscarCaravana,
+            BuscarEstablecimiento: buscarEstablecimiento,
+            BuscarApodo: buscarApodo
+        },
         success: function (data) {
             $("#ModalAnimal").modal("hide");
             LimpiarModal();
@@ -23,7 +34,7 @@ function ListadoAnimales() {
 function renderTable() {
     let contenidoTabla = ``;
 
-    $.each(animalesMostrar, function (index, animal) {  
+    $.each(animalesMostrar, function (index, animal) {
         contenidoTabla += `
         <tr>
             <td>${animal.caravana}</td>
@@ -56,7 +67,7 @@ function updateTotalItems() {
 }
 
 
-function LimpiarModal(){
+function LimpiarModal() {
     document.getElementById("AnimalID").value = 0;
     document.getElementById("TipoAnimalID").value = 0;
     document.getElementById("Caravana").value = "";
@@ -67,7 +78,7 @@ function LimpiarModal(){
     document.getElementById("FechaNacimiento").value = "";
 }
 
-function NuevoAnimal(){
+function NuevoAnimal() {
     $("#ModalTitulo").text("Nuevo Animal");
 }
 
@@ -86,8 +97,8 @@ function GuardarAnimal() {
     if (!animalID) camposFaltantes.push("ID del Animal");
     if (!tipoAnimalID) camposFaltantes.push("Tipo de Animal");
     if (!caravana) camposFaltantes.push("Caravana");
-    
-    
+
+
     if (!establecimiento) camposFaltantes.push("Establecimiento");
     if (!fechaNacimiento) camposFaltantes.push("Fecha de Nacimiento");
 
@@ -104,7 +115,7 @@ function GuardarAnimal() {
 
     $.ajax({
         url: '../../Animales/GuardarAnimales',
-        data: { 
+        data: {
             animalID: animalID,
             tipoAnimalID: tipoAnimalID,
             caravana: caravana,
@@ -144,15 +155,15 @@ function GuardarAnimal() {
             });
             console.log('Disculpe, existió un problema al guardar el animal');
         }
-    });    
+    });
 }
 
 
-function ModalEditarAnimal(animalID){
-    
+function ModalEditarAnimal(animalID) {
+
     $.ajax({
         url: '../../Animales/ListadoAnimales',
-        data: { id: animalID},
+        data: { id: animalID },
         type: 'POST',
         dataType: 'json',
 
@@ -164,10 +175,10 @@ function ModalEditarAnimal(animalID){
             document.getElementById("Caravana").value = animal.caravana;
             document.getElementById("Apodo").value = animal.apodo;
             document.getElementById("NombrePadre").value = animal.nombrePadre;
-            document.getElementById("NombreMadre").value = animal.nombreMadre;        
+            document.getElementById("NombreMadre").value = animal.nombreMadre;
             document.getElementById("Establecimiento").value = animal.establecimiento;
-            
-            
+
+
             let fechaNacimiento = new Date(animal.fechaNacimiento);
             let year = fechaNacimiento.getFullYear();
             let month = ("0" + (fechaNacimiento.getMonth() + 1)).slice(-2);

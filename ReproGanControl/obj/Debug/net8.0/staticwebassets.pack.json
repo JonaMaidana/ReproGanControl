@@ -85,6 +85,10 @@
       "PackagePath": "staticwebassets\\js\\localidades-1.0.0.js"
     },
     {
+      "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\personas-1.0.0.js",
+      "PackagePath": "staticwebassets\\js\\personas-1.0.0.js"
+    },
+    {
       "Id": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\provincias-1.0.0.js",
       "PackagePath": "staticwebassets\\js\\provincias-1.0.0.js"
     },

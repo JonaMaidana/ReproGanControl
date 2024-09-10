@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LF2spuFQQ3Vvr8J1ycYwL72pQljfbZT/ywCw6KiGHVQ=",
+  "Hash": "5U+EUSlmXoKKVWSkPRHFE7yaaMTdoNGo6vdplBC8cWM=",
   "Source": "ReproGanControl",
   "BasePath": "_content/ReproGanControl",
   "Mode": "Default",
@@ -1573,6 +1573,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\localidades-1.0.0.js"
+    },
+    {
+      "Identity": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\personas-1.0.0.js",
+      "SourceId": "ReproGanControl",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\",
+      "BasePath": "_content/ReproGanControl",
+      "RelativePath": "js/personas-1.0.0.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\personas-1.0.0.js"
     },
     {
       "Identity": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\provincias-1.0.0.js",

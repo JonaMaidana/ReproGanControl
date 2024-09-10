@@ -68,16 +68,22 @@
                                         <span>Registros Medicos</span>
                                     </a>
                                 </li>
-                                  <li class="nav-item nav-item-custom">
+                                <li class="nav-item nav-item-custom">
+                                    <a href="@Url.Action("Index", "Localidades")" class="nav-link " aria-current="page">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                        <span>Localidades</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item nav-item-custom">
                                     <a href="@Url.Action("Index", "Provincias")" class="nav-link " aria-current="page">
                                         <i class="fa-solid fa-calendar-days"></i>
                                         <span>Provincias</span>
                                     </a>
                                 </li>
-                                 <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "Localidades")" class="nav-link " aria-current="page">
+                                <li class="nav-item nav-item-custom">
+                                    <a href="@Url.Action("Index", "Personas")" class="nav-link " aria-current="page">
                                         <i class="fa-solid fa-calendar-days"></i>
-                                        <span>Localidades</span>
+                                        <span>Personas</span>
                                     </a>
                                 </li>
                                 <hr>
@@ -135,7 +141,7 @@
     <script src="~/js/jspdf/jspdf.min.js"></script>
     <script src="~/js/jspdf/jspdf.debug.js"></script>
     <script src="~/js/jspdf/jspdf.plugin.autotable.js"></script>
-    
+
     <script src="~/js/sidebars.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

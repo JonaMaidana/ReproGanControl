@@ -1,0 +1,132 @@
+@{
+    ViewData["Title"] = "Personas";
+}
+
+<div class="card" style="font-family: 'Arial', sans-serif;">
+    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 class="display-6" style="color: #555;">Personas</h3>
+        <button type="button" class="btn btn-secondary" onclick="CrearPersona()" data-bs-toggle="modal"
+            data-bs-target="#ModalPersona">
+            <i class="fa-solid fa-plus"></i> Añadir Persona
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- Botón de Imprimir -->
+            <button class="btn btn-dark" onclick="Imprimir()">
+                <i class="fa-solid fa-download"></i>
+            </button>
+            <!-- Contenedor para contador y paginación -->
+            <div class="d-flex align-items-center">
+                <!-- Contador de elementos -->
+                <div id="table-info" class="me-3">
+                    <span id="total-items-personas">Personas Cargadas: 0</span>
+                </div>
+                <!-- Paginación -->
+                <nav aria-label="Page navigation example">
+                    <ul id="pagination" class="pagination mb-0">
+                        <!-- Los enlaces de paginación se generarán aquí -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="modal fade" data-bs-backdrop="static" id="ModalPersona" tabindex="-1"
+            aria-labelledby="personaModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalTitulo"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModal()"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <input type="hidden" id="PersonaID" value="0" />
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="NombreCompleto" class="form-label">Nombre Completo<span
+                                            class="required-asterisk">*</span></label>
+                                    <input type="text" class="form-control" id="NombreCompleto"
+                                        style="text-transform: uppercase;" placeholder="Nombre Completo">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="NumeroDocumento" class="form-label">Documento<span
+                                            class="required-asterisk">*</span></label>
+                                    <input type="number" class="form-control" id="NumeroDocumento"
+                                        style="text-transform: uppercase;"
+                                        
+                                        placeholder="Nro Documento ">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="FechaNacimiento" class="form-label">Fecha Nacimiento<span
+                                            class="required-asterisk">*</span></label>
+                                    <input type="date" class="form-control" id="FechaNacimiento">
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="Domicilio" class="form-label">Domicilio</label>
+                                <input type="text" class="form-control" id="Domicilio"
+                                    style="text-transform: uppercase;" placeholder="Domicilio">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="LocalidadID" class="form-label">Localidad <span
+                                        class="required-asterisk">*</span></label>
+                                @Html.DropDownList("LocalidadID", null, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="Celular" class="form-label">Celular</label>
+                                <input type="tel" class="form-control" id="Celular" style="text-transform: uppercase;"
+                                    placeholder="Celular">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="Email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="Email" style="text-transform: uppercase;"
+                                    placeholder="Email">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="display: flex; justify-content: flex-start; align-items: center;">
+                        <p style="font-weight: bold; text-transform: uppercase; color: rgb(19, 18, 18); margin: 0;">
+                            Completa todos los campos requeridos antes de guardar <span
+                                class="required-asterisk">*</span>
+                        </p>
+                        <div style="margin-left: auto;">
+                            <button type="button" onclick="LimpiarModal()" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" onclick="GuardarPersonas()" class="btn btn-success">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive mt-2">
+            <table id="tabla-imprimir" class="content-table">
+                <thead>
+                    <tr>
+                        <th>Nombre Completo</th>
+                        <th>Numero Documento</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Domicilio</th>
+                        <th>Localidad</th>
+                        <th>Celular</th>
+                        <th>Email</th>
+                        <th style="width: 70px"></th>
+                        <th style="width: 70px"></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-personas">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/personas-1.0.0.js"></script>
+}

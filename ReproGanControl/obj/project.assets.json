@@ -8466,19 +8466,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jona\\.nuget\\packages\\": {}
+    "C:\\Users\\Educacion\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
+      "projectUniqueName": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
       "projectName": "ReproGanControl",
-      "projectPath": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
-      "packagesPath": "C:\\Users\\Jona\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\obj\\",
+      "projectPath": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
+      "packagesPath": "C:\\Users\\Educacion\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Jona\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Educacion\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

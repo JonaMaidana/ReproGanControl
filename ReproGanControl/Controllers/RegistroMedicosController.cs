@@ -23,12 +23,17 @@ public class RegistroMedicosController : Controller
         var animales = _context.Animales.ToList();
         animales.Add(new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" });
         ViewBag.AnimalID = new SelectList(animales.OrderBy(d => d.Caravana), "AnimalID", "Caravana");
+
+        var personas = _context.Personas.ToList();
+        personas.Add(new Persona { PersonaID = 0, NombreCompleto = "[SELECCIONE]" });
+        ViewBag.PersonaID = new SelectList(personas.OrderBy(n => n.NombreCompleto), "PersonaID", "NombreCompleto");
+
         return View();
     }
 
     public JsonResult ListadoRegistrosMedicos(int? id)
     {
-        var registroMedico = _context.RegistroMedicos.Include(a => a.Animal).ToList();
+        var registroMedico = _context.RegistroMedicos.Include(a => a.Animal).Include(a => a.Persona).ToList();
         if (id != null)
         {
             registroMedico = registroMedico.Where(t => t.RegistroMedicoID == id).ToList();
@@ -39,7 +44,9 @@ public class RegistroMedicosController : Controller
         {
             RegistroMedicoID = r.RegistroMedicoID,
             AnimalID = r.AnimalID,
+            PersonaID = r.PersonaID,
             AnimalCaravana = r.Animal.Caravana,
+            NombrePersona = r.Persona.NombreCompleto,
             Fecha = r.Fecha,
             FechaString = r.Fecha.ToString("dd/MM/yyyy"),
             Tratamiento = r.Tratamiento,
@@ -51,7 +58,7 @@ public class RegistroMedicosController : Controller
         return Json(registroMedicoMostrar);
     }
 
-     public JsonResult GuardarRegistrosMedicos(int registroMedicoID, int animalID, DateTime fecha, string enfermedad, string tratamiento, string observacion)
+     public JsonResult GuardarRegistrosMedicos(int registroMedicoID, int personaID ,int animalID, DateTime fecha, string enfermedad, string tratamiento, string observacion)
     {
 
         enfermedad = enfermedad.ToUpper();
@@ -64,6 +71,7 @@ public class RegistroMedicosController : Controller
             var registroMedico = new RegistroMedico
             {
                 AnimalID = animalID,
+                PersonaID = personaID,
                 Fecha = fecha,
                 Enfermedad = enfermedad,
                 Tratamiento = tratamiento,
@@ -79,6 +87,7 @@ public class RegistroMedicosController : Controller
             if (registroMedicoEditar != null)
             {
                 registroMedicoEditar.AnimalID = animalID;
+                registroMedicoEditar.PersonaID = personaID;
                 registroMedicoEditar.Fecha = fecha;
                 registroMedicoEditar.Enfermedad = enfermedad;
                 registroMedicoEditar.Tratamiento = tratamiento;

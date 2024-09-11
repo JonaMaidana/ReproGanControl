@@ -16,7 +16,9 @@ public class Persona
     public string? Domicilio { get; set; }
 
     public virtual Localidad Localidad { get; set; }
+    public virtual ICollection<RegistroMedico> RegistrosMedicos { get; set;}
 }
+
 public class VistaPersona{
     public int PersonaID { get; set; }
     public int LocalidadID { get; set; }
@@ -28,5 +30,4 @@ public class VistaPersona{
     public DateTime FechaNacimiento { get; set; }
     public string? FechaNacimientoString { get; set; }
     public string? Domicilio { get; set; }
-
 }

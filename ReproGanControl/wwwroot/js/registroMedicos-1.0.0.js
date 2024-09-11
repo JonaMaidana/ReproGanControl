@@ -30,6 +30,7 @@ function renderTableRegistroMedico() {
             <td>${medico.fechaString}</td>
             <td>${medico.enfermedad}</td>
             <td>${medico.tratamiento}</td>
+            <td>${medico.nombrePersona}</td>
             <td>${medico.observacion}</td>
             <td class="text-center">
                 <button type="button" class="edit-button" onclick="ModalEditarRegistroMedico(${medico.registroMedicoID})">
@@ -56,6 +57,7 @@ function updateTotalItemsRegistroMedico() {
 function LimpiarModalRegistroMedico() {
     
     document.getElementById("AnimalID").value = 0;
+    document.getElementById("PersonaID").value = 0;
     document.getElementById("Fecha").value = 0;
     document.getElementById("Tratamiento").value = "";
     document.getElementById("Enfermedad").value = "";
@@ -76,6 +78,7 @@ function configurarFechaActual() {
 function GuardarRegistroMedico() {
     let registroMedicoID = document.getElementById("RegistroMedicoID").value;
     let animalID = document.getElementById("AnimalID").value;
+    let personaID = document.getElementById("PersonaID").value;
     let fecha = document.getElementById("Fecha").value;
     let enfermedad = document.getElementById("Enfermedad").value; 
     let tratamiento = document.getElementById("Tratamiento").value;
@@ -98,10 +101,12 @@ function GuardarRegistroMedico() {
         data: { 
             RegistroMedicoID: registroMedicoID,
             AnimalID: animalID,
+            PersonaID: personaID,
             Fecha: fecha, 
             Enfermedad: enfermedad,
             Tratamiento: tratamiento,
-            Observacion: observacion 
+            Observacion: observacion,
+            
         },
         type: 'POST',
         dataType: 'json',
@@ -143,6 +148,7 @@ function ModalEditarRegistroMedico(registroMedicoID) {
 
                 document.getElementById("RegistroMedicoID").value = medico.registroMedicoID;
                 document.getElementById("AnimalID").value = medico.animalID;
+                document.getElementById("PersonaID").value = medico.personaID;
                 document.getElementById("Fecha").value = medico.fechaString;
 
                 

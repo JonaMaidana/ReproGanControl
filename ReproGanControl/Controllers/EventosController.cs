@@ -29,7 +29,7 @@ public class EventosController : Controller
         };
 
         // Obtener todas las opciones del enum
-        var enumValues = Enum.GetValues(typeof(EstadoEnum)).Cast<EstadoEnum>();
+        var enumValues = Enum.GetValues(typeof(EventoEnum)).Cast<EventoEnum>();
 
         // Convertir las opciones del enum en SelectListItem
         // Convertir las opciones del enum en SelectListItem
@@ -40,7 +40,7 @@ public class EventosController : Controller
         }));
 
         // Configurar ViewBag para los estados
-        ViewBag.EstadoID = new SelectList(estadoSelectListItems, "Value", "Text");
+        ViewBag.TipoEventoID = new SelectList(estadoSelectListItems, "Value", "Text");
 
         // Obtener todos los animales y configurar el dropdown para el AnimalID
         var animales = _context.Animales.ToList();
@@ -64,8 +64,9 @@ public class EventosController : Controller
                 EventoID = e.EventoID,
                 AnimalID = e.AnimalID,
                 AnimalCaravana = e.Animal.Caravana,
-                Estado = e.Estado,
-                EstadoString = e.Estado.ToString().ToUpper(),
+                EstadoAnimal = e.Animal.Estado.ToString().ToUpper(),
+                TipoEvento = e.TipoEvento,
+                TipoEventoString = e.TipoEvento.ToString().ToUpper(),
                 FechaEvento = e.FechaEvento,
                 FechaEventoString = e.FechaEvento.ToString("dd/MM/yyyy"),
                 Observacion = string.IsNullOrEmpty(e.Observacion) ? "NINGUNA" : e.Observacion,
@@ -75,12 +76,12 @@ public class EventosController : Controller
         return Json(eventosMostrar);
     }
 
-    public JsonResult GuardarEventos(int eventoID, int animalID, EstadoEnum estado, DateTime fechaEvento, string observacion)
+    public JsonResult GuardarEventos(int eventoID, int animalID, EventoEnum tipoEvento, DateTime fechaEvento, string observacion)
     {
         // Validar si el estado es válido
-        if (estado == null || !Enum.IsDefined(typeof(EstadoEnum), estado))
+        if (tipoEvento == null || !Enum.IsDefined(typeof(EventoEnum), tipoEvento))
         {
-            return Json(new { success = false, message = "El estado es obligatorio." });
+            return Json(new { success = false, message = "El tipo evento es obligatorio." });
         }
 
         observacion = string.IsNullOrEmpty(observacion) ? "NINGUNA" : observacion;
@@ -98,7 +99,7 @@ public class EventosController : Controller
             var evento = new Evento
             {
                 AnimalID = animalID,
-                Estado = estado,
+                TipoEvento = tipoEvento,
                 FechaEvento = fechaEvento,
                 Observacion = observacion
             };
@@ -111,7 +112,7 @@ public class EventosController : Controller
             if (eventoEditar != null)
             {
                 eventoEditar.AnimalID = animalID;
-                eventoEditar.Estado = estado;
+                eventoEditar.TipoEvento = tipoEvento;
                 eventoEditar.FechaEvento = fechaEvento;
                 eventoEditar.Observacion = observacion;
 
@@ -130,4 +131,14 @@ public class EventosController : Controller
         return Json(true);
     }
 
+
+    public JsonResult ObtenerEstadoAnimal(int id)
+    {
+        var animal = _context.Animales.SingleOrDefault(a => a.AnimalID == id);
+        if (animal != null)
+        {
+            return Json(new { estadoAnimal = animal.Estado.ToString().ToUpper() });
+        }
+        return Json(new { estadoAnimal = "No encontrado" });
+    }
 }

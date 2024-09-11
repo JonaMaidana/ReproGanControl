@@ -27,9 +27,11 @@ function renderTableEventos() {
         contenidoTabla += `
         <tr>
             <td>${evento.animalCaravana}</td>
-            <td>${evento.estadoString}</td>
+            <td>${evento.estadoAnimal}</td>
+            <td>${evento.tipoEventoString}</td>
             <td>${evento.fechaEventoString}</td>
             <td>${evento.observacion}</td>
+
             <td class="text-center">
                 <button type="button" class="edit-button" onclick="ModalEditarEventos(${evento.eventoID})">
                     <i class="fa-solid fa-pen-to-square"></i>
@@ -55,7 +57,7 @@ function updateTotalItemsEventos() {
 function LimpiarModalEvento() {
 
     document.getElementById("AnimalID").value = 0;
-    document.getElementById("Estado").value = 0;
+    document.getElementById("TipoEvento").value = 0;
     document.getElementById("Observacion").value = "";
 
 }
@@ -74,12 +76,12 @@ function configurarFechaActual() {
 function GuardarEvento() {
     let eventoID = document.getElementById("EventoID").value;
     let animalID = document.getElementById("AnimalID").value;
-    let estado = document.getElementById("Estado").value;
+    let tipoEvento = document.getElementById("TipoEvento").value;
     let fechaEvento = document.getElementById("FechaEvento").value;
     let observacion = document.getElementById("Observacion").value;
 
     // Verificar si alguno de los campos requeridos está vacío  
-    if (!animalID || !estado || !fechaEvento) {
+    if (!animalID || !tipoEvento || !fechaEvento) {
         Swal.fire({
             icon: 'error',
             title: 'Campos Incompletos',
@@ -94,7 +96,7 @@ function GuardarEvento() {
         data: {
             eventoID: eventoID,
             animalID: animalID,
-            estado: estado, // Enviar estado
+            tipoEvento: tipoEvento, // Enviar estado
             fechaEvento: fechaEvento,
             observacion: observacion // Observación puede ser opcional
         },
@@ -146,7 +148,7 @@ function ModalEditarEventos(eventoID) {
                 document.getElementById("AnimalID").value = evento.animalID;
 
                 // Asigna el valor correcto al dropdown del Estado
-                document.getElementById("Estado").value = evento.estado;
+                document.getElementById("TipoEvento").value = evento.tipoEvento;
 
                 let fechaEvento = new Date(evento.fechaEvento);
                 let fechaFormato = fechaEvento.toISOString().split('T')[0];
@@ -213,102 +215,24 @@ function EliminarEventos(eventoID) {
     });
 }
 
-function toggleInputs() {
-    const estadoSelect = document.getElementById("Estado");
-
-    const inputsParto = document.getElementById("inputsParto");
-    const inputsAborto = document.getElementById("inputsAborto");
-    const inputsServicio = document.getElementById("inputsServicio");
-    const inputsCelo = document.getElementById("inputsCelo");
-    const inputsSecado = document.getElementById("inputsSecado");
-    const inputsVenta = document.getElementById("inputsVenta");
-    const inputsRechazo = document.getElementById("inputsRechazo");
-    const inputsMuerte = document.getElementById("inputsMuerte");
-    const inputsOtros = document.getElementById("inputsOtros");
-
-
-    const selectedValue = estadoSelect.value;
-
-    // console.log('Estado seleccionado:', selectedValue); // Para depuración
-
-    //(ajusta según enum)
-    if (selectedValue === "1") { // Cambia por el valor entero correcto
-        inputsParto.style.display = "block";
-    } else {
-        inputsParto.style.display = "none";
-    }
-    if (selectedValue === "2") { // Cambia por el valor entero correcto
-        inputsAborto.style.display = "block";
-    } else {
-        inputsAborto.style.display = "none";
-    }
-    if (selectedValue === "3") { // Cambia por el valor entero correcto
-        inputsServicio.style.display = "block";
-    } else {
-        inputsServicio.style.display = "none";
-    }
-    if (selectedValue === "4") { // Cambia por el valor entero correcto
-        inputsCelo.style.display = "block";
-    } else {
-        inputsCelo.style.display = "none";
-    }
-    if (selectedValue === "5") { // Cambia por el valor entero correcto
-        inputsSecado.style.display = "block";
-    } else {
-        inputsSecado.style.display = "none";
-    }
-    if (selectedValue === "6") { // Cambia por el valor entero correcto
-        inputsVenta.style.display = "block";
-    } else {
-        inputsVenta.style.display = "none";
-    }
-    if (selectedValue === "7") { // Cambia por el valor entero correcto
-        inputsRechazo.style.display = "block";
-    } else {
-        inputsRechazo.style.display = "none";
-    }
-    if (selectedValue === "8") { // Cambia por el valor entero correcto
-        inputsMuerte.style.display = "block";
-    } else {
-        inputsMuerte.style.display = "none";
-    }
-    if (selectedValue === "9") { // Cambia por el valor entero correcto
-        inputsOtros.style.display = "block";
-    } else {
-        inputsOtros.style.display = "none";
-    }
-
-}
-
-function limpiarInputs() {
-    const inputsParto = document.getElementById("inputsParto");
-    const inputsAborto = document.getElementById("inputsAborto");
-
-    // Limpiar los valores de los inputs en la sección de Parto
-    inputsParto.querySelectorAll('input').forEach(input => input.value = '');
-
-    // Limpiar los valores de los inputs en la sección de Aborto
-    inputsAborto.querySelectorAll('input').forEach(input => input.value = '');
-
-    // Opcional: Ocultar todas las secciones
-    inputsParto.style.display = "none";
-    inputsAborto.style.display = "none";
-}
-
-// Asignar la limpieza cuando el modal se cierra
-$("#ModalEvento").on("hidden", function () {
-    limpiarInputs();
-});
-
-// Asignar la limpieza cuando el modal se abre (opcional, dependiendo del flujo de tu aplicación)
-$("#ModalEvento").on("show", function () {
-    limpiarInputs();
-});
-
-// Llama a la función cuando la página cargue y cada vez que cambie de selección
-document.addEventListener('DOMContentLoaded', function () {
-    toggleInputs();
-
-    const estadoSelect = document.getElementById("Estado");
-    estadoSelect.addEventListener('change', toggleInputs);
+$(document).ready(function() {
+    // Al seleccionar un animal en el dropdown, actualizar el estado del animal en el modal
+    $('#AnimalID').change(function() {
+        var animalID = $(this).val();
+        if (animalID) {
+            $.ajax({
+                url: '/Eventos/ObtenerEstadoAnimal', // Reemplaza con la URL correcta
+                type: 'GET',
+                data: { id: animalID },
+                success: function(response) {
+                    $('#EstadoAnimal').val(response.estadoAnimal);
+                },
+                error: function() {
+                    $('#EstadoAnimal').val('Error al obtener el estado.');
+                }
+            });
+        } else {
+            $('#EstadoAnimal').val('');
+        }
+    });
 });

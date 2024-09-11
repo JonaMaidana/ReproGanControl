@@ -7,15 +7,14 @@ public class Evento
     [Key]
     public int EventoID { get; set; }
     public int AnimalID { get; set; }
-    public EstadoEnum Estado { get; set; }
+    public EventoEnum TipoEvento { get; set; }
     public DateTime FechaEvento { get; set; }
     public string? Observacion { get; set; }
-
 
     public virtual Animal Animal { get; set; }
 }
 
-public enum EstadoEnum
+public enum EventoEnum
 {
     Parto = 1,
     Aborto,
@@ -32,8 +31,9 @@ public class VistaEventos
     public int EventoID { get; set; }
     public int AnimalID { get; set; }
     public string? AnimalCaravana { get; set; }
-    public EstadoEnum Estado { get; set; }
-    public string? EstadoString { get; set; }
+    public string? EstadoAnimal { get; set; }
+    public EventoEnum TipoEvento { get; set; }
+    public string? TipoEventoString { get; set; }
     public DateTime FechaEvento { get; set; }
     public string? FechaEventoString { get; set; }
     public string? Observacion { get; set; }

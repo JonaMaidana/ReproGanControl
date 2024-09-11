@@ -24,9 +24,9 @@ public class EventosController : Controller
     {
         // Crear una lista de SelectListItem que incluya el elemento adicional
         var estadoSelectListItems = new List<SelectListItem>
-{
-    new SelectListItem { Value = "0", Text = "[SELECCIONE...]" }
-};
+        {
+            new SelectListItem { Value = "0", Text = "[SELECCIONE...]" }
+        };
 
         // Obtener todas las opciones del enum
         var enumValues = Enum.GetValues(typeof(EstadoEnum)).Cast<EstadoEnum>();

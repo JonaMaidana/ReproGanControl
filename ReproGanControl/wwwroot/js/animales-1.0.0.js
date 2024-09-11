@@ -39,11 +39,13 @@ function renderTable() {
         <tr>
             <td>${animal.caravana}</td>
             <td>${animal.tipoAnimalNombre}</td>
+            <td>${animal.estadoString}</td>
             <td>${animal.apodo}</td>
             <td>${animal.nombrePadre}</td>
             <td>${animal.nombreMadre}</td>
             <td>${animal.establecimiento}</td>
             <td>${animal.fechaNacimientoString}</td>
+            
             <td class="text-center">
                 <button type="button" class="edit-button" onclick="ModalEditarAnimal(${animal.animalID})">
                     <i class="fa-solid fa-pen-to-square"></i>
@@ -70,6 +72,7 @@ function updateTotalItems() {
 function LimpiarModal() {
     document.getElementById("AnimalID").value = 0;
     document.getElementById("TipoAnimalID").value = 0;
+    document.getElementById("Estado").value = 0;
     document.getElementById("Caravana").value = "";
     document.getElementById("Apodo").value = "";
     document.getElementById("NombrePadre").value = "";
@@ -85,12 +88,14 @@ function NuevoAnimal() {
 function GuardarAnimal() {
     let animalID = document.getElementById("AnimalID").value;
     let tipoAnimalID = document.getElementById("TipoAnimalID").value;
+    let estado = document.getElementById("Estado").value;
     let caravana = document.getElementById("Caravana").value;
     let apodo = document.getElementById("Apodo").value;
     let nombrePadre = document.getElementById("NombrePadre").value;
     let nombreMadre = document.getElementById("NombreMadre").value;
     let establecimiento = document.getElementById("Establecimiento").value;
     let fechaNacimiento = document.getElementById("FechaNacimiento").value;
+    
 
     // mensaje de error
     let camposFaltantes = [];
@@ -123,7 +128,8 @@ function GuardarAnimal() {
             nombrePadre: nombrePadre,
             nombreMadre: nombreMadre,
             establecimiento: establecimiento,
-            fechaNacimiento: fechaNacimiento
+            fechaNacimiento: fechaNacimiento,
+            Estado: estado,
         },
         type: 'POST',
         dataType: 'json',
@@ -180,6 +186,7 @@ function ModalEditarAnimal(animalID) {
 
             document.getElementById("AnimalID").value = animalID;
             document.getElementById("TipoAnimalID").value = animal.tipoAnimalID;
+            document.getElementById("Estado").value = animal.estado;
             document.getElementById("Caravana").value = animal.caravana;
             document.getElementById("Apodo").value = animal.apodo;
             document.getElementById("NombrePadre").value = animal.nombrePadre;

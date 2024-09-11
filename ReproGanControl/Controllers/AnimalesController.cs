@@ -19,6 +19,25 @@ public class AnimalesController : Controller
 
     public IActionResult Index()
     {
+        // Crear una lista de SelectListItem que incluya el elemento adicional
+        var estadoSelectListItems = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "0", Text = "[SELECCIONE...]" }
+        };
+
+        // Obtener todas las opciones del enum
+        var enumValues = Enum.GetValues(typeof(Estado)).Cast<Estado>();
+
+        // Convertir las opciones del enum en SelectListItem
+        estadoSelectListItems.AddRange(enumValues.Select(e => new SelectListItem
+        {
+            Value = ((int)e).ToString(), // Convertir el enum a entero
+            Text = e.ToString().ToUpper()
+        }));
+
+        // Configurar ViewBag para los estados
+        ViewBag.EstadoID = new SelectList(estadoSelectListItems, "Value", "Text");
+
         var tipoAnimales = _context.TipoAnimales.ToList();
         tipoAnimales.Add(new TipoAnimal { TipoAnimalID = 0, Descripcion = "[SELECCIONE]" });
         ViewBag.TipoAnimalID = new SelectList(tipoAnimales.OrderBy(d => d.Descripcion), "TipoAnimalID", "Descripcion");
@@ -54,9 +73,9 @@ public class AnimalesController : Controller
             animales = animales.Where(a => a.Caravana.ToUpper().Contains(caravanaUpper)).ToList();
         }
 
-         if (!string.IsNullOrEmpty(BuscarApodo))
+        if (!string.IsNullOrEmpty(BuscarApodo))
         {
-            var buscarApodoUpper  = BuscarApodo.ToUpper();
+            var buscarApodoUpper = BuscarApodo.ToUpper();
             animales = animales.Where(a => a.Apodo.ToUpper().Contains(buscarApodoUpper)).ToList();
         }
 
@@ -65,8 +84,8 @@ public class AnimalesController : Controller
             animales = animales.Where(e => e.Establecimiento == BuscarEstablecimiento).ToList();
         }
 
-       
-        
+
+
         var animalesMostrar = animales
         .Select(a => new VistaAnimales
         {
@@ -80,6 +99,8 @@ public class AnimalesController : Controller
             Establecimiento = a.Establecimiento,
             FechaNacimiento = a.FechaNacimiento,
             FechaNacimientoString = a.FechaNacimiento.ToString("dd/MM/yyyy"),
+            Estado = a.Estado,
+            EstadoString = a.Estado.ToString().ToUpper(),
 
         })
         .OrderBy(c => c.Caravana)
@@ -88,7 +109,7 @@ public class AnimalesController : Controller
         return Json(animalesMostrar);
     }
 
-    public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravana, string apodo, string nombrePadre, string nombreMadre, string establecimiento, DateTime fechaNacimiento)
+    public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravana, string apodo, string nombrePadre, string nombreMadre, string establecimiento, DateTime fechaNacimiento, Estado estado)
     {
         // Verificar si ya existe un animal con la misma caravana
         bool existeCaravana = _context.Animales.Any(a => a.Caravana == caravana && a.AnimalID != animalID);
@@ -118,7 +139,8 @@ public class AnimalesController : Controller
                 NombrePadre = nombrePadre,
                 NombreMadre = nombreMadre,
                 Establecimiento = establecimiento,
-                FechaNacimiento = fechaNacimiento
+                FechaNacimiento = fechaNacimiento,
+                Estado = estado,
             };
             _context.Add(animal);
             _context.SaveChanges();
@@ -135,6 +157,7 @@ public class AnimalesController : Controller
                 animalEditar.NombreMadre = nombreMadre;
                 animalEditar.Establecimiento = establecimiento;
                 animalEditar.FechaNacimiento = fechaNacimiento;
+                animalEditar.Estado = estado;
 
                 _context.SaveChanges();
             }

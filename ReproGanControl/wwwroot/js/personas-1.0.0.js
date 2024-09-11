@@ -29,15 +29,14 @@ function renderTablePersonas() {
         contenidoTabla += `
         <tr>
             <td>${persona.nombreCompleto}</td>
-            <td>${persona.nombreLocalidad}</td>
-            <td>${persona.email}</td>
-            <td>${persona.tel}</td>
             <td>${persona.numeroDocumento}</td>
             <td>${persona.fechaNacimientoString}</td>
             <td>${persona.domicilio}</td>
-
+            <td>${persona.nombreLocalidad}</td>
+            <td>${persona.tel}</td>
+            <td>${persona.email}</td>
             <td class="text-center">
-                <button type="button" class="edit-button" onclick="ModalEditarPersona(${persona.personaID})">
+                <button type="button" class="edit-button" onclick="ModalEditarPersonas(${persona.personaID})">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
             </td>
@@ -62,10 +61,11 @@ function LimpiarModal() {
     document.getElementById("PersonaID").value = 0;
     document.getElementById("LocalidadID").value = 0;
     document.getElementById("Email").value = "";
-    document.getElementById("Celular").value = "";
+    document.getElementById("Tel").value = "";
     document.getElementById("FechaNacimiento").value = "";
     document.getElementById("Domicilio").value = "";
     document.getElementById("NumeroDocumento").value = "";
+    document.getElementById("NombreCompleto").value = "";
 }
 
 function CrearPersona() {
@@ -76,8 +76,9 @@ function CrearPersona() {
 function GuardarPersonas() {
     let personaID = document.getElementById("PersonaID").value;
     let localidadID = document.getElementById("LocalidadID").value;
+    let nombreCompleto = document.getElementById("NombreCompleto").value;
     let email = document.getElementById("Email").value;
-    let tel = document.getElementById("Celular").value;
+    let tel = document.getElementById("Tel").value;
     let fechaNacimiento = document.getElementById("FechaNacimiento").value;
     let domicilio = document.getElementById("Domicilio").value;
     let numeroDocumento = document.getElementById("NumeroDocumento").value;
@@ -92,6 +93,7 @@ function GuardarPersonas() {
             fechaNacimiento: fechaNacimiento,
             domicilio: domicilio,
             numeroDocumento: numeroDocumento,
+            NombreCompleto: nombreCompleto,
         },
         type: 'POST',
         dataType: 'json',
@@ -126,7 +128,7 @@ function GuardarPersonas() {
     });
 }
 
-function ModalEditarPersona(personaID) {
+function ModalEditarPersonas(personaID) {
     $.ajax({
         url: '../../Personas/MostrarPersonas',
         data: { id: personaID },
@@ -138,10 +140,11 @@ function ModalEditarPersona(personaID) {
             document.getElementById("PersonaID").value = personaID;
             document.getElementById("LocalidadID").value = persona.localidadID;
             document.getElementById("Email").value = persona.email;
-            document.getElementById("Celular").value = persona.tel;
+            document.getElementById("Tel").value = persona.tel;
             document.getElementById("FechaNacimiento").value = persona.fechaNacimiento;
             document.getElementById("Domicilio").value = persona.domicilio;
             document.getElementById("NumeroDocumento").value = persona.numeroDocumento;
+            document.getElementById("NombreCompleto").value = persona.nombreCompleto;
 
             $("#ModalTitulo").text("Editar Persona");
             $("#ModalPersona").modal("show");

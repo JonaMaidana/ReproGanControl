@@ -337,8 +337,8 @@ namespace ReproGanControl.Migrations
                     b.Property<int>("NumeroDocumento")
                         .HasColumnType("int");
 
-                    b.Property<int>("Tel")
-                        .HasColumnType("int");
+                    b.Property<string>("Tel")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UsuarioID")
                         .HasColumnType("int");

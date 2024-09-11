@@ -12,7 +12,7 @@ using ReproGanControl.Data;
 namespace ReproGanControl.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240910005626_ActualizacionPersona")]
+    [Migration("20240910233430_ActualizacionPersona")]
     partial class ActualizacionPersona
     {
         /// <inheritdoc />
@@ -340,8 +340,8 @@ namespace ReproGanControl.Migrations
                     b.Property<int>("NumeroDocumento")
                         .HasColumnType("int");
 
-                    b.Property<int>("Tel")
-                        .HasColumnType("int");
+                    b.Property<string>("Tel")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UsuarioID")
                         .HasColumnType("int");

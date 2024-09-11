@@ -10,7 +10,7 @@ public class Persona
     public int LocalidadID { get; set; }
     public string? NombreCompleto { get; set; }
     public string? Email { get; set; }
-    public int Tel { get; set; }
+    public string? Tel { get; set; }
     public int NumeroDocumento { get; set; }
     public DateTime FechaNacimiento { get; set; }
     public string? Domicilio { get; set; }
@@ -23,7 +23,7 @@ public class VistaPersona{
     public string? NombreCompleto { get; set; }
     public string? NombreLocalidad { get; set; }
     public string? Email { get; set; }
-    public int? Tel { get; set; }
+    public string? Tel { get; set; }
     public int? NumeroDocumento { get; set; }
     public DateTime FechaNacimiento { get; set; }
     public string? FechaNacimientoString { get; set; }

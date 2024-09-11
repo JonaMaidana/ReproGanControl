@@ -57,7 +57,7 @@ public class PersonasController : Controller
     }
 
     public JsonResult CrearPersonas(int personaID, int localidadID, string nombreCompleto,
-    DateTime fechaNacimiento, string? email, int tel, int numeroDocumento, string? domicilio)
+    DateTime fechaNacimiento, string? email, string? tel, int numeroDocumento, string? domicilio)
     {
         bool existePersona = _context.Personas.Any(p => p.NumeroDocumento == numeroDocumento && p.Tel == tel && p.Email == email);
         if (existePersona)
@@ -65,8 +65,7 @@ public class PersonasController : Controller
             return Json(new { success = false, message = "No se puede cargar la persona porque ya existe una con el mismo Nro Documento, Email, y Telefono." });
         }
 
-        nombreCompleto = nombreCompleto.ToUpper();
-        domicilio = domicilio.ToUpper();
+    
 
         if (personaID == 0)
         {

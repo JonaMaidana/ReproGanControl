@@ -4,6 +4,7 @@ using ReproGanControl.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using ReproGanControl.Extensions;
 
 namespace ReproGanControl.Controllers;
 [Authorize]
@@ -19,11 +20,12 @@ public class AnimalesController : Controller
 
     public IActionResult Index()
     {
-        // Crear una lista de SelectListItem que incluya el elemento adicional
+        var tiposConEstado = new List<int> { 1, 2 }; // IDs para Vaca y Vaquillona 
+
         var estadoSelectListItems = new List<SelectListItem>
-        {
-            new SelectListItem { Value = "0", Text = "[SELECCIONE...]" }
-        };
+    {
+        new SelectListItem { Value = "0", Text = "[SELECCIONE...]" }
+    };
 
         // Obtener todas las opciones del enum
         var enumValues = Enum.GetValues(typeof(Estado)).Cast<Estado>();
@@ -32,7 +34,7 @@ public class AnimalesController : Controller
         estadoSelectListItems.AddRange(enumValues.Select(e => new SelectListItem
         {
             Value = ((int)e).ToString(), // Convertir el enum a entero
-            Text = e.ToString().ToUpper()
+            Text = e.GetDisplayName() // Obtener el DisplayName del enum
         }));
 
         // Configurar ViewBag para los estados
@@ -84,8 +86,6 @@ public class AnimalesController : Controller
             animales = animales.Where(e => e.Establecimiento == BuscarEstablecimiento).ToList();
         }
 
-
-
         var animalesMostrar = animales
         .Select(a => new VistaAnimales
         {
@@ -100,7 +100,7 @@ public class AnimalesController : Controller
             FechaNacimiento = a.FechaNacimiento,
             FechaNacimientoString = a.FechaNacimiento.ToString("dd/MM/yyyy"),
             Estado = a.Estado,
-            EstadoString = a.Estado.ToString().ToUpper(),
+            EstadoString = a.Estado.GetDisplayName(),
 
         })
         .OrderBy(c => c.Caravana)
@@ -111,7 +111,8 @@ public class AnimalesController : Controller
 
     public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravana, string apodo, string nombrePadre, string nombreMadre, string establecimiento, DateTime fechaNacimiento, Estado estado)
     {
-        // Verificar si ya existe un animal con la misma caravana
+
+
         bool existeCaravana = _context.Animales.Any(a => a.Caravana == caravana && a.AnimalID != animalID);
         if (existeCaravana)
         {
@@ -128,6 +129,10 @@ public class AnimalesController : Controller
         nombrePadre = nombrePadre.ToUpper();
         nombreMadre = nombreMadre.ToUpper();
 
+        if (tipoAnimalID == 3 || tipoAnimalID == 4|| tipoAnimalID == 5) // Asume 2 para Toro y 4 para Ternero
+        {
+            estado = Estado.Ninguno;
+        }
 
         if (animalID == 0)
         {
@@ -187,4 +192,7 @@ public class AnimalesController : Controller
 
         return Json(new { success = true });
     }
+
+
+
 }

@@ -42,7 +42,7 @@ public class LocalidadesController : Controller
             {
                 LocalidadID = l.LocalidadID,
                 ProvinciaID = l.ProvinciaID,
-                Nombre = l.Nombre,
+                NombreLocalidad = l.NombreLocalidad,
                 ProvinciaNombre = l.Provincia.Nombre,
                 CodigoPostal = l.CodigoPostal,
             })
@@ -52,10 +52,10 @@ public class LocalidadesController : Controller
     }
 
     // Guardar o editar localidad
-    public JsonResult GuardarLocalidades(int localidadID, int provinciaID, string? nombre, string? codigoPostal)
+    public JsonResult GuardarLocalidades(int localidadID, int provinciaID, string? nombreLocalidad, string? codigoPostal)
     {
         // Verificar si ya existe una localidad con el mismo código postal y nombre
-        bool existeLocalidad = _context.Localidades.Any(a => a.CodigoPostal == codigoPostal && a.Nombre == nombre && a.LocalidadID != localidadID);
+        bool existeLocalidad = _context.Localidades.Any(a => a.CodigoPostal == codigoPostal && a.NombreLocalidad == nombreLocalidad && a.LocalidadID != localidadID);
 
         if (existeLocalidad)
         {
@@ -64,7 +64,7 @@ public class LocalidadesController : Controller
 
         // Normalizar los datos a mayúsculas
         codigoPostal = codigoPostal?.ToUpper();
-        nombre = nombre?.ToUpper();
+        nombreLocalidad = nombreLocalidad?.ToUpper();
 
         // Crear o actualizar la localidad
         if (localidadID == 0)
@@ -72,7 +72,7 @@ public class LocalidadesController : Controller
             var nuevaLocalidad = new Localidad
             {
                 ProvinciaID = provinciaID,
-                Nombre = nombre,
+                NombreLocalidad = nombreLocalidad,
                 CodigoPostal = codigoPostal
             };
 
@@ -85,7 +85,7 @@ public class LocalidadesController : Controller
             if (localidadEditar != null)
             {
                 localidadEditar.ProvinciaID = provinciaID;
-                localidadEditar.Nombre = nombre;
+                localidadEditar.NombreLocalidad = nombreLocalidad;
                 localidadEditar.CodigoPostal = codigoPostal;
 
                 _context.SaveChanges();

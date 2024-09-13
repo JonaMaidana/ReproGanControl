@@ -301,7 +301,7 @@ namespace ReproGanControl.Migrations
                     b.Property<string>("CodigoPostal")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Nombre")
+                    b.Property<string>("NombreLocalidad")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProvinciaID")

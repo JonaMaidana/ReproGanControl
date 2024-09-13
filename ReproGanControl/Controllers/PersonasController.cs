@@ -22,8 +22,8 @@ public class PersonasController : Controller
     public IActionResult Index()
     {
         var localidades = _context.Localidades.ToList();
-        localidades.Add(new Localidad { LocalidadID = 0, Nombre = "[SELECCIONE]" });
-        ViewBag.LocalidadID = new SelectList(localidades.OrderBy(n => n.Nombre), "LocalidadID", "Nombre");
+        localidades.Add(new Localidad { LocalidadID = 0, NombreLocalidad = "[SELECCIONE]" });
+        ViewBag.LocalidadID = new SelectList(localidades.OrderBy(n => n.NombreLocalidad), "LocalidadID", "NombreLocalidad");
 
         return View();
     }
@@ -43,7 +43,7 @@ public class PersonasController : Controller
                 PersonaID = p.PersonaID,
                 LocalidadID = p.LocalidadID,
                 NombreCompleto = p.NombreCompleto,
-                NombreLocalidad = p.Localidad.Nombre,
+                NombreLocalidad = p.Localidad.NombreLocalidad,
                 Email = p.Email,
                 Tel = p.Tel,
                 NumeroDocumento = p.NumeroDocumento,

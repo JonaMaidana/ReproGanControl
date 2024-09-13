@@ -12,8 +12,8 @@ using ReproGanControl.Data;
 namespace ReproGanControl.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240830204350_ModeloActualizacion")]
-    partial class ModeloActualizacion
+    [Migration("20240913020608_MigracionUnica")]
+    partial class MigracionUnica
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -244,6 +244,9 @@ namespace ReproGanControl.Migrations
                     b.Property<string>("Establecimiento")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
@@ -274,14 +277,14 @@ namespace ReproGanControl.Migrations
                     b.Property<int>("AnimalID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Estado")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("FechaEvento")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Observacion")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TipoEvento")
+                        .HasColumnType("int");
 
                     b.HasKey("EventoID");
 
@@ -301,7 +304,7 @@ namespace ReproGanControl.Migrations
                     b.Property<string>("CodigoPostal")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Nombre")
+                    b.Property<string>("NombreLocalidad")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProvinciaID")
@@ -322,19 +325,28 @@ namespace ReproGanControl.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PersonaID"));
 
-                    b.Property<string>("Apellido")
+                    b.Property<string>("Domicilio")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaNacimiento")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("LocalidadID")
                         .HasColumnType("int");
 
-                    b.Property<string>("Nombre")
+                    b.Property<string>("NombreCompleto")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Tel")
+                    b.Property<int>("NumeroDocumento")
                         .HasColumnType("int");
 
-                    b.Property<int>("UsuarioID")
+                    b.Property<string>("Tel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UsuarioID")
                         .HasColumnType("int");
 
                     b.HasKey("PersonaID");
@@ -351,9 +363,6 @@ namespace ReproGanControl.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProvinciaID"));
-
-                    b.Property<string>("CodigoPostal")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
@@ -383,12 +392,17 @@ namespace ReproGanControl.Migrations
                     b.Property<string>("Observacion")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PersonaID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Tratamiento")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RegistroMedicoID");
 
                     b.HasIndex("AnimalID");
+
+                    b.HasIndex("PersonaID");
 
                     b.ToTable("RegistroMedicos");
                 });
@@ -512,7 +526,15 @@ namespace ReproGanControl.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ReproGanControl.Models.Persona", "Persona")
+                        .WithMany("RegistrosMedicos")
+                        .HasForeignKey("PersonaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Animal");
+
+                    b.Navigation("Persona");
                 });
 
             modelBuilder.Entity("ReproGanControl.Models.Animal", b =>
@@ -525,6 +547,11 @@ namespace ReproGanControl.Migrations
             modelBuilder.Entity("ReproGanControl.Models.Localidad", b =>
                 {
                     b.Navigation("Personas");
+                });
+
+            modelBuilder.Entity("ReproGanControl.Models.Persona", b =>
+                {
+                    b.Navigation("RegistrosMedicos");
                 });
 
             modelBuilder.Entity("ReproGanControl.Models.Provincia", b =>

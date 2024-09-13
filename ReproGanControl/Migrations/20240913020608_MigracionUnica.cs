@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ReproGanControl.Migrations
 {
     /// <inheritdoc />
-    public partial class _1ermigracion : Migration
+    public partial class MigracionUnica : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -56,8 +56,7 @@ namespace ReproGanControl.Migrations
                 {
                     ProvinciaID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CodigoPostal = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -190,7 +189,7 @@ namespace ReproGanControl.Migrations
                     LocalidadID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProvinciaID = table.Column<int>(type: "int", nullable: false),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreLocalidad = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CodigoPostal = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -216,7 +215,8 @@ namespace ReproGanControl.Migrations
                     NombrePadre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NombreMadre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Establecimiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -235,11 +235,14 @@ namespace ReproGanControl.Migrations
                 {
                     PersonaID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UsuarioID = table.Column<int>(type: "int", nullable: false),
+                    UsuarioID = table.Column<int>(type: "int", nullable: true),
                     LocalidadID = table.Column<int>(type: "int", nullable: false),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Tel = table.Column<int>(type: "int", nullable: false)
+                    NombreCompleto = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Tel = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NumeroDocumento = table.Column<int>(type: "int", nullable: false),
+                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Domicilio = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -259,7 +262,7 @@ namespace ReproGanControl.Migrations
                     EventoID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AnimalID = table.Column<int>(type: "int", nullable: false),
-                    Estado = table.Column<int>(type: "int", nullable: false),
+                    TipoEvento = table.Column<int>(type: "int", nullable: false),
                     FechaEvento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Observacion = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -281,11 +284,11 @@ namespace ReproGanControl.Migrations
                     RegistroMedicoID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AnimalID = table.Column<int>(type: "int", nullable: false),
+                    PersonaID = table.Column<int>(type: "int", nullable: false),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Tratamiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NombreVeterinario = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ApellidoVeterinario = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Tel = table.Column<int>(type: "int", nullable: false)
+                    Enfermedad = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Observacion = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -295,6 +298,12 @@ namespace ReproGanControl.Migrations
                         column: x => x.AnimalID,
                         principalTable: "Animales",
                         principalColumn: "AnimalID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RegistroMedicos_Personas_PersonaID",
+                        column: x => x.PersonaID,
+                        principalTable: "Personas",
+                        principalColumn: "PersonaID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -361,6 +370,11 @@ namespace ReproGanControl.Migrations
                 name: "IX_RegistroMedicos_AnimalID",
                 table: "RegistroMedicos",
                 column: "AnimalID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RegistroMedicos_PersonaID",
+                table: "RegistroMedicos",
+                column: "PersonaID");
         }
 
         /// <inheritdoc />
@@ -385,9 +399,6 @@ namespace ReproGanControl.Migrations
                 name: "Eventos");
 
             migrationBuilder.DropTable(
-                name: "Personas");
-
-            migrationBuilder.DropTable(
                 name: "RegistroMedicos");
 
             migrationBuilder.DropTable(
@@ -397,16 +408,19 @@ namespace ReproGanControl.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Localidades");
-
-            migrationBuilder.DropTable(
                 name: "Animales");
 
             migrationBuilder.DropTable(
-                name: "Provincias");
+                name: "Personas");
 
             migrationBuilder.DropTable(
                 name: "TipoAnimales");
+
+            migrationBuilder.DropTable(
+                name: "Localidades");
+
+            migrationBuilder.DropTable(
+                name: "Provincias");
         }
     }
 }

@@ -27,7 +27,7 @@ function renderTableLocalidades() {
     $.each(localidadesMostrar, function (index, localidad) {
         contenidoTabla += `
         <tr>
-            <td>${localidad.nombre}</td>
+            <td>${localidad.nombreLocalidad}</td>
             <td>${localidad.provinciaNombre}</td>
             <td>${localidad.codigoPostal}</td>
             <td class="text-center">
@@ -56,7 +56,7 @@ function LimpiarModal() {
     document.getElementById("LocalidadID").value = 0;
     document.getElementById("ProvinciaID").value = 0;
     document.getElementById("CodigoPostal").value = "";
-    document.getElementById("Nombre").value = "";
+    document.getElementById("NombreLocalidad").value = "";
 }
 
 function NuevaLocalidad() {
@@ -68,7 +68,7 @@ function GuardarLocalidad() {
     let localidadID = document.getElementById("LocalidadID").value;
     let provinciaID = document.getElementById("ProvinciaID").value;
     let codigoPostal = document.getElementById("CodigoPostal").value;
-    let nombre = document.getElementById("Nombre").value;
+    let nombreLocalidad = document.getElementById("NombreLocalidad").value;
 
     $.ajax({
         url: '../../Localidades/GuardarLocalidades',
@@ -76,7 +76,7 @@ function GuardarLocalidad() {
             localidadID: localidadID,
             provinciaID: provinciaID,
             codigoPostal: codigoPostal,
-            nombre: nombre
+            nombreLocalidad: nombreLocalidad
         },
         type: 'POST',
         dataType: 'json',
@@ -123,7 +123,7 @@ function ModalEditarLocalidad(localidadID) {
             document.getElementById("LocalidadID").value = localidad.localidadID;
             document.getElementById("ProvinciaID").value = localidad.provinciaID;
             document.getElementById("CodigoPostal").value = localidad.codigoPostal;
-            document.getElementById("Nombre").value = localidad.nombre;
+            document.getElementById("NombreLocalidad").value = localidad.nombreLocalidad;
             $("#ModalTitulo").text("Editar Localidad");
             $("#ModalLocalidad").modal("show");
         },

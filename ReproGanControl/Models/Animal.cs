@@ -22,7 +22,6 @@ public class Animal
 
 public class VistaAnimales
 {
-
     public int AnimalID { get; set; }
     public int TipoAnimalID { get; set; }
     public string? TipoAnimalNombre { get; set; }
@@ -39,8 +38,14 @@ public class VistaAnimales
 
 public enum Estado
 {
-    Preñada = 1,
+    [Display(Name = "NINGUNO")]
+    Ninguno = 0,
+    [Display(Name = "PREÑADA")]
+    Preñada,
+    [Display(Name = "PREÑADA DUDOSA")]
     PreñadaDudosa,
+    [Display(Name = "VACIA")]
     Vacia,
-    VaciaDudosa,
+    [Display(Name = "VACIA DUDOSA")]
+    VaciaDudosa
 }

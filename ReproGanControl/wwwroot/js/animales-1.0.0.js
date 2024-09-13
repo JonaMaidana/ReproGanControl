@@ -95,15 +95,13 @@ function GuardarAnimal() {
     let nombreMadre = document.getElementById("NombreMadre").value;
     let establecimiento = document.getElementById("Establecimiento").value;
     let fechaNacimiento = document.getElementById("FechaNacimiento").value;
-    
 
     // mensaje de error
     let camposFaltantes = [];
     if (!animalID) camposFaltantes.push("ID del Animal");
-    if (!tipoAnimalID) camposFaltantes.push("Tipo de Animal");
+    if (tipoAnimalID === "0") camposFaltantes.push("Tipo de Animal");
+    if (tipoAnimalID !== "2" && tipoAnimalID !== "4" && estado === "0") camposFaltantes.push("Estado");
     if (!caravana) camposFaltantes.push("Caravana");
-
-
     if (!establecimiento) camposFaltantes.push("Establecimiento");
     if (!fechaNacimiento) camposFaltantes.push("Fecha de Nacimiento");
 
@@ -118,6 +116,7 @@ function GuardarAnimal() {
         return; // Detener la ejecución si hay campos vacíos
     }
 
+    // Realizar la solicitud AJAX para guardar el animal
     $.ajax({
         url: '../../Animales/GuardarAnimales',
         data: {
@@ -129,7 +128,7 @@ function GuardarAnimal() {
             nombreMadre: nombreMadre,
             establecimiento: establecimiento,
             fechaNacimiento: fechaNacimiento,
-            Estado: estado,
+            Estado: tipoAnimalID === "2" || tipoAnimalID === "4" ? "0" : estado, // Enviar "0" si es Toro o Ternero
         },
         type: 'POST',
         dataType: 'json',
@@ -202,6 +201,8 @@ function ModalEditarAnimal(animalID) {
 
             document.getElementById("FechaNacimiento").value = formattedDate;
 
+            manejarVisibilidadEstado();
+
             $("#ModalTitulo").text("Editar Animal");
             $("#ModalAnimal").modal("show");
         },
@@ -262,17 +263,39 @@ function EliminarAnimal(animalID) {
     });
 }
 
-// function toggleInputs() {
-//     const container = document.getElementById("inputFiltros");
-//     if (container.classList.contains("d-none")) {
-//         container.classList.remove("d-none");
-//         container.classList.add("d-block");
-//     } else {
-//         container.classList.remove("d-block");
-//         container.classList.add("d-none");
-//     }
-// }
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     document.getElementById("show-button").addEventListener("click", toggleInputs);
-// });
+var tiposConEstado = [1, 2]; // Cambia estos IDs según tus tipos de animales para Vaca y Vaquillona
+
+function manejarVisibilidadEstado() {
+    var tipoAnimalID = parseInt($('#TipoAnimalID').val(), 10);
+    var estadoDropdown = $('#Estado');
+
+    if (tiposConEstado.includes(tipoAnimalID)) {
+        $('#estadoField').show();
+        estadoDropdown.children('option').each(function () {
+            var value = parseInt($(this).val(), 10);
+            $(this).show();
+            if (value === 0) {
+                $(this).hide();
+            }
+        });
+    } else {
+        $('#estadoField').hide();
+    }
+}
+
+function resetFormulario() {
+    $('#estadoField').hide(); // Oculta el campo Estado
+    // No reiniciar el valor de TipoAnimalID
+}
+
+$(document).ready(function () {
+    // Llamar a la función al cargar la página para manejar el estado inicial
+    manejarVisibilidadEstado();
+
+    // Llamar a la función cuando el valor del dropdown de tipo de animal cambie
+    $('#TipoAnimalID').change(manejarVisibilidadEstado);
+
+    // Asegúrate de ocultar el campo Estado al cancelar una edición
+    $('.btn-cancelar').click(resetFormulario);
+});

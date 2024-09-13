@@ -131,7 +131,6 @@ public class EventosController : Controller
         return Json(true);
     }
 
-
     public JsonResult ObtenerEstadoAnimal(int id)
     {
         var animal = _context.Animales.SingleOrDefault(a => a.AnimalID == id);

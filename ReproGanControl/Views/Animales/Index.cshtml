@@ -62,8 +62,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="ModalTitulo">Información del Animal</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModal()"
-                            aria-label="Close"></button>
+                        <button type="button" class="btn-cancelar btn-close" data-bs-dismiss="modal"
+                            onclick="LimpiarModal()" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form>
@@ -85,18 +85,20 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="TipoAnimalID" class="form-label">Tipo de Animal <span
                                             class="required-asterisk">*</span></label>
-                                    @Html.DropDownList("TipoAnimalID", null, htmlAttributes: new
-                                        {
-                                            @class =
-                                             "form-control"
-                                        })
+                                    @Html.DropDownList("TipoAnimalID", (SelectList)ViewBag.TipoAnimalID, htmlAttributes:
+                                             new
+                                             {
+                                                 @class = "form-control",
+                                                 id = "TipoAnimalID"
+                                             })
                                 </div>
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3" id="estadoField" style="display: none;">
                                     <label for="Estado" class="form-label">Estado del animal <span
                                             class="required-asterisk">*</span></label>
                                     @Html.DropDownList("Estado", (SelectList)ViewBag.EstadoID, htmlAttributes: new
                                         {
-                                            @class = "form-control"
+                                            @class = "form-control",
+                                            id = "Estado"
                                         })
                                 </div>
                             </div>
@@ -135,9 +137,10 @@
                             Completa los campos requeridos antes de guardar <span class="required-asterisk">*</span>
                         </p>
                         <div style="margin-left: auto;">
-                            <button type="button" onclick="LimpiarModal()" class="btn btn-secondary"
+                            <button type="button" onclick="LimpiarModal()" class="btn-cancelar btn btn-secondary"
                                 data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" onclick="GuardarAnimal()" class="btn btn-success">Guardar</button>
+                            <button type="button" onclick="GuardarAnimal()"
+                                class="btn-cancelar btn btn-success">Guardar</button>
                         </div>
                     </div>
                 </div>
@@ -150,7 +153,7 @@
                 <thead>
                     <tr>
                         <th>Caravana</th>
-                        <th>Tipo</th>
+                        <th>Tipo de Animal</th>
                         <th>Estado</th>
                         <th>Apodo</th>
                         <th>Padre</th>

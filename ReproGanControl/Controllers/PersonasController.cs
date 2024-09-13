@@ -22,15 +22,35 @@ public class PersonasController : Controller
     public IActionResult Index()
     {
         var localidades = _context.Localidades.ToList();
-        localidades.Add(new Localidad { LocalidadID = 0, NombreLocalidad = "[SELECCIONE]" });
+        localidades.Insert(0, new Localidad { LocalidadID = 0, NombreLocalidad = "[SELECCIONE]" });
         ViewBag.LocalidadID = new SelectList(localidades.OrderBy(n => n.NombreLocalidad), "LocalidadID", "NombreLocalidad");
 
+        var provincias = _context.Provincias.ToList();
+        provincias.Insert(0, new Provincia { ProvinciaID = 0, Nombre = "[SELECCIONE]" });
+        ViewBag.ProvinciaID = new SelectList(provincias.OrderBy(n => n.Nombre), "ProvinciaID", "Nombre");
+
         return View();
+    }
+    public JsonResult TraerLocalidades(int provinciaId)
+    {
+        IEnumerable<Localidad> localidades;
+
+        if (provinciaId == 0)
+        {
+            localidades = _context.Localidades.ToList();
+        }
+        else
+        {
+            localidades = _context.Localidades.Where(l => l.ProvinciaID == provinciaId).ToList();
+        }
+
+        var resultado = localidades.Select(l => new { l.LocalidadID, l.NombreLocalidad }).ToList();
+        return Json(resultado);
     }
 
     public JsonResult MostrarPersonas(int? id)
     {
-        var personas = _context.Personas.Include(p => p.Localidad).AsQueryable();
+        var personas = _context.Personas.Include(l => l.Localidad).ThenInclude(loc => loc.Provincia).AsQueryable();
 
         if (id != null)
         {
@@ -42,8 +62,10 @@ public class PersonasController : Controller
             {
                 PersonaID = p.PersonaID,
                 LocalidadID = p.LocalidadID,
+                ProvinciaID = p.Localidad.ProvinciaID,
                 NombreCompleto = p.NombreCompleto,
                 NombreLocalidad = p.Localidad.NombreLocalidad,
+                NombreProvincia = p.Localidad.Provincia.Nombre,
                 Email = p.Email,
                 Tel = p.Tel,
                 NumeroDocumento = p.NumeroDocumento,
@@ -56,19 +78,21 @@ public class PersonasController : Controller
         return Json(personasMostrar);
     }
 
-    public JsonResult CrearPersonas(int personaID, int localidadID, string nombreCompleto,
-    DateTime fechaNacimiento, string? email, string? tel, int numeroDocumento, string? domicilio)
+    public JsonResult CrearPersonas(int personaID, int localidadID, string nombreCompleto, DateTime fechaNacimiento, string? email, string? tel, int numeroDocumento, string? domicilio)
     {
-        bool existePersona = _context.Personas.Any(p => p.NumeroDocumento == numeroDocumento && p.Tel == tel && p.Email == email);
-        if (existePersona)
-        {
-            return Json(new { success = false, message = "No se puede cargar la persona porque ya existe una con el mismo Nro Documento, Email, y Telefono." });
-        }
 
-    
+        nombreCompleto = nombreCompleto.ToUpper();
+        domicilio = domicilio?.ToUpper();
 
         if (personaID == 0)
         {
+            // Verificar si ya existe una persona con el mismo número de documento
+            var personaExistente = _context.Personas.SingleOrDefault(p => p.NumeroDocumento == numeroDocumento);
+            if (personaExistente != null)
+            {
+                return Json(new { success = false, message = "Ya existe una persona con el mismo número de documento." });
+            }
+
             var persona = new Persona
             {
                 LocalidadID = localidadID,
@@ -104,7 +128,7 @@ public class PersonasController : Controller
 
     public JsonResult EliminarPersonas(int personaID)
     {
-        var persona = _context.Personas.Find(personaID); // Aquí estaba el error
+        var persona = _context.Personas.Find(personaID);
         if (persona != null)
         {
             _context.Personas.Remove(persona);

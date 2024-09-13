@@ -22,8 +22,10 @@ public class Persona
 public class VistaPersona{
     public int PersonaID { get; set; }
     public int LocalidadID { get; set; }
+    public int ProvinciaID { get; set; }
     public string? NombreCompleto { get; set; }
     public string? NombreLocalidad { get; set; }
+    public string? NombreProvincia { get; set; }
     public string? Email { get; set; }
     public string? Tel { get; set; }
     public int? NumeroDocumento { get; set; }

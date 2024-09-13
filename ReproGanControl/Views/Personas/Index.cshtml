@@ -50,39 +50,40 @@
                                     <input type="text" class="form-control" id="NombreCompleto"
                                         style="text-transform: uppercase;" placeholder="Nombre Completo">
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="NumeroDocumento" class="form-label">Documento<span
                                             class="required-asterisk">*</span></label>
                                     <input type="number" class="form-control" id="NumeroDocumento"
-                                        style="text-transform: uppercase;" placeholder="Nro Documento ">
+                                        style="text-transform: uppercase;" placeholder="Nro Documento">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="FechaNacimiento" class="form-label">Fecha Nacimiento<span
+                                            class="required-asterisk">*</span></label>
+                                    <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4 mb-3">
-                                    <label for="FechaNacimiento" class="form-label">Fecha Nacimiento<span
-                                            class="required-asterisk">*</span></label>
-                                    <input type="date" class="form-control" id="FechaNacimiento">
+                                    <label for="Tel" class="form-label">Celular</label>
+                                    <input type="tel" class="form-control" id="Tel" placeholder="Celular">
                                 </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="Domicilio" class="form-label">Domicilio</label>
-                                <input type="text" class="form-control" id="Domicilio"
-                                    style="text-transform: uppercase;" placeholder="Domicilio">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="LocalidadID" class="form-label">Localidad <span
-                                        class="required-asterisk">*</span></label>
-                                @Html.DropDownList("LocalidadID", null, htmlAttributes: new { @class = "form-control" })
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="Tel" class="form-label">Celular</label>
-                                <input type="tel" class="form-control" id="Tel" placeholder="Celular">
-
-                                <label for="Email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="Email" style="text-transform: uppercase;"
-                                    placeholder="Email">
+                                <div class="col-md-4 mb-3">
+                                    <label for="Email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="Email" placeholder="Email">
+                                </div>
+                                <div class="col-md-4 mb-3">
+    <label for="ProvinciaID" class="form-label">Provincia <span class="required-asterisk">*</span></label>
+    @Html.DropDownList("ProvinciaID", (SelectList)ViewBag.ProvinciaID, new { @class = "form-control", id = "ProvinciaID" })
+</div>
+<div class="col-md-4 mb-3">
+    <label for="LocalidadID" class="form-label">Localidad <span class="required-asterisk">*</span></label>
+    @Html.DropDownList("LocalidadID", (SelectList)ViewBag.LocalidadID, new { @class = "form-control", id = "LocalidadID" })
+</div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="Domicilio" class="form-label">Domicilio</label>
+                                    <input type="text" class="form-control" id="Domicilio"
+                                        style="text-transform: uppercase;" placeholder="Domicilio">
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -92,7 +93,7 @@
                                 class="required-asterisk">*</span>
                         </p>
                         <div style="margin-left: auto;">
-                            <button type="button" onclick="LimpiarModal()" class="btn btn-secondary"
+                            <button type="button" onclick="LimpiarModal()" id="btnCancelar" class="btn btn-secondary"
                                 data-bs-dismiss="modal">Cancelar</button>
                             <button type="button" onclick="GuardarPersonas()" class="btn btn-success">Guardar</button>
                         </div>
@@ -108,10 +109,11 @@
                         <th>Nombre Completo</th>
                         <th>Numero Documento</th>
                         <th>Fecha de Nacimiento</th>
-                        <th>Domicilio</th>
-                        <th>Localidad</th>
                         <th>Celular</th>
                         <th>Email</th>
+                        <th>Provincia</th>
+                        <th>Localidad</th>
+                        <th>Domicilio</th>
                         <th style="width: 70px"></th>
                         <th style="width: 70px"></th>
                     </tr>

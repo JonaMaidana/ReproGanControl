@@ -100,7 +100,7 @@ function GuardarAnimal() {
     let camposFaltantes = [];
     if (!animalID) camposFaltantes.push("ID del Animal");
     if (tipoAnimalID === "0") camposFaltantes.push("Tipo de Animal");
-    if (tipoAnimalID !== "2" && tipoAnimalID !== "4" && estado === "0") camposFaltantes.push("Estado");
+    if (tipoAnimalID !== "3" && tipoAnimalID !== "5" && estado === "0") camposFaltantes.push("Estado");
     if (!caravana) camposFaltantes.push("Caravana");
     if (!establecimiento) camposFaltantes.push("Establecimiento");
     if (!fechaNacimiento) camposFaltantes.push("Fecha de Nacimiento");
@@ -128,7 +128,7 @@ function GuardarAnimal() {
             nombreMadre: nombreMadre,
             establecimiento: establecimiento,
             fechaNacimiento: fechaNacimiento,
-            Estado: tipoAnimalID === "2" || tipoAnimalID === "4" ? "0" : estado, // Enviar "0" si es Toro o Ternero
+            Estado: tipoAnimalID === "3" || tipoAnimalID === "5" ? "0" : estado, // Enviar "0" si es Toro o Ternero
         },
         type: 'POST',
         dataType: 'json',

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ReproGanControl.Migrations
 {
     /// <inheritdoc />
-    public partial class MigracionUnica : Migration
+    public partial class MigracionPrueba : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -264,7 +264,17 @@ namespace ReproGanControl.Migrations
                     AnimalID = table.Column<int>(type: "int", nullable: false),
                     TipoEvento = table.Column<int>(type: "int", nullable: false),
                     FechaEvento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Observacion = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Observacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TipoCria = table.Column<bool>(type: "bit", nullable: true),
+                    TipoParto = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EstadoCria = table.Column<bool>(type: "bit", nullable: true),
+                    CausaAborto = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Inseminacion = table.Column<bool>(type: "bit", nullable: true),
+                    CausaCelo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EspecifiqueSecado = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MotivoVenta = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CausaRechazo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EspecifiqueOtro = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

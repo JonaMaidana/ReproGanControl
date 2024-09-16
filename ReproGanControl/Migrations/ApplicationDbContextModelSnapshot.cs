@@ -274,14 +274,44 @@ namespace ReproGanControl.Migrations
                     b.Property<int>("AnimalID")
                         .HasColumnType("int");
 
+                    b.Property<string>("CausaAborto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CausaCelo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CausaRechazo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EspecifiqueOtro")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EspecifiqueSecado")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("EstadoCria")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("FechaEvento")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool?>("Inseminacion")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MotivoVenta")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observacion")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool?>("TipoCria")
+                        .HasColumnType("bit");
+
                     b.Property<int>("TipoEvento")
                         .HasColumnType("int");
+
+                    b.Property<string>("TipoParto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EventoID");
 

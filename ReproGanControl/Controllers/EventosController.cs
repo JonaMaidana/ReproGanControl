@@ -70,22 +70,36 @@ public class EventosController : Controller
                 FechaEvento = e.FechaEvento,
                 FechaEventoString = e.FechaEvento.ToString("dd/MM/yyyy"),
                 Observacion = string.IsNullOrEmpty(e.Observacion) ? "NINGUNA" : e.Observacion,
+                TipoCria = e.TipoCria,
+                TipoCriaString = e.TipoCria.HasValue ? (e.TipoCria.Value ? "Macho" : "Hembra") : "",
+                TipoParto = e.TipoParto,
+                EstadoCria = e.EstadoCria,
+                EstadoCriaString = e.EstadoCria.HasValue ? (e.EstadoCria.Value ? "Vivo" : "Muerto") : "",
+                CausaAborto = e.CausaAborto,
+                Inseminacion = e.Inseminacion,
+                InseminacionString = e.Inseminacion.HasValue ? (e.Inseminacion.Value ? "Monta" : "Artificial") : "",
+                CausaCelo = e.CausaCelo,
+                EspecifiqueSecado = e.EspecifiqueSecado,
+                MotivoVenta = e.MotivoVenta,
+                CausaRechazo = e.CausaRechazo,
+                EspecifiqueOtro = e.EspecifiqueOtro
             })
             .ToList();
 
         return Json(eventosMostrar);
     }
 
-    public JsonResult GuardarEventos(int eventoID, int animalID, EventoEnum tipoEvento, DateTime fechaEvento, string observacion)
+    public JsonResult GuardarEventos(int eventoID, int animalID, EventoEnum tipoEvento, DateTime fechaEvento, string observacion, bool? tipoCria,
+    string tipoParto, bool? estadoCria, string causaAborto, bool? inseminacion, string causaCelo, string especifiqueSecado,
+    string motivoVenta, string causaRechazo, string especifiqueOtro)
     {
-        // Validar si el estado es válido
-        if (tipoEvento == null || !Enum.IsDefined(typeof(EventoEnum), tipoEvento))
+        // Validar si el tipoEvento es válido
+        if (!Enum.IsDefined(typeof(EventoEnum), tipoEvento))
         {
             return Json(new { success = false, message = "El tipo evento es obligatorio." });
         }
+        observacion = string.IsNullOrEmpty(observacion) ? "NINGUNA" : observacion.ToUpper();
 
-        observacion = string.IsNullOrEmpty(observacion) ? "NINGUNA" : observacion;
-        observacion = observacion.ToUpper();
         // Validar si el AnimalID ya está registrado en otro evento
         bool animalIDExistente = _context.Eventos.Any(e => e.AnimalID == animalID && e.EventoID != eventoID);
 
@@ -101,22 +115,44 @@ public class EventosController : Controller
                 AnimalID = animalID,
                 TipoEvento = tipoEvento,
                 FechaEvento = fechaEvento,
-                Observacion = observacion
+                Observacion = observacion,
+
+                TipoCria = tipoEvento == EventoEnum.Parto ? tipoCria : null,
+                TipoParto = tipoEvento == EventoEnum.Parto ? tipoParto : null,
+                EstadoCria = tipoEvento == EventoEnum.Parto ? estadoCria : null,
+                CausaAborto = tipoEvento == EventoEnum.Aborto ? causaAborto : null,
+                Inseminacion = tipoEvento == EventoEnum.Servicio ? inseminacion : null,
+                CausaCelo = tipoEvento == EventoEnum.Celo ? causaCelo : null,
+                EspecifiqueSecado = tipoEvento == EventoEnum.Secado ? especifiqueSecado : null,
+                MotivoVenta = tipoEvento == EventoEnum.Venta ? motivoVenta : null,
+                CausaRechazo = tipoEvento == EventoEnum.Rechazo ? causaRechazo : null,
+                EspecifiqueOtro = tipoEvento == EventoEnum.Otro ? especifiqueOtro : null
             };
             _context.Add(evento);
             _context.SaveChanges();
         }
         else
         {
-            var eventoEditar = _context.Eventos.Where(e => e.EventoID == eventoID).SingleOrDefault();
-            if (eventoEditar != null)
+            // Editar evento existente
+            var eventoExistente = _context.Eventos.SingleOrDefault(e => e.EventoID == eventoID);
+            if (eventoExistente != null)
             {
-                eventoEditar.AnimalID = animalID;
-                eventoEditar.TipoEvento = tipoEvento;
-                eventoEditar.FechaEvento = fechaEvento;
-                eventoEditar.Observacion = observacion;
+                eventoExistente.AnimalID = animalID;
+                eventoExistente.TipoEvento = tipoEvento;
+                eventoExistente.FechaEvento = fechaEvento;
+                eventoExistente.Observacion = observacion;
 
-                _context.SaveChanges();
+                // Actualizar los campos específicos según el tipo de evento
+                eventoExistente.TipoCria = tipoEvento == EventoEnum.Parto ? tipoCria : null;
+                eventoExistente.TipoParto = tipoEvento == EventoEnum.Parto ? tipoParto : null;
+                eventoExistente.EstadoCria = tipoEvento == EventoEnum.Parto ? estadoCria : null;
+                eventoExistente.CausaAborto = tipoEvento == EventoEnum.Aborto ? causaAborto : null;
+                eventoExistente.Inseminacion = tipoEvento == EventoEnum.Servicio ? inseminacion : null;
+                eventoExistente.CausaCelo = tipoEvento == EventoEnum.Celo ? causaCelo : null;
+                eventoExistente.EspecifiqueSecado = tipoEvento == EventoEnum.Secado ? especifiqueSecado : null;
+                eventoExistente.MotivoVenta = tipoEvento == EventoEnum.Venta ? motivoVenta : null;
+                eventoExistente.CausaRechazo = tipoEvento == EventoEnum.Rechazo ? causaRechazo : null;
+                eventoExistente.EspecifiqueOtro = tipoEvento == EventoEnum.Otro ? especifiqueOtro : null;
             }
         }
         return Json(new { success = true });
@@ -130,14 +166,14 @@ public class EventosController : Controller
 
         return Json(true);
     }
-
-    public JsonResult ObtenerEstadoAnimal(int id)
-    {
-        var animal = _context.Animales.SingleOrDefault(a => a.AnimalID == id);
-        if (animal != null)
-        {
-            return Json(new { estadoAnimal = animal.Estado.ToString().ToUpper() });
-        }
-        return Json(new { estadoAnimal = "No encontrado" });
-    }
 }
+//     public JsonResult ObtenerEstadoAnimal(int id)
+//     {
+//         var animal = _context.Animales.SingleOrDefault(a => a.AnimalID == id);
+//         if (animal != null)
+//         {
+//             return Json(new { estadoAnimal = animal.Estado.ToString().ToUpper() });
+//         }
+//         return Json(new { estadoAnimal = "No encontrado" });
+//     }
+// }

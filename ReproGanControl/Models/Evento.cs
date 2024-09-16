@@ -11,6 +11,17 @@ public class Evento
     public DateTime FechaEvento { get; set; }
     public string? Observacion { get; set; }
 
+    public bool? TipoCria { get; set; }
+    public string? TipoParto { get; set; }
+    public bool? EstadoCria { get; set; }
+    public string? CausaAborto { get; set; }
+    public bool? Inseminacion { get; set; }
+    public string? CausaCelo { get; set; }
+    public string? EspecifiqueSecado { get; set; }
+    public string? MotivoVenta { get; set; }
+    public string? CausaRechazo { get; set; }
+    public string? EspecifiqueOtro { get; set; }
+
     public virtual Animal Animal { get; set; }
 }
 
@@ -23,9 +34,9 @@ public enum EventoEnum
     Secado,
     Venta,
     Rechazo,
-    Muerte,
-    Otros
+    Otro
 }
+
 public class VistaEventos
 {
     public int EventoID { get; set; }
@@ -37,4 +48,18 @@ public class VistaEventos
     public DateTime FechaEvento { get; set; }
     public string? FechaEventoString { get; set; }
     public string? Observacion { get; set; }
+
+    public bool? TipoCria { get; set; }
+    public string? TipoCriaString { get; set; }
+    public string? TipoParto { get; set; }
+    public bool? EstadoCria { get; set; }
+    public string? EstadoCriaString { get; set; }
+    public string? CausaAborto { get; set; }
+    public bool? Inseminacion { get; set; }
+    public string? InseminacionString { get; set; }
+    public string? CausaCelo { get; set; }
+    public string? EspecifiqueSecado { get; set; }
+    public string? MotivoVenta { get; set; }
+    public string? CausaRechazo { get; set; }
+    public string? EspecifiqueOtro { get; set; }
 }

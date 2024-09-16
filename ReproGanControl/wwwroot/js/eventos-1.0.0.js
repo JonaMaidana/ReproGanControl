@@ -24,6 +24,7 @@ function renderTableEventos() {
     let contenidoTabla = ``;
 
     $.each(eventosMostrar, function (index, evento) {
+        // Construye el contenido de la tabla incluyendo los campos específicos
         contenidoTabla += `
         <tr>
             <td>${evento.animalCaravana}</td>
@@ -31,6 +32,16 @@ function renderTableEventos() {
             <td>${evento.tipoEventoString}</td>
             <td>${evento.fechaEventoString}</td>
             <td>${evento.observacion}</td>
+            <td>${evento.tipoCriaString}</td>
+            <td>${evento.tipoParto || ''}</td>
+            <td>${evento.estadoCriaString || ''}</td>
+            <td>${evento.causaAborto || ''}</td>
+            <td>${evento.inseminacionString || ''}</td>
+            <td>${evento.causaCelo || ''}</td>
+            <td>${evento.especifiqueSecado || ''}</td>
+            <td>${evento.motivoVenta || ''}</td>
+            <td>${evento.causaRechazo || ''}</td>
+            <td>${evento.especifiqueOtro || ''}</td>
 
             <td class="text-center">
                 <button type="button" class="edit-button" onclick="ModalEditarEventos(${evento.eventoID})">
@@ -60,10 +71,35 @@ function LimpiarModalEvento() {
     document.getElementById("TipoEvento").value = 0;
     document.getElementById("Observacion").value = "";
 
+    // Ocultar todos los campos específicos de tipo de evento
+    document.getElementById('divTipoParto').style.display = 'none';
+    document.getElementById('divTipoCria').style.display = 'none';
+    document.getElementById('divEstadoCria').style.display = 'none';
+    document.getElementById('divCausaAborto').style.display = 'none';
+    document.getElementById('divInseminacion').style.display = 'none';
+    document.getElementById('divCausaCelo').style.display = 'none';
+    document.getElementById('divEspecifiqueSecado').style.display = 'none';
+    document.getElementById('divMotivoVenta').style.display = 'none';
+    document.getElementById('divCausaRechazo').style.display = 'none';
+    document.getElementById('divEspecifiqueOtro').style.display = 'none';
+
+    // Limpiar campos específicos
+    document.getElementById('TipoParto').value = '';
+    document.getElementById('TipoCria').value = ''; // Para los campos de tipo bool, puedes usar ''
+    document.getElementById('EstadoCria').value = '';
+    document.getElementById('CausaAborto').value = '';
+    document.getElementById('Inseminacion').value = '';  // Para los campos de tipo bool, debes resetear el estado
+    document.getElementById('CausaCelo').value = '';
+    document.getElementById('EspecifiqueSecado').value = '';
+    document.getElementById('MotivoVenta').value = '';
+    document.getElementById('CausaRechazo').value = '';
+    document.getElementById('EspecifiqueOtro').value = '';
+
 }
 
 function NuevoEvento() {
     $("#ModalTituloEvento").text("Nuevo Evento");
+    configurarFechaActual(); // Asegúrate de que esta función se llame aquí
 }
 
 function configurarFechaActual() {
@@ -80,6 +116,18 @@ function GuardarEvento() {
     let fechaEvento = document.getElementById("FechaEvento").value;
     let observacion = document.getElementById("Observacion").value;
 
+    // Capturar campos específicos según el tipo de evento
+    let tipoCria = document.getElementById("TipoCria").value === "" ? null : (document.getElementById("TipoCria").value === "true");
+    let tipoParto = document.getElementById("TipoParto") ? document.getElementById("TipoParto").value : null;
+    let estadoCria = document.getElementById("EstadoCria").value === "" ? null : (document.getElementById("EstadoCria").value === "true");
+    let causaAborto = document.getElementById("CausaAborto") ? document.getElementById("CausaAborto").value : null;
+    let inseminacion = document.getElementById("Inseminacion").value === "" ? null : (document.getElementById("Inseminacion").value === "true");
+    let causaCelo = document.getElementById("CausaCelo") ? document.getElementById("CausaCelo").value : null;
+    let especifiqueSecado = document.getElementById("EspecifiqueSecado") ? document.getElementById("EspecifiqueSecado").value : null;
+    let motivoVenta = document.getElementById("MotivoVenta") ? document.getElementById("MotivoVenta").value : null;
+    let causaRechazo = document.getElementById("CausaRechazo") ? document.getElementById("CausaRechazo").value : null;
+    let especifiqueOtro = document.getElementById("EspecifiqueOtro") ? document.getElementById("EspecifiqueOtro").value : null;
+
     // Verificar si alguno de los campos requeridos está vacío  
     if (!animalID || !tipoEvento || !fechaEvento) {
         Swal.fire({
@@ -90,16 +138,29 @@ function GuardarEvento() {
         return; // Salir de la función si falta algún campo
     }
 
+    // Preparar los datos para enviar
+    let datosEvento = {
+        eventoID: eventoID,
+        animalID: animalID,
+        tipoEvento: tipoEvento,
+        fechaEvento: fechaEvento,
+        observacion: observacion,
+        tipoCria: tipoEvento == 1 ? tipoCria : null, // Solo si es Parto
+        tipoParto: tipoEvento == 1 ? tipoParto : null, // Solo si es Parto
+        estadoCria: tipoEvento == 1 ? estadoCria : null, // Solo si es Parto
+        causaAborto: tipoEvento == 2 ? causaAborto : null, // Solo si es Aborto
+        inseminacion: tipoEvento == 3 ? inseminacion : null, // Solo si es Servicio
+        causaCelo: tipoEvento == 4 ? causaCelo : null, // Solo si es Celo
+        especifiqueSecado: tipoEvento == 5 ? especifiqueSecado : null, // Solo si es Secado
+        motivoVenta: tipoEvento == 6 ? motivoVenta : null, // Solo si es Venta
+        causaRechazo: tipoEvento == 7 ? causaRechazo : null, // Solo si es Rechazo
+        especifiqueOtro: tipoEvento == 8 ? especifiqueOtro : null // Solo si es Otro
+    };
+
     // Si todos los campos están completos, proceder con la solicitud AJAX
     $.ajax({
         url: '../../Eventos/GuardarEventos',
-        data: {
-            eventoID: eventoID,
-            animalID: animalID,
-            tipoEvento: tipoEvento, // Enviar estado
-            fechaEvento: fechaEvento,
-            observacion: observacion // Observación puede ser opcional
-        },
+        data: datosEvento,
         type: 'POST',
         dataType: 'json',
         success: function (resultado) {
@@ -131,9 +192,6 @@ function GuardarEvento() {
     });
 }
 
-// Llamar a la función para configurar la fecha al cargar la página
-document.addEventListener('DOMContentLoaded', configurarFechaActual);
-
 function ModalEditarEventos(eventoID) {
     $.ajax({
         url: '../../Eventos/ListadoEventos',
@@ -144,10 +202,9 @@ function ModalEditarEventos(eventoID) {
             if (response && response.length > 0) {
                 let evento = response[0];
 
+                // Cargar datos principales
                 document.getElementById("EventoID").value = evento.eventoID;
                 document.getElementById("AnimalID").value = evento.animalID;
-
-                // Asigna el valor correcto al dropdown del Estado
                 document.getElementById("TipoEvento").value = evento.tipoEvento;
 
                 let fechaEvento = new Date(evento.fechaEvento);
@@ -156,8 +213,51 @@ function ModalEditarEventos(eventoID) {
 
                 document.getElementById("Observacion").value = evento.observacion;
 
+                // Configurar campos específicos
+                switch (evento.tipoEvento) {
+                    case 1: // Parto
+                        document.getElementById("TipoCria").value = evento.tipoCria !== null ? evento.tipoCria.toString() : "";
+                        document.getElementById("TipoParto").value = evento.tipoParto || "";
+                        document.getElementById("EstadoCria").value = evento.estadoCria !== null ? evento.estadoCria.toString() : "";
+                        break;
+                    case 2: // Aborto
+                        document.getElementById("CausaAborto").value = evento.causaAborto || "";
+                        break;
+                    case 3: // Servicio
+                        document.getElementById("Inseminacion").value = evento.inseminacion !== null ? evento.inseminacion.toString() : "";
+                        break;
+                    case 4: // Celo
+                        document.getElementById("CausaCelo").value = evento.causaCelo || "";
+                        break;
+                    case 5: // Secado
+                        document.getElementById("EspecifiqueSecado").value = evento.especifiqueSecado || "";
+                        break;
+                    case 6: // Venta
+                        document.getElementById("MotivoVenta").value = evento.motivoVenta || "";
+                        break;
+                    case 7: // Rechazo
+                        document.getElementById("CausaRechazo").value = evento.causaRechazo || "";
+                        break;
+                    case 8: // Otro
+                        document.getElementById("EspecifiqueOtro").value = evento.especifiqueOtro || "";
+                        break;
+                }
+
+                // Llamar a la función para mostrar campos específicos
+                mostrarCamposPorTipoEvento();
+
                 $("#ModalTituloEvento").text("Editar Evento");
                 $("#ModalEvento").modal("show");
+
+                // Log de datos cargados para depuración
+                console.log("Datos cargados en el formulario:", {
+                    eventoID: evento.eventoID,
+                    animalID: evento.animalID,
+                    tipoEvento: evento.tipoEvento,
+                    fechaEvento: fechaFormato,
+                    observacion: evento.observacion,
+                    causaAborto: evento.causaAborto
+                });
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -215,24 +315,76 @@ function EliminarEventos(eventoID) {
     });
 }
 
-$(document).ready(function() {
-    // Al seleccionar un animal en el dropdown, actualizar el estado del animal en el modal
-    $('#AnimalID').change(function() {
-        var animalID = $(this).val();
-        if (animalID) {
-            $.ajax({
-                url: '/Eventos/ObtenerEstadoAnimal', // Reemplaza con la URL correcta
-                type: 'GET',
-                data: { id: animalID },
-                success: function(response) {
-                    $('#EstadoAnimal').val(response.estadoAnimal);
-                },
-                error: function() {
-                    $('#EstadoAnimal').val('Error al obtener el estado.');
-                }
-            });
-        } else {
-            $('#EstadoAnimal').val('');
-        }
-    });
-});
+function mostrarCamposPorTipoEvento() {
+    // Obtener el valor seleccionado del DropDownList
+    var tipoEvento = document.getElementById("TipoEvento").value;
+    console.log('Tipo de Evento Seleccionado:', tipoEvento); // Log del tipo de evento
+
+    // Ocultar todos los campos específicos al inicio
+    document.getElementById("divTipoParto").style.display = "none";
+    document.getElementById("divTipoCria").style.display = "none";
+    document.getElementById("divEstadoCria").style.display = "none";
+    document.getElementById("divCausaAborto").style.display = "none";
+    document.getElementById("divInseminacion").style.display = "none";
+    document.getElementById("divCausaCelo").style.display = "none";
+    document.getElementById("divEspecifiqueSecado").style.display = "none";
+    document.getElementById("divMotivoVenta").style.display = "none";
+    document.getElementById("divCausaRechazo").style.display = "none";
+    document.getElementById("divEspecifiqueOtro").style.display = "none";
+
+    // Mostrar solo el campo correspondiente al evento seleccionado
+    switch (tipoEvento) {
+        case '1': // Parto
+            document.getElementById("divTipoParto").style.display = "block";
+            document.getElementById("divTipoCria").style.display = "block";
+            document.getElementById("divEstadoCria").style.display = "block";
+            break;
+        case '2': // Aborto
+            document.getElementById("divCausaAborto").style.display = "block";
+            break;
+        case '3': // Servicio
+            document.getElementById("divInseminacion").style.display = "block";
+            break;
+        case '4': // Celo
+            document.getElementById("divCausaCelo").style.display = "block";
+            break;
+        case '5': // Secado
+            document.getElementById("divEspecifiqueSecado").style.display = "block";
+            break;
+        case '6': // Venta
+            document.getElementById("divMotivoVenta").style.display = "block";
+            break;
+        case '7': // Rechazo
+            document.getElementById("divCausaRechazo").style.display = "block";
+            break;
+        case '8': // Otro
+            document.getElementById("divEspecifiqueOtro").style.display = "block";
+            break;
+        default:
+            // Ningún campo específico es requerido para otros tipos de eventos
+            break;
+    }
+}
+
+
+// $(document).ready(function () {
+//     // Al seleccionar un animal en el dropdown, actualizar el estado del animal en el modal
+//     $('#AnimalID').change(function () {
+//         var animalID = $(this).val();
+//         if (animalID) {
+//             $.ajax({
+//                 url: '/Eventos/ObtenerEstadoAnimal', // Reemplaza con la URL correcta
+//                 type: 'GET',
+//                 data: { id: animalID },
+//                 success: function (response) {
+//                     $('#EstadoAnimal').val(response.estadoAnimal);
+//                 },
+//                 error: function () {
+//                     $('#EstadoAnimal').val('Error al obtener el estado.');
+//                 }
+//             });
+//         } else {
+//             $('#EstadoAnimal').val('');
+//         }
+//     });
+// });

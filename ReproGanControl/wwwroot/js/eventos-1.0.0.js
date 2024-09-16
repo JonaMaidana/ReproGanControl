@@ -24,7 +24,6 @@ function renderTableEventos() {
     let contenidoTabla = ``;
 
     $.each(eventosMostrar, function (index, evento) {
-        // Construye el contenido de la tabla incluyendo los campos específicos
         contenidoTabla += `
         <tr>
             <td>${evento.animalCaravana}</td>
@@ -32,17 +31,11 @@ function renderTableEventos() {
             <td>${evento.tipoEventoString}</td>
             <td>${evento.fechaEventoString}</td>
             <td>${evento.observacion}</td>
-            <td>${evento.tipoCriaString}</td>
-            <td>${evento.tipoParto || ''}</td>
-            <td>${evento.estadoCriaString || ''}</td>
-            <td>${evento.causaAborto || ''}</td>
-            <td>${evento.inseminacionString || ''}</td>
-            <td>${evento.causaCelo || ''}</td>
-            <td>${evento.especifiqueSecado || ''}</td>
-            <td>${evento.motivoVenta || ''}</td>
-            <td>${evento.causaRechazo || ''}</td>
-            <td>${evento.especifiqueOtro || ''}</td>
-
+            <td class="text-center">
+                <button type="button" class="show-details-button" onclick="mostrarDetalles(${index})">
+                    Mostrar detalles
+                </button>
+            </td>
             <td class="text-center">
                 <button type="button" class="edit-button" onclick="ModalEditarEventos(${evento.eventoID})">
                     <i class="fa-solid fa-pen-to-square"></i>
@@ -54,10 +47,59 @@ function renderTableEventos() {
                 </button>
             </td>
         </tr>
+        <tr id="detalles-${index}" style="display:none;">
+            <td colspan="15">
+                <strong>Tipo Cría:</strong> ${evento.tipoCriaString || 'N/A'} <br>
+                <strong>Tipo Parto:</strong> ${evento.tipoParto || 'N/A'} <br>
+                <strong>Estado Cría:</strong> ${evento.estadoCriaString || 'N/A'} <br>
+                <strong>Inseminación:</strong> ${evento.inseminacionString || 'N/A'} <br>
+                <strong>Causa Aborto:</strong> ${evento.causaAborto || 'N/A'} <br>
+                <strong>Causa Celo:</strong> ${evento.causaCelo || 'N/A'} <br>
+                <strong>Especifique Secado:</strong> ${evento.especifiqueSecado || 'N/A'} <br>
+                <strong>Motivo Venta:</strong> ${evento.motivoVenta || 'N/A'} <br>
+                <strong>Causa Rechazo:</strong> ${evento.causaRechazo || 'N/A'} <br>
+                <strong>Especifique Otro:</strong> ${evento.especifiqueOtro || 'N/A'} <br>
+            </td>
+        </tr>
         `;
     });
 
     document.getElementById("tbody-eventos").innerHTML = contenidoTabla;
+}
+
+function mostrarDetalles(index) {
+    let evento = eventosMostrar[index];
+    let modalBody = document.getElementById('modalDetallesBody');
+
+    // Crear un fragmento de documento para agregar los detalles
+    let fragment = document.createDocumentFragment();
+
+    // Función auxiliar para crear un campo en el modal solo si tiene valor
+    function createField(label, value) {
+        if (value) {
+            let div = document.createElement('div');
+            div.classList.add('mb-3');
+            div.innerHTML = `<strong>${label}:</strong> ${value}`;
+            fragment.appendChild(div);
+        }
+    }
+
+    // Agregar detalles dinámicamente al fragmento
+    createField('Tipo Cría', evento.tipoCriaString);
+    createField('Tipo Parto', evento.tipoParto);
+    createField('Estado Cría', evento.estadoCriaString);
+    createField('Inseminación', evento.inseminacionString);
+    createField('Causa Aborto', evento.causaAborto);
+    createField('Causa Celo', evento.causaCelo);
+    createField('Especifique Secado', evento.especifiqueSecado);
+    createField('Motivo Venta', evento.motivoVenta);
+    createField('Causa Rechazo', evento.causaRechazo);
+    createField('Especifique Otro', evento.especifiqueOtro);
+
+    // Limpiar el contenido actual del modal y agregar el fragmento
+    modalBody.innerHTML = '';
+    modalBody.appendChild(fragment);
+    $('#modalDetalles').modal('show');
 }
 
 function updateTotalItemsEventos() {

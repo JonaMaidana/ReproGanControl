@@ -129,7 +129,7 @@ public class AnimalesController : Controller
         nombrePadre = nombrePadre.ToUpper();
         nombreMadre = nombreMadre.ToUpper();
 
-        if (tipoAnimalID == 3 || tipoAnimalID == 4|| tipoAnimalID == 5) // Asume 2 para Toro y 4 para Ternero
+        if (tipoAnimalID == 3 || tipoAnimalID == 4 || tipoAnimalID == 5) // Asume 2 para Toro y 4 para Ternero
         {
             estado = Estado.Ninguno;
         }
@@ -194,5 +194,68 @@ public class AnimalesController : Controller
     }
 
 
+    public ActionResult InformeAnimales()
+    {
+        var tiposAnimalesBuscar = _context.TipoAnimales.ToList();
 
+        tiposAnimalesBuscar.Add(new TipoAnimal { TipoAnimalID = 0, Descripcion = "[TODOS]" });
+        ViewBag.TipoAnimalBuscarID = new SelectList(tiposAnimalesBuscar.OrderBy(c => c.Descripcion), "TipoAnimalID", "Descripcion");
+        return View();
+    }
+    public JsonResult ListadoInformeAnimales(DateTime? buscarActividadInicio, DateTime? buscarActividadFin, int? TipoEjerciciosBuscarID)
+    {
+
+        List<VistaInformeAnimales> vistaInformeAnimales = new List<VistaInformeAnimales>();
+
+
+        var animales = _context.Animales.Include(t => t.TipoAnimal).ToList();
+
+        //filtro para buscar
+        // if (buscarActividadInicio != null && buscarActividadFin != null)
+        // {
+        //     ejerciciosFisicos = ejerciciosFisicos.Where(e => e.Inicio >= buscarActividadInicio && e.Inicio <= buscarActividadFin).ToList();
+        // }
+
+        // Filtro para buscar por nombre del ejercicio
+        // if (TipoEjerciciosBuscarID != null && TipoEjerciciosBuscarID != 0)
+        // {
+        //     ejerciciosFisicos = ejerciciosFisicos.Where(e => e.TipoEjercicioID == TipoEjerciciosBuscarID).ToList();
+        // }
+
+        //Filtro para ordenar
+        // animales = animales.OrderBy(e => e.).ToList();
+
+
+
+        foreach (var listadoAnimales in animales)
+        {
+
+            var tipoAnimalesMostrar = vistaInformeAnimales.Where(t => t.TipoAnimalID == listadoAnimales.TipoAnimalID).SingleOrDefault();
+            if (tipoAnimalesMostrar == null)
+            {
+                tipoAnimalesMostrar = new VistaInformeAnimales
+                {
+                    TipoAnimalID = listadoAnimales.TipoAnimalID,
+                    TipoAnimalNombre = listadoAnimales.TipoAnimal.Descripcion,
+                    vistaAnimales = new List<VistaAnimales>()
+                };
+                vistaInformeAnimales.Add(tipoAnimalesMostrar);
+            }
+
+            var animalesMostrar = new VistaAnimales
+            {
+                Caravana = listadoAnimales.Caravana,
+                EstadoString = listadoAnimales.Estado.GetDisplayName(),
+                Apodo = listadoAnimales.Apodo,
+                Establecimiento = listadoAnimales.Establecimiento,
+                FechaNacimientoString = listadoAnimales.FechaNacimiento.ToString("dd/MM/yyyy"),
+                NombrePadre = listadoAnimales.NombrePadre,
+                NombreMadre = listadoAnimales.NombreMadre,
+            };
+            tipoAnimalesMostrar.vistaAnimales.Add(animalesMostrar);
+        }
+
+        return Json(vistaInformeAnimales);
+    }
 }
+

@@ -1,0 +1,45 @@
+@{
+  ViewData["Title"] = "Informe Animales";
+}
+@* <div class="row">
+  <div class="col-md-3">
+    <label for="BuscarActividadInicio" class="form-label">Inicio de la actividad</label>
+    <input type="datetime-local" id="BuscarActividadInicio" onchange="ListadoInformeEjercicios()"
+      class="form-control" />
+  </div>
+  <div class="col-md-3">
+    <label for="BuscarActividadFin" class="form-label">Fin de la actividad</label>
+    <input type="datetime-local" id="BuscarActividadFin" onchange="ListadoInformeEjercicios()" class="form-control"
+      value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+  </div>
+  <div class="mb-3 col-2">
+    <label for="TipoEjerciciosBuscarID" class="form-label">Buscar Tipo Ejercicio</label>
+    @Html.DropDownList("TipoEjerciciosBuscarID", null, htmlAttributes: new { @class = "form-control", onchange="ListadoInformeEjercicios()" })
+  </div> *@
+
+
+</div>
+<br>
+
+
+
+<table class="table table-hover table-bordered table-condensed shadow tabla " style="background-color: white;">
+  <thead class="table-dark">
+    <tr>
+      <th>Tipo Animal</th>
+      <th>Caravana</th>
+      <th>Estado</th>
+      <th>Apodo</th>
+      <th>Establecimiento</th>
+      <th>Fecha Nacimiento</th>
+      <th>Nombre Padre</th>
+      <th>Nombre Madre</th>
+    </tr>
+  </thead>
+  <tbody id="tbody-informeAnimales">
+  </tbody>
+</table>
+
+@section Scripts {
+  <script src="~/js/informeAnimales-1.0.0.js"></script>
+}

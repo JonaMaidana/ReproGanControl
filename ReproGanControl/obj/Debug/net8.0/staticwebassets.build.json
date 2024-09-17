@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "M8oL8dbVtDrvp1vgaXdKHD0A7dLCBGAM1T+OhFJ+9PY=",
+  "Hash": "F0vlZjzyxCxHdIGPlH9PuogB/n3Nj7q9VB/ftuF4vhk=",
   "Source": "ReproGanControl",
   "BasePath": "_content/ReproGanControl",
   "Mode": "Default",
@@ -1516,6 +1516,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\informeAnimales-1.0.0.js"
+    },
+    {
+      "Identity": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\informeEventos-1.0.0.js",
+      "SourceId": "ReproGanControl",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\",
+      "BasePath": "_content/ReproGanControl",
+      "RelativePath": "js/informeEventos-1.0.0.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\informeEventos-1.0.0.js"
     },
     {
       "Identity": "C:\\Users\\Jona\\Desktop\\Programación\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\jspdf\\jspdf.debug.js",

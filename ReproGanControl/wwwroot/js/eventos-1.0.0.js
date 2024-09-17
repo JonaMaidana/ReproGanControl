@@ -28,7 +28,6 @@ function ListadoEventos() {
     });
 }
 
-
 function renderTableEventos() {
     let contenidoTabla = '';
 

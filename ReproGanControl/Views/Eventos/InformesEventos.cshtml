@@ -1,0 +1,59 @@
+@{
+  ViewData["Title"] = "Informe Eventos";
+}
+<div class="card" style="font-family: 'Arial', sans-serif;">
+    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 class="display-6" style="color: #555;">Informe de Eventos</h3>
+    </div>
+    <div class="card-body">
+        @* <!-- Filtros -->
+         <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="BuscarActividadInicio" class="form-label">Inicio de la actividad</label>
+                <input type="datetime-local" id="BuscarActividadInicio" onchange="ListadoInformeEjercicios()"
+                    class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label for="BuscarActividadFin" class="form-label">Fin de la actividad</label>
+                <input type="datetime-local" id="BuscarActividadFin" onchange="ListadoInformeEjercicios()"
+                    class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+            </div>
+            <div class="mb-3 col-2">
+                <label for="TipoEjerciciosBuscarID" class="form-label">Buscar Tipo Ejercicio</label>
+                @Html.DropDownList("TipoEjerciciosBuscarID", null, htmlAttributes: new { @class = "form-control", onchange="ListadoInformeEjercicios()" })
+            </div>
+        </div>  *@
+
+    
+        <div class="table-responsive mt-2">
+            <table id="tabla-imprimir" class="content-table">
+            <thead>
+                <tr>
+                    <th>Tipo Evento</th>
+                    <th>Caravana</th>
+                    <th>Estado</th>
+                    <th>Fecha del Evento</th>
+                    <th>Observacion</th>
+                    <th>Tipo de Parto</th>
+                    <th>Tipo de Cria</th>
+                    <th>Estado de la Cria</th>
+                    <th>Tipo de Inseminacion</th>
+                    <th>Causa del Aborto</th>
+                    <th>Causa Celo</th>
+                    <th>Especificación del Secado</th>
+                    <th>Motivo de la Venta</th>
+                    <th>Causa del Rechazo</th>
+                    <th>Otra Especificación</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-informeEventos">
+                <!-- Los datos se llenarán dinámicamente aquí -->
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+  <script src="~/js/informeEventos-1.0.0.js"></script>
+}

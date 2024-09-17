@@ -179,4 +179,73 @@ public class EventosController : Controller
         }
         return Json(new { estadoAnimal = "" });
     }
+
+    public ActionResult InformesEventos()
+    {
+
+        return View();
+    }
+
+    public JsonResult ListadoInformeEventos(DateTime? buscarActividadInicio, DateTime? buscarActividadFin, int? TipoEjerciciosBuscarID)
+    {
+
+        List<VistaInformeEventos> vistaInformeEventos = new List<VistaInformeEventos>();
+
+
+        var eventos = _context.Eventos.Include(t => t.Animal).ToList();
+
+        // filtro para buscar
+        // if (buscarActividadInicio != null && buscarActividadFin != null)
+        // {
+        //     ejerciciosFisicos = ejerciciosFisicos.Where(e => e.Inicio >= buscarActividadInicio && e.Inicio <= buscarActividadFin).ToList();
+        // }
+
+        // Filtro para buscar por nombre del ejercicio
+        // if (TipoEjerciciosBuscarID != null && TipoEjerciciosBuscarID != 0)
+        // {
+        //     ejerciciosFisicos = ejerciciosFisicos.Where(e => e.TipoEjercicioID == TipoEjerciciosBuscarID).ToList();
+        // }
+
+        // Filtro para ordenar
+        // eventos = eventos.OrderBy(e => e.).ToList();
+
+
+
+        foreach (var listadoEventos in eventos)
+        {
+
+            var tipoEventosMostrar = vistaInformeEventos.Where(t => t.TipoEvento == listadoEventos.TipoEvento).SingleOrDefault();
+            if (tipoEventosMostrar == null)
+            {
+                tipoEventosMostrar = new VistaInformeEventos
+                {
+                    TipoEvento = listadoEventos.TipoEvento,
+                    TipoEventoString = listadoEventos.TipoEvento.ToString(),
+                    vistaEventos = new List<VistaEventos>()
+                };
+                vistaInformeEventos.Add(tipoEventosMostrar);
+            }
+
+            var eventosMostrar = new VistaEventos
+            {
+                AnimalCaravana = listadoEventos.Animal.Caravana,
+                EstadoAnimal = listadoEventos.Animal.Estado.ToString(),
+                FechaEventoString = listadoEventos.FechaEvento.ToString("dd/MM/yyyy"),
+                Observacion = string.IsNullOrEmpty(listadoEventos.Observacion) ? "NINGUNA" : listadoEventos.Observacion,
+                TipoCriaString = listadoEventos.TipoCria.HasValue ? (listadoEventos.TipoCria.Value ? "Macho" : "Hembra") : "",
+                TipoParto = listadoEventos.TipoParto,
+                EstadoCriaString = listadoEventos.EstadoCria.HasValue ? (listadoEventos.EstadoCria.Value ? "Vivo" : "Muerto") : "",
+                CausaAborto = listadoEventos.CausaAborto,
+                InseminacionString = listadoEventos.Inseminacion.HasValue ? (listadoEventos.Inseminacion.Value ? "Monta" : "Inseminación Artificial") : "",
+                CausaCelo = listadoEventos.CausaCelo,   
+                EspecifiqueSecado = listadoEventos.EspecifiqueSecado,
+                MotivoVenta = listadoEventos.MotivoVenta,
+                CausaRechazo = listadoEventos.CausaRechazo,
+                EspecifiqueOtro = listadoEventos.EspecifiqueOtro,
+            };
+            tipoEventosMostrar.vistaEventos.Add(eventosMostrar);
+        }
+
+        return Json(vistaInformeEventos);
+    }
 }

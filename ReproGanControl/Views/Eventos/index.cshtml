@@ -55,7 +55,13 @@
                                         {
                                             @class = "form-control"
                                         })
+
+                                    <div class="form-group pt-3">
+                                        <label for="EstadoAnimal">Estado</label>
+                                        <input type="text" id="EstadoAnimal" class="form-control" readonly />
+                                    </div>
                                 </div>
+
                                 <div class="col-md-4 mb-3">
                                     <label for="TipoEvento" class="form-label">Tipo de Evento <span
                                             class="required-asterisk">*</span></label>
@@ -91,6 +97,7 @@
                                     <option value="false">Hembra</option>
                                 </select>
                             </div>
+
                             <div id="divEstadoCria" class="mb-3" style="display:none;">
                                 <label for="EstadoCria" class="form-label">Estado Cría</label>
                                 <select class="form-control" id="EstadoCria">
@@ -106,7 +113,7 @@
                                 <input type="text" class="form-control" id="CausaAborto"
                                     placeholder="Causa del aborto" />
                             </div>
-
+                            
                             <!-- Servicio -->
                             <div id="divInseminacion" class="mb-3" style="display:none;">
                                 <label for="Inseminacion" class="form-label">Inseminación</label>
@@ -163,43 +170,42 @@
             </div>
         </div>
 
-<!-- Modal para Mostrar Detalles -->
-<div class="modal fade" id="modalDetalles" tabindex="-1" role="dialog" aria-labelledby="modalDetallesLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalDetallesLabel">Detalles del Evento</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="modalDetallesBody">
-                <!-- Detalles del evento serán cargados aquí -->
+        <!-- Modal para Mostrar Detalles -->
+        <div class="modal fade" id="modalDetalles" tabindex="-1" role="dialog" aria-labelledby="modalDetallesLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalDetallesLabel">Detalles del Evento</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modalDetallesBody">
+                        <!-- Detalles del evento serán cargados aquí -->
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
         <!-- Tabla de Eventos -->
-       <div class="table-responsive mt-2">
-    <table id="tabla-imprimir2" class="content-table">
-        <thead>
-            <tr>
-                <th>Caravana</th>
-                <th>Estado</th>
-                <th>Tipo de Evento</th>
-                <th>Fecha de evento</th>
-                <th>Observación</th>
-                <th style="width: 70px"></th> <!-- Columna para el botón Mostrar Detalles -->
-                <th style="width: 70px"></th>
-                <th style="width: 70px"></th>
-            </tr>
-        </thead>
-        <tbody id="tbody-eventos"></tbody>
-    </table>
-</div>
-
-
+        <div class="table-responsive mt-2">
+            <table id="tabla-imprimir2" class="content-table">
+                <thead>
+                    <tr>
+                        <th>Caravana</th>
+                        <th>Estado</th>
+                        <th>Tipo de Evento</th>
+                        <th>Fecha de evento</th>
+                        <th>Observación</th>
+                        <th style="width: 70px"></th> <!-- Columna para el botón Mostrar Detalles -->
+                        <th style="width: 70px"></th>
+                        <th style="width: 70px"></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-eventos"></tbody>
+            </table>
+        </div>
     </div>
 </div>
 

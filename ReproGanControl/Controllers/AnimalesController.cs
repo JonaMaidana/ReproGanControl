@@ -222,8 +222,8 @@ public class AnimalesController : Controller
         //     ejerciciosFisicos = ejerciciosFisicos.Where(e => e.TipoEjercicioID == TipoEjerciciosBuscarID).ToList();
         // }
 
-        //Filtro para ordenar
-        // animales = animales.OrderBy(e => e.).ToList();
+        // Filtro para ordenar
+        animales = animales.OrderBy(e => e.Caravana).ToList();
 
 
 

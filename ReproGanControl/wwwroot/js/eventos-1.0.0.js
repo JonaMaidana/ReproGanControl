@@ -58,6 +58,7 @@ function renderTableEventos() {
         </tr>
         <tr id="detalles-${index}" style="display:none;">
             <td colspan="15">
+            
                 <strong>Tipo Cría:</strong> ${evento.tipoCriaString || 'N/A'} <br>
                 <strong>Tipo Parto:</strong> ${evento.tipoParto || 'N/A'} <br>
                 <strong>Estado Cría:</strong> ${evento.estadoCriaString || 'N/A'} <br>
@@ -74,42 +75,6 @@ function renderTableEventos() {
     });
 
     $("#tbody-eventos").html(contenidoTabla);
-}
-
-function NuevoEvento() {
-    $("#ModalTituloEvento").text("Nuevo Evento");
-    configurarFechaActual(); // Asegúrate de que esta función se llame aquí
-}
-
-function configurarFechaActual() {
-    const fechaInput = document.getElementById("FechaEvento");
-    const hoy = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato YYYY-MM-DD
-    fechaInput.value = hoy; // Establecer la fecha actual como valor predeterminado
-    fechaInput.setAttribute('min', hoy); // Restringir la selección a partir de la fecha actual
-}
-
-function updateTotalItemsEventos() {
-    const totalItems = eventosMostrar.length;
-    document.getElementById("total-items-eventos").textContent = `Eventos cargados: ${totalItems}`;
-}
-
-function LimpiarModalEvento() {
-    // Restablecer valores de campos
-    document.querySelector("#AnimalID").value = 0;
-    document.querySelector("#TipoEvento").value = 0;
-    document.querySelector("#Observacion").value = "";
-
-    // Ocultar todos los campos específicos de tipo de evento
-    const campos = [
-        'TipoParto', 'TipoCria', 'EstadoCria', 'CausaAborto',
-        'Inseminacion', 'CausaCelo', 'EspecifiqueSecado',
-        'MotivoVenta', 'CausaRechazo', 'EspecifiqueOtro'
-    ];
-
-    campos.forEach(campo => {
-        document.querySelector(`#div${campo}`).style.display = 'none';
-        document.querySelector(`#${campo}`).value = '';
-    });
 }
 
 function GuardarEvento() {
@@ -218,6 +183,7 @@ function ModalEditarEventos(eventoID) {
                 let fechaFormato = fechaEvento.toISOString().split('T')[0];
                 $("#FechaEvento").val(fechaFormato);
                 $("#Observacion").val(evento.observacion);
+                $('#divEstadoAnimal').hide();
 
                 // Mapeo de valores booleanos o de las cadenas asociadas a esos valores
                 switch (evento.tipoEvento) {
@@ -281,10 +247,6 @@ function ModalEditarEventos(eventoID) {
     });
 }
 
-
-
-
-
 function EliminarEventos(eventoID) {
     Swal.fire({
         title: '¿Estás seguro?',
@@ -318,6 +280,48 @@ function EliminarEventos(eventoID) {
                     );
                 }
             });
+        }
+    });
+}
+
+function NuevoEvento() {
+    $("#ModalTituloEvento").text("Nuevo Evento");
+    configurarFechaActual(); // Asegúrate de que esta función se llame aquí
+}
+
+function configurarFechaActual() {
+    const fechaInput = document.getElementById("FechaEvento");
+    const hoy = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato YYYY-MM-DD
+    fechaInput.value = hoy; // Establecer la fecha actual como valor predeterminado
+    fechaInput.setAttribute('min', hoy); // Restringir la selección a partir de la fecha actual
+}
+
+function updateTotalItemsEventos() {
+    const totalItems = eventosMostrar.length;
+    document.getElementById("total-items-eventos").textContent = `Eventos cargados: ${totalItems}`;
+}
+
+function LimpiarModalEvento() {
+    // Restablecer valores de campos
+    document.querySelector("#AnimalID").value = 0;
+    document.querySelector("#TipoEvento").value = 0;
+    document.querySelector("#Observacion").value = "";
+    document.querySelector("#EstadoAnimal").value = "";
+
+    // Ocultar el campo Estado
+    document.querySelector("#divEstadoAnimal").style.display = 'none';
+
+    // Ocultar todos los campos específicos de tipo de evento
+    const campos = [
+        'TipoParto', 'TipoCria', 'EstadoCria', 'CausaAborto',
+        'Inseminacion', 'CausaCelo', 'EspecifiqueSecado',
+        'MotivoVenta', 'CausaRechazo', 'EspecifiqueOtro'
+    ];
+
+    campos.forEach(campo => {
+        const elemento = document.querySelector(`#div${campo}`);
+        if (elemento) {
+            elemento.style.display = 'none';
         }
     });
 }
@@ -383,7 +387,6 @@ function mostrarCamposPorTipoEvento() {
     }
 }
 
-
 function mostrarDetalles(index) {
     let evento = eventosMostrar[index];
     let modalBody = document.getElementById('modalDetallesBody');
@@ -402,6 +405,7 @@ function mostrarDetalles(index) {
     }
 
     // Agregar detalles dinámicamente al fragmento
+
     createField('Tipo Cría', evento.tipoCriaString);
     createField('Tipo Parto', evento.tipoParto);
     createField('Estado Cría', evento.estadoCriaString);
@@ -421,25 +425,34 @@ function mostrarDetalles(index) {
     $('#modalDetalles').modal('show');
 }
 
-
+// traer el estado del animal 
 $(document).ready(function () {
-    // Al seleccionar un animal en el dropdown, actualizar el estado del animal en el modal
+    // Manejar el cambio en la selección de Caravana
     $('#AnimalID').change(function () {
         var animalID = $(this).val();
-        if (animalID) {
+
+        if (animalID && animalID != "0") {
             $.ajax({
-                url: '/Eventos/ObtenerEstadoAnimal', // Reemplaza con la URL correcta
+                url: '/Eventos/ObtenerEstadoAnimal',
                 type: 'GET',
                 data: { id: animalID },
                 success: function (response) {
                     $('#EstadoAnimal').val(response.estadoAnimal);
+                    $('#divEstadoAnimal').show(); // Muestra el campo Estado
                 },
                 error: function () {
                     $('#EstadoAnimal').val('Error al obtener el estado.');
+                    $('#divEstadoAnimal').show(); // Muestra el campo Estado en caso de error
                 }
             });
         } else {
             $('#EstadoAnimal').val('');
+            $('#divEstadoAnimal').hide(); // Oculta el campo Estado si el valor es 0 o no hay selección
         }
+    });
+
+    // Manejo del cierre del modal
+    $('#ModalEvento').on('hidden.bs.modal', function () {
+        LimpiarModalEvento(); // Llama a la función para limpiar el modal
     });
 });

@@ -177,6 +177,6 @@ public class EventosController : Controller
         {
             return Json(new { estadoAnimal = animal.Estado.ToString().ToUpper() });
         }
-        return Json(new { estadoAnimal = "No encontrado" });
+        return Json(new { estadoAnimal = "" });
     }
 }

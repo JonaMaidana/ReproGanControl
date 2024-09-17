@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj": {}
+    "C:\\Users\\Lucas\\Desktop\\Proyecto\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj": {
+    "C:\\Users\\Lucas\\Desktop\\Proyecto\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
+        "projectUniqueName": "C:\\Users\\Lucas\\Desktop\\Proyecto\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
         "projectName": "ReproGanControl",
-        "projectPath": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
-        "packagesPath": "C:\\Users\\Educacion\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\obj\\",
+        "projectPath": "C:\\Users\\Lucas\\Desktop\\Proyecto\\ReproGanControl\\ReproGanControl\\ReproGanControl.csproj",
+        "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lucas\\Desktop\\Proyecto\\ReproGanControl\\ReproGanControl\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Educacion\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -91,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

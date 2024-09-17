@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
   toggleBtn.addEventListener('click', function() {
     if (sidebar.classList.contains('closed')) {
       sidebar.classList.remove('closed');
-      toggleBtn.querySelector('.toggle-btn-icon').src = 'img/abrir.png'; // Imagen de abrir
+      toggleBtn.querySelector('.toggle-btn-icon').src = '/img/abrir.png'; // Imagen de abrir
     } else {
       sidebar.classList.add('closed');
-      toggleBtn.querySelector('.toggle-btn-icon').src = 'img/cerrar.png'; // Imagen de cerrar
+      toggleBtn.querySelector('.toggle-btn-icon').src = '/img/cerrar.png'; // Imagen de cerrar
     }
   });
 });

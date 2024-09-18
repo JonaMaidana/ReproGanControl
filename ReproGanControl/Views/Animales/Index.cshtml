@@ -38,19 +38,26 @@
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-3 mb-3">
                         <label for="BuscarCaravana" class="form-label">Caravana</label>
-                        <input type="text" id="BuscarCaravana" onchange="ListadoAnimales()" class="form-control" style="text-transform: uppercase;" placeholder="Buscar por Caravana" />
+                        <input type="text" id="BuscarCaravana" onkeyup="ListadoAnimales()" class="form-control"
+                            style="text-transform: uppercase;" placeholder="Buscar por Caravana" />
                     </div>
                     <div class="col-12 col-md-6 col-lg-3 mb-3">
                         <label for="BuscarApodo" class="form-label">Apodo</label>
-                        <input type="text" id="BuscarApodo" onchange="ListadoAnimales()" class="form-control" style="text-transform: uppercase;" placeholder="Buscar por apodo" />
+                        <input type="text" id="BuscarApodo" onkeyup="ListadoAnimales()" class="form-control"
+                            style="text-transform: uppercase;" placeholder="Buscar por apodo" />
                     </div>
                     <div class="col-12 col-md-6 col-lg-3 mb-3">
                         <label for="BuscarTipoAnimalID" class="form-label">Tipo Animal</label>
-                        @Html.DropDownList("BuscarTipoAnimalID", null, htmlAttributes: new { @class = "form-control", @onchange = "ListadoAnimales()" })
+                        @Html.DropDownList("BuscarTipoAnimalID", null, htmlAttributes: new
+                            {
+                                @class = "form-control",
+                                @onchange = "ListadoAnimales()"
+                            })
                     </div>
                     <div class="col-12 col-md-6 col-lg-3 mb-3">
                         <label for="BuscarEstablecimiento" class="form-label">Establecimiento</label>
-                        @Html.DropDownList("BuscarEstablecimiento", (SelectList)ViewBag.BuscarEstablecimiento, htmlAttributes: new { @class = "form-control", @onchange = "ListadoAnimales()" })
+                        @Html.DropDownList("BuscarEstablecimiento", (SelectList)ViewBag.BuscarEstablecimiento,
+                                 htmlAttributes: new { @class = "form-control", @onchange = "ListadoAnimales()" })
                     </div>
                 </div>
             </div>
@@ -78,7 +85,8 @@
                                         maxlength="15" oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '')">
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="apodo" class="form-label">Apodo</label>
+                                    <label for="apodo" class="form-label">Apodo <span
+                                            class="required-asterisk"></span></label>
                                     <input type="text" class="form-control" id="Apodo"
                                         style="text-transform: uppercase;" placeholder="Apodo" maxlength="15"
                                         oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '')">
@@ -148,24 +156,24 @@
             </div>
         </div>
         <!-- Modal -->
-<div class="modal fade" id="animalModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel">Detalles del Animal</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Aquí se mostrará la información del animal -->
-        <div id="modalContent"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <!-- Puedes añadir botones adicionales si es necesario -->
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="modal fade" id="animalModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Detalles del Animal</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Aquí se mostrará la información del animal -->
+                        <div id="modalContent"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <!-- Puedes añadir botones adicionales si es necesario -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <!-- Tabla de Animales -->

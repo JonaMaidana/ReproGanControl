@@ -1,11 +1,16 @@
 window.onload = ListadoInformeAnimales();
 
-
 let vistaInformeAnimalesGlobal = [];
 
 function ListadoInformeAnimales() {
+    let tipoAnimalBuscarID = document.getElementById("TipoAnimalBuscarID").value;
+    let estadoID = document.getElementById("EstadoID").value;
     $.ajax({
         url: '../../Animales/ListadoInformeAnimales',
+        data: {
+            tipoAnimalBuscarID: tipoAnimalBuscarID,
+            estadoID: estadoID
+        },
         type: 'POST',
         dataType: 'json',
 

@@ -5,69 +5,75 @@
     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
         <h3 class="display-6" style="color: #555;">Informe de Animales</h3>
     </div>
-    <div class="card-body">
-        @* <!-- Filtros -->
-        <div class="row mb-3">
-        <div class="col-md-3">
-        <label for="BuscarActividadInicio" class="form-label">Inicio de la actividad</label>
-        <input type="datetime-local" id="BuscarActividadInicio" onchange="ListadoInformeEjercicios()"
-        class="form-control" />
-        </div>
-        <div class="col-md-3">
-        <label for="BuscarActividadFin" class="form-label">Fin de la actividad</label>
-        <input type="datetime-local" id="BuscarActividadFin" onchange="ListadoInformeEjercicios()"
-        class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
-        </div>
-        <div class="mb-3 col-2">
-        <label for="TipoEjerciciosBuscarID" class="form-label">Buscar Tipo Ejercicio</label>
-        @Html.DropDownList("TipoEjerciciosBuscarID", null, htmlAttributes: new { @class = "form-control",
-        onchange="ListadoInformeEjercicios()" })
-        </div>
-        </div> *@
-        <!-- Botón de Imprimir -->
-        <button class="btn btn-dark" title="Imprimir Informe" onclick="Imprimir()">
-            <i class="fa-solid fa-download"></i>
-        </button>
-        <!-- Modal -->
-        <div class="modal fade" id="informeAnimalesModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">Detalles del Animal</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Aquí se mostrará la información del animal -->
-                        <div id="modalContentInformeAnimales"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
+    
+    <!-- Sección de Filtros -->
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <label for="TipoAnimalBuscarID" class="form-label">Buscar Tipo Animal</label>
+                    @Html.DropDownList("TipoAnimalBuscarID", null, htmlAttributes: new
+                        {
+                            @class = "form-control",
+                            onchange = "ListadoInformeAnimales()"
+                        })
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <label for="EstadoID" class="form-label">Buscar Estado Animal</label>
+                    @Html.DropDownList("EstadoID", null, htmlAttributes: new
+                        {
+                            @class = "form-control",
+                            onchange = "ListadoInformeAnimales()"
+                        })
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="table-responsive mt-2">
-            <table id="tabla-imprimir" class="content-table">
-                <thead>
-                    <tr>
-                        <th>Tipo Animal</th>
-                        <th>Caravana</th>
-                        <th class="ocultar-en-768px">Estado</th>
-                        <th class="ocultar-en-768px">Apodo</th>
-                        <th class="ocultar-en-768px">Establecimiento</th>
-                        <th class="ocultar-en-768px">Fecha Nacimiento</th>
-                        <th class="ocultar-en-768px">Nombre Padre</th>
-                        <th class="ocultar-en-768px">Nombre Madre</th>
-                        <th style="width: 70px"></th>
-                    </tr>
-                </thead>
-                <tbody id="tbody-informeAnimales">
-                    <!-- Los datos se llenarán dinámicamente aquí -->
-                </tbody>
-            </table>
+    <!-- Botón de Imprimir -->
+    <button class="btn btn-dark" title="Imprimir Informe" onclick="Imprimir()">
+        <i class="fa-solid fa-download"></i>
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="informeAnimalesModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Detalles del Animal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí se mostrará la información del animal -->
+                    <div id="modalContentInformeAnimales"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="table-responsive mt-2">
+        <table id="tabla-imprimir" class="content-table">
+            <thead>
+                <tr>
+                    <th>Tipo Animal</th>
+                    <th>Caravana</th>
+                    <th class="ocultar-en-768px">Estado</th>
+                    <th class="ocultar-en-768px">Apodo</th>
+                    <th class="ocultar-en-768px">Establecimiento</th>
+                    <th class="ocultar-en-768px">Fecha Nacimiento</th>
+                    <th class="ocultar-en-768px">Nombre Padre</th>
+                    <th class="ocultar-en-768px">Nombre Madre</th>
+                    <th style="width: 70px"></th>
+                </tr>
+            </thead>
+            <tbody id="tbody-informeAnimales">
+                <!-- Los datos se llenarán dinámicamente aquí -->
+            </tbody>
+        </table>
+    </div>
+</div>
 </div>
 
 

@@ -197,12 +197,30 @@ public class AnimalesController : Controller
     public ActionResult InformeAnimales()
     {
         var tiposAnimalesBuscar = _context.TipoAnimales.ToList();
-
-        tiposAnimalesBuscar.Add(new TipoAnimal { TipoAnimalID = 0, Descripcion = "[TODOS]" });
+        tiposAnimalesBuscar.Add(new TipoAnimal { TipoAnimalID = 0, Descripcion = "[SELECCIONE]" });
         ViewBag.TipoAnimalBuscarID = new SelectList(tiposAnimalesBuscar.OrderBy(c => c.Descripcion), "TipoAnimalID", "Descripcion");
+
+        var estados = Enum.GetValues(typeof(Estado))
+        .Cast<Estado>()
+        .Where(e => (int)e != 0); // Excluimos el valor "Ninguno"
+
+        var estadoSelectListItems = estados.Select(e => new SelectListItem
+        {
+            Value = ((int)e).ToString(),
+            Text = e.GetDisplayName()
+        }).ToList();
+
+        estadoSelectListItems.Insert(0, new SelectListItem
+        {
+            Value = "",
+            Text = "[SELECCIONE]"
+        });
+
+        ViewBag.EstadoID = new SelectList(estadoSelectListItems, "Value", "Text");
+
         return View();
     }
-    public JsonResult ListadoInformeAnimales(DateTime? buscarActividadInicio, DateTime? buscarActividadFin, int? TipoEjerciciosBuscarID)
+    public JsonResult ListadoInformeAnimales(DateTime? buscarActividadInicio, DateTime? buscarActividadFin, int? TipoAnimalBuscarID, int? EstadoID)
     {
 
         List<VistaInformeAnimales> vistaInformeAnimales = new List<VistaInformeAnimales>();
@@ -210,20 +228,20 @@ public class AnimalesController : Controller
 
         var animales = _context.Animales.Include(t => t.TipoAnimal).ToList();
 
-        //filtro para buscar
-        // if (buscarActividadInicio != null && buscarActividadFin != null)
-        // {
-        //     ejerciciosFisicos = ejerciciosFisicos.Where(e => e.Inicio >= buscarActividadInicio && e.Inicio <= buscarActividadFin).ToList();
-        // }
+        // Filtro para buscar por Tipo Animal 
+        if (TipoAnimalBuscarID != null && TipoAnimalBuscarID != 0)
+        {
+            animales = animales.Where(e => e.TipoAnimalID == TipoAnimalBuscarID).ToList();
+        }
 
-        // Filtro para buscar por nombre del ejercicio
-        // if (TipoEjerciciosBuscarID != null && TipoEjerciciosBuscarID != 0)
-        // {
-        //     ejerciciosFisicos = ejerciciosFisicos.Where(e => e.TipoEjercicioID == TipoEjerciciosBuscarID).ToList();
-        // }
+        // Filtro por Estado Animal
+        if (EstadoID != null && EstadoID != 0)
+        {
+            animales = animales.Where(e => e.Estado == (Estado)EstadoID).ToList();
+        }
 
         // Filtro para ordenar
-        animales = animales.OrderBy(e => e.Caravana).ToList();
+        animales = animales.OrderBy(e => e.Caravana).ThenBy(e => e.Estado).ToList();
 
 
 

@@ -25,6 +25,7 @@ body {
     display: grid;
     place-items: center;
     background: var(--background);
+    background-color: #3e6cc279;
 }
 
 * {
@@ -242,8 +243,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
-    border-radius: 2rem;
     background-position: cover;
     max-height: 90rem;
 }

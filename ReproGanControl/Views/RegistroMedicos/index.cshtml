@@ -8,7 +8,7 @@
         <div class="mb-2">
             <button type="button" class="btn btn-secondary" onclick="NuevoRegistroMedico()" data-bs-toggle="modal"
                 data-bs-target="#ModalRegistroMedico">
-                <i class="fa-solid fa-plus"></i> Nuevo Registro Medico
+                <i class="fa-solid fa-plus"></i> Nuevo Registro
             </button>
         </div>
     </div>
@@ -107,19 +107,38 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="registroMedicoModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Detalles del Registro Médico</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Aquí se mostrará la información del registro médico -->
+        <div id="modalContentRegistroMedico"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <!-- Puedes añadir botones adicionales si es necesario -->
+      </div>
+    </div>
+  </div>
+</div>
+
         <!-- Tabla de Eventos -->
         <div class="table-responsive mt-2">
             <table id="tabla-imprimir2" class="content-table">
                 <thead>
                     <tr>
                         <th>Caravana</th>
-                        <th>Fecha</th>
-                        <th>Enfermedad</th>
-                        <th>Tratamiento</th>
                         <th>Veterinario</th>
-                        <th>Observación</th>
-                        <th style="width: 70px"></th>
-                        <th style="width: 70px"></th>
+                        <th class="ocultar-en-768px">Enfermeda</th>
+                        <th class="ocultar-en-768px">Tratamiento</th>
+                        <th class="ocultar-en-768px">Observación</th>
+                        <th class="ocultar-en-768px">Fecha</th>
+                        <th style="width: 150px"></th>
                     </tr>
                 </thead>
                 <tbody id="tbody-registroMedico">
@@ -159,7 +178,7 @@
             // Add title and date to the first page
             doc.setFontSize(18);
             doc.setFontStyle('bold');
-            doc.text('Listado de animales', 14, 22);
+            doc.text('Lista de Registros Medicos', 14, 22);
 
             // Add current date
             var today = new Date();
@@ -168,7 +187,7 @@
             doc.setFontStyle('normal');
             doc.text('Fecha: ' + dateString, 14, 32);
 
-            var elem = document.getElementById("tabla-imprimir");
+            var elem = document.getElementById("tabla-imprimir2");
             var res = doc.autoTableHtmlToJson(elem);
 
             // Remove last two columns
@@ -178,18 +197,17 @@
             doc.autoTable(res.columns, res.data, {
                 addPageContent: pageContent,
                 theme: 'grid',
-                headStyles: { halign: 'center' }, // Center align headers
+                styles: { fillColor: [70, 130, 180], halign: "center" },
                 columnStyles: {
-                    0: { halign: 'center', fontSize: 7 },
-                    1: { halign: 'center', fontSize: 7 },
-                    2: { halign: 'center', fontSize: 7 },
-                    3: { halign: 'center', fontSize: 7 },
-                    4: { halign: 'center', fontSize: 7 },
-                    5: { halign: 'center', fontSize: 7 },
-                    6: { halign: 'center', fontSize: 7 },
-                    7: { halign: 'center', fontSize: 7 }
+                    0: { halign: 'center', fontSize: 7, fillColor: [255, 255, 255] },
+                    1: { halign: 'center', fontSize: 7, fillColor: [255, 255, 255] },
+                    2: { halign: 'center', fontSize: 7, fillColor: [255, 255, 255] },
+                    3: { halign: 'center', fontSize: 7, fillColor: [255, 255, 255] },
+                    4: { halign: 'center', fontSize: 7, fillColor: [255, 255, 255] },
+                    5: { halign: 'center', fontSize: 7, fillColor: [255, 255, 255] },
+                    6: { halign: 'center', fontSize: 7, fillColor: [255, 255, 255] },
+                    7: { halign: 'center', fontSize: 7, fillColor: [255, 255, 255] }
                 },
-                styles: { halign: 'center' }, // Center align all cell content
                 margin: { top: 40 } // Adjust top margin for title
             });
 

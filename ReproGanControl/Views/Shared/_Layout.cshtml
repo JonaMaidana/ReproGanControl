@@ -30,7 +30,7 @@
                             <div style="text-align: center;">
                                 <a href="/" class="text-decoration-none">
                                     <span
-                                        style="font-size: 24px; font-weight: bold; color: white;  display: inline-block; padding: 5px;">
+                                        style="font-size: 24px; font-weight: bold; color: white; display: inline-block; padding: 5px;">
                                         ReproGan
                                     </span>
                                 </a>
@@ -39,65 +39,97 @@
                             <hr>
                             <ul class="nav-custom">
                                 <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "Home")" class="nav-link " aria-current="page">
+                                    <a href="@Url.Action("Index", "Home")" class="nav-link" aria-current="page">
                                         <i class="fa-solid fa-house"></i>
                                         <span>Inicio</span>
                                     </a>
                                 </li>
+
+                                <!-- Animales con submenú -->
                                 <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "Animales")" class="nav-link" aria-current="page">
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse"
+                                        data-bs-target="#submenu-animales" aria-expanded="false">
                                         <i class="fa-solid fa-cow"></i>
                                         <span>Animales</span>
                                     </a>
+                                    <ul id="submenu-animales" class="collapse list-unstyled submenu-right">
+                                        <li>
+                                            <a href="@Url.Action("Index", "Animales")" class="nav-link">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <span>Ingresar</span>
+                                            </a>
+                                        </li>
+                                        <li><a href="@Url.Action("Index", "TipoAnimales")" class="nav-link">
+                                                <i class="fa-solid fa-list"></i>
+                                                <span>Tipo</span>
+                                            </a></li>
+                                        <li><a href="@Url.Action("InformeAnimales", "Animales")" class="nav-link">
+                                                <i class="fa-solid fa-list"></i>
+                                                <span>Informe</span>
+                                            </a></li>
+                                    </ul>
                                 </li>
+
+                                <!-- Eventos con submenú -->
                                 <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("InformeAnimales", "Animales")" class="nav-link" aria-current="page">
-                                        <i class="fa-solid fa-cow"></i>
-                                        <span>Informe Animales</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "TipoAnimales")" class="nav-link " aria-current="page">
-                                        <i class="fa-solid fa-plus"></i>
-                                        <span>Tipo Animal</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "Eventos")" class="nav-link " aria-current="page">
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse"
+                                        data-bs-target="#submenu-eventos" aria-expanded="false">
                                         <i class="fa-solid fa-calendar-days"></i>
                                         <span>Eventos</span>
                                     </a>
+                                    <ul id="submenu-eventos" class="collapse list-unstyled submenu-right">
+                                        <li>
+                                            <a href="@Url.Action("Index", "Eventos")" class="nav-link">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <span>Ingresar</span>
+                                            </a>
+                                        </li>
+                                        <li><a href="@Url.Action("InformesEventos", "Eventos")" class="nav-link">
+                                                <i class="fa-solid fa-list"></i>
+                                                <span>Informe</span>
+                                            </a></li>
+                                    </ul>
+                                </li>
+
+                                <!-- Registros Médicos con submenú -->
+                                <li class="nav-item nav-item-custom">
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse"
+                                        data-bs-target="#submenu-registros" aria-expanded="false">
+                                        <i class="fa-solid fa-house-medical-circle-exclamation"></i>
+                                        <span>Registros Médicos</span>
+                                    </a>
+                                    <ul id="submenu-registros" class="collapse list-unstyled submenu-right">
+                                        <li>
+                                            <a href="@Url.Action("Index", "RegistroMedicos")" class="nav-link">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <span>Ingresar</span>
+                                            </a>
+                                        </li>
+                                        <li><a href="@Url.Action("RegistroMedicos", "Informe")" class="nav-link">
+                                                <i class="fa-solid fa-list"></i>
+                                                <span>Informe</span>
+                                            </a></li>
+                                    </ul>
                                 </li>
                                 <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("InformesEventos", "Eventos")" class="nav-link" aria-current="page">
-                                        <i class="fa-solid fa-cow"></i>
-                                        <span>Informe Eventos</span>
+                                    <a href="@Url.Action("Index", "Provincias")" class="nav-link" aria-current="page">
+                                        <i class="fa-solid fa-map"></i>
+                                        <span>Provincias</span>
                                     </a>
                                 </li>
                                 <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "RegistroMedicos")" class="nav-link " aria-current="page">
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                        <span>Registros Medicos</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "Personas")" class="nav-link " aria-current="page">
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                        <span>Personas</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "Localidades")" class="nav-link " aria-current="page">
-                                        <i class="fa-solid fa-calendar-days"></i>
+                                    <a href="@Url.Action("Index", "Localidades")" class="nav-link" aria-current="page">
+                                        <i class="fa-solid fa-location-dot"></i>
                                         <span>Localidades</span>
                                     </a>
                                 </li>
                                 <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "Provincias")" class="nav-link " aria-current="page">
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                        <span>Provincias</span>
+                                    <a href="@Url.Action("Index", "Personas")" class="nav-link" aria-current="page">
+                                        <i class="fa-solid fa-user"></i>
+                                        <span>Personas</span>
                                     </a>
                                 </li>
+
                                 <hr>
                                 <li class="nav-item nav-item-custom">
                                     <partial name="_LoginPartial" />

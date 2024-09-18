@@ -28,24 +28,46 @@ function renderTableLocalidades() {
         contenidoTabla += `
         <tr>
             <td>${localidad.nombreLocalidad}</td>
-            <td>${localidad.provinciaNombre}</td>
-            <td>${localidad.codigoPostal}</td>
+            <td class="ocultar-en-768px">${localidad.provinciaNombre}</td>
+            <td class="ocultar-en-768px">${localidad.codigoPostal}</td>
             <td class="text-center">
-                <button type="button" class="edit-button" onclick="ModalEditarLocalidad(${localidad.localidadID})">
+                <button type="button" class="edit-button" title="Editar Localidad" onclick="ModalEditarLocalidad(${localidad.localidadID})">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
-            </td>
-            <td class="text-center">
-                <button type="button" class="delete-button" onclick="EliminarLocalidad(${localidad.localidadID})">
+                <button type="button" class="delete-button" title="Eliminar Localidad" onclick="EliminarLocalidad(${localidad.localidadID})">
                     <i class="fa-solid fa-trash"></i>
                 </button>
+                <button type="button" class="info-button" title="Ver mas datos" onclick="showLocalidadDetails(${localidad.localidadID})">
+                    <i class="fa-solid fa-info-circle"></i>
+                </button>
             </td>
+
         </tr>
         `;
     });
 
     document.getElementById("tbody-localidades").innerHTML = contenidoTabla;
 }
+
+function showLocalidadDetails(localidadID) {
+    // Encuentra la localidad con el ID dado
+    const localidad = localidadesMostrar.find(l => l.localidadID === localidadID);
+
+    // Crea el contenido para el modal
+    const modalContent = `
+        <p><strong>Nombre:</strong> ${localidad.nombreLocalidad}</p>
+        <p><strong>Provincia:</strong> ${localidad.provinciaNombre}</p>
+        <p><strong>Código Postal:</strong> ${localidad.codigoPostal}</p>
+    `;
+
+    // Asigna el contenido al modal
+    document.getElementById("modalContentLocalidad").innerHTML = modalContent;
+
+    // Muestra el modal
+    var myModal = new bootstrap.Modal(document.getElementById('localidadModal'));
+    myModal.show();
+}
+
 
 function updateTotalItemsLocalidades() {
     const totalItems = localidadesMostrar.length;

@@ -39,21 +39,22 @@ function renderTable() {
         <tr>
             <td>${animal.caravana}</td>
             <td>${animal.tipoAnimalNombre}</td>
-            <td>${animal.estadoString}</td>
-            <td>${animal.apodo}</td>
-            <td>${animal.nombrePadre}</td>
-            <td>${animal.nombreMadre}</td>
-            <td>${animal.establecimiento}</td>
-            <td>${animal.fechaNacimientoString}</td>
+            <td class="ocultar-en-768px">${animal.estadoString}</td>
+            <td class="ocultar-en-768px">${animal.apodo}</td>
+            <td class="ocultar-en-768px">${animal.nombrePadre}</td>
+            <td class="ocultar-en-768px">${animal.nombreMadre}</td>
+            <td class="ocultar-en-768px">${animal.establecimiento}</td>
+            <td class="ocultar-en-768px">${animal.fechaNacimientoString}</td>
             
             <td class="text-center">
-                <button type="button" class="edit-button" onclick="ModalEditarAnimal(${animal.animalID})">
+                <button type="button" class="edit-button" title="Editar Animal" onclick="ModalEditarAnimal(${animal.animalID})">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
-            </td>
-            <td class="text-center">
-                <button type="button" class="delete-button" onclick="EliminarAnimal(${animal.animalID})">
+                                <button type="button" class="delete-button" title="Eliminar Animal" onclick="EliminarAnimal(${animal.animalID})">
                     <i class="fa-solid fa-trash"></i>
+                </button>
+                <button type="button" class="info-button" title="Ver Datos" onclick="showAnimalDetails(${animal.animalID})">
+                    <i class="fa-solid fa-info-circle"></i>
                 </button>
             </td>
         </tr>
@@ -62,6 +63,31 @@ function renderTable() {
 
     document.getElementById("tbody-animales").innerHTML = contenidoTabla;
 }
+
+function showAnimalDetails(animalID) {
+    // Encuentra el animal con el ID dado
+    const animal = animalesMostrar.find(a => a.animalID === animalID);
+
+    // Crea el contenido para el modal
+    const modalContent = `
+        <p><strong>Caravana:</strong> ${animal.caravana}</p>
+        <p><strong>Tipo de Animal:</strong> ${animal.tipoAnimalNombre}</p>
+        <p><strong>Estado:</strong> ${animal.estadoString}</p>
+        <p><strong>Apodo:</strong> ${animal.apodo}</p>
+        <p><strong>Nombre del Padre:</strong> ${animal.nombrePadre}</p>
+        <p><strong>Nombre de la Madre:</strong> ${animal.nombreMadre}</p>
+        <p><strong>Establecimiento:</strong> ${animal.establecimiento}</p>
+        <p><strong>Fecha de Nacimiento:</strong> ${animal.fechaNacimientoString}</p>
+    `;
+
+    // Asigna el contenido al modal
+    document.getElementById("modalContent").innerHTML = modalContent;
+
+    // Muestra el modal
+    var myModal = new bootstrap.Modal(document.getElementById('animalModal'));
+    myModal.show();
+}
+
 
 function updateTotalItems() {
     const totalItems = animalesMostrar.length;

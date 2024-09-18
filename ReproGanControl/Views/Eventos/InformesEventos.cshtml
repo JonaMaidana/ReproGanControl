@@ -1,71 +1,72 @@
 @{
-  ViewData["Title"] = "Informe Eventos";
+    ViewData["Title"] = "Informe Eventos";
 }
 <div class="card" style="font-family: 'Arial', sans-serif;">
     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
         <h3 class="display-6" style="color: #555;">Informe de Eventos</h3>
     </div>
     <div class="card-body">
-        @* <!-- Filtros -->
-         <div class="row mb-3">
-            <div class="col-md-3">
-                <label for="BuscarActividadInicio" class="form-label">Inicio de la actividad</label>
-                <input type="datetime-local" id="BuscarActividadInicio" onchange="ListadoInformeEjercicios()"
-                    class="form-control" />
-            </div>
-            <div class="col-md-3">
-                <label for="BuscarActividadFin" class="form-label">Fin de la actividad</label>
-                <input type="datetime-local" id="BuscarActividadFin" onchange="ListadoInformeEjercicios()"
-                    class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
-            </div>
-            <div class="mb-3 col-2">
-                <label for="TipoEjerciciosBuscarID" class="form-label">Buscar Tipo Ejercicio</label>
-                @Html.DropDownList("TipoEjerciciosBuscarID", null, htmlAttributes: new { @class = "form-control", onchange="ListadoInformeEjercicios()" })
-            </div>
-        </div>  *@
+        <!-- Filtros -->
+        <div class="col-12 col-md-6 col-lg-3 mb-3">
+            <label for="TipoEventoBuscarID" class="form-label">Buscar Tipo Animal</label>
+            @Html.DropDownList("TipoEventoBuscarID", null, htmlAttributes: new
+                {
+                    @class = "form-control",
+                    onchange = "ListadoInformeEventos()"
+                })
+        </div>
+        @* <div class="col-12 col-md-6 col-lg-3 mb-3">
+            <label for="EstadoID" class="form-label">Buscar Estado Animal</label>
+            @Html.DropDownList("EstadoID", null, htmlAttributes: new
+                {
+                    @class = "form-control",
+                    onchange = "ListadoInformeAnimales()"
+                })
+        </div> *@
         <button class="btn btn-dark" title="Imprimir Informe" onclick="Imprimir()">
             <i class="fa-solid fa-download"></i>
         </button>
-    <!-- Modal Structure -->
-<div class="modal fade" id="informeEventosModal" tabindex="-1" aria-labelledby="informeEventosModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="informeEventosModalLabel">Detalles del Evento</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="modalContentInformeEventos">
-                <!-- Aquí se insertará el contenido del modal -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <!-- Modal Structure -->
+        <div class="modal fade" id="informeEventosModal" tabindex="-1" aria-labelledby="informeEventosModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="informeEventosModalLabel">Detalles del Evento</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalContentInformeEventos">
+                        <!-- Aquí se insertará el contenido del modal -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
         <div class="table-responsive mt-2">
             <table id="tabla-imprimir" class="content-table">
-            <thead>
-                <tr>
-                    <th>Tipo Evento</th>
-                    <th>Caravana</th>
-                    <th class="ocultar-en-768px">Estado</th>
-                    <th class="ocultar-en-768px">Fecha del Evento</th>
-                    <th class="ocultar-en-768px">Observacion</th>
-                    <th style="width: 70px"></th>
-                </tr>
-            </thead>
-            <tbody id="tbody-informeEventos">
-                <!-- Los datos se llenarán dinámicamente aquí -->
-            </tbody>
-        </table>
+                <thead>
+                    <tr>
+                        <th>Tipo Evento</th>
+                        <th>Caravana</th>
+                        <th class="ocultar-en-768px">Estado</th>
+                        <th class="ocultar-en-768px">Fecha del Evento</th>
+                        <th class="ocultar-en-768px">Observacion</th>
+                        <th style="width: 70px"></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-informeEventos">
+                    <!-- Los datos se llenarán dinámicamente aquí -->
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
 @section Scripts {
-  <script src="~/js/informeEventos-1.0.0.js"></script>
-   <script>
+    <script src="~/js/informeEventos-1.0.0.js"></script>
+    <script>
         function Imprimir() {
             var doc = new jsPDF();
 

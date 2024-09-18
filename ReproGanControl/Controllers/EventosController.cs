@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Reflection;
 using System.ComponentModel.DataAnnotations;
+using ReproGanControl.Extensions;
 
 namespace ReproGanControl.Controllers;
 [Authorize]
@@ -31,7 +32,6 @@ public class EventosController : Controller
         // Obtener todas las opciones del enum
         var enumValues = Enum.GetValues(typeof(EventoEnum)).Cast<EventoEnum>();
 
-        // Convertir las opciones del enum en SelectListItem
         // Convertir las opciones del enum en SelectListItem
         estadoSelectListItems.AddRange(enumValues.Select(e => new SelectListItem
         {
@@ -84,6 +84,7 @@ public class EventosController : Controller
                 CausaRechazo = e.CausaRechazo?.ToUpper(),
                 EspecifiqueOtro = e.EspecifiqueOtro?.ToUpper(),
             })
+            .OrderByDescending(f => f.FechaEvento).ThenBy(f => f.AnimalCaravana)
             .ToList();
 
         return Json(eventosMostrar);
@@ -93,7 +94,7 @@ public class EventosController : Controller
     string tipoParto, bool? estadoCria, string causaAborto, bool? inseminacion, string causaCelo, string especifiqueSecado,
     string motivoVenta, string causaRechazo, string especifiqueOtro)
     {
-        
+
         // Validar si el tipoEvento es válido
         if (!Enum.IsDefined(typeof(EventoEnum), tipoEvento))
         {
@@ -171,23 +172,40 @@ public class EventosController : Controller
         return Json(true);
     }
 
-    public JsonResult ObtenerEstadoAnimal(int id)
+   public JsonResult ObtenerEstadoAnimal(int id)
+{
+    var animal = _context.Animales.SingleOrDefault(a => a.AnimalID == id);
+    if (animal != null)
     {
-        var animal = _context.Animales.SingleOrDefault(a => a.AnimalID == id);
-        if (animal != null)
-        {
-            return Json(new { estadoAnimal = animal.Estado.ToString().ToUpper() });
-        }
-        return Json(new { estadoAnimal = "" });
+        // Usa la extensión para obtener el nombre del estado
+        var estadoNombre = ((Estado)animal.Estado).GetDisplayName();
+        return Json(new { estadoAnimal = estadoNombre });
     }
+    return Json(new { estadoAnimal = "" });
+}
 
     public ActionResult InformesEventos()
     {
+        var tipoEventos = Enum.GetValues(typeof(EventoEnum)).Cast<EventoEnum>();
+
+        var estadoSelectListItems = tipoEventos.Select(e => new SelectListItem
+        {
+            Value = ((int)e).ToString(),
+            Text = e.ToString().ToUpper()
+        }).ToList();
+
+        estadoSelectListItems.Insert(0, new SelectListItem
+        {
+            Value = "",
+            Text = "[SELECCIONE]"
+        });
+
+        ViewBag.TipoEventoBuscarID = new SelectList(estadoSelectListItems, "Value", "Text");
 
         return View();
     }
 
-    public JsonResult ListadoInformeEventos(DateTime? buscarActividadInicio, DateTime? buscarActividadFin, int? TipoEjerciciosBuscarID)
+    public JsonResult ListadoInformeEventos(int? TipoEventoBuscarID)
     {
 
         List<VistaInformeEventos> vistaInformeEventos = new List<VistaInformeEventos>();
@@ -195,22 +213,13 @@ public class EventosController : Controller
 
         var eventos = _context.Eventos.Include(t => t.Animal).ToList();
 
-        // filtro para buscar
-        // if (buscarActividadInicio != null && buscarActividadFin != null)
-        // {
-        //     ejerciciosFisicos = ejerciciosFisicos.Where(e => e.Inicio >= buscarActividadInicio && e.Inicio <= buscarActividadFin).ToList();
-        // }
-
-        // Filtro para buscar por nombre del ejercicio
-        // if (TipoEjerciciosBuscarID != null && TipoEjerciciosBuscarID != 0)
-        // {
-        //     ejerciciosFisicos = ejerciciosFisicos.Where(e => e.TipoEjercicioID == TipoEjerciciosBuscarID).ToList();
-        // }
+       if (TipoEventoBuscarID != null && TipoEventoBuscarID != 0)
+    {
+        eventos = eventos.Where(e => e.TipoEvento == (EventoEnum)TipoEventoBuscarID).ToList();
+    }
 
         // Filtro para ordenar
-        // eventos = eventos.OrderBy(e => e.).ToList();
-
-
+        eventos = eventos.OrderBy(e => e.TipoEvento).ToList();
 
         foreach (var listadoEventos in eventos)
         {

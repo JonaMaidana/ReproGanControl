@@ -77,6 +77,10 @@
       "PackagePath": "staticwebassets\\js\\informeEventos-1.0.0.js"
     },
     {
+      "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\informeRegistroMedico-1.0.0.js",
+      "PackagePath": "staticwebassets\\js\\informeRegistroMedico-1.0.0.js"
+    },
+    {
       "Id": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\jspdf\\jspdf.debug.js",
       "PackagePath": "staticwebassets\\js\\jspdf\\jspdf.debug.js"
     },

@@ -4,8 +4,10 @@ let vistaInformeEventosGlobal = [];
 window.onload = ListadoInformeEventos;
 
 function ListadoInformeEventos() {
+    let tipoEventoBuscarID = document.getElementById("TipoEventoBuscarID").value;
     $.ajax({
         url: '../../Eventos/ListadoInformeEventos',
+        data: { TipoEventoBuscarID: tipoEventoBuscarID },
         type: 'POST',
         dataType: 'json',
 

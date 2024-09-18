@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XrXsnWAG2HEwJfZSLj4iBp++fvL3/jTTkEsTgvQTw3w=",
+  "Hash": "5j5Ibd0BTOmI1VPw4Nyti8gdyFj1/vldDNOPF/9vwJs=",
   "Source": "ReproGanControl",
   "BasePath": "_content/ReproGanControl",
   "Mode": "Default",
@@ -1535,6 +1535,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\informeEventos-1.0.0.js"
+    },
+    {
+      "Identity": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\informeRegistroMedico-1.0.0.js",
+      "SourceId": "ReproGanControl",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\",
+      "BasePath": "_content/ReproGanControl",
+      "RelativePath": "js/informeRegistroMedico-1.0.0.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\informeRegistroMedico-1.0.0.js"
     },
     {
       "Identity": "C:\\Users\\Educacion\\Desktop\\Jona Progrmacion\\ReproGanControl\\ReproGanControl\\wwwroot\\js\\jspdf\\jspdf.debug.js",

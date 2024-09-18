@@ -58,7 +58,7 @@ public class RegistroMedicosController : Controller
         return Json(registroMedicoMostrar);
     }
 
-     public JsonResult GuardarRegistrosMedicos(int registroMedicoID, int personaID ,int animalID, DateTime fecha, string enfermedad, string tratamiento, string observacion)
+    public JsonResult GuardarRegistrosMedicos(int registroMedicoID, int personaID, int animalID, DateTime fecha, string enfermedad, string tratamiento, string observacion)
     {
 
         enfermedad = enfermedad.ToUpper();
@@ -108,4 +108,49 @@ public class RegistroMedicosController : Controller
         return Json(true);
     }
 
-}
+
+    public ActionResult InformeRegistroMedico()
+    {
+
+        return View();
+    }
+    public JsonResult ListadoInformeRegistroMedico()
+    {
+        List<VistaInformeRegistroMedico> vistaInformeRegistroMedico = new List<VistaInformeRegistroMedico>();
+
+        var registroMedico = _context.RegistroMedicos
+          .Include(t => t.Persona)
+          .Include(t => t.Animal)
+          .ToList();
+
+        foreach (var listadoRegistroMedico in registroMedico)
+        {
+
+            var registrosMedicosMostrar = vistaInformeRegistroMedico.FirstOrDefault(t => t.PersonaID == listadoRegistroMedico.PersonaID);
+            if (registrosMedicosMostrar == null)
+            {
+                registrosMedicosMostrar = new VistaInformeRegistroMedico
+                {
+                    PersonaID = listadoRegistroMedico.PersonaID,
+                    NombrePersona = listadoRegistroMedico.Persona.NombreCompleto,
+                    vistaRegistroMedico = new List<VistaRegistroMedico>()
+                };
+                vistaInformeRegistroMedico.Add(registrosMedicosMostrar);
+            }
+
+            // Crear el registro médico para agregar al grupo
+            var registroMedicoMostrar = new VistaRegistroMedico
+            {
+                AnimalCaravana = listadoRegistroMedico.Animal.Caravana,
+                FechaString = listadoRegistroMedico.Fecha.ToString("dd/MM/yyyy"),
+                Tratamiento = listadoRegistroMedico.Tratamiento,
+                Observacion = string.IsNullOrEmpty(listadoRegistroMedico.Observacion) ? "NINGUNA" : listadoRegistroMedico.Observacion,
+                Enfermedad = listadoRegistroMedico.Enfermedad,
+            };
+
+            registrosMedicosMostrar.vistaRegistroMedico.Add(registroMedicoMostrar);
+        }
+
+        return Json(vistaInformeRegistroMedico);
+    }
+ }

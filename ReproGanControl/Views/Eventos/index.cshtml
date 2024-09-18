@@ -79,30 +79,31 @@
                             <!-- Observación -->
                             <div class="mb-3">
                                 <label for="Observacion" class="form-label">Observación</label>
-                                <textarea class="form-control" id="Observacion" placeholder="Observación del evento."
-                                    rows="3"></textarea>
+                                <textarea class="form-control" style="text-transform: uppercase;" id="Observacion"
+                                    placeholder="Observación del evento." rows="3"></textarea>
                             </div>
                             <!-- Campos dinámicos -->
                             <!-- Parto -->
                             <div id="divTipoParto" class="mb-3" style="display:none;">
                                 <label for="TipoParto" class="form-label">Tipo Parto</label>
-                                <input type="text" class="form-control" id="TipoParto" placeholder="Tipo de parto" />
+                                <input type="text" style="text-transform: uppercase;" class="form-control"
+                                    id="TipoParto" placeholder="Tipo de parto" />
                             </div>
                             <div id="divTipoCria" class="mb-3" style="display:none;">
                                 <label for="TipoCria" class="form-label">Tipo Cría</label>
                                 <select class="form-control" id="TipoCria">
-                                    <option value="">Seleccione</option>
-                                    <option value="true">Macho</option>
-                                    <option value="false">Hembra</option>
+                                    <option value="">SELECCIONE</option>
+                                    <option value="true">MACHO</option>
+                                    <option value="false">HEMBRA</option>
                                 </select>
                             </div>
 
                             <div id="divEstadoCria" class="mb-3" style="display:none;">
                                 <label for="EstadoCria" class="form-label">Estado Cría</label>
                                 <select class="form-control" id="EstadoCria">
-                                    <option value="">Seleccione</option>
-                                    <option value="true">Vivo</option>
-                                    <option value="false">Muerto</option>
+                                    <option value="">SELECCIONE</option>
+                                    <option value="true">VIVO</option>
+                                    <option value="false">MUERTO</option>
                                 </select>
                             </div>
 
@@ -110,51 +111,52 @@
                             <div id="divCausaAborto" class="mb-3" style="display:none;">
                                 <label for="CausaAborto" class="form-label">Causa</label>
                                 <input type="text" class="form-control" id="CausaAborto"
-                                    placeholder="Causa del aborto" />
+                                    style="text-transform: uppercase;" placeholder="Causa del aborto" />
                             </div>
 
                             <!-- Servicio -->
                             <div id="divInseminacion" class="mb-3" style="display:none;">
                                 <label for="Inseminacion" class="form-label">Inseminación</label>
                                 <select class="form-control" id="Inseminacion">
-                                    <option value="">Seleccione</option>
-                                    <option value="Monta">Monta</option>
-                                    <option value="Inseminación Artificial">Inseminación Artificial</option>
+                                    <option value="">SELECCIONE</option>
+                                    <option value="Monta">MONTA</option>
+                                    <option value="Inseminación Artificial">ARTIFICIAL</option>
                                 </select>
                             </div>
 
                             <!-- Celo -->
                             <div id="divCausaCelo" class="mb-3" style="display:none;">
                                 <label for="CausaCelo" class="form-label">Causa</label>
-                                <input type="text" class="form-control" id="CausaCelo" placeholder="Causa del celo" />
+                                <input type="text" class="form-control" id="CausaCelo"
+                                    style="text-transform: uppercase;" placeholder="Causa del celo" />
                             </div>
 
                             <!-- Secado -->
                             <div id="divEspecifiqueSecado" class="mb-3" style="display:none;">
                                 <label for="EspecifiqueSecado" class="form-label">Especifique</label>
                                 <input type="text" class="form-control" id="EspecifiqueSecado"
-                                    placeholder="Detalles del secado" />
+                                    style="text-transform: uppercase;" placeholder="Detalles del secado" />
                             </div>
 
                             <!-- Venta -->
                             <div id="divMotivoVenta" class="mb-3" style="display:none;">
                                 <label for="MotivoVenta" class="form-label">Motivo Venta</label>
                                 <input type="text" class="form-control" id="MotivoVenta"
-                                    placeholder="Motivo de la venta" />
+                                    style="text-transform: uppercase;" placeholder="Motivo de la venta" />
                             </div>
 
                             <!-- Rechazo -->
                             <div id="divCausaRechazo" class="mb-3" style="display:none;">
                                 <label for="CausaRechazo" class="form-label">Causa Rechazo</label>
                                 <input type="text" class="form-control" id="CausaRechazo"
-                                    placeholder="Causa del rechazo" />
+                                    style="text-transform: uppercase;" placeholder="Causa del rechazo" />
                             </div>
 
                             <!-- Otro -->
                             <div id="divEspecifiqueOtro" class="mb-3" style="display:none;">
                                 <label for="EspecifiqueOtro" class="form-label">Especifique</label>
                                 <input type="text" class="form-control" id="EspecifiqueOtro"
-                                    placeholder="Especifique el motivo" />
+                                    style="text-transform: uppercase;" placeholder="Especifique el motivo" />
                             </div>
 
                         </form>
@@ -164,24 +166,6 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                             onclick="LimpiarModalEvento()">Cancelar</button>
                         <button type="button" class="btn btn-success" onclick="GuardarEvento()">Guardar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal para Mostrar Detalles -->
-        <div class="modal fade" id="modalDetalles" tabindex="-1" role="dialog" aria-labelledby="modalDetallesLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalDetallesLabel">Detalles del Evento</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body" id="modalDetallesBody">
-                        <!-- Detalles del evento serán cargados aquí -->
                     </div>
                 </div>
             </div>
@@ -197,7 +181,16 @@
                         <th>Tipo de Evento</th>
                         <th>Fecha de evento</th>
                         <th>Observación</th>
-                        <th style="width: 70px"></th> <!-- Columna para el botón Mostrar Detalles -->
+                        <th>Tipo de Parto</th>
+                        <th>Tipo de Cría</th>
+                        <th>Estado de la Cría</th>
+                        <th>Tipo de Inseminación</th>
+                        <th>Causa del Aborto</th>
+                        <th>Causa del Celo</th>
+                        <th>Especificación del Secado</th>
+                        <th>Motivo de la Venta</th>
+                        <th>Causa del Rechazo</th>
+                        <th>Otra Especificación </th>
                         <th style="width: 70px"></th>
                         <th style="width: 70px"></th>
                     </tr>

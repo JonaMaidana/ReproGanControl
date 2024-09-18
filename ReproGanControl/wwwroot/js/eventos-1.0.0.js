@@ -8,6 +8,7 @@ function ListadoEventos() {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
+            console.log(data);
             // Cerrar el modal de edición
             $("#ModalEvento").modal("hide");
 
@@ -31,6 +32,8 @@ function ListadoEventos() {
 function renderTableEventos() {
     let contenidoTabla = '';
 
+    console.log('Eventos a mostrar:', eventosMostrar); // Verifica los datos
+
     $.each(eventosMostrar, function (index, evento) {
         contenidoTabla += `
         <tr>
@@ -39,11 +42,17 @@ function renderTableEventos() {
             <td>${evento.tipoEventoString}</td>
             <td>${evento.fechaEventoString}</td>
             <td>${evento.observacion}</td>
-            <td class="text-center">
-                <button type="button" class="show-details-button" aria-label="Mostrar detalles" onclick="mostrarDetalles(${index})">
-                    Mostrar detalles
-                </button>
-            </td>
+            <td>${evento.tipoCriaString || ''}</td>
+            <td>${evento.tipoParto || ''}</td>
+            <td>${evento.estadoCriaString || ''}</td>
+            <td>${evento.inseminacionString || ''}</td>
+            <td>${evento.causaAborto || ''}</td>
+            <td>${evento.causaCelo || ''}</td>
+            <td>${evento.especifiqueSecado || ''}</td>
+            <td>${evento.motivoVenta || ''}</td>
+            <td>${evento.causaRechazo || ''}</td>
+            <td>${evento.especifiqueOtro || ''}</td>
+
             <td class="text-center">
                 <button type="button" class="edit-button" aria-label="Editar evento" onclick="ModalEditarEventos(${evento.eventoID})">
                     <i class="fa-solid fa-pen-to-square"></i>
@@ -55,21 +64,6 @@ function renderTableEventos() {
                 </button>
             </td>
         </tr>
-        <tr id="detalles-${index}" style="display:none;">
-            <td colspan="15">
-            
-                <strong>Tipo Cría:</strong> ${evento.tipoCriaString || 'N/A'} <br>
-                <strong>Tipo Parto:</strong> ${evento.tipoParto || 'N/A'} <br>
-                <strong>Estado Cría:</strong> ${evento.estadoCriaString || 'N/A'} <br>
-                <strong>Inseminación:</strong> ${evento.inseminacionString || 'N/A'} <br>
-                <strong>Causa Aborto:</strong> ${evento.causaAborto || 'N/A'} <br>
-                <strong>Causa Celo:</strong> ${evento.causaCelo || 'N/A'} <br>
-                <strong>Especifique Secado:</strong> ${evento.especifiqueSecado || 'N/A'} <br>
-                <strong>Motivo Venta:</strong> ${evento.motivoVenta || 'N/A'} <br>
-                <strong>Causa Rechazo:</strong> ${evento.causaRechazo || 'N/A'} <br>
-                <strong>Especifique Otro:</strong> ${evento.especifiqueOtro || 'N/A'} <br>
-            </td>
-        </tr>
         `;
     });
 
@@ -77,18 +71,6 @@ function renderTableEventos() {
 }
 
 function GuardarEvento() {
-    // Forzar la actualización del valor del campo
-    $("#TipoCria").trigger('change');
-    $("#TipoParto").trigger('change');
-    $("#EstadoCria").trigger('change');
-    $("#CausaAborto").trigger('change');
-    $("#Inseminacion").trigger('change');
-    $("#CausaCelo").trigger('change');
-    $("#EspecifiqueSecado").trigger('change');
-    $("#MotivoVenta").trigger('change');
-    $("#CausaRechazo").trigger('change');
-    $("#EspecifiqueOtro").trigger('change');
-
     // Recopilar datos del formulario
     let eventoID = $("#EventoID").val();
     let animalID = $("#AnimalID").val();
@@ -106,6 +88,118 @@ function GuardarEvento() {
     let causaRechazo = $("#CausaRechazo").val();
     let especifiqueOtro = $("#EspecifiqueOtro").val();
 
+    // Validación básica para campos obligatorios
+    if (!animalID || !tipoEvento || !fechaEvento) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Por favor, complete todos los campos obligatorios (Animal, Tipo de Evento, Fecha y Observación).',
+            confirmButtonText: 'OK'
+        });
+        return;
+    }
+
+    // Validaciones adicionales basadas en el tipo de evento
+    switch (parseInt(tipoEvento)) {
+        case 1: // Parto
+            if (!tipoCria || !tipoParto || !estadoCria) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Por favor, complete todos los campos para el evento de Parto (Tipo de Cría, Tipo de Parto y Estado de Cría).',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+            break;
+        case 2: // Aborto
+            if (!causaAborto) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Por favor, ingrese la causa del aborto.',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+            break;
+        case 3: // Servicio
+            if (inseminacion === null) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Por favor, seleccione el tipo de inseminación (Monta o Inseminación Artificial).',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+            break;
+        case 4: // Celo
+            if (!causaCelo) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Por favor, ingrese la causa del celo.',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+            break;
+        case 5: // Secado
+            if (!especifiqueSecado) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Por favor, especifique el motivo del secado.',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+            break;
+        case 6: // Venta
+            if (!motivoVenta) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Por favor, ingrese el motivo de la venta.',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+            break;
+        case 7: // Rechazo
+            if (!causaRechazo) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Por favor, ingrese la causa del rechazo.',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+            break;
+        case 8: // Otro
+            if (!especifiqueOtro) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Por favor, especifique los detalles del evento "Otro".',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+            break;
+        default:
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'El tipo de evento seleccionado no es válido.',
+                confirmButtonText: 'OK'
+            });
+            return;
+    }
+
+    // Si todas las validaciones pasan, se procede con el envío del formulario
     $.ajax({
         url: '/Eventos/GuardarEventos',  // Cambia esta URL según tu configuración
         type: 'POST',
@@ -127,12 +221,12 @@ function GuardarEvento() {
             especifiqueOtro: especifiqueOtro
         },
         success: function (response) {
+            console.log('Respuesta del servidor:', response);
             if (response.success) {
                 // Cerrar el modal
                 $("#ModalEvento").modal("hide");
 
                 // Recargar la tabla o hacer otras acciones
-                // Puedes llamar a una función que actualice la tabla, por ejemplo:
                 ListadoEventos();
 
                 Swal.fire({
@@ -189,19 +283,24 @@ function ModalEditarEventos(eventoID) {
                     case 1: // Parto
                         // Verificamos tanto los valores booleanos como las cadenas
                         if (evento.tipoCria !== null) {
-                            $("#TipoCria").val(evento.tipoCria === true || evento.tipoCriaString === "Macho" ? "true" : "false");
+                            $("#TipoCria").val(evento.tipoCria === true || evento.tipoCriaString === "MACHO" ? "true" : "false");
                         }
                         $("#TipoParto").val(evento.tipoParto || "");
 
                         if (evento.estadoCria !== null) {
-                            $("#EstadoCria").val(evento.estadoCria === true || evento.estadoCriaString === "Vivo" ? "true" : "false");
+                            $("#EstadoCria").val(evento.estadoCria === true || evento.estadoCriaString === "VIVO" ? "true" : "false");
                         }
                         break;
                     case 2: // Aborto
                         $("#CausaAborto").val(evento.causaAborto || "");
                         break;
                     case 3: // Servicio
-                        $("#Inseminacion").val(evento.inseminacionString || "")
+                        // Mapeo para inseminacion: si es booleano o cadena
+                        if (evento.inseminacion !== null) {
+                            $("#Inseminacion").val(evento.inseminacion === true || evento.inseminacionString === "MONTA" ? "Monta" : "Inseminación Artificial");
+                        } else {
+                            $("#Inseminacion").val(""); // Si no hay valor, limpiar el campo
+                        }
                         break;
                     case 4: // Celo
                         $("#CausaCelo").val(evento.causaCelo || "");
@@ -301,7 +400,7 @@ function updateTotalItemsEventos() {
 }
 
 function LimpiarModalEvento() {
-    // Restablecer valores de campos
+    // Restablecer valores de campos generales
     document.querySelector("#AnimalID").value = 0;
     document.querySelector("#TipoEvento").value = 0;
     document.querySelector("#Observacion").value = "";
@@ -310,25 +409,39 @@ function LimpiarModalEvento() {
     // Ocultar el campo Estado
     document.querySelector("#divEstadoAnimal").style.display = 'none';
 
-    // Ocultar todos los campos específicos de tipo de evento
+    // Campos específicos del evento
     const campos = [
         'TipoParto', 'TipoCria', 'EstadoCria', 'CausaAborto',
         'Inseminacion', 'CausaCelo', 'EspecifiqueSecado',
         'MotivoVenta', 'CausaRechazo', 'EspecifiqueOtro'
     ];
 
+    // Limpiar y ocultar cada campo específico
     campos.forEach(campo => {
-        const elemento = document.querySelector(`#div${campo}`);
+        const elemento = document.querySelector(`#${campo}`);
         if (elemento) {
-            elemento.style.display = 'none';
+            if (elemento.tagName === 'SELECT') {
+                elemento.value = ""; // Limpia el valor de los <select>
+            } else {
+                elemento.value = ""; // Limpia el valor de los <input>
+            }
+        }
+        // Ocultar el campo específico
+        const divElemento = document.querySelector(`#div${campo}`);
+        if (divElemento) {
+            divElemento.style.display = 'none';
         }
     });
 }
+// Llamar a LimpiarModalEvento cuando el modal se cierre
+$('#ModalEvento').on('hidden.bs.modal', function () {
+    LimpiarModalEvento();
+});
 
 function mostrarCamposPorTipoEvento() {
     // Obtener el valor seleccionado del DropDownList
     const tipoEvento = document.querySelector("#TipoEvento").value;
-    console.log('Tipo de Evento Seleccionado:', tipoEvento); // Log del tipo de evento
+
 
     // Función para ocultar todos los campos específicos
     const ocultarCampos = () => {
@@ -384,44 +497,6 @@ function mostrarCamposPorTipoEvento() {
             // Ningún campo específico es requerido para otros tipos de eventos
             break;
     }
-}
-
-function mostrarDetalles(index) {
-    let evento = eventosMostrar[index];
-    let modalBody = document.getElementById('modalDetallesBody');
-
-    // Crear un fragmento de documento para agregar los detalles
-    let fragment = document.createDocumentFragment();
-
-    // Función auxiliar para crear un campo en el modal solo si tiene valor
-    function createField(label, value) {
-        if (value) {
-            let div = document.createElement('div');
-            div.classList.add('mb-3');
-            div.innerHTML = `<strong>${label}:</strong> ${value}`;
-            fragment.appendChild(div);
-        }
-    }
-
-    // Agregar detalles dinámicamente al fragmento
-
-    createField('Tipo Cría', evento.tipoCriaString);
-    createField('Tipo Parto', evento.tipoParto);
-    createField('Estado Cría', evento.estadoCriaString);
-    createField('Inseminación', evento.inseminacionString);
-    createField('Causa Aborto', evento.causaAborto);
-    createField('Causa Celo', evento.causaCelo);
-    createField('Especifique Secado', evento.especifiqueSecado);
-    createField('Motivo Venta', evento.motivoVenta);
-    createField('Causa Rechazo', evento.causaRechazo);
-    createField('Especifique Otro', evento.especifiqueOtro);
-
-    // Limpiar el contenido actual del modal y agregar el fragmento
-    modalBody.innerHTML = '';
-    modalBody.appendChild(fragment);
-
-    // Mostrar el modal
-    $('#modalDetalles').modal('show');
 }
 
 // traer el estado del animal 

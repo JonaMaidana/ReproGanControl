@@ -71,18 +71,18 @@ public class EventosController : Controller
                 FechaEventoString = e.FechaEvento.ToString("dd/MM/yyyy"),
                 Observacion = string.IsNullOrEmpty(e.Observacion) ? "NINGUNA" : e.Observacion,
                 TipoCria = e.TipoCria,
-                TipoCriaString = e.TipoCria.HasValue ? (e.TipoCria.Value ? "Macho" : "Hembra") : "",
-                TipoParto = e.TipoParto,
+                TipoCriaString = e.TipoCria.HasValue ? (e.TipoCria.Value ? "MACHO" : "HEMBRA") : "",
+                TipoParto = e.TipoParto?.ToUpper(),
                 EstadoCria = e.EstadoCria,
-                EstadoCriaString = e.EstadoCria.HasValue ? (e.EstadoCria.Value ? "Vivo" : "Muerto") : "",
-                CausaAborto = e.CausaAborto,
+                EstadoCriaString = e.EstadoCria.HasValue ? (e.EstadoCria.Value ? "VIVO" : "MUERTO") : "",
+                CausaAborto = e.CausaAborto?.ToUpper(),
                 Inseminacion = e.Inseminacion,
-                InseminacionString = e.Inseminacion.HasValue ? (e.Inseminacion.Value ? "Monta" : "Inseminación Artificial") : "",
-                CausaCelo = e.CausaCelo,
-                EspecifiqueSecado = e.EspecifiqueSecado,
-                MotivoVenta = e.MotivoVenta,
-                CausaRechazo = e.CausaRechazo,
-                EspecifiqueOtro = e.EspecifiqueOtro
+                InseminacionString = e.Inseminacion.HasValue ? (e.Inseminacion.Value ? "MONTA" : "ARTIFICIAL") : "",
+                CausaCelo = e.CausaCelo?.ToUpper(),
+                EspecifiqueSecado = e.EspecifiqueSecado?.ToUpper(),
+                MotivoVenta = e.MotivoVenta?.ToUpper(),
+                CausaRechazo = e.CausaRechazo?.ToUpper(),
+                EspecifiqueOtro = e.EspecifiqueOtro?.ToUpper(),
             })
             .ToList();
 
@@ -93,6 +93,7 @@ public class EventosController : Controller
     string tipoParto, bool? estadoCria, string causaAborto, bool? inseminacion, string causaCelo, string especifiqueSecado,
     string motivoVenta, string causaRechazo, string especifiqueOtro)
     {
+        
         // Validar si el tipoEvento es válido
         if (!Enum.IsDefined(typeof(EventoEnum), tipoEvento))
         {
@@ -107,6 +108,9 @@ public class EventosController : Controller
             return Json(new { success = false, message = "Este Animal ya tiene un evento." });
         }
 
+        observacion = observacion?.ToUpper();
+
+
         if (eventoID == 0)
         {
             // Crear nuevo evento
@@ -116,7 +120,6 @@ public class EventosController : Controller
                 TipoEvento = tipoEvento,
                 FechaEvento = fechaEvento,
                 Observacion = observacion,
-
                 TipoCria = tipoEvento == EventoEnum.Parto ? tipoCria : null,
                 TipoParto = tipoEvento == EventoEnum.Parto ? tipoParto : null,
                 EstadoCria = tipoEvento == EventoEnum.Parto ? estadoCria : null,
@@ -141,8 +144,6 @@ public class EventosController : Controller
                 eventoExistente.TipoEvento = tipoEvento;
                 eventoExistente.FechaEvento = fechaEvento;
                 eventoExistente.Observacion = observacion;
-
-                // Actualizar los campos específicos según el tipo de evento
                 eventoExistente.TipoCria = tipoEvento == EventoEnum.Parto ? tipoCria : null;
                 eventoExistente.TipoParto = tipoEvento == EventoEnum.Parto ? tipoParto : null;
                 eventoExistente.EstadoCria = tipoEvento == EventoEnum.Parto ? estadoCria : null;
@@ -237,7 +238,7 @@ public class EventosController : Controller
                 EstadoCriaString = listadoEventos.EstadoCria.HasValue ? (listadoEventos.EstadoCria.Value ? "Vivo" : "Muerto") : "",
                 CausaAborto = listadoEventos.CausaAborto,
                 InseminacionString = listadoEventos.Inseminacion.HasValue ? (listadoEventos.Inseminacion.Value ? "Monta" : "Inseminación Artificial") : "",
-                CausaCelo = listadoEventos.CausaCelo,   
+                CausaCelo = listadoEventos.CausaCelo,
                 EspecifiqueSecado = listadoEventos.EspecifiqueSecado,
                 MotivoVenta = listadoEventos.MotivoVenta,
                 CausaRechazo = listadoEventos.CausaRechazo,

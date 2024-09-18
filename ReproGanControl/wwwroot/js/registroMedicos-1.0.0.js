@@ -27,20 +27,22 @@ function renderTableRegistroMedico() {
         contenidoTabla += `
         <tr>
             <td>${medico.animalCaravana}</td>
-            <td>${medico.fechaString}</td>
-            <td>${medico.enfermedad}</td>
-            <td>${medico.tratamiento}</td>
             <td>${medico.nombrePersona}</td>
-            <td>${medico.observacion}</td>
+            <td class="ocultar-en-768px">${medico.enfermedad}</td>
+            <td class="ocultar-en-768px">${medico.tratamiento}</td>
+            <td class="ocultar-en-768px">${medico.observacion}</td>
+            <td class="ocultar-en-768px">${medico.fechaString}</td>
             <td class="text-center">
-                <button type="button" class="edit-button" onclick="ModalEditarRegistroMedico(${medico.registroMedicoID})">
+                <button type="button" class="edit-button" title="Editar Registro Medico" onclick="ModalEditarRegistroMedico(${medico.registroMedicoID})">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
-            </td>
-            <td class="text-center">
-                <button type="button" class="delete-button" onclick="EliminarRegistroMedico(${medico.registroMedicoID})">
+                <button type="button" class="delete-button" title="Eliminar Registro Medico" onclick="EliminarRegistroMedico(${medico.registroMedicoID})">
                     <i class="fa-solid fa-trash"></i>
                 </button>
+                <button type="button" class="info-button" title="Ver mas Datos" onclick="showRegistroMedicoDetails(${medico.registroMedicoID})">
+                    <i class="fa-solid fa-info-circle"></i>
+                </button>
+                
             </td>
         </tr>
         `;
@@ -49,9 +51,32 @@ function renderTableRegistroMedico() {
     document.getElementById("tbody-registroMedico").innerHTML = contenidoTabla;
 }
 
+function showRegistroMedicoDetails(registroMedicoID) {
+    // Encuentra el registro médico con el ID dado
+    const medico = registroMedicoMostrar.find(m => m.registroMedicoID === registroMedicoID);
+
+    // Crea el contenido para el modal
+    const modalContent = `
+        <p><strong>Caravana del Animal:</strong> ${medico.animalCaravana}</p>
+        <p><strong>Fecha:</strong> ${medico.fechaString}</p>
+        <p><strong>Enfermedad:</strong> ${medico.enfermedad}</p>
+        <p><strong>Tratamiento:</strong> ${medico.tratamiento}</p>
+        <p><strong>Nombre de la Persona:</strong> ${medico.nombrePersona}</p>
+        <p><strong>Observación:</strong> ${medico.observacion}</p>
+    `;
+
+    // Asigna el contenido al modal
+    document.getElementById("modalContentRegistroMedico").innerHTML = modalContent;
+
+    // Muestra el modal
+    var myModal = new bootstrap.Modal(document.getElementById('registroMedicoModal'));
+    myModal.show();
+}
+
+
 function updateTotalItemsRegistroMedico() {
     const totalItems = registroMedicoMostrar.length;
-    document.getElementById("total-items-registrosMedicos").textContent = `registros medicos cargados: ${totalItems}`;
+    document.getElementById("total-items-registrosMedicos").textContent = `Registros medicos cargados: ${totalItems}`;
 }
 
 function LimpiarModalRegistroMedico() {

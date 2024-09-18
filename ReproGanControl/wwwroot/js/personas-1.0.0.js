@@ -31,21 +31,22 @@ function renderTablePersonas() {
         <tr>
             <td>${persona.nombreCompleto}</td>
             <td>${persona.numeroDocumento}</td>
-            <td>${persona.fechaNacimientoString}</td>
-            <td>${persona.tel}</td>
-            <td>${persona.email}</td>
-            <td>${persona.nombreProvincia}</td>
-            <td>${persona.nombreLocalidad}</td>
-            <td>${persona.domicilio}</td>
+            <td class="ocultar-en-768px">${persona.fechaNacimientoString}</td>
+            <td class="ocultar-en-768px">${persona.tel}</td>
+            <td class="ocultar-en-768px">${persona.email}</td>
+            <td class="ocultar-en-768px">${persona.nombreProvincia}</td>
+            <td class="ocultar-en-768px">${persona.nombreLocalidad}</td>
+            <td class="ocultar-en-768px">${persona.domicilio}</td>
             
             <td class="text-center">
-                <button type="button" class="edit-button" onclick="ModalEditarPersonas(${persona.personaID})">
+                <button type="button" class="edit-button" title="Editar Persona" onclick="ModalEditarPersonas(${persona.personaID})">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
-            </td>
-            <td class="text-center">
-                <button type="button" class="delete-button" onclick="EliminarPersona(${persona.personaID})">
+                <button type="button" class="delete-button" title="Eliminar Persona" onclick="EliminarPersona(${persona.personaID})">
                     <i class="fa-solid fa-trash"></i>
+                </button>
+                <button type="button" class="info-button" title="Ver todos los datos" onclick="showPersonaDetails(${persona.personaID})">
+                    <i class="fa-solid fa-info-circle"></i>
                 </button>
             </td>
         </tr>
@@ -54,6 +55,31 @@ function renderTablePersonas() {
 
     document.getElementById("tbody-personas").innerHTML = contenidoTabla;
 }
+
+function showPersonaDetails(personaID) {
+    // Encuentra la persona con el ID dado
+    const persona = personasMostrar.find(p => p.personaID === personaID);
+
+    // Crea el contenido para el modal
+    const modalContent = `
+        <p><strong>Nombre Completo:</strong> ${persona.nombreCompleto}</p>
+        <p><strong>Documento:</strong> ${persona.numeroDocumento}</p>
+        <p><strong>Fecha de Nacimiento:</strong> ${persona.fechaNacimientoString}</p>
+        <p><strong>Teléfono:</strong> ${persona.tel}</p>
+        <p><strong>Email:</strong> ${persona.email}</p>
+        <p><strong>Provincia:</strong> ${persona.nombreProvincia}</p>
+        <p><strong>Localidad:</strong> ${persona.nombreLocalidad}</p>
+        <p><strong>Domicilio:</strong> ${persona.domicilio}</p>
+    `;
+
+    // Asigna el contenido al modal
+    document.getElementById("modalContentPersona").innerHTML = modalContent;
+
+    // Muestra el modal
+    var myModal = new bootstrap.Modal(document.getElementById('personaModal'));
+    myModal.show();
+}
+
 
 function updateTotalItemsPersonas() {
     const totalItems = personasMostrar.length;

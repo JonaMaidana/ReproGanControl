@@ -100,6 +100,17 @@ function GuardarPersonas() {
     let domicilio = document.getElementById("Domicilio").value;
     let numeroDocumento = document.getElementById("NumeroDocumento").value;
 
+    // Validación básica para campos obligatorios
+    if (!personaID || !localidadID || !provinciaID || !nombreCompleto || !email || !tel || !fechaNacimiento || !domicilio || !numeroDocumento) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Por favor, complete todos los campos obligatorios.',
+            confirmButtonText: 'OK'
+        });
+        return; // Salir de la función si hay campos vacíos
+    }
+
     $.ajax({
         url: '../../Personas/CrearPersonas',
         data: {
@@ -131,7 +142,7 @@ function GuardarPersonas() {
                     text: 'La persona se ha guardado correctamente.',
                     confirmButtonText: 'OK'
                 }).then(() => {
-                    MostrarPersonas();
+                    MostrarPersonas(); // Llamar a la función para actualizar la lista de personas
                 });
             }
         },
@@ -152,7 +163,7 @@ function ModalEditarPersonas(personaID) {
         url: '../../Personas/MostrarPersonas',
         data: { id: personaID },
         type: 'GET',
-        dataType: 'json',
+        dataType: 'json',   
         success: function (personasMostrar) {
             let persona = personasMostrar[0];
 

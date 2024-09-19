@@ -126,16 +126,26 @@ public class PersonasController : Controller
         return Json(new { success = true });
     }
 
-    public JsonResult EliminarPersonas(int personaID)
-    {
-        var persona = _context.Personas.Find(personaID);
-        if (persona != null)
-        {
-            _context.Personas.Remove(persona);
-            _context.SaveChanges();
-            return Json(new { success = true });
-        }
+   public JsonResult EliminarPersonas(int personaID)
+{
+    // Verificar si la persona está en uso en otras tablas o relaciones
+    bool isInUse = _context.RegistroMedicos.Where(o => o.PersonaID == personaID).Any(); // Ajusta "OtraTabla" según tu contexto
 
-        return Json(new { success = false, message = "La persona no existe o ya fue eliminada." });
+    if (isInUse)
+    {
+        return Json(new { success = false, message = "La persona está en uso en otra parte y no puede ser eliminada." });
     }
+
+    var persona = _context.Personas.Find(personaID);
+
+    if (persona == null)
+    {
+        return Json(new { success = false, message = "Persona no encontrada." });
+    }
+
+    _context.Personas.Remove(persona);
+    _context.SaveChanges();
+
+    return Json(new { success = true, message = "La persona fue eliminada exitosamente." });
+}
 }

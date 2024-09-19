@@ -6,50 +6,72 @@
         <h3 class="display-6" style="color: #555;">Informes Registros Medicos</h3>
     </div>
     <div class="card-body">
-    <!-- Sección de Filtros -->
-    <div class="card mb-3">
-        <div class="card-body">
-        </div>
-    </div>
+        @* <!-- Sección de Filtros -->
+        <div class="card mb-3">
+            <div class="card-body">
+            </div>
+        </div> *@
 
-    <!-- Botón de Imprimir -->
-    <button class="btn btn-dark" title="Imprimir Informe" onclick="Imprimir()">
-        <i class="fa-solid fa-download"></i>
-    </button>
-<!-- Modal Structure -->
-<div class="modal fade" id="registroMedicoModal" tabindex="-1" aria-labelledby="registroMedicoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="registroMedicoModalLabel">Detalles del Registro Médico</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="modalContentRegistroMedico">
-                <!-- Aquí se insertará el contenido del modal -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <!-- Botón de Imprimir -->
+        <button class="btn btn-dark" title="Imprimir Informe" onclick="Imprimir()">
+            <i class="fa-solid fa-download"></i>
+        </button>
+
+        <!-- Sección de Filtros -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-3 mb-3">
+                        <label for="PersonasBuscarID" class="form-label">Busqueda por Veterinario</label>
+                        @Html.DropDownList("PersonasBuscarID", null, htmlAttributes: new
+                            {
+                                @class = "form-control",
+                                @onchange = "ListadoInformeRegistroMedico()"
+                            })
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 mb-3">
+                        <label for="BuscarCaravanaInfo" class="form-label">Busqueda por Caravana</label>
+                        <input type="text" id="BuscarCaravanaInfo" onkeyup="ListadoInformeRegistroMedico()"
+                            class="form-control" style="text-transform: uppercase;" placeholder="Buscar" />
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-    <div class="table-responsive mt-2">
-        <table id="tabla-imprimir" class="content-table">
-            <thead>
-              <tr>
-                <th>Veterinario</th>
-                <th>Caravana</th>
-                <th class="ocultar-en-768px">Fecha</th>
-                <th class="ocultar-en-768px">Enfermedad</th>
-                <th class="ocultar-en-768px">Tratamiento</th>
-                <th class="ocultar-en-768px">Observación</th>
-                <th style="width: 70px"></th>
-              </tr>
-            </thead>
-            <tbody id="tbody-informesRegistroMedico">
-            </tbody>
-          </table>
-    </div>
+        <!-- Modal Structure -->
+        <div class="modal fade" id="registroMedicoModal" tabindex="-1" aria-labelledby="registroMedicoModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registroMedicoModalLabel">Detalles del Registro Médico</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalContentRegistroMedico">
+                        <!-- Aquí se insertará el contenido del modal -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive mt-2">
+            <table id="tabla-imprimir" class="content-table">
+                <thead>
+                    <tr>
+                        <th>Veterinario</th>
+                        <th>Caravana</th>
+                        <th class="ocultar-en-768px">Fecha</th>
+                        <th class="ocultar-en-768px">Enfermedad</th>
+                        <th class="ocultar-en-768px">Tratamiento</th>
+                        <th class="ocultar-en-768px">Observación</th>
+                        <th style="width: 70px"></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-informesRegistroMedico">
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

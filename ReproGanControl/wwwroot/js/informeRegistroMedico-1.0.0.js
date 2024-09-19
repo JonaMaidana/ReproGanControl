@@ -5,9 +5,15 @@ window.onload = ListadoInformeRegistroMedico();
 let vistaInformeRegistroMedicoGlobal = [];
 
 function ListadoInformeRegistroMedico() {
+    let personasBuscarID = document.getElementById("PersonasBuscarID").value;
+    let buscarCaravanaInfo = document.getElementById("BuscarCaravanaInfo").value;
+
     $.ajax({
         url: '../../RegistroMedicos/ListadoInformeRegistroMedico',
-        data: {},
+        data: {
+            PersonasBuscarID: personasBuscarID,
+            BuscarCaravanaInfo: buscarCaravanaInfo
+        },
         type: 'POST',
         dataType: 'json',
 

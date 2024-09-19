@@ -3,9 +3,12 @@ window.onload = ListadoRegistrosMedicos();
 let registroMedicoMostrar = [];
 
 function ListadoRegistrosMedicos() {
+    let buscarCaravana = document.getElementById("BuscarCaravana").value;
+    
     $.ajax({
         url: '../../RegistroMedicos/ListadoRegistrosMedicos',
         type: 'GET',
+        data: {BuscarCaravana: buscarCaravana},
         dataType: 'json',
         success: function (data) {
             $("#ModalRegistroMedico").modal("hide");
@@ -83,7 +86,6 @@ function LimpiarModalRegistroMedico() {
     
     document.getElementById("AnimalID").value = 0;
     document.getElementById("PersonaID").value = 0;
-    document.getElementById("Fecha").value = 0;
     document.getElementById("Tratamiento").value = "";
     document.getElementById("Enfermedad").value = "";
     document.getElementById("Observacion").value = "";
@@ -97,7 +99,7 @@ function configurarFechaActual() {
     const fechaInput = document.getElementById("Fecha");
     const hoy = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato YYYY-MM-DD
     fechaInput.value = hoy; // Establecer la fecha actual como valor predeterminado
-    fechaInput.setAttribute('min', hoy); // Restringir la selección a partir de la fecha actual
+    fechaInput.setAttribute('max', hoy); // Restringir la selección a partir de la fecha actual
 }
 
 function GuardarRegistroMedico() {

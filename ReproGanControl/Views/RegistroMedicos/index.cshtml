@@ -34,98 +34,119 @@
             </div>
         </div>
 
-        <!-- Modal de Información del Evento -->
-       <div class="modal fade" data-bs-backdrop="static" id="ModalRegistroMedico" tabindex="-1"
-    aria-labelledby="RegistroMedicoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="ModalTituloRegistroMedico">Información del Evento</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    onclick="LimpiarModalRegistroMedico()" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <input type="hidden" id="RegistroMedicoID" value="0" />
-
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="AnimalID" class="form-label">Caravana <span class="required-asterisk">*</span></label>
-                            @Html.DropDownList("AnimalID", (SelectList)ViewBag.AnimalID, htmlAttributes: new
-                                {
-                                    @class = "form-control"
-                                })
-                        </div>
-                        <div class="col-md-6">
-                            <label for="fecha" class="form-label">Fecha<span class="required-asterisk">*</span></label>
-                            <input type="date" class="form-control" id="Fecha">
-                        </div>
+          <!-- Sección de Filtros -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-3 mb-3">
+                        <label for="BuscarCaravana" class="form-label">Busqueda por Caravana</label>
+                        <input type="text" id="BuscarCaravana" onkeyup="ListadoRegistrosMedicos()" class="form-control"
+                            style="text-transform: uppercase;" placeholder="Buscar" />
                     </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="enfermedad" style="text-transform: uppercase;" class="form-label">Enfermedad<span class="required-asterisk">*</span></label>
-                            <input type="text" class="form-control" id="Enfermedad">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="tratamiento" style="text-transform: uppercase;" class="form-label">Tratamiento<span class="required-asterisk">*</span></label>
-                            <input type="text" class="form-control" id="Tratamiento">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <label for="PersonaID" class="form-label">Veterinario<span class="required-asterisk">*</span></label>
-                            @Html.DropDownList("PersonaID", (SelectList)ViewBag.PersonaID, htmlAttributes: new
-                                {
-                                    @class = "form-control"
-                                })
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <label for="observacion" style="text-transform: uppercase;" class="form-label">Observación</label>
-                            <textarea class="form-control" id="Observacion" placeholder="Observación." rows="3"
-                                oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px';"></textarea>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-            <div class="modal-footer" style="display: flex; justify-content: flex-start; align-items: center;">
-                <p style="font-weight: bold; text-transform: uppercase; color: black; margin: 0;">
-                    Completa los campos requeridos antes de guardar <span class="required-asterisk">*</span>
-                </p>
-                <div style="margin-left: auto;">
-                    <button type="button" onclick="LimpiarModalRegistroMedico()" class="btn btn-secondary"
-                        data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" onclick="GuardarRegistroMedico()"
-                        class="btn btn-success">Guardar</button>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="registroMedicoModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel">Detalles del Registro Médico</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Aquí se mostrará la información del registro médico -->
-        <div id="modalContentRegistroMedico"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <!-- Puedes añadir botones adicionales si es necesario -->
-      </div>
-    </div>
-  </div>
-</div>
+
+        <!-- Modal de Información del Evento -->
+        <div class="modal fade" data-bs-backdrop="static" id="ModalRegistroMedico" tabindex="-1"
+            aria-labelledby="RegistroMedicoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalTituloRegistroMedico">Información del Evento</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            onclick="LimpiarModalRegistroMedico()" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <input type="hidden" id="RegistroMedicoID" value="0" />
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="AnimalID" class="form-label">Caravana <span
+                                            class="required-asterisk">*</span></label>
+                                    @Html.DropDownList("AnimalID", (SelectList)ViewBag.AnimalID, htmlAttributes: new
+                                        {
+                                            @class = "form-control"
+                                        })
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="fecha" class="form-label">Fecha<span
+                                            class="required-asterisk">*</span></label>
+                                    <input type="date" class="form-control" id="Fecha">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="enfermedad" style="text-transform: uppercase;"
+                                        class="form-label">Enfermedad<span class="required-asterisk">*</span></label>
+                                    <input type="text" placeholder="INGRESAR ENFERMEDAD" class="form-control"
+                                        id="Enfermedad">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="tratamiento" style="text-transform: uppercase;"
+                                        class="form-label">Tratamiento<span class="required-asterisk">*</span></label>
+                                    <input type="text" placeholder="INGRESAR TRATAMIENTO" class="form-control"
+                                        id="Tratamiento">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <label for="PersonaID" class="form-label">Veterinario<span
+                                            class="required-asterisk">*</span></label>
+                                    @Html.DropDownList("PersonaID", (SelectList)ViewBag.PersonaID, htmlAttributes: new
+                                        {
+                                            @class = "form-control"
+                                        })
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <label for="observacion" style="text-transform: uppercase;"
+                                        class="form-label">Observación</label>
+                                    <textarea class="form-control" id="Observacion" placeholder="OBSERVACION" rows="3"
+                                        oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px';"></textarea>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="display: flex; justify-content: flex-start; align-items: center;">
+                        <p style="font-weight: bold; text-transform: uppercase; color: black; margin: 0;">
+                            Completa los campos requeridos antes de guardar <span class="required-asterisk">*</span>
+                        </p>
+                        <div style="margin-left: auto;">
+                            <button type="button" onclick="LimpiarModalRegistroMedico()" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" onclick="GuardarRegistroMedico()"
+                                class="btn btn-success">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="registroMedicoModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Detalles del Registro Médico</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Aquí se mostrará la información del registro médico -->
+                        <div id="modalContentRegistroMedico"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <!-- Puedes añadir botones adicionales si es necesario -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Tabla de Eventos -->
         <div class="table-responsive mt-2">

@@ -31,12 +31,18 @@ public class RegistroMedicosController : Controller
         return View();
     }
 
-    public JsonResult ListadoRegistrosMedicos(int? id)
+    public JsonResult ListadoRegistrosMedicos(int? id, string BuscarCaravana)
     {
         var registroMedico = _context.RegistroMedicos.Include(a => a.Animal).Include(a => a.Persona).ToList();
         if (id != null)
         {
             registroMedico = registroMedico.Where(t => t.RegistroMedicoID == id).ToList();
+        }
+
+        if (!string.IsNullOrEmpty(BuscarCaravana))
+        {
+            var caravanaUpper = BuscarCaravana.ToUpper();
+            registroMedico = registroMedico.Where(a => a.Animal.Caravana.ToUpper().Contains(caravanaUpper)).ToList();
         }
 
         var registroMedicoMostrar = registroMedico
@@ -53,6 +59,7 @@ public class RegistroMedicosController : Controller
             Observacion = string.IsNullOrEmpty(r.Observacion) ? "NINGUNA" : r.Observacion,
             Enfermedad = r.Enfermedad,
         })
+        .OrderByDescending(f => f.Fecha)
         .ToList();
 
         return Json(registroMedicoMostrar);
@@ -63,8 +70,7 @@ public class RegistroMedicosController : Controller
 
         enfermedad = enfermedad.ToUpper();
         tratamiento = tratamiento.ToUpper();
-        observacion = observacion.ToUpper();
-        observacion = string.IsNullOrEmpty(observacion) ? "NINGUNA" : observacion;
+        observacion = string.IsNullOrEmpty(observacion) ? "NINGUNA" : observacion.ToUpper();
 
         if (registroMedicoID == 0)
         {
@@ -111,17 +117,29 @@ public class RegistroMedicosController : Controller
 
     public ActionResult InformeRegistroMedico()
     {
+        var personasBuscar = _context.Personas.ToList();
+        personasBuscar.Add(new Persona { PersonaID = 0, NombreCompleto = "[SELECCIONE]" });
+        ViewBag.PersonasBuscarID = new SelectList(personasBuscar.OrderBy(n => n.NombreCompleto), "PersonaID", "NombreCompleto");
 
         return View();
     }
-    public JsonResult ListadoInformeRegistroMedico()
+    public JsonResult ListadoInformeRegistroMedico(int? PersonasBuscarID, string? BuscarCaravanaInfo)
     {
         List<VistaInformeRegistroMedico> vistaInformeRegistroMedico = new List<VistaInformeRegistroMedico>();
 
-        var registroMedico = _context.RegistroMedicos
-          .Include(t => t.Persona)
-          .Include(t => t.Animal)
-          .ToList();
+        var registroMedico = _context.RegistroMedicos.Include(t => t.Persona).Include(t => t.Animal).ToList();
+
+        // Filtro para buscar por Veterinario 
+        if (PersonasBuscarID != null && PersonasBuscarID != 0)
+        {
+            registroMedico = registroMedico.Where(e => e.PersonaID == PersonasBuscarID).ToList();
+        }
+
+        if (!string.IsNullOrEmpty(BuscarCaravanaInfo))
+        {
+            var buscarCaravanaInfoUpper = BuscarCaravanaInfo.ToUpper();
+            registroMedico = registroMedico.Where(a => a.Animal.Caravana.ToUpper().Contains(buscarCaravanaInfoUpper)).ToList();
+        }
 
         foreach (var listadoRegistroMedico in registroMedico)
         {
@@ -153,4 +171,4 @@ public class RegistroMedicosController : Controller
 
         return Json(vistaInformeRegistroMedico);
     }
- }
+}

@@ -29,7 +29,11 @@ function ListadoEventos() {
     });
 }
 
+// Definir una variable global para almacenar los datos
+let eventosMostrarGlobal = [];
+
 function renderTableEventos() {
+    eventosMostrarGlobal = eventosMostrar; // Almacenar datos globalmente
     let contenidoTabla = '';
 
     console.log('Eventos a mostrar:', eventosMostrar); // Verifica los datos
@@ -40,27 +44,28 @@ function renderTableEventos() {
             <td>${evento.animalCaravana}</td>
             <td>${evento.estadoAnimal}</td>
             <td>${evento.tipoEventoString}</td>
-            <td>${evento.fechaEventoString}</td>
-            <td>${evento.observacion}</td>
-            <td>${evento.tipoCriaString || ''}</td>
-            <td>${evento.tipoParto || ''}</td>
-            <td>${evento.estadoCriaString || ''}</td>
-            <td>${evento.inseminacionString || ''}</td>
-            <td>${evento.causaAborto || ''}</td>
-            <td>${evento.causaCelo || ''}</td>
-            <td>${evento.especifiqueSecado || ''}</td>
-            <td>${evento.motivoVenta || ''}</td>
-            <td>${evento.causaRechazo || ''}</td>
-            <td>${evento.especifiqueOtro || ''}</td>
+            <td class="ocultar-en-768px">${evento.fechaEventoString}</td>
+            <td class="ocultar-en-768px">${evento.observacion}</td>
+            <td class="ocultar-en-768px">${evento.tipoCriaString || ''}</td>
+            <td class="ocultar-en-768px">${evento.tipoParto || ''}</td>
+            <td class="ocultar-en-768px">${evento.estadoCriaString || ''}</td>
+            <td class="ocultar-en-768px">${evento.inseminacionString || ''}</td>
+            <td class="ocultar-en-768px">${evento.causaAborto || ''}</td>
+            <td class="ocultar-en-768px">${evento.causaCelo || ''}</td>
+            <td class="ocultar-en-768px">${evento.especifiqueSecado || ''}</td>
+            <td class="ocultar-en-768px"d>${evento.motivoVenta || ''}</td>
+            <td class="ocultar-en-768px">${evento.causaRechazo || ''}</td>
+            <td class="ocultar-en-768px">${evento.especifiqueOtro || ''}</td>
 
             <td class="text-center">
-                <button type="button" class="edit-button" aria-label="Editar evento" onclick="ModalEditarEventos(${evento.eventoID})">
+                <button type="button" class="edit-button" title="Editar Evento"  onclick="ModalEditarEventos(${evento.eventoID})">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
-            </td>
-            <td class="text-center">
-                <button type="button" class="delete-button" aria-label="Eliminar evento" onclick="EliminarEventos(${evento.eventoID})">
+                <button type="button" class="delete-button" title="Eliminar Evento"  onclick="EliminarEventos(${evento.eventoID})">
                     <i class="fa-solid fa-trash"></i>
+                </button>
+                <button type="button" class="info-button" title="Ver detalles del evento" onclick="showEventDetails(${evento.eventoID})">
+                    <i class="fa-solid fa-info-circle"></i>
                 </button>
             </td>
         </tr>
@@ -69,6 +74,42 @@ function renderTableEventos() {
 
     $("#tbody-eventos").html(contenidoTabla);
 }
+
+// Función para mostrar detalles en un modal
+function showEventDetails(eventoID) {
+    // Encuentra el evento con el ID dado en la variable global
+    const evento = eventosMostrarGlobal.find(e => e.eventoID === eventoID);
+
+    // Crea el contenido para el modal
+    const modalContent = `
+        <h5>Detalles del Evento</h5>
+        <ul>
+            <li><strong>Caravana:</strong> ${evento.animalCaravana}</li>
+            <li><strong>Estado Animal:</strong> ${evento.estadoAnimal}</li>
+            <li><strong>Tipo Evento:</strong> ${evento.tipoEventoString}</li>
+            <li><strong>Fecha Evento:</strong> ${evento.fechaEventoString}</li>
+            <li><strong>Observación:</strong> ${evento.observacion}</li>
+            <li><strong>Tipo Cría:</strong> ${evento.tipoCriaString || 'N/A'}</li>
+            <li><strong>Tipo Parto:</strong> ${evento.tipoParto || 'N/A'}</li>
+            <li><strong>Estado Cría:</strong> ${evento.estadoCriaString || 'N/A'}</li>
+            <li><strong>Inseminación:</strong> ${evento.inseminacionString || 'N/A'}</li>
+            <li><strong>Causa Aborto:</strong> ${evento.causaAborto || 'N/A'}</li>
+            <li><strong>Causa Celo:</strong> ${evento.causaCelo || 'N/A'}</li>
+            <li><strong>Especifique Secado:</strong> ${evento.especifiqueSecado || 'N/A'}</li>
+            <li><strong>Motivo Venta:</strong> ${evento.motivoVenta || 'N/A'}</li>
+            <li><strong>Causa Rechazo:</strong> ${evento.causaRechazo || 'N/A'}</li>
+            <li><strong>Especifique Otro:</strong> ${evento.especifiqueOtro || 'N/A'}</li>
+        </ul>
+    `;
+
+    // Asigna el contenido al modal
+    document.getElementById("modalContentEventos").innerHTML = modalContent;
+
+    // Muestra el modal
+    var myModal = new bootstrap.Modal(document.getElementById('eventosModal'));
+    myModal.show();
+}
+
 
 function GuardarEvento() {
     // Recopilar datos del formulario

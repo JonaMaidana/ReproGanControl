@@ -80,12 +80,12 @@ background-size: cover;
 
 .content-table {
   border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
-  min-width: 100%;
+  margin: 10px 0; /* Reducido */
+  font-size: 0.7em; /* Tamaño de letra reducido */
+  min-width: 100%; /* Reduce el ancho mínimo */
   border-radius: 5px 5px 0 0;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra más suave */
 }
 
 .content-table thead tr {
@@ -97,7 +97,8 @@ background-size: cover;
 
 .content-table th,
 .content-table td {
-  padding: 8px 10px;
+  padding: 5px 8px; /* Padding reducido */
+  text-align: center; /* Centra el texto */
 }
 
 .content-table th:last-child,
@@ -125,6 +126,7 @@ background-size: cover;
   background-color: #153a617a;
   color: #ffffff;
 }
+
 
 .edit-button {
   background-color: #4CAF50; 

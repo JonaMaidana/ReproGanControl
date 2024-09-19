@@ -15,156 +15,157 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
     <script src="https://kit.fontawesome.com/a3241fc49f.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 </head>
 
 <body>
     @if (SignInManager.IsSignedIn(User))
     {
-        <div class="d-flex" id="wrapper">
-            <!-- Sidebar -->
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar vh-100" style="background-color: #000000;">
-                <div class="position-sticky">
-                    <div class="sidebar-sticky">
-                        <div class="p-3">
-                            <div style="text-align: center;">
-                                <a href="/" class="text-decoration-none">
-                                    <span
-                                        style="font-size: 24px; font-weight: bold; color: white; display: inline-block; padding: 5px;">
-                                        ReproGan
-                                    </span>
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar vh-100" style="background-color: #000000;">
+            <div class="position-sticky" style="height: 100%; overflow: hidden;">
+                <div class="sidebar-sticky"
+                    style="height: 100%; overflow-y: scroll; scrollbar-width: none; -ms-overflow-style: none;">
+                    <div class="p-3" style="height: 100%;">
+                        <div style="text-align: center;">
+                            <a href="/" class="text-decoration-none">
+                                <span
+                                    style="font-size: 24px; font-weight: bold; color: white; display: inline-block; padding: 5px;">
+                                    ReproGan
+                                </span>
+                            </a>
+                        </div>
+
+                        <hr>
+                        <ul class="nav-custom">
+                            <li class="nav-item nav-item-custom">
+                                <a href="@Url.Action("Index", "Home")" class="nav-link" aria-current="page">
+                                    <i class="fa-solid fa-house"></i>
+                                    <span>Inicio</span>
                                 </a>
-                            </div>
+                            </li>
+
+                            <!-- Animales con submenú -->
+                            <li class="nav-item nav-item-custom">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse"
+                                    data-bs-target="#submenu-animales" aria-expanded="false">
+                                    <i class="fa-solid fa-cow"></i>
+                                    <span>Animales</span>
+                                </a>
+                                <ul id="submenu-animales" class="collapse list-unstyled submenu-right">
+                                    <li>
+                                        <a href="@Url.Action("Index", "Animales")" class="nav-link">
+                                            <i class="fa-solid fa-plus"></i>
+                                            <span>Ingresar</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="@Url.Action("Index", "TipoAnimales")" class="nav-link">
+                                            <i class="fa-solid fa-list"></i>
+                                            <span>Tipo</span>
+                                        </a></li>
+                                    <li><a href="@Url.Action("InformeAnimales", "Animales")" class="nav-link">
+                                            <i class="fa-solid fa-list"></i>
+                                            <span>Informe</span>
+                                        </a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Eventos con submenú -->
+                            <li class="nav-item nav-item-custom">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse"
+                                    data-bs-target="#submenu-eventos" aria-expanded="false">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <span>Eventos</span>
+                                </a>
+                                <ul id="submenu-eventos" class="collapse list-unstyled submenu-right">
+                                    <li>
+                                        <a href="@Url.Action("Index", "Eventos")" class="nav-link">
+                                            <i class="fa-solid fa-plus"></i>
+                                            <span>Ingresar</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="@Url.Action("InformesEventos", "Eventos")" class="nav-link">
+                                            <i class="fa-solid fa-list"></i>
+                                            <span>Informe</span>
+                                        </a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Registros Médicos con submenú -->
+                            <li class="nav-item nav-item-custom">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse"
+                                    data-bs-target="#submenu-registros" aria-expanded="false">
+                                    <i class="fa-solid fa-house-medical-circle-exclamation"></i>
+                                    <span>Registros Médicos</span>
+                                </a>
+                                <ul id="submenu-registros" class="collapse list-unstyled submenu-right">
+                                    <li>
+                                        <a href="@Url.Action("Index", "RegistroMedicos")" class="nav-link">
+                                            <i class="fa-solid fa-plus"></i>
+                                            <span>Ingresar</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="@Url.Action("InformeRegistroMedico", "RegistroMedicos")" class="nav-link">
+                                            <i class="fa-solid fa-list"></i>
+                                            <span>Informe</span>
+                                        </a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item nav-item-custom">
+                                <a href="@Url.Action("Index", "Provincias")" class="nav-link" aria-current="page">
+                                    <i class="fa-solid fa-map"></i>
+                                    <span>Provincias</span>
+                                </a>
+                            </li>
+                            <li class="nav-item nav-item-custom">
+                                <a href="@Url.Action("Index", "Localidades")" class="nav-link" aria-current="page">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Localidades</span>
+                                </a>
+                            </li>
+                            <li class="nav-item nav-item-custom">
+                                <a href="@Url.Action("Index", "Personas")" class="nav-link" aria-current="page">
+                                    <i class="fa-solid fa-user"></i>
+                                    <span>Personas</span>
+                                </a>
+                            </li>
 
                             <hr>
-                            <ul class="nav-custom">
-                                <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "Home")" class="nav-link" aria-current="page">
-                                        <i class="fa-solid fa-house"></i>
-                                        <span>Inicio</span>
-                                    </a>
-                                </li>
+                            <li class="nav-item nav-item-custom">
+                                <partial name="_LoginPartial" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
-                                <!-- Animales con submenú -->
-                                <li class="nav-item nav-item-custom">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse"
-                                        data-bs-target="#submenu-animales" aria-expanded="false">
-                                        <i class="fa-solid fa-cow"></i>
-                                        <span>Animales</span>
-                                    </a>
-                                    <ul id="submenu-animales" class="collapse list-unstyled submenu-right">
-                                        <li>
-                                            <a href="@Url.Action("Index", "Animales")" class="nav-link">
-                                                <i class="fa-solid fa-plus"></i>
-                                                <span>Ingresar</span>
-                                            </a>
-                                        </li>
-                                        <li><a href="@Url.Action("Index", "TipoAnimales")" class="nav-link">
-                                                <i class="fa-solid fa-list"></i>
-                                                <span>Tipo</span>
-                                            </a></li>
-                                        <li><a href="@Url.Action("InformeAnimales", "Animales")" class="nav-link">
-                                                <i class="fa-solid fa-list"></i>
-                                                <span>Informe</span>
-                                            </a></li>
-                                    </ul>
-                                </li>
 
-                                <!-- Eventos con submenú -->
-                                <li class="nav-item nav-item-custom">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse"
-                                        data-bs-target="#submenu-eventos" aria-expanded="false">
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                        <span>Eventos</span>
-                                    </a>
-                                    <ul id="submenu-eventos" class="collapse list-unstyled submenu-right">
-                                        <li>
-                                            <a href="@Url.Action("Index", "Eventos")" class="nav-link">
-                                                <i class="fa-solid fa-plus"></i>
-                                                <span>Ingresar</span>
-                                            </a>
-                                        </li>
-                                        <li><a href="@Url.Action("InformesEventos", "Eventos")" class="nav-link">
-                                                <i class="fa-solid fa-list"></i>
-                                                <span>Informe</span>
-                                            </a></li>
-                                    </ul>
-                                </li>
-
-                                <!-- Registros Médicos con submenú -->
-                                <li class="nav-item nav-item-custom">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse"
-                                        data-bs-target="#submenu-registros" aria-expanded="false">
-                                        <i class="fa-solid fa-house-medical-circle-exclamation"></i>
-                                        <span>Registros Médicos</span>
-                                    </a>
-                                    <ul id="submenu-registros" class="collapse list-unstyled submenu-right">
-                                        <li>
-                                            <a href="@Url.Action("Index", "RegistroMedicos")" class="nav-link">
-                                                <i class="fa-solid fa-plus"></i>
-                                                <span>Ingresar</span>
-                                            </a>
-                                        </li>
-                                        <li><a href="@Url.Action("InformeRegistroMedico", "RegistroMedicos")" class="nav-link">
-                                                <i class="fa-solid fa-list"></i>
-                                                <span>Informe</span>
-                                            </a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "Provincias")" class="nav-link" aria-current="page">
-                                        <i class="fa-solid fa-map"></i>
-                                        <span>Provincias</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "Localidades")" class="nav-link" aria-current="page">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        <span>Localidades</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item nav-item-custom">
-                                    <a href="@Url.Action("Index", "Personas")" class="nav-link" aria-current="page">
-                                        <i class="fa-solid fa-user"></i>
-                                        <span>Personas</span>
-                                    </a>
-                                </li>
-
-                                <hr>
-                                <li class="nav-item nav-item-custom">
-                                    <partial name="_LoginPartial" />
-                                </li>
-                            </ul>
-                        </div>
+        <!-- Page content wrapper -->
+        <div id="page-content-wrapper">
+            <!-- Top navigation -->
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow">
+                <div class="container-fluid">
+                    <!-- Botón de menú de hamburguesa eliminado -->
+                    <div class="navbar-collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1 d-flex align-items-center">
+                            <li class="nav-item me-auto">
+                                <button id="toggle-btn" class="toggle-btn">
+                                    <img src="/img/abrir.png" alt="Abrir menú" class="toggle-btn-icon" />
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>
 
-            <!-- Page content wrapper -->
-            <div id="page-content-wrapper">
-                <!-- Top navigation -->
-                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow">
-                    <div class="container-fluid">
-                        <!-- Botón de menú de hamburguesa eliminado -->
-                        <div class="navbar-collapse d-sm-inline-flex justify-content-between">
-                            <ul class="navbar-nav flex-grow-1 d-flex align-items-center">
-                                <li class="nav-item me-auto">
-                                    <button id="toggle-btn" class="toggle-btn">
-                                        <img src="/img/abrir.png" alt="Abrir menú" class="toggle-btn-icon" />
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
 
-
-                <!-- Page content -->
-                <div class="container-fluid flex-column">
-                    <main role="main" class="mt-3 pb-3">
-                        @RenderBody()
-                    </main>
-                </div>
+            <!-- Page content -->
+            <div class="container-fluid flex-column">
+                <main role="main" class="mt-3 pb-3">
+                    @RenderBody()
+                </main>
             </div>
         </div>
     }
@@ -182,12 +183,26 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
+
     <script src="~/js/jspdf/jspdf.min.js"></script>
     <script src="~/js/jspdf/jspdf.debug.js"></script>
     <script src="~/js/jspdf/jspdf.plugin.autotable.js"></script>
 
     <script src="~/js/sidebars.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            // Maneja el clic en un enlace con la clase 'dropdown-toggle'
+            $('.nav-link.dropdown-toggle').on('click', function () {
+                // Obtiene el objetivo del colapso
+                var target = $(this).data('bs-target');
+
+                // Cierra todos los submenús que no sean el objetivo
+                $('.collapse').not(target).collapse('hide');
+            });
+        });
+
+    </script>
 </body>
 
 

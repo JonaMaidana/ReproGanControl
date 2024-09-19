@@ -39,6 +39,7 @@ function ListadoInformeEventos() {
                         <td class="ocultar-en-768px" class="text-center">${Evento.estadoAnimal}</td>
                         <td class="ocultar-en-768px" class="text-center">${Evento.fechaEventoString}</td>
                         <td class="ocultar-en-768px" class="text-center">${Evento.observacion}</td>
+                        <td class="text-center"></td>
                     </tr>
                     `;
                 });

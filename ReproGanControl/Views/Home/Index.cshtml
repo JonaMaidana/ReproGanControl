@@ -1,56 +1,111 @@
 ﻿@{
-  ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "ReproGanControl";
 }
-<br>
-<div class="dropdown-container">
-    <label for="establecimientos">Establecimientos:</label>
-    <select id="establecimientos" name="establecimientos">
-        <option value="">Selecciona un establecimiento</option>
-        <option value="establecimiento1">Las Marias</option>
-        <option value="establecimiento2">Don Juan</option>
-        <option value="establecimiento3">Los Primos</option>
-        <!-- Agrega más opciones según sea necesario -->
-    </select>
-</div>
-<br>
-<div class="row justify-content-center">
-  <div class="col-md-3 d-flex justify-content-center">
-    <div class="card shadow-lg mi-div" style="width: 18rem;">
-      <img class="card-img-top" src="img/mini.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5>Animales</h5>
-        <p class="textop">Permite cargar animales con todos los datos necesarios y verlos en un listado.</p>
-        <a href="@Url.Action("Index", "Animales")" class="btn btn-success btn-custom" aria-current="page">
-          <i class="fa-solid fa-cow"></i>
-          Animales
-        </a>
-      </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .dashboard-title {
+            text-align: center;
+            color: #28a745;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .card {
+            transition: transform 0.3s ease-in-out;
+            overflow: hidden;
+            border: none;
+            border-radius: 15px;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            background-color: #ffffff;
+        }
+        .card-body h5 {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .textop {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        .btn-custom {
+            background-color: #28a745;
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #218838;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-custom i {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="dashboard-title">ReproGanControl</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg">
+                    <img class="card-img-top" src="img/mini.jpg" alt="Animales">
+                    <div class="card-body">
+                        <h5 class="card-title">Animales</h5>
+                        <p class="textop">Permite cargar animales con todos los datos necesarios y verlos en un listado.</p>
+                        <a href="@Url.Action("Index", "Animales")" class="btn btn-custom btn-block">
+                            <i class="fa-solid fa-cow"></i>
+                            Animales
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg">
+                    <img class="card-img-top" src="img/mini2.jpg" alt="Eventos">
+                    <div class="card-body">
+                        <h5 class="card-title">Eventos</h5>
+                        <p class="textop">Permite seleccionar un animal para realizar algún evento reproductivo específico.</p>
+                        <a href="@Url.Action("Index", "Eventos")" class="btn btn-custom btn-block">
+                            <i class="fa-solid fa-calendar-check"></i>
+                            Eventos
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg">
+                    <img class="card-img-top" src="img/mini3.jpg" alt="Registros Médicos">
+                    <div class="card-body">
+                        <h5 class="card-title">Registros Médicos</h5>
+                        <p class="textop">Permite ingresar, monitorear los registros médicos y el profesional que los realizó.</p>
+                        <a href="@Url.Action("Index", "RegistroMedicos")" class="btn btn-custom btn-block">
+                            <i class="fa-solid fa-notes-medical"></i>
+                            Registros
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="col-md-3 d-flex justify-content-center">
-    <div class="card shadow-lg mi-div" style="width: 18rem;">
-      <img class="card-img-top" src="img/mini2.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5>Eventos</h5>
-        <p class="textop">Permite seleccionar un animal para realizar algún evento reproductivo específico.</p>
-        <a href="@Url.Action("Index", "Eventos")" class="btn btn-success btn-custom" aria-current="page">
-          <i class="fa-solid fa-cow"></i>
-          Eventos
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3 d-flex justify-content-center">
-    <div class="card shadow-lg mi-div" style="width: 18rem;">
-      <img class="card-img-top" src="img/mini3.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5>Registros Medicos</h5>
-        <p class="textop">Permite ingresar, monitorear los registros médicos y el profesional que los realizó.</p>
-        <a href="@Url.Action("Index", "RegistroMedicos")" class="btn btn-success btn-custom" aria-current="page">
-          <i class="fa-solid fa-cow"></i>
-          Registros
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

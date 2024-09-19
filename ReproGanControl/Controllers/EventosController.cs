@@ -128,7 +128,7 @@ public class EventosController : Controller
             return Json(new { success = false, message = "Este Animal ya tiene un evento." });
         }
 
-        observacion = observacion.ToUpper();
+        observacion = observacion?.ToUpper();
 
 
         if (eventoID == 0)

@@ -78,8 +78,8 @@ function GuardarTipoAnimal() {
                 });
             } else {
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
+                    icon: 'warning',
+                    title: 'Completar el campo!',
                     text: resultado.mensaje,
                 });
             }

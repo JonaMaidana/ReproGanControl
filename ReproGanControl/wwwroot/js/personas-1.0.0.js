@@ -103,8 +103,8 @@ function GuardarPersonas() {
     // Validación básica para campos obligatorios
     if (!personaID || !localidadID || !provinciaID || !nombreCompleto || !email || !tel || !fechaNacimiento || !domicilio || !numeroDocumento) {
         Swal.fire({
-            icon: 'error',
-            title: 'Error',
+            icon: 'warning',
+            title: 'Completar los Campos!',
             text: 'Por favor, complete todos los campos obligatorios.',
             confirmButtonText: 'OK'
         });

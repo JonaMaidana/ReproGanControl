@@ -3,19 +3,9 @@ window.onload = ListadoEventos;
 let eventosMostrar = [];
 
 function ListadoEventos() {
-    buscarTipoEventoID = document.getElementById("BuscarTipoEventoID").value;
-    fechaDesde = document.getElementById("FechaDesde").value;
-    fechaHasta = document.getElementById("FechaHasta").value;
-
-
     $.ajax({
         url: '../../Eventos/ListadoEventos',  // Asegúrate de que esta ruta sea correcta
         type: 'GET',
-        data: {
-            BuscarTipoEventoID: buscarTipoEventoID,
-            FechaDesde: fechaDesde,
-            FechaHasta: fechaHasta
-        },
         dataType: 'json',
         success: function (data) {
             console.log(data);
@@ -52,8 +42,8 @@ function renderTableEventos() {
         contenidoTabla += `
         <tr>
             <td>${evento.animalCaravana}</td>
+            <td>${evento.estadoAnimal}</td>
             <td>${evento.tipoEventoString}</td>
-            <td class="ocultar-en-768px">${evento.estadoAnimal}</td>
             <td class="ocultar-en-768px">${evento.fechaEventoString}</td>
             <td class="ocultar-en-768px">${evento.observacion}</td>
             <td class="ocultar-en-768px">${evento.tipoCriaString || ''}</td>
@@ -66,17 +56,18 @@ function renderTableEventos() {
             <td class="ocultar-en-768px"d>${evento.motivoVenta || ''}</td>
             <td class="ocultar-en-768px">${evento.causaRechazo || ''}</td>
             <td class="ocultar-en-768px">${evento.especifiqueOtro || ''}</td>
-        <td class="button-group">
-            <button type="button" class="edit-button" title="Editar Evento" onclick="ModalEditarEventos(${evento.eventoID})">
-                <i class="fa-solid fa-pen-to-square"></i>
-            </button>
-            <button type="button" class="delete-button" title="Eliminar Evento" onclick="EliminarEventos(${evento.eventoID})">
-                <i class="fa-solid fa-trash"></i>
-            </button>
-            <button type="button" class="info-button" title="Ver detalles del evento" onclick="showEventDetails(${evento.eventoID})">
-                <i class="fa-solid fa-info-circle"></i>
-            </button>
-        </td>
+
+            <td class="text-center">
+                <button type="button" class="edit-button" title="Editar Evento"  onclick="ModalEditarEventos(${evento.eventoID})">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button type="button" class="delete-button" title="Eliminar Evento"  onclick="EliminarEventos(${evento.eventoID})">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+                <button type="button" class="info-button" title="Ver detalles del evento" onclick="showEventDetails(${evento.eventoID})">
+                    <i class="fa-solid fa-info-circle"></i>
+                </button>
+            </td>
         </tr>
         `;
     });

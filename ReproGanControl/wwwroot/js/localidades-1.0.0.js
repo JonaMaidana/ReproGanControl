@@ -96,9 +96,9 @@ function GuardarLocalidad() {
     // Validación básica para campos obligatorios
     if (!provinciaID || !codigoPostal || !nombreLocalidad) {
         Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Por favor, complete todos los campos obligatorios.',
+            icon: 'warning',
+            title: 'Complete los Campos',
+            text: 'Por favor, completar todos los campos obligatorios.',
             confirmButtonText: 'OK'
         });
         return; // Salir de la función si hay campos vacíos

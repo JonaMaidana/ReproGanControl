@@ -135,8 +135,8 @@ function GuardarAnimal() {
     // Verificar si hay campos faltantes
     if (camposFaltantes.length > 0) {
         Swal.fire({
-            icon: 'error',
-            title: '¡Error!',
+            icon: 'warning',
+            title: 'Faltan campos!',
             text: 'Debe completar los siguientes campos: ' + camposFaltantes.join(", "),
             confirmButtonText: 'OK'
         });

@@ -70,8 +70,8 @@ function GuardarProvincias() {
     // Validar si el campo de nombre está vacío
     if (!nombre.trim()) {
         Swal.fire({
-            icon: 'error',
-            title: 'Error',
+            icon: 'warning',
+            title: 'Complete el Campo!',
             text: 'Debe ingresar un nombre para la provincia.'
         });
         return;

@@ -7,6 +7,7 @@ function ListadoAnimales() {
     let buscarCaravana = $("#BuscarCaravana").val();
     let buscarEstablecimiento = $("#BuscarEstablecimiento").val();
     let buscarApodo = $("#BuscarApodo").val();
+    // console.log('BuscarApodo:', buscarApodo);
 
     $.ajax({
         url: '../../Animales/ListadoAnimales',
@@ -124,10 +125,10 @@ function GuardarAnimal() {
 
     // mensaje de error
     let camposFaltantes = [];
+    if (!caravana) camposFaltantes.push("Caravana");
     if (!animalID) camposFaltantes.push("ID del Animal");
     if (tipoAnimalID === "0") camposFaltantes.push("Tipo de Animal");
     if (tipoAnimalID !== "3" && tipoAnimalID !== "4" && estado === "0") camposFaltantes.push("Estado");
-    if (!caravana) camposFaltantes.push("Caravana");
     if (!establecimiento) camposFaltantes.push("Establecimiento");
     if (!fechaNacimiento) camposFaltantes.push("Fecha de Nacimiento");
 

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ReproGanControl.Extensions;
+using System.Text.RegularExpressions;
 
 namespace ReproGanControl.Controllers;
 [Authorize]
@@ -78,7 +79,7 @@ public class AnimalesController : Controller
         if (!string.IsNullOrEmpty(BuscarApodo))
         {
             var buscarApodoUpper = BuscarApodo.ToUpper();
-            animales = animales.Where(a => a.Apodo.ToUpper().Contains(buscarApodoUpper)).ToList();
+            animales = animales.Where(a => a.Apodo != null && a.Apodo.ToUpper().Contains(buscarApodoUpper)).ToList();
         }
 
         if (!string.IsNullOrEmpty(BuscarEstablecimiento) && BuscarEstablecimiento != "[SELECCIONE]")
@@ -240,8 +241,16 @@ public class AnimalesController : Controller
             animales = animales.Where(e => e.Estado == (Estado)EstadoID).ToList();
         }
 
+        //filtro solo numeros
+        // var regex = new Regex(@"\d+");
+        // // Filtrar las caravanas que tienen solo números
+        // animales = animales.Where(e => regex.IsMatch(e.Caravana)).ToList();
+
+        // // Si también quieres ordenarlas por el valor numérico, puedes extraer los números y ordenarlas así:
+        // animales = animales.OrderBy(e => int.Parse(regex.Match(e.Caravana).Value)).ToList();
+
         // Filtro para ordenar
-        animales = animales.OrderBy(e => e.Caravana).ThenBy(e => e.Estado).ToList();
+        animales = animales.OrderBy(e => e.Caravana).ToList();
 
 
 

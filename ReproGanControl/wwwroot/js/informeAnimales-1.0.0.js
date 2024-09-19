@@ -43,11 +43,11 @@ function ListadoInformeAnimales() {
                         <td class="text-center"></td>
                         <td class="text-center">${Animales.caravana}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.estadoString}</td>
-                        <td class="ocultar-en-768px" class="text-center">${Animales.apodo}</td>
+                        <td class="ocultar-en-768px" class="text-center">${Animales.apodo || ''}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.establecimiento}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.fechaNacimientoString}</td>
-                        <td class="ocultar-en-768px" class="text-center">${Animales.nombrePadre}</td>
-                        <td class="ocultar-en-768px" class="text-center">${Animales.nombreMadre}</td>
+                        <td class="ocultar-en-768px" class="text-center">${Animales.nombrePadre || ''}</td>
+                        <td class="ocultar-en-768px" class="text-center">${Animales.nombreMadre || ''}</td>
                     </tr>
                     `;
                 });

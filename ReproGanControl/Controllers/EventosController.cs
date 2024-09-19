@@ -172,18 +172,18 @@ public class EventosController : Controller
         return Json(true);
     }
 
-   public JsonResult ObtenerEstadoAnimal(int id)
-{
-    var animal = _context.Animales.SingleOrDefault(a => a.AnimalID == id);
-    if (animal != null)
+    public JsonResult ObtenerEstadoAnimal(int id)
     {
-        // Usa la extensión para obtener el nombre del estado
-        var estadoNombre = ((Estado)animal.Estado).GetDisplayName();
-        return Json(new { estadoAnimal = estadoNombre });
+        var animal = _context.Animales.SingleOrDefault(a => a.AnimalID == id);
+        if (animal != null)
+        {
+            // Usa la extensión para obtener el nombre del estado
+            var estadoNombre = ((Estado)animal.Estado).GetDisplayName();
+            return Json(new { estadoAnimal = estadoNombre });
+        }
+        return Json(new { estadoAnimal = "" });
     }
-    return Json(new { estadoAnimal = "" });
-}
-
+   
     public ActionResult InformesEventos()
     {
         var tipoEventos = Enum.GetValues(typeof(EventoEnum)).Cast<EventoEnum>();
@@ -213,10 +213,10 @@ public class EventosController : Controller
 
         var eventos = _context.Eventos.Include(t => t.Animal).ToList();
 
-       if (TipoEventoBuscarID != null && TipoEventoBuscarID != 0)
-    {
-        eventos = eventos.Where(e => e.TipoEvento == (EventoEnum)TipoEventoBuscarID).ToList();
-    }
+        if (TipoEventoBuscarID != null && TipoEventoBuscarID != 0)
+        {
+            eventos = eventos.Where(e => e.TipoEvento == (EventoEnum)TipoEventoBuscarID).ToList();
+        }
 
         // Filtro para ordenar
         eventos = eventos.OrderBy(e => e.TipoEvento).ToList();

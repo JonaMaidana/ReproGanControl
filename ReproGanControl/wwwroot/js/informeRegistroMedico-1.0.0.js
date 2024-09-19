@@ -26,11 +26,11 @@ function ListadoInformeRegistroMedico() {
                 contenidoTabla += `
                 <tr>
                     <td>${RegistroMedico.nombrePersona}</td>
+                    <td class="text-center"></td>
                     <td class="ocultar-en-768px"></td>
                     <td class="ocultar-en-768px"></td>
                     <td class="ocultar-en-768px"></td>
                     <td class="ocultar-en-768px"></td>
-                    <td></td>
                     <td class="text-center">
                         <button type="button" class="info-button" onclick="showMedicalRecordDetails(${RegistroMedico.registroMedicoID})">
                             <i class="fa-solid fa-info-circle"></i>
@@ -42,12 +42,13 @@ function ListadoInformeRegistroMedico() {
                 $.each(RegistroMedico.vistaRegistroMedico, function (index, RegistrosMedicos) {
                     contenidoTabla += `
                 <tr>
-                    <td></td>
-                    <td>${RegistrosMedicos.animalCaravana}</td>
+                    <td class="text-center"></td>
+                    <td class="text-center">${RegistrosMedicos.animalCaravana}</td>
                     <td class="ocultar-en-768px">${RegistrosMedicos.fechaString}</td>
                     <td class="ocultar-en-768px">${RegistrosMedicos.enfermedad}</td>
                     <td class="ocultar-en-768px">${RegistrosMedicos.tratamiento}</td>
                     <td class="ocultar-en-768px">${RegistrosMedicos.observacion}</td>
+                    <td class="text-center"></td>
                 </tr>
                 `;
                 });

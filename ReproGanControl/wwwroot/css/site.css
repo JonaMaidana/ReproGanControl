@@ -58,25 +58,12 @@ background-size: cover;
   margin-bottom: 12px; /* Aumenta el margen inferior */
 }
 
-/* Estilos para el estado hover, focus, y active */
-.nav-custom .nav-link:hover, 
-.nav-custom .nav-link:focus {
-  background-color: #e9ecef42;
-  color: #fff; /* Color de texto para el estado activo */
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Sombra gris más suave */
-}
 
 /* Estilo para íconos dentro de nav-link */
 .nav-custom .nav-link i {
   margin-right: 10px; 
 }
 
-/* Estilo para el estado activo */
-.nav-custom .nav-link.active {
-  background-color: #e9ecef42;
-  color: #fff; /* Color de texto para el estado activo */
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Sombra gris más suave */
-}
 
 .content-table {
   border-collapse: collapse;
@@ -155,10 +142,37 @@ background-size: cover;
   transition: background-color 0.3s ease;
   display: none;
 }
+.delete-button {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 3px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
 @media (max-width: 768px) {
   .info-button {
       display: inline-block;
+      font-size: 12px; /* Reduce el tamaño de la fuente */
+      padding: 2px 8px; /* Reduce el padding */
   }
+  .edit-button {
+    font-size: 12px; /* Reduce el tamaño de la fuente */
+    padding: 2px 8px; /* Reduce el padding */
+}
+  .delete-button {
+    font-size: 12px; /* Reduce el tamaño de la fuente */
+    padding: 2px 8px; /* Reduce el padding */
+}
+.nav-custom .nav-link i {
+  margin-right: 0px; 
+}
+
 }
 @media (max-width: 768px) {
   .ocultar-en-768px {
@@ -174,19 +188,6 @@ background-size: cover;
   background-color: #388e3c; 
 }
 
-.delete-button {
-  background-color: #f44336;
-  border: none;
-  color: white;
-  padding: 3px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
 
 .delete-button:hover {
   background-color: #d32f2f;
@@ -270,10 +271,6 @@ html, body {
   text-decoration: none;
   display: block;
   padding: 10px;
-}
-
-#sidebar .nav-link.active {
-  background-color: #e9ecef42;
 }
 
 #sidebar .nav-link:hover, 
@@ -578,4 +575,124 @@ main {
   margin-left: 15px;
   background-color: #f0f0f080; /* Cambia este color según tu preferencia */
   border-radius: 5px;
+}
+@media (max-width: 768px) {
+  .submenu-right {
+    margin-left: 0; /* Elimina el margen izquierdo en pantallas pequeñas */
+  }
+}
+.button-group {
+  display: flex; /* Utiliza Flexbox para alinear los elementos en línea */
+  justify-content: center; /* Centra los botones horizontalmente */
+}
+
+.button-group button {
+  margin: 0 5px; /* Espaciado horizontal entre botones */
+}
+
+/* Estilo para el botón de descarga */
+.btn-download {
+  background-color: #009879; /* Color de fondo verde-azulado */
+  border: none; /* Sin borde */
+  color: white; /* Color del texto blanco */
+  padding: 10px 20px; /* Espaciado interno del botón */
+  font-size: 16px; /* Tamaño de fuente del texto */
+  border-radius: 5px; /* Bordes redondeados */
+  display: flex; /* Usa flexbox para centrar el ícono */
+  align-items: center; /* Centra verticalmente el ícono */
+  justify-content: center; /* Centra horizontalmente el ícono */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+
+.btn-download i {
+  margin-right: 8px; /* Espaciado entre el ícono y el texto */
+  font-size: 18px; /* Tamaño del ícono */
+}
+
+/* Oculta el texto en pantallas pequeñas y ajusta el tamaño del botón */
+.btn-download .btn-text {
+  display: inline; /* Muestra el texto en pantallas grandes */
+}
+
+@media (max-width: 767px) {
+  .btn-download .btn-text {
+    display: none; /* Oculta el texto en pantallas pequeñas */
+  }
+  
+  .btn-download {
+    padding: 8px 15px; /* Reduce el padding en pantallas pequeñas */
+    font-size: 14px; /* Reduce el tamaño de la fuente */
+  }
+  
+  .btn-download i {
+    font-size: 16px; /* Reduce el tamaño del ícono en pantallas pequeñas */
+    margin-right: 0; /* Elimina el margen derecho del ícono en pantallas pequeñas */
+  }
+}
+
+.btn-download:hover {
+  background-color: #007a63; /* Color de fondo al pasar el ratón */
+  transform: scale(1.05); /* Efecto de escala al pasar el ratón */
+}
+
+.btn-download:focus {
+  outline: none; /* Elimina el contorno azul predeterminado */
+}
+
+.btn-download:active {
+  background-color: #00675b; /* Color de fondo al hacer clic */
+
+}
+.btn-agregar {
+  background-color: #95a5a6; /* Color de fondo verde-azulado */
+  border: none; /* Sin borde */
+  color: white; /* Color del texto blanco */
+  padding: 10px 20px; /* Espaciado interno del botón */
+  font-size: 16px; /* Tamaño de fuente del texto */
+  border-radius: 5px; /* Bordes redondeados */
+  display: flex; /* Usa flexbox para centrar el ícono */
+  align-items: center; /* Centra verticalmente el ícono */
+  justify-content: center; /* Centra horizontalmente el ícono */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+
+.btn-agregar i {
+  margin-right: 8px; /* Espaciado entre el ícono y el texto */
+  font-size: 18px; /* Tamaño del ícono */
+}
+
+/* Oculta el texto en pantallas pequeñas */
+.btn-agregar .btn-text {
+  display: inline; /* Muestra el texto en pantallas grandes */
+}
+
+@media (max-width: 767px) {
+  .btn-agregar .btn-text {
+    display: none; /* Oculta el texto en pantallas pequeñas */
+  }
+  
+  .btn-agregar {
+    padding: 8px 15px; /* Reduce el padding en pantallas pequeñas */
+    font-size: 14px; /* Reduce el tamaño de la fuente */
+  }
+  
+  .btn-agregar i {
+    font-size: 16px; /* Reduce el tamaño del ícono en pantallas pequeñas */
+    margin-right: 0; /* Elimina el margen derecho del ícono en pantallas pequeñas */
+  }
+}
+
+.btn-agregar:hover {
+  background-color: #95a5a6; /* Color de fondo al pasar el ratón */
+  transform: scale(1.05); /* Efecto de escala al pasar el ratón */
+}
+
+.btn-agregar:focus {
+  outline: none; /* Elimina el contorno azul predeterminado */
+}
+
+.btn-agregar:active {
+  background-color: #758081; /* Color de fondo al hacer clic */
 }

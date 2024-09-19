@@ -5,16 +5,17 @@
 <div class="card" style="font-family: 'Arial', sans-serif;">
     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
         <h3 class="display-6" style="color: #555;">Personas</h3>
-        <button type="button" class="btn btn-secondary" onclick="CrearPersona()" data-bs-toggle="modal"
+        <button type="button" class="btn-agregar" title="Agregar Persona" onclick="CrearPersona()" data-bs-toggle="modal"
             data-bs-target="#ModalPersona">
-            <i class="fa-solid fa-plus"></i> Añadir Persona
+            <i class="fa-solid fa-plus"></i> <span class="btn-text">Agregar Persona</span>
         </button>
     </div>
     <div class="card-body">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <!-- Botón de Imprimir -->
-            <button class="btn btn-dark" onclick="Imprimir()">
-                <i class="fa-solid fa-download"></i>
+            <button class="btn-download" title="Descargar Datos" onclick="Imprimir()">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span class="btn-text">Descargar</span>
             </button>
             <!-- Contenedor para contador y paginación -->
             <div class="d-flex align-items-center">
@@ -137,6 +138,9 @@
         </div>
 
         <div class="table-responsive mt-2">
+        <p class="text-danger d-block d-md-none text-center mb-3">
+            BOTÓN AZUL PARA VER MÁS DATOS
+        </p>
             <table id="tabla-imprimir" class="content-table">
                 <thead>
                     <tr>

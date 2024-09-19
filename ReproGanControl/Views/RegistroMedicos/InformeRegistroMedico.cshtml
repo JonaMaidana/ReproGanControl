@@ -11,11 +11,13 @@
             <div class="card-body">
             </div>
         </div> *@
-
-        <!-- Botón de Imprimir -->
-        <button class="btn btn-dark" title="Imprimir Informe" onclick="Imprimir()">
-            <i class="fa-solid fa-download"></i>
-        </button>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- Botón de Imprimir -->
+            <button class="btn-download" title="Descargar Datos" onclick="Imprimir()">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span class="btn-text">Descargar</span>
+            </button>
+        </div>
 
         <!-- Sección de Filtros -->
         <div class="card mb-3">
@@ -56,6 +58,9 @@
             </div>
         </div>
         <div class="table-responsive mt-2">
+        <p class="text-danger d-block d-md-none text-center mb-3">
+            BOTÓN AZUL PARA VER MÁS DATOS
+        </p>
             <table id="tabla-imprimir" class="content-table">
                 <thead>
                     <tr>
@@ -117,8 +122,8 @@
             var res = doc.autoTableHtmlToJson(elem);
 
             // Remove last two columns
-            res.columns = res.columns.slice(0, -2);
-            res.data = res.data.map(row => row.slice(0, -2));
+            res.columns = res.columns.slice(0, -1);
+            res.data = res.data.map(row => row.slice(0, -1));
 
             doc.autoTable(res.columns, res.data, {
                 addPageContent: pageContent,

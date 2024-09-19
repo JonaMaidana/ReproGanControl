@@ -50,6 +50,7 @@ function ListadoInformeAnimales() {
                         <td class="ocultar-en-768px" class="text-center">${Animales.fechaNacimientoString}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.nombrePadre || ''}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.nombreMadre || ''}</td>
+                        <td class="text-center"></td>
                     </tr>
                     `;
                 });

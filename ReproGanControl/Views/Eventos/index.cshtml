@@ -5,9 +5,9 @@
     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
         <h3 class="display-6" style="color: #555;">Eventos</h3>
         <div class="mb-2">
-            <button type="button" class="btn btn-secondary" onclick="NuevoEvento()" data-bs-toggle="modal"
+            <button type="button" title="Agregar Evento" class="btn-agregar" onclick="NuevoEvento()" data-bs-toggle="modal"
                 data-bs-target="#ModalEvento">
-                <i class="fa-solid fa-plus"></i> Nuevo Evento
+                <i class="fa-solid fa-plus"></i> <span class="btn-text">Agregar Evento</span>
             </button>
         </div>
     </div>
@@ -15,8 +15,9 @@
     <div class="card-body">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <!-- Botón de Imprimir -->
-            <button class="btn btn-dark" onclick="Imprimir()">
-                <i class="fa-solid fa-download"></i>
+            <button class="btn-download" title="Descargar Datos" onclick="Imprimir()">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span class="btn-text">Descargar</span>
             </button>
             <!-- Contenedor para contador y paginación -->
             <div class="d-flex align-items-center">
@@ -218,12 +219,15 @@
             </div>
             <!-- Tabla de Eventos -->
             <div class="table-responsive mt-2">
+                <p class="text-danger d-block d-md-none text-center mb-3">
+                   BOTÓN AZUL PARA VER MÁS DATOS
+                </p>
                 <table id="tabla-imprimir2" class="content-table">
                     <thead>
                         <tr>
                             <th>Caravana</th>
-                            <th>Estado</th>
-                            <th>Tipo de Evento</th>
+                            <th>Evento</th>
+                            <th class="ocultar-en-768px">Estado</th>
                             <th class="ocultar-en-768px">Fecha de evento</th>
                             <th class="ocultar-en-768px">Observación</th>
                             <th class="ocultar-en-768px">Tipo de Parto</th>

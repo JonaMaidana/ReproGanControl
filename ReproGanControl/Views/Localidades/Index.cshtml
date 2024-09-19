@@ -10,6 +10,22 @@
             <i class="fa-solid fa-plus"></i> Nueva Localidad
         </button>
     </div>
+<br>
+
+    
+         <!-- Sección de Filtros -->
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <label for="BuscarLocalidad" class="form-label">Buscar Localidades</label>
+                    <input type="text" id="BuscarLocalidad" onkeyup="ListadoLocalidades()" class="form-control"
+                        style="text-transform: uppercase;" placeholder="Buscar" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
     <div class="card-body">
         <!-- Contador de elementos -->
         <div id="table-info" class="me-3 me-3 text-end">
@@ -43,7 +59,8 @@
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="CodigoPostal" class="form-label">Codigo Postal</label>
+                                <label for="CodigoPostal" class="form-label">Codigo Postal <span
+                                        class="required-asterisk">*</span></label>
                                 <input type="text" class="form-control" id="CodigoPostal"
                                     style="text-transform: uppercase;" placeholder="Codigo Postal">
                             </div>

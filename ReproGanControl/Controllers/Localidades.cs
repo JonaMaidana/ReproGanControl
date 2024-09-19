@@ -25,7 +25,7 @@ public class LocalidadesController : Controller
         ViewBag.ProvinciaID = new SelectList(provincias.OrderBy(d => d.Nombre), "ProvinciaID", "Nombre");
         return View();
     }
-    public JsonResult ListadoLocalidades(int? id)
+    public JsonResult ListadoLocalidades(int? id, string BuscarLocalidad)
     {
         // Evitar el uso de ToList antes de aplicar filtros y manipulación
         var localidades = _context.Localidades.Include(p => p.Provincia).AsQueryable();
@@ -34,6 +34,12 @@ public class LocalidadesController : Controller
         if (id != null)
         {
             localidades = localidades.Where(l => l.LocalidadID == id);
+        }
+
+         if (!string.IsNullOrEmpty(BuscarLocalidad))
+        {
+            var BuscarLocalidadUpper = BuscarLocalidad.ToUpper();
+            localidades = localidades.Where(p => !string.IsNullOrEmpty(p.NombreLocalidad) && p.NombreLocalidad.ToUpper().Contains(BuscarLocalidadUpper));
         }
 
         // Selección de datos proyectados y ordenamiento

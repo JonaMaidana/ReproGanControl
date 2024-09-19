@@ -3,11 +3,12 @@ window.onload = ListadoLocalidades();
 let localidadesMostrar = [];
 
 function ListadoLocalidades() {
+    let buscarLocalidad = document.getElementById("BuscarLocalidad").value;
     $.ajax({
         url: '../../Localidades/ListadoLocalidades',
         type: 'GET',
         dataType: 'json',
-        data: {},
+        data: { BuscarLocalidad: buscarLocalidad },
         success: function (data) {
             $("#ModalLocalidad").modal("hide");
             LimpiarModal();
@@ -92,6 +93,17 @@ function GuardarLocalidad() {
     let codigoPostal = document.getElementById("CodigoPostal").value;
     let nombreLocalidad = document.getElementById("NombreLocalidad").value;
 
+    // Validación básica para campos obligatorios
+    if (!provinciaID || !codigoPostal || !nombreLocalidad) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Por favor, complete todos los campos obligatorios.',
+            confirmButtonText: 'OK'
+        });
+        return; // Salir de la función si hay campos vacíos
+    }
+
     $.ajax({
         url: '../../Localidades/GuardarLocalidades',
         data: {
@@ -117,7 +129,7 @@ function GuardarLocalidad() {
                     text: 'La localidad se ha guardado correctamente.',
                     confirmButtonText: 'OK'
                 }).then(() => {
-                    ListadoLocalidades();
+                    ListadoLocalidades(); // Llamar a la función para actualizar la lista de localidades
                 });
             }
         },
@@ -131,8 +143,7 @@ function GuardarLocalidad() {
             console.log('Disculpe, existió un problema al guardar la localidad');
         }
     });
-}
-
+}   
 function ModalEditarLocalidad(localidadID) {
     $.ajax({
         url: '../../Localidades/ListadoLocalidades',

@@ -219,9 +219,14 @@ public class AnimalesController : Controller
 
         ViewBag.EstadoID = new SelectList(estadoSelectListItems, "Value", "Text");
 
+        var buscarEstablecimiento = _context.Animales.Where(a => !string.IsNullOrEmpty(a.Establecimiento)).Select(a => a.Establecimiento).Distinct().OrderBy(e => e).ToList();
+
+        buscarEstablecimiento.Insert(0, "[SELECCIONE]");
+        ViewBag.BuscarEstablecimiento = new SelectList(buscarEstablecimiento);
+
         return View();
     }
-    public JsonResult ListadoInformeAnimales(DateTime? buscarActividadInicio, DateTime? buscarActividadFin, int? TipoAnimalBuscarID, int? EstadoID)
+    public JsonResult ListadoInformeAnimales(int? TipoAnimalBuscarID, int? EstadoID, string BuscarEstablecimiento)
     {
 
         List<VistaInformeAnimales> vistaInformeAnimales = new List<VistaInformeAnimales>();
@@ -239,6 +244,11 @@ public class AnimalesController : Controller
         if (EstadoID != null && EstadoID != 0)
         {
             animales = animales.Where(e => e.Estado == (Estado)EstadoID).ToList();
+        }
+
+        if (!string.IsNullOrEmpty(BuscarEstablecimiento) && BuscarEstablecimiento != "[SELECCIONE]")
+        {
+            animales = animales.Where(e => e.Establecimiento == BuscarEstablecimiento).ToList();
         }
 
         //filtro solo numeros

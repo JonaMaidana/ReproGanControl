@@ -5,11 +5,13 @@ let vistaInformeAnimalesGlobal = [];
 function ListadoInformeAnimales() {
     let tipoAnimalBuscarID = document.getElementById("TipoAnimalBuscarID").value;
     let estadoID = document.getElementById("EstadoID").value;
+    let buscarEstablecimiento = document.getElementById("BuscarEstablecimiento").value;
     $.ajax({
         url: '../../Animales/ListadoInformeAnimales',
         data: {
             tipoAnimalBuscarID: tipoAnimalBuscarID,
-            estadoID: estadoID
+            estadoID: estadoID,
+            buscarEstablecimiento: buscarEstablecimiento
         },
         type: 'POST',
         dataType: 'json',

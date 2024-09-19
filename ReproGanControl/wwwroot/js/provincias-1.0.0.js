@@ -4,9 +4,11 @@ window.onload = ListadoProvincia;
 let provincias = [];
 
 function ListadoProvincia() {
+    let buscarProvincia = document.getElementById("BuscarProvincia").value;
     $.ajax({
         url: '/Provincias/ListadoProvincia', // Ajustar la URL al formato correcto del controlador
         type: 'GET',
+        data: {buscarProvincia: buscarProvincia},
         dataType: 'json',
         success: function (data) {
             $("#ModalProvincia").modal("hide");

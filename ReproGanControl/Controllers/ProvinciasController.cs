@@ -22,7 +22,7 @@ public class ProvinciasController : Controller
         return View();
     }
 
-    public JsonResult ListadoProvincia(int? id)
+    public JsonResult ListadoProvincia(int? id, string BuscarProvincia)
     {
         var provincias = _context.Provincias.AsQueryable();
 
@@ -31,6 +31,11 @@ public class ProvinciasController : Controller
             provincias = provincias.Where(t => t.ProvinciaID == id);
         }
 
+        if (!string.IsNullOrEmpty(BuscarProvincia))
+        {
+            var buscarProvinciaUpper = BuscarProvincia.ToUpper();
+            provincias = provincias.Where(p => !string.IsNullOrEmpty(p.Nombre) && p.Nombre.ToUpper().Contains(buscarProvinciaUpper));
+        }
 
         provincias = provincias.OrderBy(n => n.Nombre);
         return Json(provincias);

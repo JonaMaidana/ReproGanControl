@@ -10,6 +10,7 @@
             <i class="fa-solid fa-plus"></i> Nueva Provincia
         </button>
     </div>
+
     <div class="card-body">
 
         <!-- Contador de elementos -->
@@ -17,6 +18,19 @@
             <span id="total-items-provincia">Provincias cargadas: 0</span>
         </div>
 
+
+         <!-- Sección de Filtros -->
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <label for="BuscarProvincia" class="form-label">Buscar Provincias</label>
+                    <input type="text" id="BuscarProvincia" onkeyup="ListadoProvincia()" class="form-control"
+                        style="text-transform: uppercase;" placeholder="Buscar" />
+                </div>
+            </div>
+        </div>
+    </div>
         <!-- Modal de Información del Animal -->
         <div class="modal fade" data-bs-backdrop="static" id="ModalProvincia" tabindex="-1"
             aria-labelledby="animalModalLabel" aria-hidden="true">
@@ -43,7 +57,7 @@
                     </div>
                     <div class="modal-footer" style="display: flex; justify-content: flex-start; align-items: center;">
                         <p style="font-weight: bold; text-transform: uppercase; color: rgb(19, 18, 18); margin: 0;">
-                            Completa los campos requeridos antes de guardar <span class="required-asterisk">*</span>
+                            Complete el campo requerido antes de guardar <span class="required-asterisk">*</span>
                         </p>
                         <div style="margin-left: auto;">
                             <button type="button" onclick="LimpiarModal()" class="btn btn-secondary"

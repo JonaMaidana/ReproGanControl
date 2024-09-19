@@ -31,6 +31,8 @@ public class ProvinciasController : Controller
             provincias = provincias.Where(t => t.ProvinciaID == id);
         }
 
+
+        provincias = provincias.OrderBy(n => n.Nombre);
         return Json(provincias);
     }
 

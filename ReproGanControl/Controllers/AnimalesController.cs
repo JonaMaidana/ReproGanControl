@@ -104,7 +104,7 @@ public class AnimalesController : Controller
             EstadoString = a.Estado.GetDisplayName(),
 
         })
-        .OrderBy(c => c.Caravana)
+        .OrderByDescending(a => a.AnimalID)
         .ToList();
 
         return Json(animalesMostrar);

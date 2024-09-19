@@ -46,6 +46,7 @@ public class LocalidadesController : Controller
                 ProvinciaNombre = l.Provincia.Nombre,
                 CodigoPostal = l.CodigoPostal,
             })
+            .OrderBy(n => n.NombreLocalidad)
             .ToList();
 
         return Json(localidadesMostrar);

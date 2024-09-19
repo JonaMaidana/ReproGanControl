@@ -3,9 +3,19 @@ window.onload = ListadoEventos;
 let eventosMostrar = [];
 
 function ListadoEventos() {
+    buscarTipoEventoID = document.getElementById("BuscarTipoEventoID").value;
+    fechaDesde = document.getElementById("FechaDesde").value;
+    fechaHasta = document.getElementById("FechaHasta").value;
+
+
     $.ajax({
         url: '../../Eventos/ListadoEventos',  // Asegúrate de que esta ruta sea correcta
         type: 'GET',
+        data: {
+            BuscarTipoEventoID: buscarTipoEventoID,
+            FechaDesde: fechaDesde,
+            FechaHasta: fechaHasta
+        },
         dataType: 'json',
         success: function (data) {
             console.log(data);

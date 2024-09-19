@@ -26,7 +26,7 @@ public class EventosController : Controller
         // Crear una lista de SelectListItem que incluya el elemento adicional
         var estadoSelectListItems = new List<SelectListItem>
         {
-            new SelectListItem { Value = "0", Text = "[SELECCIONE...]" }
+            new SelectListItem { Value = "0", Text = "[SELECCIONE]" }
         };
 
         // Obtener todas las opciones del enum
@@ -50,12 +50,31 @@ public class EventosController : Controller
         return View();
     }
 
-    public JsonResult ListadoEventos(int? id)
+    public JsonResult ListadoEventos(int? id, int? BuscarTipoEventoID, DateTime? FechaDesde, DateTime? FechaHasta)
     {
         var eventos = _context.Eventos.Include(a => a.Animal).ToList();
+
         if (id != null)
         {
             eventos = eventos.Where(e => e.EventoID == id).ToList();
+        }
+
+        if (BuscarTipoEventoID != null && BuscarTipoEventoID != 0)
+        {
+            eventos = eventos.Where(e => e.TipoEvento == (EventoEnum)BuscarTipoEventoID).ToList();
+        }
+
+        if (FechaDesde.HasValue && FechaHasta.HasValue)
+        {
+            eventos = eventos.Where(t => t.FechaEvento >= FechaDesde.Value && t.FechaEvento <= FechaHasta.Value).ToList();
+        }
+        else if (FechaDesde.HasValue)
+        {
+            eventos = eventos.Where(t => t.FechaEvento >= FechaDesde.Value).ToList();
+        }
+        else if (FechaHasta.HasValue)
+        {
+            eventos = eventos.Where(t => t.FechaEvento <= FechaHasta.Value).ToList();
         }
 
         var eventosMostrar = eventos
@@ -84,7 +103,7 @@ public class EventosController : Controller
                 CausaRechazo = e.CausaRechazo?.ToUpper(),
                 EspecifiqueOtro = e.EspecifiqueOtro?.ToUpper(),
             })
-            .OrderByDescending(f => f.FechaEvento).ThenBy(f => f.AnimalCaravana)
+            .OrderByDescending(e => e.EventoID)
             .ToList();
 
         return Json(eventosMostrar);
@@ -109,7 +128,7 @@ public class EventosController : Controller
             return Json(new { success = false, message = "Este Animal ya tiene un evento." });
         }
 
-        observacion = observacion?.ToUpper();
+        observacion = observacion.ToUpper();
 
 
         if (eventoID == 0)
@@ -183,7 +202,7 @@ public class EventosController : Controller
         }
         return Json(new { estadoAnimal = "" });
     }
-   
+
     public ActionResult InformesEventos()
     {
         var tipoEventos = Enum.GetValues(typeof(EventoEnum)).Cast<EventoEnum>();

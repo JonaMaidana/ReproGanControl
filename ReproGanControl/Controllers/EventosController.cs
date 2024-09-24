@@ -142,7 +142,7 @@ public class EventosController : Controller
                 FechaEventoString = e.FechaEvento.ToString("dd/MM/yyyy"),
                 Observacion = string.IsNullOrEmpty(e.Observacion) ? "NINGUNA" : e.Observacion,
 
-                TipoParto = e.TipoParto,
+                TipoParto = e.TipoParto?.ToUpper(),
                 TipoCria = e.TipoCria,
                 TipoCriaString = e.TipoCria?.ToString().ToUpper(),
                 EstadoCria = e.EstadoCria,
@@ -151,15 +151,15 @@ public class EventosController : Controller
                 FechaAproximadaSecadoString = e.FechaAproximadaSecado?.ToString("dd/MM/yyyy"),
                 FechaAproximadaParicion = e.FechaAproximadaParicion,
                 FechaAproximadaParicionString = e.FechaAproximadaParicion?.ToString("dd/MM/yyyy"),
-                CausaAborto = e.CausaAborto,
+                CausaAborto = e.CausaAborto?.ToUpper(),
                 TipoInseminacion = e.TipoInseminacion,
                 TipoInseminacionString = e.TipoInseminacion?.ToString().ToUpper(),
                 ToroID = e.ToroID,
-                DetalleToro = e.DetalleToro,
-                MotivoVenta = e.MotivoVenta,
-                CausaRechazo = e.CausaRechazo,
-                MotivoMuerte = e.MotivoMuerte,
-                EspecifiqueOtro = e.EspecifiqueOtro,
+                DetalleToro = e.DetalleToro?.ToUpper(),
+                MotivoVenta = e.MotivoVenta?.ToUpper(),
+                CausaRechazo = e.CausaRechazo?.ToUpper(),
+                MotivoMuerte = e.MotivoMuerte?.ToUpper(),
+                EspecifiqueOtro = e.EspecifiqueOtro?.ToUpper(),
 
             })
             .OrderByDescending(e => e.EventoID)
@@ -169,9 +169,9 @@ public class EventosController : Controller
     }
 
 
-    public JsonResult GuardarEventos(int eventoID, int animalID, EventoEnum tipoEvento, DateTime fechaEvento, string observacion, EnumTipoCria? tipoCria,
-    string tipoParto, EnumEstadoCria? estadoCria, DateTime? fechaAproximadaSecado, DateTime? fechaAproximadaParicion, string causaAborto, EnumTipoInseminacion? tipoInseminacion, int? toroID, string? detalleToro,
-    string? motivoVenta, string? motivoMuerte, string causaRechazo, string especifiqueOtro)
+    public JsonResult GuardarEventos(int eventoID, int animalID, EventoEnum tipoEvento, DateTime fechaEvento, string? observacion, EnumTipoCria? tipoCria,
+    string? tipoParto, EnumEstadoCria? estadoCria, DateTime? fechaAproximadaSecado, DateTime? fechaAproximadaParicion, string? causaAborto, EnumTipoInseminacion? tipoInseminacion, int? toroID, string? detalleToro,
+    string? motivoVenta, string? motivoMuerte, string? causaRechazo, string? especifiqueOtro)
     {
         // Validar si el AnimalID ya está registrado en otro evento
         bool animalIDExistente = _context.Eventos.Any(e => e.AnimalID == animalID && e.EventoID != eventoID);
@@ -181,8 +181,14 @@ public class EventosController : Controller
             return Json(new { success = false, message = "Este Animal ya tiene un evento." });
         }
 
-        observacion = observacion.ToUpper();
-
+        observacion = observacion?.ToUpper();
+        tipoParto = tipoParto?.ToUpper();
+        especifiqueOtro = especifiqueOtro?.ToUpper();
+        causaRechazo = causaRechazo?.ToUpper();
+        motivoMuerte = motivoMuerte?.ToUpper();
+        motivoVenta = motivoVenta?.ToUpper();
+        detalleToro = detalleToro?.ToUpper();
+        causaAborto = causaAborto?.ToUpper();
 
         if (eventoID == 0)
         {
@@ -250,83 +256,82 @@ public class EventosController : Controller
         return Json(true);
     }
 
-    public JsonResult ObtenerEstadoAnimal()
+    public ActionResult InformesEventos()
+    {
+        var tipoEventos = Enum.GetValues(typeof(EventoEnum)).Cast<EventoEnum>();
+
+        var estadoSelectListItems = tipoEventos.Select(e => new SelectListItem
+        {
+            Value = ((int)e).ToString(),
+            Text = e.ToString().ToUpper()
+        }).ToList();
+
+        estadoSelectListItems.Insert(0, new SelectListItem
+        {
+            Value = "",
+            Text = "[SELECCIONE]"
+        });
+
+        ViewBag.TipoEventoBuscarID = new SelectList(estadoSelectListItems, "Value", "Text");
+
+        return View();
+    }
+
+    public JsonResult ListadoInformeEventos(int? TipoEventoBuscarID)
     {
 
-        return Json(true);
+        List<VistaInformeEventos> vistaInformeEventos = new List<VistaInformeEventos>();
+
+
+        var eventos = _context.Eventos.Include(t => t.Animal).ToList();
+
+        if (TipoEventoBuscarID != null && TipoEventoBuscarID != 0)
+        {
+            eventos = eventos.Where(e => e.TipoEvento == (EventoEnum)TipoEventoBuscarID).ToList();
+        }
+
+        // Filtro para ordenar
+        eventos = eventos.OrderBy(e => e.TipoEvento).ToList();
+
+        foreach (var listadoEventos in eventos)
+        {
+
+            var tipoEventosMostrar = vistaInformeEventos.Where(t => t.TipoEvento == listadoEventos.TipoEvento).SingleOrDefault();
+            if (tipoEventosMostrar == null)
+            {
+                tipoEventosMostrar = new VistaInformeEventos
+                {
+                    TipoEvento = listadoEventos.TipoEvento,
+                    TipoEventoString = listadoEventos.TipoEvento.ToString(),
+                    vistaEventos = new List<VistaEventos>()
+                };
+                vistaInformeEventos.Add(tipoEventosMostrar);
+            }
+
+            var eventosMostrar = new VistaEventos
+            {
+                AnimalCaravana = listadoEventos.Animal.Caravana,
+                FechaEventoString = listadoEventos.FechaEvento.ToString("dd/MM/yyyy"),
+                Observacion = string.IsNullOrEmpty(listadoEventos.Observacion) ? "NINGUNA" : listadoEventos.Observacion,
+                TipoEvento = listadoEventos.TipoEvento,
+                TipoEventoString = listadoEventos.TipoEvento.ToString().ToUpper(),
+                // TipoParto = listadoEventos.TipoParto?.ToUpper(),
+                // TipoCria = listadoEventos.TipoCria,
+                // EstadoCria = listadoEventos.EstadoCria,
+                // FechaAproximadaSecadoString = listadoEventos.FechaAproximadaSecado?.ToString("dd/MM/yyyy"),
+                // FechaAproximadaParicionString = listadoEventos.FechaAproximadaParicion?.ToString("dd/MM/yyyy"),
+                // CausaAborto = listadoEventos.CausaAborto?.ToUpper(),
+                // TipoInseminacionString = listadoEventos.TipoInseminacion?.ToString().ToUpper(),
+                // ToroID = listadoEventos.ToroID,
+                // DetalleToro = listadoEventos.DetalleToro?.ToUpper(),
+                // MotivoVenta = listadoEventos.MotivoVenta?.ToUpper(),
+                // CausaRechazo = listadoEventos.CausaRechazo?.ToUpper(),
+                // MotivoMuerte = listadoEventos.MotivoMuerte?.ToUpper(),
+                // EspecifiqueOtro = listadoEventos.EspecifiqueOtro?.ToUpper(),
+            };
+            tipoEventosMostrar.vistaEventos.Add(eventosMostrar);
+        }
+
+        return Json(vistaInformeEventos);
     }
 }
-//     public ActionResult InformesEventos()
-//     {
-//         var tipoEventos = Enum.GetValues(typeof(EventoEnum)).Cast<EventoEnum>();
-
-//         var estadoSelectListItems = tipoEventos.Select(e => new SelectListItem
-//         {
-//             Value = ((int)e).ToString(),
-//             Text = e.ToString().ToUpper()
-//         }).ToList();
-
-//         estadoSelectListItems.Insert(0, new SelectListItem
-//         {
-//             Value = "",
-//             Text = "[SELECCIONE]"
-//         });
-
-//         ViewBag.TipoEventoBuscarID = new SelectList(estadoSelectListItems, "Value", "Text");
-
-//         return View();
-//     }
-
-//     public JsonResult ListadoInformeEventos(int? TipoEventoBuscarID)
-//     {
-
-//         List<VistaInformeEventos> vistaInformeEventos = new List<VistaInformeEventos>();
-
-
-//         var eventos = _context.Eventos.Include(t => t.Animal).ToList();
-
-//         if (TipoEventoBuscarID != null && TipoEventoBuscarID != 0)
-//         {
-//             eventos = eventos.Where(e => e.TipoEvento == (EventoEnum)TipoEventoBuscarID).ToList();
-//         }
-
-//         // Filtro para ordenar
-//         eventos = eventos.OrderBy(e => e.TipoEvento).ToList();
-
-//         foreach (var listadoEventos in eventos)
-//         {
-
-//             var tipoEventosMostrar = vistaInformeEventos.Where(t => t.TipoEvento == listadoEventos.TipoEvento).SingleOrDefault();
-//             if (tipoEventosMostrar == null)
-//             {
-//                 tipoEventosMostrar = new VistaInformeEventos
-//                 {
-//                     TipoEvento = listadoEventos.TipoEvento,
-//                     TipoEventoString = listadoEventos.TipoEvento.ToString(),
-//                     vistaEventos = new List<VistaEventos>()
-//                 };
-//                 vistaInformeEventos.Add(tipoEventosMostrar);
-//             }
-
-//             var eventosMostrar = new VistaEventos
-//             {
-//                 AnimalCaravana = listadoEventos.Animal.Caravana,
-//                 FechaEventoString = listadoEventos.FechaEvento.ToString("dd/MM/yyyy"),
-//                 Observacion = string.IsNullOrEmpty(listadoEventos.Observacion) ? "NINGUNA" : listadoEventos.Observacion,
-//                 TipoCriaString = listadoEventos.TipoCria.HasValue ? (listadoEventos.TipoCria.Value ? "Macho" : "Hembra") : "",
-//                 TipoParto = listadoEventos.TipoParto,
-//                 EstadoCriaString = listadoEventos.EstadoCria.HasValue ? (listadoEventos.EstadoCria.Value ? "Vivo" : "Muerto") : "",
-//                 CausaAborto = listadoEventos.CausaAborto,
-//                 InseminacionString = listadoEventos.Inseminacion.HasValue ? (listadoEventos.Inseminacion.Value ? "Monta" : "Inseminación Artificial") : "",
-//                 CausaCelo = listadoEventos.CausaCelo,
-//                 EspecifiqueSecado = listadoEventos.EspecifiqueSecado,
-//                 MotivoVenta = listadoEventos.MotivoVenta,
-//                 CausaRechazo = listadoEventos.CausaRechazo,
-//                 EspecifiqueOtro = listadoEventos.EspecifiqueOtro,
-//             };
-//             tipoEventosMostrar.vistaEventos.Add(eventosMostrar);
-//         }
-
-//         return Json(vistaInformeEventos);
-//     }
-// }

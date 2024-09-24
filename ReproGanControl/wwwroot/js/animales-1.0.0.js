@@ -221,7 +221,6 @@ function ModalEditarAnimal(animalID) {
 
             document.getElementById("FechaNacimiento").value = formattedDate;
 
-            manejarVisibilidadEstado();
 
             $("#ModalTitulo").text("Editar Animal");
             $("#ModalAnimal").modal("show");

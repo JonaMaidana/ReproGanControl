@@ -3,9 +3,17 @@ window.onload = ListadoEventos;
 let eventosMostrar = [];
 
 function ListadoEventos() {
+    let buscarTipoEventoID = document.getElementById("BuscarTipoEventoID").value;
+    let fechaDesde = document.getElementById("FechaDesde").value;
+    let fechaHasta = document.getElementById("FechaHasta").value;
     $.ajax({
         url: '../../Eventos/ListadoEventos',  // Asegúrate de que esta ruta sea correcta
         type: 'GET',
+        data: {
+            BuscarTipoEventoID: buscarTipoEventoID,
+            FechaDesde: fechaDesde,
+            FechaHasta: fechaHasta
+        },
         dataType: 'json',
         success: function (data) {
             console.log(data);
@@ -50,12 +58,12 @@ function renderTableEventos() {
             <td class="ocultar-en-768px">${evento.estadoCriaString || ''}</td>
             <td class="ocultar-en-768px">${evento.fechaAproximadaSecadoString || ''}</td>
             <td class="ocultar-en-768px">${evento.fechaAproximadaParicionString || ''}</td>
-            <td class="ocultar-en-768px">${evento.causaAborto || ''}</td>
-            <td class="ocultar-en-768px">${evento.tipoInseminacionString || ''}</td>
             <td class="ocultar-en-768px">${evento.toroID || ''}</td>
+            <td class="ocultar-en-768px">${evento.tipoInseminacionString || ''}</td>
             <td class="ocultar-en-768px">${evento.detalleToro || ''}</td>
+             <td class="ocultar-en-768px">${evento.causaAborto || ''}</td>
             <td class="ocultar-en-768px"d>${evento.motivoVenta || ''}</td>
-            <td class="ocultar-en-768px">${evento.causaRechazo || ''}</td>
+            <td class="ocultar-en-768px">${evento.causaRechazo || ''}</td> 
             <td class="ocultar-en-768px">${evento.motivoMuerte || ''}</td>
             <td class="ocultar-en-768px">${evento.especifiqueOtro || ''}</td>
 
@@ -137,7 +145,7 @@ function GuardarEvento() {
     let especifiqueOtro = document.getElementById("EspecifiqueOtro").value;
 
     // Validación básica para campos obligatorios
-    if (!animalID || !tipoEvento || !fechaEvento || !observacion) {
+    if (!animalID || !tipoEvento || !fechaEvento) {
         Swal.fire({
             icon: 'error',
             title: 'Error',
@@ -215,66 +223,57 @@ function ModalEditarEventos(eventoID) {
         success: function (response) {
             if (response && response.length > 0) {
                 let evento = response[0];
-                console.log(evento);
-
-                // Cargar datos principales
                 $("#EventoID").val(evento.eventoID);
                 $("#AnimalID").val(evento.animalID);
                 $("#TipoEvento").val(evento.tipoEvento);
 
-                // Formatear la fecha en formato "YYYY-MM-DD" para el input de fecha
+                // Formatear la fecha
                 let fechaEvento = new Date(evento.fechaEvento);
                 let fechaFormato = fechaEvento.toISOString().split('T')[0];
                 $("#FechaEvento").val(fechaFormato);
                 $("#Observacion").val(evento.observacion);
-                $('#divEstadoAnimal').hide();
 
-                // Mapeo de valores booleanos o de las cadenas asociadas a esos valores
+                // Mostrar los campos correspondientes
+                mostrarCamposPorTipoEvento();
+
+                // Asignar valores a los campos de acuerdo al tipo de evento
                 switch (evento.tipoEvento) {
                     case 1: // Parto
-                        // Verificamos tanto los valores booleanos como las cadenas
-                        if (evento.tipoCria !== null) {
-                            $("#TipoCria").val(evento.tipoCria === true || evento.tipoCriaString === "MACHO" ? "true" : "false");
-                        }
                         $("#TipoParto").val(evento.tipoParto || "");
-
-                        if (evento.estadoCria !== null) {
-                            $("#EstadoCria").val(evento.estadoCria === true || evento.estadoCriaString === "VIVO" ? "true" : "false");
-                        }
+                        $("#TipoCria").val(evento.tipoCria || "").trigger("change"); // Para dropdowns
+                        $("#EstadoCria").val(evento.estadoCria || "").trigger("change");
                         break;
-                    case 2: // Aborto
+                    case 2: // Preñez
+                        // Asignar valores específicos si es necesario
+                        break;
+                    case 3: // Aborto
                         $("#CausaAborto").val(evento.causaAborto || "");
                         break;
-                    case 3: // Servicio
-                        // Mapeo para inseminacion: si es booleano o cadena
-                        if (evento.inseminacion !== null) {
-                            $("#Inseminacion").val(evento.inseminacion === true || evento.inseminacionString === "MONTA" ? "Monta" : "Inseminación Artificial");
-                        } else {
-                            $("#Inseminacion").val(""); // Si no hay valor, limpiar el campo
-                        }
+                    case 4: // Servicio
+                        $("#TipoInseminacion").val(evento.tipoInseminacion || "").trigger("change");
+                        $("#ToroID").val(evento.toroID || "").trigger("change");
+                        $("#DetalleToro").val(evento.detalleToro || "");
                         break;
-                    case 4: // Celo
-                        $("#CausaCelo").val(evento.causaCelo || "");
-                        break;
-                    case 5: // Secado
-                        $("#EspecifiqueSecado").val(evento.especifiqueSecado || "");
-                        break;
-                    case 6: // Venta
+                    case 7: // Venta
                         $("#MotivoVenta").val(evento.motivoVenta || "");
                         break;
-                    case 7: // Rechazo
+                    case 8: // Rechazo
                         $("#CausaRechazo").val(evento.causaRechazo || "");
                         break;
-                    case 8: // Otro
+                    case 9: // Muerte
+                        $("#MotivoMuerte").val(evento.motivoMuerte || "");
+                        break;
+                    case 10: // Otro
                         $("#EspecifiqueOtro").val(evento.especifiqueOtro || "");
+                        break;
+                    default:
                         break;
                 }
 
-                // Mostrar campos específicos según el tipo de evento
-                mostrarCamposPorTipoEvento();
-
                 // Cambiar el título del modal a "Editar Evento"
                 $("#ModalTituloEvento").text("Editar Evento");
+
+                // Mostrar el modal
                 $("#ModalEvento").modal("show");
             } else {
                 Swal.fire({
@@ -356,30 +355,43 @@ function LimpiarModalEvento() {
     document.querySelector("#TipoEvento").value = 0;
     document.querySelector("#Observacion").value = "";
 
-    // Campos específicos del evento
+    // Restablecer los valores de los DropDownList a 'Seleccione'
+    document.querySelector("#TipoCria").value = 0; // Mantener la opción 'Seleccione'
+    document.querySelector("#EstadoCria").value = 0; // Mantener la opción 'Seleccione'
+    document.querySelector("#TipoInseminacion").value = 0; // Mantener la opción 'Seleccione'
+    document.querySelector("#ToroID").value = 0; // Mantener la opción 'Seleccione'
+
+    // Limpiar los campos input específicos
     const campos = [
-        'TipoParto', 'TipoCria', 'EstadoCria', 'CausaAborto',
-        'Inseminacion', 'CausaCelo', 'EspecifiqueSecado',
+        'TipoParto', 'CausaAborto', "divPreñezFechSecado",
+        'MotivoMuerte', 'DetalleToro', "divPreñezFechParicion",
         'MotivoVenta', 'CausaRechazo', 'EspecifiqueOtro'
     ];
 
-    // Limpiar y ocultar cada campo específico
     campos.forEach(campo => {
         const elemento = document.querySelector(`#${campo}`);
         if (elemento) {
-            if (elemento.tagName === 'SELECT') {
-                elemento.value = ""; // Limpia el valor de los <select>
-            } else {
-                elemento.value = ""; // Limpia el valor de los <input>
-            }
+            elemento.value = ""; // Limpia el valor del campo <input> o <textarea>
         }
-        // Ocultar el campo específico
-        const divElemento = document.querySelector(`#div${campo}`);
+    });
+
+    // Ocultar TODOS los campos dinámicos
+    const divCampos = [
+        "divTipoParto", "divTipoCria", "divEstadoCria",
+        "divPreñezFechSecado", "divPreñezFechParicion",
+        "divCausaAborto", "divTipoInseminacion", "divToroID",
+        "divDetalleToro", "divMotivoVenta", "divCausaRechazo",
+        "divMotivoMuerte", "divEspecifiqueOtro"
+    ];
+
+    divCampos.forEach(divCampo => {
+        const divElemento = document.querySelector(`#${divCampo}`);
         if (divElemento) {
-            divElemento.style.display = 'none';
+            divElemento.style.display = 'none'; // Ocultar los divs dinámicos
         }
     });
 }
+
 // Llamar a LimpiarModalEvento cuando el modal se cierre
 $('#ModalEvento').on('hidden.bs.modal', function () {
     LimpiarModalEvento();
@@ -389,23 +401,14 @@ function mostrarCamposPorTipoEvento() {
     // Obtener el valor seleccionado del DropDownList
     const tipoEvento = document.querySelector("#TipoEvento").value;
 
-
     // Función para ocultar todos los campos específicos
     const ocultarCampos = () => {
         const campos = [
-            "divTipoParto",
-            "divTipoCria",
-            "divEstadoCria",
-            "divPreñezFechSecado",
-            "divPreñezFechParicion",
-            "divCausaAborto",
-            "divTipoInseminacion",
-            "divToroID",
-            "divDetalleToro",
-            "divMotivoVenta",
-            "divCausaRechazo",
-            "divMotivoMuerte",
-            "divEspecifiqueOtro"
+            "divTipoParto", "divTipoCria", "divEstadoCria",
+            "divPreñezFechSecado", "divPreñezFechParicion",
+            "divCausaAborto", "divTipoInseminacion", "divToroID",
+            "divDetalleToro", "divMotivoVenta", "divCausaRechazo",
+            "divMotivoMuerte", "divEspecifiqueOtro"
         ];
         campos.forEach(campo => {
             document.querySelector(`#${campo}`).style.display = "none";
@@ -451,3 +454,4 @@ function mostrarCamposPorTipoEvento() {
             break;
     }
 }
+

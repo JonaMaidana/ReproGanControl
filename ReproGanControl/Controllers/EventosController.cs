@@ -105,7 +105,10 @@ public class EventosController : Controller
 
     public JsonResult ListadoEventos(int? id, int? BuscarTipoEventoID, DateTime? FechaDesde, DateTime? FechaHasta)
     {
-        var eventos = _context.Eventos.Include(a => a.Animal).ToList();
+        var eventos = _context.Eventos
+        .Include(a => a.Animal)
+        .ThenInclude(t => t.TipoAnimal)
+        .ToList();
 
         if (id != null)
         {
@@ -155,6 +158,7 @@ public class EventosController : Controller
                 TipoInseminacion = e.TipoInseminacion,
                 TipoInseminacionString = e.TipoInseminacion?.ToString().ToUpper(),
                 ToroID = e.ToroID,
+                ToroString = e.ToroID != null ?_context.Animales.FirstOrDefault(a => a.AnimalID == e.ToroID)?.Caravana :"",
                 DetalleToro = e.DetalleToro?.ToUpper(),
                 MotivoVenta = e.MotivoVenta?.ToUpper(),
                 CausaRechazo = e.CausaRechazo?.ToUpper(),

@@ -103,6 +103,7 @@ public class VistaEventos
     public EnumTipoInseminacion? TipoInseminacion { get; set; }
     public string? TipoInseminacionString { get; set; }
     public int? ToroID { get; set; }
+     public string? ToroString { get; set; }
     public string? DetalleToro { get; set; }
     public string? MotivoVenta { get; set; }
     public string? CausaRechazo { get; set; }

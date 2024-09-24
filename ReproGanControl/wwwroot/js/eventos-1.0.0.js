@@ -58,10 +58,10 @@ function renderTableEventos() {
             <td class="ocultar-en-768px">${evento.estadoCriaString || ''}</td>
             <td class="ocultar-en-768px">${evento.fechaAproximadaSecadoString || ''}</td>
             <td class="ocultar-en-768px">${evento.fechaAproximadaParicionString || ''}</td>
-            <td class="ocultar-en-768px">${evento.toroID || ''}</td>
+            <td class="ocultar-en-768px">${evento.toroString || ''}</td>
             <td class="ocultar-en-768px">${evento.tipoInseminacionString || ''}</td>
             <td class="ocultar-en-768px">${evento.detalleToro || ''}</td>
-             <td class="ocultar-en-768px">${evento.causaAborto || ''}</td>
+            <td class="ocultar-en-768px">${evento.causaAborto || ''}</td>
             <td class="ocultar-en-768px"d>${evento.motivoVenta || ''}</td>
             <td class="ocultar-en-768px">${evento.causaRechazo || ''}</td> 
             <td class="ocultar-en-768px">${evento.motivoMuerte || ''}</td>

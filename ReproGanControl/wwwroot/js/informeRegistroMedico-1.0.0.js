@@ -69,7 +69,7 @@ function ListadoInformeRegistroMedico() {
 // Función para crear o actualizar el gráfico de registros médicos
 function createOrUpdateMedicalChart(data) {
     const ctx = document.getElementById('medicalChart').getContext('2d');
-    
+
     const labels = data.map(item => item.nombrePersona);
     const recordCounts = data.map(item => item.vistaRegistroMedico.length);
 
@@ -79,20 +79,18 @@ function createOrUpdateMedicalChart(data) {
             label: 'Registros Médicos por Persona',
             data: recordCounts,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 206, 86, 0.6)',
-                'rgba(75, 192, 192, 0.6)',
-                'rgba(153, 102, 255, 0.6)',
-                'rgba(255, 159, 64, 0.6)'
+                'rgba(255, 99, 132, 0.6)', // Rosa
+                'rgba(153, 102, 255, 0.6)', // Púrpura
+                'rgba(255, 159, 64, 0.6)', // Naranja
+                'rgba(34, 139, 34, 0.6)',   // Verde más suave
+                'rgba(255, 0, 0, 0.6)'      // Rojo oscuro
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(255, 99, 132, 1)', // Rosa
+                'rgba(153, 102, 255, 1)', // Púrpura
+                'rgba(255, 159, 64, 1)', // Naranja
+                'rgba(34, 139, 34, 1)',   // Verde más suave
+                'rgba(255, 0, 0, 1)'      // Rojo oscuro
             ],
             borderWidth: 1
         }]
@@ -107,6 +105,19 @@ function createOrUpdateMedicalChart(data) {
             title: {
                 display: true,
                 text: 'Registros Médicos por Persona'
+            },
+            datalabels: {
+                anchor: 'center', // Centrar los datos en el medio de cada sección
+                align: 'center',  // Centrar los datos
+                formatter: (value, context) => {
+                    const total = context.chart.data.datasets[0].data.reduce((acc, val) => acc + val, 0);
+                    const percentage = ((value / total) * 100).toFixed(2) + '%';
+                    return percentage; // Retorna el porcentaje
+                },
+                color: 'white', // Color del texto
+                font: {
+                    weight: 'bold',
+                },
             }
         },
         layout: {
@@ -129,10 +140,12 @@ function createOrUpdateMedicalChart(data) {
         medicalChart = new Chart(ctx, {
             type: 'doughnut',
             data: chartData,
-            options: options
+            options: options,
+            plugins: [ChartDataLabels] // Asegúrate de incluir el plugin aquí
         });
     }
 }
+
 
 // Función para mostrar detalles en un modal
 function showMedicalRecordDetails(registroMedicoID) {

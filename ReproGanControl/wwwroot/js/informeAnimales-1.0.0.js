@@ -82,20 +82,18 @@ function createOrUpdateAnimalChart(data) {
             label: 'Animales por Tipo',
             data: animalCounts,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 206, 86, 0.6)',
-                'rgba(75, 192, 192, 0.6)',
-                'rgba(153, 102, 255, 0.6)',
-                'rgba(255, 159, 64, 0.6)'
+                'rgba(255, 99, 132, 0.6)', // Rosa
+                'rgba(153, 102, 255, 0.6)', // Púrpura
+                'rgba(255, 159, 64, 0.6)', // Naranja
+                'rgba(34, 139, 34, 0.6)',   // Verde más suave (0.6)
+                'rgba(255, 0, 0, 0.6)'      // Rojo oscuro
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(255, 99, 132, 1)', // Rosa
+                'rgba(153, 102, 255, 1)', // Púrpura
+                'rgba(255, 159, 64, 1)', // Naranja
+                'rgba(34, 139, 34, 1)',     // Verde más suave (1.0)
+                'rgba(255, 0, 0, 1)'      // Rojo oscuro
             ],
             borderWidth: 1
         }]
@@ -110,6 +108,19 @@ function createOrUpdateAnimalChart(data) {
             title: {
                 display: true,
                 text: 'Cantidad de Animales por Tipo'
+            },
+            datalabels: {
+                anchor: 'center', // Cambiado a 'center' para centrar los datos en el medio de cada sección
+                align: 'center', // Cambiado a 'center' para centrar los datos
+                formatter: (value, context) => {
+                    const total = context.chart.data.datasets[0].data.reduce((acc, val) => acc + val, 0);
+                    const percentage = ((value / total) * 100).toFixed(2) + '%';
+                    return percentage; // Retorna el porcentaje
+                },
+                color: 'white', // Color del texto
+                font: {
+                    weight: 'bold',
+                },
             }
         },
         layout: {
@@ -132,10 +143,12 @@ function createOrUpdateAnimalChart(data) {
         animalChart = new Chart(ctx, {
             type: 'doughnut',
             data: chartData,
-            options: options
+            options: options,
+            plugins: [ChartDataLabels] // Asegúrate de incluir el plugin aquí
         });
     }
 }
+
 
 function showAnimalDetails(tipoAnimalID) {
     // Encuentra el animal con el ID dado en la variable global

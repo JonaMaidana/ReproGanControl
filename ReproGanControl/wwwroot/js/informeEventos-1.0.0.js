@@ -36,7 +36,6 @@ function ListadoInformeEventos() {
                     <tr>
                         <td class="text-center"></td>
                         <td class="text-center">${Evento.animalCaravana}</td>
-                        <td class="ocultar-en-768px" class="text-center">${Evento.estadoAnimal}</td>
                         <td class="ocultar-en-768px" class="text-center">${Evento.fechaEventoString}</td>
                         <td class="ocultar-en-768px" class="text-center">${Evento.observacion}</td>
                         <td class="text-center"></td>
@@ -64,7 +63,6 @@ function showEventDetails(tipoEventoID) {
             ${evento.vistaEventos.map(e => `
                 <li>
                     <strong>Caravana:</strong> ${e.animalCaravana}<br>
-                    <strong>Estado:</strong> ${e.estadoAnimal}<br>
                     <strong>Fecha del Evento:</strong> ${e.fechaEventoString}<br>
                     <strong>Observación:</strong> ${e.observacion}
                 </li>

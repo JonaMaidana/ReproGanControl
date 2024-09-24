@@ -12,8 +12,8 @@ using ReproGanControl.Data;
 namespace ReproGanControl.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240924034358_MigracionPrueba")]
-    partial class MigracionPrueba
+    [Migration("20240924183430_Imagen")]
+    partial class Imagen
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -277,26 +277,29 @@ namespace ReproGanControl.Migrations
                     b.Property<string>("CausaAborto")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CausaCelo")
+                    b.Property<string>("CausaRechazo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CausaRechazo")
+                    b.Property<string>("DetalleToro")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EspecifiqueOtro")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("EspecifiqueSecado")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("EstadoCria")
+                        .HasColumnType("int");
 
-                    b.Property<bool?>("EstadoCria")
-                        .HasColumnType("bit");
+                    b.Property<DateTime?>("FechaAproximadaParicion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaAproximadaSecado")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("FechaEvento")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool?>("Inseminacion")
-                        .HasColumnType("bit");
+                    b.Property<string>("MotivoMuerte")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MotivoVenta")
                         .HasColumnType("nvarchar(max)");
@@ -304,14 +307,20 @@ namespace ReproGanControl.Migrations
                     b.Property<string>("Observacion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("TipoCria")
-                        .HasColumnType("bit");
+                    b.Property<int?>("TipoCria")
+                        .HasColumnType("int");
 
                     b.Property<int>("TipoEvento")
                         .HasColumnType("int");
 
+                    b.Property<int?>("TipoInseminacion")
+                        .HasColumnType("int");
+
                     b.Property<string>("TipoParto")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ToroID")
+                        .HasColumnType("int");
 
                     b.HasKey("EventoID");
 
@@ -415,6 +424,9 @@ namespace ReproGanControl.Migrations
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagenBase64")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observacion")
                         .HasColumnType("nvarchar(max)");

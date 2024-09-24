@@ -422,6 +422,9 @@ namespace ReproGanControl.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ImagenBase64")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Observacion")
                         .HasColumnType("nvarchar(max)");
 

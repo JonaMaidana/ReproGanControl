@@ -1,8 +1,8 @@
-window.onload = ListadoInformeRegistroMedico();
-
-
-// Definir una variable global para almacenar los datos
+// Definir variables globales para los datos y el gráfico
 let vistaInformeRegistroMedicoGlobal = [];
+let medicalChart;
+
+window.onload = ListadoInformeRegistroMedico();
 
 function ListadoInformeRegistroMedico() {
     let personasBuscarID = document.getElementById("PersonasBuscarID").value;
@@ -53,13 +53,85 @@ function ListadoInformeRegistroMedico() {
                 `;
                 });
             });
+
             document.getElementById("tbody-informesRegistroMedico").innerHTML = contenidoTabla;
+
+            // Crear o actualizar el gráfico
+            createOrUpdateMedicalChart(vistaInformeRegistroMedico);
         },
 
         error: function (xhr, status) {
             console.log('Disculpe, existió un problema al cargar el listado :(');
         }
     });
+}
+
+// Función para crear o actualizar el gráfico de registros médicos
+function createOrUpdateMedicalChart(data) {
+    const ctx = document.getElementById('medicalChart').getContext('2d');
+    
+    const labels = data.map(item => item.nombrePersona);
+    const recordCounts = data.map(item => item.vistaRegistroMedico.length);
+
+    const chartData = {
+        labels: labels,
+        datasets: [{
+            label: 'Registros Médicos por Persona',
+            data: recordCounts,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(255, 159, 64, 0.6)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Registros Médicos por Persona'
+            }
+        },
+        layout: {
+            padding: {
+                top: 10,
+                right: 10,
+                bottom: 10,
+                left: 10
+            }
+        },
+        maintainAspectRatio: false
+    };
+
+    // Actualizar el gráfico si ya existe o crear uno nuevo
+    if (medicalChart) {
+        medicalChart.data = chartData;
+        medicalChart.options = options;
+        medicalChart.update();
+    } else {
+        medicalChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: chartData,
+            options: options
+        });
+    }
 }
 
 // Función para mostrar detalles en un modal
@@ -87,3 +159,4 @@ function showMedicalRecordDetails(registroMedicoID) {
     var myModal = new bootstrap.Modal(document.getElementById('registroMedicoModal'));
     myModal.show();
 }
+

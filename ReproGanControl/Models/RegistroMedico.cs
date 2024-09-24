@@ -12,6 +12,7 @@ public class RegistroMedico
     public string? Tratamiento { get; set; }
     public string? Enfermedad { get; set; }
     public string? Observacion { get; set; }
+    public string? ImagenBase64 { get; set; } // Nuevo campo para la imagen en Base64
 
     public virtual Animal Animal { get; set; }
     public virtual Persona Persona { get; set; }
@@ -29,5 +30,5 @@ public class VistaRegistroMedico
     public string? Observacion { get; set; }
     public string? AnimalCaravana { get; set; }
     public string? NombrePersona { get; set; }
-
+    public string? ImagenBase64 { get; set; } // Nuevo campo para la imagen en Base64
 }

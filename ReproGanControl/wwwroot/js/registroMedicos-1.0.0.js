@@ -23,6 +23,7 @@ function ListadoRegistrosMedicos() {
     });
 }
 
+// Función actualizada para renderizar la tabla (sin cambios)
 function renderTableRegistroMedico() {
     let contenidoTabla = ``;
 
@@ -36,6 +37,13 @@ function renderTableRegistroMedico() {
             <td class="ocultar-en-768px">${medico.observacion}</td>
             <td class="ocultar-en-768px">${medico.fechaString}</td>
             <td class="text-center">
+                ${medico.imagenBase64 ? 
+                    `<img src="data:image/jpeg;base64,${medico.imagenBase64}" title="Ver Imagen" 
+                    style="max-width: 50px; max-height: 50px; cursor: pointer;" 
+                    onclick="mostrarImagenGrande('${medico.imagenBase64}', '${medico.animalCaravana}')">` : 
+                    'Sin imagen'}
+            </td>
+            <td class="text-center">
                 <button type="button" class="edit-button" title="Editar Registro Medico" onclick="ModalEditarRegistroMedico(${medico.registroMedicoID})">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
@@ -45,7 +53,6 @@ function renderTableRegistroMedico() {
                 <button type="button" class="info-button" title="Ver mas Datos" onclick="showRegistroMedicoDetails(${medico.registroMedicoID})">
                     <i class="fa-solid fa-info-circle"></i>
                 </button>
-                
             </td>
         </tr>
         `;
@@ -53,6 +60,86 @@ function renderTableRegistroMedico() {
 
     document.getElementById("tbody-registroMedico").innerHTML = contenidoTabla;
 }
+
+    // Función actualizada para mostrar la imagen en grande con botones en posiciones originales
+    function mostrarImagenGrande(imagenBase64, caravana) {
+        const modal = document.createElement('div');
+        modal.style.position = 'fixed';
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+        modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+        modal.style.display = 'flex';
+        modal.style.justifyContent = 'center';
+        modal.style.alignItems = 'center';
+        modal.style.zIndex = '1000';
+
+        const imagen = document.createElement('img');
+        imagen.src = `data:image/jpeg;base64,${imagenBase64}`;
+        imagen.style.maxWidth = '90%';
+        imagen.style.maxHeight = '90%';
+        imagen.style.objectFit = 'contain';
+
+        const botonCerrar = document.createElement('button');
+        botonCerrar.innerHTML = '<i class="fa-solid fa-times"></i>';
+        botonCerrar.style.position = 'absolute';
+        botonCerrar.style.top = '10px';
+        botonCerrar.style.right = '10px';
+        botonCerrar.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+        botonCerrar.style.border = 'none';
+        botonCerrar.style.borderRadius = '50%';
+        botonCerrar.style.width = '40px';
+        botonCerrar.style.height = '40px';
+        botonCerrar.style.cursor = 'pointer';
+        botonCerrar.style.fontSize = '20px';
+        botonCerrar.style.display = 'flex';
+        botonCerrar.style.justifyContent = 'center';
+        botonCerrar.style.alignItems = 'center';
+        botonCerrar.style.transition = 'background-color 0.3s';
+
+        const botonDescargar = document.createElement('button');
+        botonDescargar.innerHTML = '<i class="fa-solid fa-download"></i> Descargar';
+        botonDescargar.classList.add('btn-agregar'); // Agrega la clase .btn-agregar
+        botonDescargar.style.position = 'absolute';
+        botonDescargar.style.bottom = '10px';
+        botonDescargar.style.right = '10px';
+        botonDescargar.style.backgroundColor = 'rgba(76, 175, 80, 0.8)'; // Mantén el color
+        botonDescargar.style.transition = 'background-color 0.3s ease, transform 0.3s ease'; // Solo mantenemos la transición
+        botonDescargar.title = 'Descargar imagen'; // Agrega el title aquí
+        document.body.appendChild(botonDescargar);
+        
+
+        botonCerrar.onmouseover = () => botonCerrar.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+        botonCerrar.onmouseout = () => botonCerrar.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+        botonDescargar.onmouseover = () => botonDescargar.style.backgroundColor = 'rgba(76, 175, 80, 1)';
+        botonDescargar.onmouseout = () => botonDescargar.style.backgroundColor = 'rgba(76, 175, 80, 0.8)';
+
+        const cerrarModal = () => document.body.removeChild(modal);
+        botonCerrar.onclick = cerrarModal;
+        botonDescargar.onclick = () => descargarImagen(imagenBase64, caravana);
+
+        modal.onclick = (event) => {
+            if (event.target === modal) {
+                cerrarModal();
+            }
+        };
+
+        modal.appendChild(imagen);
+        modal.appendChild(botonCerrar);
+        modal.appendChild(botonDescargar);
+        document.body.appendChild(modal);
+    }
+
+    // Función para descargar la imagen (sin cambios)
+    function descargarImagen(imagenBase64, caravana) {
+        const enlace = document.createElement('a');
+        enlace.href = `data:image/jpeg;base64,${imagenBase64}`;
+        enlace.download = `Registro Medico de Caravana:${caravana}.jpg`;
+        document.body.appendChild(enlace);
+        enlace.click();
+        document.body.removeChild(enlace);
+    }
 
 function showRegistroMedicoDetails(registroMedicoID) {
     // Encuentra el registro médico con el ID dado
@@ -82,13 +169,18 @@ function updateTotalItemsRegistroMedico() {
     document.getElementById("total-items-registrosMedicos").textContent = `Registros medicos cargados: ${totalItems}`;
 }
 
+
 function LimpiarModalRegistroMedico() {
-    
+    document.getElementById("RegistroMedicoID").value = 0;
     document.getElementById("AnimalID").value = 0;
     document.getElementById("PersonaID").value = 0;
     document.getElementById("Tratamiento").value = "";
     document.getElementById("Enfermedad").value = "";
     document.getElementById("Observacion").value = "";
+    document.getElementById("ImagenBase64").value = "";
+    document.getElementById("imagenPreview").src = "";
+    document.getElementById("imagenPreview").style.display = "none";
+    document.getElementById("imagen").value = ""; // Limpiar el input de archivo
 }
 
 function NuevoRegistroMedico() {
@@ -110,19 +202,18 @@ function GuardarRegistroMedico() {
     let enfermedad = document.getElementById("Enfermedad").value; 
     let tratamiento = document.getElementById("Tratamiento").value;
     let observacion = document.getElementById("Observacion").value;
+    let imagenBase64 = document.getElementById("ImagenBase64").value;
 
-    
     if (!animalID || !fecha || !enfermedad || !tratamiento) {
         Swal.fire({
             icon: 'warning',
             title: 'Faltan campos',
-            text: 'Por favor, completa los campos requeridos para guardar el evento.',
+            text: 'Por favor, completa los campos requeridos para guardar el registro médico.',
             confirmButtonText: 'OK'
         });
         return; 
     }
 
-    
     $.ajax({
         url: '../../RegistroMedicos/GuardarRegistrosMedicos',
         data: { 
@@ -133,7 +224,7 @@ function GuardarRegistroMedico() {
             Enfermedad: enfermedad,
             Tratamiento: tratamiento,
             Observacion: observacion,
-            
+            ImagenBase64: imagenBase64
         },
         type: 'POST',
         dataType: 'json',
@@ -141,7 +232,7 @@ function GuardarRegistroMedico() {
             Swal.fire({
                 icon: 'success',
                 title: 'Guardado correctamente',
-                text: 'El evento se ha guardado exitosamente.',
+                text: 'El registro médico se ha guardado exitosamente.',
                 confirmButtonText: 'OK'
             });
             ListadoRegistrosMedicos(); 
@@ -150,12 +241,31 @@ function GuardarRegistroMedico() {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Disculpe, existió un problema al guardar el evento.',
+                text: 'Disculpe, existió un problema al guardar el registro médico.',
                 confirmButtonText: 'OK'
             });
-            console.log('Disculpe, existió un problema al guardar el evento');
+            console.log('Disculpe, existió un problema al guardar el registro médico');
         }
     });    
+}
+
+function handleImageUpload(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    
+    reader.onloadend = function() {
+        document.getElementById("ImagenBase64").value = reader.result.split(',')[1];
+        document.getElementById("imagenPreview").src = reader.result;
+        document.getElementById("imagenPreview").style.display = "block";
+    }
+    
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        document.getElementById("ImagenBase64").value = "";
+        document.getElementById("imagenPreview").src = "";
+        document.getElementById("imagenPreview").style.display = "none";
+    }
 }
 
 // Llamar a la función para configurar la fecha al cargar la página
@@ -171,13 +281,9 @@ function ModalEditarRegistroMedico(registroMedicoID) {
             if (response && response.length > 0) {
                 let medico = response[0];
 
-                console.log(medico);
-
                 document.getElementById("RegistroMedicoID").value = medico.registroMedicoID;
                 document.getElementById("AnimalID").value = medico.animalID;
                 document.getElementById("PersonaID").value = medico.personaID;
-                document.getElementById("Fecha").value = medico.fechaString;
-
                 
                 let fecha = new Date(medico.fecha);
                 let fechaFormato = fecha.toISOString().split('T')[0];
@@ -185,6 +291,16 @@ function ModalEditarRegistroMedico(registroMedicoID) {
                 document.getElementById("Enfermedad").value = medico.enfermedad;
                 document.getElementById("Tratamiento").value = medico.tratamiento;
                 document.getElementById("Observacion").value = medico.observacion;
+
+                // Manejo de la imagen
+                document.getElementById("ImagenBase64").value = medico.imagenBase64;
+                if (medico.imagenBase64) {
+                    document.getElementById("imagenPreview").src = "data:image/jpeg;base64," + medico.imagenBase64;
+                    document.getElementById("imagenPreview").style.display = "block";
+                } else {
+                    document.getElementById("imagenPreview").src = "";
+                    document.getElementById("imagenPreview").style.display = "none";
+                }
 
                 $("#ModalTituloRegistroMedico").text("Editar Registro Medico");
                 $("#ModalRegistroMedico").modal("show");

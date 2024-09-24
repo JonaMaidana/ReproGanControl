@@ -1,10 +1,16 @@
 window.onload = ListadoInformeAnimales();
 
 let vistaInformeAnimalesGlobal = [];
+let animalChart;
+
+
+window.onload = ListadoInformeAnimales();
+
 
 function ListadoInformeAnimales() {
     let tipoAnimalBuscarID = document.getElementById("TipoAnimalBuscarID").value;
     let buscarEstablecimiento = document.getElementById("BuscarEstablecimiento").value;
+
     $.ajax({
         url: '../../Animales/ListadoInformeAnimales',
         data: {
@@ -15,7 +21,7 @@ function ListadoInformeAnimales() {
         dataType: 'json',
 
         success: function (vistaInformeAnimales) {
-            vistaInformeAnimalesGlobal = vistaInformeAnimales; // Almacenar datos globalmente
+            vistaInformeAnimalesGlobal = vistaInformeAnimales;
             let contenidoTabla = ``;
 
             $.each(vistaInformeAnimales, function (Index, Animal) {
@@ -23,7 +29,6 @@ function ListadoInformeAnimales() {
                 <tr>
                     <td class="text-center">${Animal.tipoAnimalNombre}</td>
                     <td class="text-center"></td>
-                    <td class="ocultar-en-768px" class="text-center"></td>
                     <td class="ocultar-en-768px" class="text-center"></td>
                     <td class="ocultar-en-768px" class="text-center"></td>
                     <td class="ocultar-en-768px" class="text-center"></td>
@@ -52,13 +57,84 @@ function ListadoInformeAnimales() {
                     `;
                 });
             });
+
             document.getElementById("tbody-informeAnimales").innerHTML = contenidoTabla;
+
+            // Crear o actualizar el gráfico
+            createOrUpdateAnimalChart(vistaInformeAnimales);
         },
 
         error: function (xhr, status) {
             console.log('Disculpe, existió un problema al cargar el listado :(');
         }
     });
+}
+
+function createOrUpdateAnimalChart(data) {
+    const ctx = document.getElementById('animalChart').getContext('2d');
+
+    const labels = data.map(item => item.tipoAnimalNombre);
+    const animalCounts = data.map(item => item.vistaAnimales.length);
+
+    const chartData = {
+        labels: labels,
+        datasets: [{
+            label: 'Animales por Tipo',
+            data: animalCounts,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(255, 159, 64, 0.6)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Cantidad de Animales por Tipo'
+            }
+        },
+        layout: {
+            padding: {
+                top: 10,
+                right: 10,
+                bottom: 10,
+                left: 10
+            }
+        },
+        maintainAspectRatio: false
+    };
+
+    // Actualizar el gráfico si ya existe o crear uno nuevo
+    if (animalChart) {
+        animalChart.data = chartData;
+        animalChart.options = options;
+        animalChart.update();
+    } else {
+        animalChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: chartData,
+            options: options
+        });
+    }
 }
 
 function showAnimalDetails(tipoAnimalID) {

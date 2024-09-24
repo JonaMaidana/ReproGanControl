@@ -31,7 +31,7 @@ public class RegistroMedicosController : Controller
         return View();
     }
 
-    public JsonResult ListadoRegistrosMedicos(int? id, string BuscarCaravana)
+        public JsonResult ListadoRegistrosMedicos(int? id, string BuscarCaravana)
     {
         var registroMedico = _context.RegistroMedicos.Include(a => a.Animal).Include(a => a.Persona).ToList();
         if (id != null)
@@ -58,6 +58,7 @@ public class RegistroMedicosController : Controller
             Tratamiento = r.Tratamiento,
             Observacion = string.IsNullOrEmpty(r.Observacion) ? "NINGUNA" : r.Observacion,
             Enfermedad = r.Enfermedad,
+            ImagenBase64 = r.ImagenBase64 // Incluimos la imagen en Base64
         })
         .OrderByDescending(f => f.Fecha)
         .ToList();
@@ -65,9 +66,9 @@ public class RegistroMedicosController : Controller
         return Json(registroMedicoMostrar);
     }
 
-    public JsonResult GuardarRegistrosMedicos(int registroMedicoID, int personaID, int animalID, DateTime fecha, string enfermedad, string tratamiento, string observacion)
+    
+    public JsonResult GuardarRegistrosMedicos(int registroMedicoID, int personaID, int animalID, DateTime fecha, string enfermedad, string tratamiento, string observacion, string imagenBase64)
     {
-
         enfermedad = enfermedad.ToUpper();
         tratamiento = tratamiento.ToUpper();
         observacion = string.IsNullOrEmpty(observacion) ? "NINGUNA" : observacion.ToUpper();
@@ -81,11 +82,11 @@ public class RegistroMedicosController : Controller
                 Fecha = fecha,
                 Enfermedad = enfermedad,
                 Tratamiento = tratamiento,
-                Observacion = observacion
+                Observacion = observacion,
+                ImagenBase64 = imagenBase64 // Nuevo campo
             };
             _context.Add(registroMedico);
             _context.SaveChanges();
-
         }
         else
         {
@@ -98,6 +99,7 @@ public class RegistroMedicosController : Controller
                 registroMedicoEditar.Enfermedad = enfermedad;
                 registroMedicoEditar.Tratamiento = tratamiento;
                 registroMedicoEditar.Observacion = observacion;
+                registroMedicoEditar.ImagenBase64 = imagenBase64; // Nuevo campo
 
                 _context.SaveChanges();
             }

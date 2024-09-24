@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ReproGanControl.Migrations
 {
     /// <inheritdoc />
-    public partial class MigracionPrueba : Migration
+    public partial class Imagen : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -264,16 +264,19 @@ namespace ReproGanControl.Migrations
                     TipoEvento = table.Column<int>(type: "int", nullable: false),
                     FechaEvento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Observacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TipoCria = table.Column<bool>(type: "bit", nullable: true),
                     TipoParto = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EstadoCria = table.Column<bool>(type: "bit", nullable: true),
+                    TipoCria = table.Column<int>(type: "int", nullable: true),
+                    EstadoCria = table.Column<int>(type: "int", nullable: true),
                     CausaAborto = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Inseminacion = table.Column<bool>(type: "bit", nullable: true),
-                    CausaCelo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EspecifiqueSecado = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TipoInseminacion = table.Column<int>(type: "int", nullable: true),
+                    ToroID = table.Column<int>(type: "int", nullable: true),
+                    DetalleToro = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MotivoVenta = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CausaRechazo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EspecifiqueOtro = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    EspecifiqueOtro = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MotivoMuerte = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FechaAproximadaSecado = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaAproximadaParicion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -297,7 +300,8 @@ namespace ReproGanControl.Migrations
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Tratamiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Enfermedad = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Observacion = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Observacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImagenBase64 = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

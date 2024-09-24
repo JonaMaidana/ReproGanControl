@@ -22,7 +22,6 @@ function ListadoInformeEventos() {
                     <td class="text-center"></td>
                     <td class="ocultar-en-768px" class="text-center"></td>
                     <td class="ocultar-en-768px" class="text-center"></td>
-                    <td class="ocultar-en-768px" class="text-center"></td>
                     <td class="text-center">
                         <button type="button" class="info-button" onclick="showEventDetails(${Eventos.tipoEventoID})">
                             <i class="fa-solid fa-info-circle"></i>

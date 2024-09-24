@@ -248,6 +248,7 @@ html, body {
   top: 0;
   left: 0;
   transform: translateX(0); /* Mostrar por defecto */
+  transition: transform 0.3s ease-in-out; /* Agrega la transición suave */
   z-index: 1000; /* Asegura que el sidebar esté encima del contenido */
   overflow: hidden; /* Evita el desbordamiento del contenido */
 }
@@ -302,8 +303,7 @@ html, body {
   margin-left: 250px; /* Deja espacio para el sidebar */
   flex: 1; /* Se estira para llenar el espacio restante */
   overflow: auto; /* Permite el desplazamiento si el contenido es más grande que el contenedor */
-  transition: margin-left 0.3s ease;
-  transition: opacity 0.5s ease-in-out; /* Puedes ajustar el tiempo y el tipo de transición */
+  transition: margin-left 0.3s ease-in-out, opacity 0.5s ease-in-out; /* Ajusta el margen y la opacidad con transición */
   height: 100vh; /* Altura completa de la ventana */
 }
 
@@ -314,6 +314,7 @@ html, body {
 
 #sidebar.closed + #page-content-wrapper {
   margin-left: 0; /* Ajusta el margen cuando el sidebar está cerrado */
+  opacity: 0.9; /* Cambia ligeramente la opacidad cuando el sidebar está cerrado */
 }
 
 /* Estilos para el contenido principal */

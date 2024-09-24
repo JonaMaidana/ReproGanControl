@@ -6,8 +6,8 @@
     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
         <h3 class="display-6" style="color: #555;">Registros Medicos</h3>
         <div class="mb-2">
-            <button type="button" class="btn-agregar" title="Agregar Registro" onclick="NuevoRegistroMedico()" data-bs-toggle="modal"
-                data-bs-target="#ModalRegistroMedico">
+            <button type="button" class="btn-agregar" title="Agregar Registro" onclick="NuevoRegistroMedico()"
+                data-bs-toggle="modal" data-bs-target="#ModalRegistroMedico">
                 <i class="fa-solid fa-plus"></i> <span class="btn-text">Agregar Registro</span>
             </button>
         </div>
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-          <!-- Sección de Filtros -->
+        <!-- Sección de Filtros -->
         <div class="card mb-3">
             <div class="card-body">
                 <div class="row">
@@ -61,6 +61,7 @@
                     <div class="modal-body">
                         <form>
                             <input type="hidden" id="RegistroMedicoID" value="0" />
+                            <input type="hidden" id="ImagenBase64" />
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
@@ -72,7 +73,7 @@
                                         })
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="fecha" class="form-label">Fecha<span
+                                    <label for="fecha" class="form-label">Fecha <span
                                             class="required-asterisk">*</span></label>
                                     <input type="date" class="form-control" id="Fecha">
                                 </div>
@@ -80,46 +81,57 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <label for="enfermedad" style="text-transform: uppercase;"
-                                        class="form-label">Enfermedad<span class="required-asterisk">*</span></label>
+                                    <label for="enfermedad" class="form-label">Enfermedad <span
+                                            class="required-asterisk">*</span></label>
                                     <input type="text" placeholder="INGRESAR ENFERMEDAD" class="form-control"
                                         id="Enfermedad">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="tratamiento" style="text-transform: uppercase;"
-                                        class="form-label">Tratamiento<span class="required-asterisk">*</span></label>
+                                    <label for="tratamiento" class="form-label">Tratamiento <span
+                                            class="required-asterisk">*</span></label>
                                     <input type="text" placeholder="INGRESAR TRATAMIENTO" class="form-control"
                                         id="Tratamiento">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <div class="col-md-12">
-                                    <label for="PersonaID" class="form-label">Veterinario<span
+                                <div class="col-md-6">
+                                    <label for="PersonaID" class="form-label">Veterinario <span
                                             class="required-asterisk">*</span></label>
                                     @Html.DropDownList("PersonaID", (SelectList)ViewBag.PersonaID, htmlAttributes: new
                                         {
                                             @class = "form-control"
                                         })
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="imagen" class="form-label">Imagen<span
+                                            class="required-asterisk"></span></label>
+                                    <input type="file" class="form-control" id="imagen" accept="image/*"
+                                        onchange="handleImageUpload(event)">
+                                </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-md-12">
-                                    <label for="observacion" style="text-transform: uppercase;"
-                                        class="form-label">Observación</label>
+                                    <label for="observacion" class="form-label">Observación</label>
                                     <textarea class="form-control" id="Observacion" placeholder="OBSERVACION" rows="3"
                                         oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px';"></textarea>
                                 </div>
                             </div>
 
+                            <div class="row mb-3">
+                                <div class="col-md-12 d-flex justify-content-center">
+                                    <img id="imagenPreview" src="" alt="Vista previa de la imagen"
+                                        style="max-width: 100%; max-height: 150px; display: none;">
+                                </div>
+                            </div>
                         </form>
                     </div>
-                    <div class="modal-footer" style="display: flex; justify-content: flex-start; align-items: center;">
-                        <p style="font-weight: bold; text-transform: uppercase; color: black; margin: 0;">
+                    <div class="modal-footer d-flex align-items-center">
+                        <p class="mb-0 me-auto" style="font-weight: bold; text-transform: uppercase; color: black;">
                             Completa los campos requeridos antes de guardar <span class="required-asterisk">*</span>
                         </p>
-                        <div style="margin-left: auto;">
+                        <div>
                             <button type="button" onclick="LimpiarModalRegistroMedico()" class="btn btn-secondary"
                                 data-bs-dismiss="modal">Cancelar</button>
                             <button type="button" onclick="GuardarRegistroMedico()"
@@ -129,6 +141,8 @@
                 </div>
             </div>
         </div>
+
+
         <!-- Modal -->
         <div class="modal fade" id="registroMedicoModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -151,9 +165,9 @@
 
         <!-- Tabla de Eventos -->
         <div class="table-responsive mt-2">
-        <p class="text-danger d-block d-md-none text-center mb-3">
-            BOTÓN AZUL PARA VER MÁS DATOS
-        </p>
+            <p class="text-primary d-block d-md-none text-center mb-3">
+                BOTÓN AZUL PARA VER MÁS DATOS
+            </p>
             <table id="tabla-imprimir2" class="content-table">
                 <thead>
                     <tr>
@@ -163,6 +177,7 @@
                         <th class="ocultar-en-768px">Tratamiento</th>
                         <th class="ocultar-en-768px">Observación</th>
                         <th class="ocultar-en-768px">Fecha</th>
+                        <th>Imagen</th>
                         <th style="width: 150px"></th>
                     </tr>
                 </thead>

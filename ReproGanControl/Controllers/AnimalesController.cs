@@ -4,7 +4,6 @@ using ReproGanControl.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ReproGanControl.Extensions;
 using System.Text.RegularExpressions;
 
 namespace ReproGanControl.Controllers;
@@ -21,26 +20,6 @@ public class AnimalesController : Controller
 
     public IActionResult Index()
     {
-        var tiposConEstado = new List<int> { 1, 2 }; // IDs para Vaca y Vaquillona 
-
-        var estadoSelectListItems = new List<SelectListItem>
-    {
-        new SelectListItem { Value = "0", Text = "[SELECCIONE...]" }
-    };
-
-        // Obtener todas las opciones del enum
-        var enumValues = Enum.GetValues(typeof(Estado)).Cast<Estado>();
-
-        // Convertir las opciones del enum en SelectListItem
-        estadoSelectListItems.AddRange(enumValues.Select(e => new SelectListItem
-        {
-            Value = ((int)e).ToString(), // Convertir el enum a entero
-            Text = e.GetDisplayName() // Obtener el DisplayName del enum
-        }));
-
-        // Configurar ViewBag para los estados
-        ViewBag.EstadoID = new SelectList(estadoSelectListItems, "Value", "Text");
-
         var tipoAnimales = _context.TipoAnimales.ToList();
         tipoAnimales.Add(new TipoAnimal { TipoAnimalID = 0, Descripcion = "[SELECCIONE]" });
         ViewBag.TipoAnimalID = new SelectList(tipoAnimales.OrderBy(d => d.Descripcion), "TipoAnimalID", "Descripcion");
@@ -100,9 +79,6 @@ public class AnimalesController : Controller
             Establecimiento = a.Establecimiento,
             FechaNacimiento = a.FechaNacimiento,
             FechaNacimientoString = a.FechaNacimiento.ToString("dd/MM/yyyy"),
-            Estado = a.Estado,
-            EstadoString = a.Estado.GetDisplayName(),
-
         })
         .OrderByDescending(a => a.AnimalID)
         .ToList();
@@ -110,7 +86,7 @@ public class AnimalesController : Controller
         return Json(animalesMostrar);
     }
 
-    public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravana, string apodo, string nombrePadre, string nombreMadre, string establecimiento, DateTime fechaNacimiento, Estado estado)
+    public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravana, string apodo, string nombrePadre, string nombreMadre, string establecimiento, DateTime fechaNacimiento)
     {
 
 
@@ -130,11 +106,6 @@ public class AnimalesController : Controller
         nombrePadre = nombrePadre.ToUpper();
         nombreMadre = nombreMadre.ToUpper();
 
-        if (tipoAnimalID == 3 || tipoAnimalID == 4 || tipoAnimalID == 5) // Asume 2 para Toro y 4 para Ternero
-        {
-            estado = Estado.Ninguno;
-        }
-
         if (animalID == 0)
         {
             var animal = new Animal
@@ -145,8 +116,7 @@ public class AnimalesController : Controller
                 NombrePadre = nombrePadre,
                 NombreMadre = nombreMadre,
                 Establecimiento = establecimiento,
-                FechaNacimiento = fechaNacimiento,
-                Estado = estado,
+                FechaNacimiento = fechaNacimiento
             };
             _context.Add(animal);
             _context.SaveChanges();
@@ -163,7 +133,6 @@ public class AnimalesController : Controller
                 animalEditar.NombreMadre = nombreMadre;
                 animalEditar.Establecimiento = establecimiento;
                 animalEditar.FechaNacimiento = fechaNacimiento;
-                animalEditar.Estado = estado;
 
                 _context.SaveChanges();
             }
@@ -201,24 +170,6 @@ public class AnimalesController : Controller
         tiposAnimalesBuscar.Add(new TipoAnimal { TipoAnimalID = 0, Descripcion = "[SELECCIONE]" });
         ViewBag.TipoAnimalBuscarID = new SelectList(tiposAnimalesBuscar.OrderBy(c => c.Descripcion), "TipoAnimalID", "Descripcion");
 
-        var estados = Enum.GetValues(typeof(Estado))
-        .Cast<Estado>()
-        .Where(e => (int)e != 0); // Excluimos el valor "Ninguno"
-
-        var estadoSelectListItems = estados.Select(e => new SelectListItem
-        {
-            Value = ((int)e).ToString(),
-            Text = e.GetDisplayName()
-        }).ToList();
-
-        estadoSelectListItems.Insert(0, new SelectListItem
-        {
-            Value = "",
-            Text = "[SELECCIONE]"
-        });
-
-        ViewBag.EstadoID = new SelectList(estadoSelectListItems, "Value", "Text");
-
         var buscarEstablecimiento = _context.Animales.Where(a => !string.IsNullOrEmpty(a.Establecimiento)).Select(a => a.Establecimiento).Distinct().OrderBy(e => e).ToList();
 
         buscarEstablecimiento.Insert(0, "[SELECCIONE]");
@@ -226,7 +177,7 @@ public class AnimalesController : Controller
 
         return View();
     }
-    public JsonResult ListadoInformeAnimales(int? TipoAnimalBuscarID, int? EstadoID, string BuscarEstablecimiento)
+    public JsonResult ListadoInformeAnimales(int? TipoAnimalBuscarID, string BuscarEstablecimiento)
     {
 
         List<VistaInformeAnimales> vistaInformeAnimales = new List<VistaInformeAnimales>();
@@ -238,12 +189,6 @@ public class AnimalesController : Controller
         if (TipoAnimalBuscarID != null && TipoAnimalBuscarID != 0)
         {
             animales = animales.Where(e => e.TipoAnimalID == TipoAnimalBuscarID).ToList();
-        }
-
-        // Filtro por Estado Animal
-        if (EstadoID != null && EstadoID != 0)
-        {
-            animales = animales.Where(e => e.Estado == (Estado)EstadoID).ToList();
         }
 
         if (!string.IsNullOrEmpty(BuscarEstablecimiento) && BuscarEstablecimiento != "[SELECCIONE]")
@@ -282,7 +227,6 @@ public class AnimalesController : Controller
             var animalesMostrar = new VistaAnimales
             {
                 Caravana = listadoAnimales.Caravana,
-                EstadoString = listadoAnimales.Estado.GetDisplayName(),
                 Apodo = listadoAnimales.Apodo,
                 Establecimiento = listadoAnimales.Establecimiento,
                 FechaNacimientoString = listadoAnimales.FechaNacimiento.ToString("dd/MM/yyyy"),

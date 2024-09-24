@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Reflection;
 using System.ComponentModel.DataAnnotations;
-using ReproGanControl.Extensions;
 
 namespace ReproGanControl.Controllers;
 [Authorize]
@@ -83,7 +82,6 @@ public class EventosController : Controller
                 EventoID = e.EventoID,
                 AnimalID = e.AnimalID,
                 AnimalCaravana = e.Animal.Caravana,
-                EstadoAnimal = e.Animal.Estado.ToString().ToUpper(),
                 TipoEvento = e.TipoEvento,
                 TipoEventoString = e.TipoEvento.ToString().ToUpper(),
                 FechaEvento = e.FechaEvento,
@@ -191,16 +189,10 @@ public class EventosController : Controller
         return Json(true);
     }
 
-    public JsonResult ObtenerEstadoAnimal(int id)
+    public JsonResult ObtenerEstadoAnimal()
     {
-        var animal = _context.Animales.SingleOrDefault(a => a.AnimalID == id);
-        if (animal != null)
-        {
-            // Usa la extensión para obtener el nombre del estado
-            var estadoNombre = ((Estado)animal.Estado).GetDisplayName();
-            return Json(new { estadoAnimal = estadoNombre });
-        }
-        return Json(new { estadoAnimal = "" });
+       
+        return Json(true);
     }
 
     public ActionResult InformesEventos()
@@ -258,7 +250,6 @@ public class EventosController : Controller
             var eventosMostrar = new VistaEventos
             {
                 AnimalCaravana = listadoEventos.Animal.Caravana,
-                EstadoAnimal = listadoEventos.Animal.Estado.ToString(),
                 FechaEventoString = listadoEventos.FechaEvento.ToString("dd/MM/yyyy"),
                 Observacion = string.IsNullOrEmpty(listadoEventos.Observacion) ? "NINGUNA" : listadoEventos.Observacion,
                 TipoCriaString = listadoEventos.TipoCria.HasValue ? (listadoEventos.TipoCria.Value ? "Macho" : "Hembra") : "",

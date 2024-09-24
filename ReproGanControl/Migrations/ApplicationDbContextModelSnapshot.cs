@@ -241,9 +241,6 @@ namespace ReproGanControl.Migrations
                     b.Property<string>("Establecimiento")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Estado")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 

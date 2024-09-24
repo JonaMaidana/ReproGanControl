@@ -215,8 +215,7 @@ namespace ReproGanControl.Migrations
                     NombrePadre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NombreMadre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Establecimiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Estado = table.Column<int>(type: "int", nullable: false)
+                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

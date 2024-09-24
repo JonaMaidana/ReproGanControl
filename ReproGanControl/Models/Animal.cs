@@ -13,7 +13,7 @@ public class Animal
     public string? NombreMadre { get; set; }
     public string? Establecimiento { get; set; }
     public DateTime FechaNacimiento { get; set; }
-    public Estado Estado { get; set; }
+    
 
     public virtual ICollection<Evento> Eventos { get; set; }
     public virtual ICollection<RegistroMedico> RegistroMedicos { get; set; }
@@ -32,20 +32,4 @@ public class VistaAnimales
     public string? Establecimiento { get; set; }
     public DateTime FechaNacimiento { get; set; }
     public string? FechaNacimientoString { get; set; }
-    public Estado Estado { get; set; }
-    public string? EstadoString { get; set; }
-}
-
-public enum Estado
-{
-    [Display(Name = "NINGUNO")]
-    Ninguno = 0,
-    [Display(Name = "PREÑADA")]
-    Preñada,
-    [Display(Name = "PREÑADA DUDOSA")]
-    PreñadaDudosa,
-    [Display(Name = "VACIA")]
-    Vacia,
-    [Display(Name = "VACIA DUDOSA")]
-    VaciaDudosa
 }

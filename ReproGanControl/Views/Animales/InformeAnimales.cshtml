@@ -26,14 +26,6 @@
                             })
                     </div>
                     <div class="col-12 col-md-6 col-lg-3 mb-3">
-                        <label for="EstadoID" class="form-label">Buscar Estado Animal</label>
-                        @Html.DropDownList("EstadoID", null, htmlAttributes: new
-                            {
-                                @class = "form-control",
-                                onchange = "ListadoInformeAnimales()"
-                            })
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 mb-3">
                         <label for="BuscarEstablecimiento" class="form-label">Buscar por Establecimiento</label>
                         @Html.DropDownList("BuscarEstablecimiento", (SelectList)ViewBag.BuscarEstablecimiento,
                                  htmlAttributes: new { @class = "form-control", @onchange = "ListadoInformeAnimales()" })
@@ -71,7 +63,6 @@
                     <tr>
                         <th>Tipo Animal</th>
                         <th>Caravana</th>
-                        <th class="ocultar-en-768px">Estado</th>
                         <th class="ocultar-en-768px">Apodo</th>
                         <th class="ocultar-en-768px">Establecimiento</th>
                         <th class="ocultar-en-768px">Fecha Nacimiento</th>

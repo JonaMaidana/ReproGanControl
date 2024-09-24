@@ -12,7 +12,7 @@ using ReproGanControl.Data;
 namespace ReproGanControl.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240915023012_MigracionPrueba")]
+    [Migration("20240924034358_MigracionPrueba")]
     partial class MigracionPrueba
     {
         /// <inheritdoc />
@@ -243,9 +243,6 @@ namespace ReproGanControl.Migrations
 
                     b.Property<string>("Establecimiento")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Estado")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");

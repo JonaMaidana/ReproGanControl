@@ -4,13 +4,11 @@ let vistaInformeAnimalesGlobal = [];
 
 function ListadoInformeAnimales() {
     let tipoAnimalBuscarID = document.getElementById("TipoAnimalBuscarID").value;
-    let estadoID = document.getElementById("EstadoID").value;
     let buscarEstablecimiento = document.getElementById("BuscarEstablecimiento").value;
     $.ajax({
         url: '../../Animales/ListadoInformeAnimales',
         data: {
             tipoAnimalBuscarID: tipoAnimalBuscarID,
-            estadoID: estadoID,
             buscarEstablecimiento: buscarEstablecimiento
         },
         type: 'POST',
@@ -44,7 +42,6 @@ function ListadoInformeAnimales() {
                     <tr>
                         <td class="text-center"></td>
                         <td class="text-center">${Animales.caravana}</td>
-                        <td class="ocultar-en-768px" class="text-center">${Animales.estadoString}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.apodo || ''}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.establecimiento}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.fechaNacimientoString}</td>
@@ -75,7 +72,6 @@ function showAnimalDetails(tipoAnimalID) {
             ${animal.vistaAnimales.map(a => `
                 <li>
                     <strong>Caravana:</strong> ${a.caravana}<br>
-                    <strong>Estado:</strong> ${a.estadoString}<br>
                     <strong>Apodo:</strong> ${a.apodo}<br>
                     <strong>Establecimiento:</strong> ${a.establecimiento}<br>
                     <strong>Fecha de Nacimiento:</strong> ${a.fechaNacimientoString}<br>

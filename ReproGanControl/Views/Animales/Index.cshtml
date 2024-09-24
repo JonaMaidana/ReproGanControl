@@ -102,15 +102,6 @@
                                                  id = "TipoAnimalID"
                                              })
                                 </div>
-                                <div class="col-md-4 mb-3" id="estadoField" style="display: none;">
-                                    <label for="Estado" class="form-label">Estado del animal <span
-                                            class="required-asterisk">*</span></label>
-                                    @Html.DropDownList("Estado", (SelectList)ViewBag.EstadoID, htmlAttributes: new
-                                        {
-                                            @class = "form-control",
-                                            id = "Estado"
-                                        })
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -187,7 +178,6 @@
                     <tr>
                         <th>Caravana</th>
                         <th>Tipo de Animal</th>
-                        <th class="ocultar-en-768px">Estado</th>
                         <th class="ocultar-en-768px">Apodo</th>
                         <th class="ocultar-en-768px">Padre</th>
                         <th class="ocultar-en-768px">Madre</th>

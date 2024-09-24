@@ -42,7 +42,6 @@ public class VistaEventos
     public int EventoID { get; set; }
     public int AnimalID { get; set; }
     public string? AnimalCaravana { get; set; }
-    public string? EstadoAnimal { get; set; }
     public EventoEnum TipoEvento { get; set; }
     public string? TipoEventoString { get; set; }
     public DateTime FechaEvento { get; set; }

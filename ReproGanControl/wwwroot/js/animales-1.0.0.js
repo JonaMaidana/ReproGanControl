@@ -40,7 +40,6 @@ function renderTable() {
         <tr>
             <td>${animal.caravana}</td>
             <td>${animal.tipoAnimalNombre}</td>
-            <td class="ocultar-en-768px">${animal.estadoString}</td>
             <td class="ocultar-en-768px">${animal.apodo}</td>
             <td class="ocultar-en-768px">${animal.nombrePadre}</td>
             <td class="ocultar-en-768px">${animal.nombreMadre}</td>
@@ -73,7 +72,6 @@ function showAnimalDetails(animalID) {
     const modalContent = `
         <p><strong>Caravana:</strong> ${animal.caravana}</p>
         <p><strong>Tipo de Animal:</strong> ${animal.tipoAnimalNombre}</p>
-        <p><strong>Estado:</strong> ${animal.estadoString}</p>
         <p><strong>Apodo:</strong> ${animal.apodo}</p>
         <p><strong>Nombre del Padre:</strong> ${animal.nombrePadre}</p>
         <p><strong>Nombre de la Madre:</strong> ${animal.nombreMadre}</p>
@@ -99,7 +97,6 @@ function updateTotalItems() {
 function LimpiarModal() {
     document.getElementById("AnimalID").value = 0;
     document.getElementById("TipoAnimalID").value = 0;
-    document.getElementById("Estado").value = 0;
     document.getElementById("Caravana").value = "";
     document.getElementById("Apodo").value = "";
     document.getElementById("NombrePadre").value = "";
@@ -115,7 +112,6 @@ function NuevoAnimal() {
 function GuardarAnimal() {
     let animalID = document.getElementById("AnimalID").value;
     let tipoAnimalID = document.getElementById("TipoAnimalID").value;
-    let estado = document.getElementById("Estado").value;
     let caravana = document.getElementById("Caravana").value;
     let apodo = document.getElementById("Apodo").value;
     let nombrePadre = document.getElementById("NombrePadre").value;
@@ -127,8 +123,7 @@ function GuardarAnimal() {
     let camposFaltantes = [];
     if (!caravana) camposFaltantes.push("Caravana");
     if (!animalID) camposFaltantes.push("ID del Animal");
-    if (tipoAnimalID === "0") camposFaltantes.push("Tipo de Animal");
-    if (tipoAnimalID !== "3" && tipoAnimalID !== "4" && estado === "0") camposFaltantes.push("Estado");
+    if (!tipoAnimalID) camposFaltantes.push("Tipo de Animal");
     if (!establecimiento) camposFaltantes.push("Establecimiento");
     if (!fechaNacimiento) camposFaltantes.push("Fecha de Nacimiento");
 
@@ -154,8 +149,7 @@ function GuardarAnimal() {
             nombrePadre: nombrePadre,
             nombreMadre: nombreMadre,
             establecimiento: establecimiento,
-            fechaNacimiento: fechaNacimiento,
-            Estado: tipoAnimalID === "3" || tipoAnimalID === "4" ? "0" : estado, // Enviar "0" si es Toro o Ternero
+            fechaNacimiento: fechaNacimiento
         },
         type: 'POST',
         dataType: 'json',
@@ -212,7 +206,6 @@ function ModalEditarAnimal(animalID) {
 
             document.getElementById("AnimalID").value = animalID;
             document.getElementById("TipoAnimalID").value = animal.tipoAnimalID;
-            document.getElementById("Estado").value = animal.estado;
             document.getElementById("Caravana").value = animal.caravana;
             document.getElementById("Apodo").value = animal.apodo;
             document.getElementById("NombrePadre").value = animal.nombrePadre;
@@ -289,40 +282,3 @@ function EliminarAnimal(animalID) {
         }
     });
 }
-
-
-var tiposConEstado = [1, 2]; // Cambia estos IDs según tus tipos de animales para Vaca y Vaquillona
-
-function manejarVisibilidadEstado() {
-    var tipoAnimalID = parseInt($('#TipoAnimalID').val(), 10);
-    var estadoDropdown = $('#Estado');
-
-    if (tiposConEstado.includes(tipoAnimalID)) {
-        $('#estadoField').show();
-        estadoDropdown.children('option').each(function () {
-            var value = parseInt($(this).val(), 10);
-            $(this).show();
-            if (value === 0) {
-                $(this).hide();
-            }
-        });
-    } else {
-        $('#estadoField').hide();
-    }
-}
-
-function resetFormulario() {
-    $('#estadoField').hide(); // Oculta el campo Estado
-    // No reiniciar el valor de TipoAnimalID
-}
-
-$(document).ready(function () {
-    // Llamar a la función al cargar la página para manejar el estado inicial
-    manejarVisibilidadEstado();
-
-    // Llamar a la función cuando el valor del dropdown de tipo de animal cambie
-    $('#TipoAnimalID').change(manejarVisibilidadEstado);
-
-    // Asegúrate de ocultar el campo Estado al cancelar una edición
-    $('.btn-cancelar').click(resetFormulario);
-});

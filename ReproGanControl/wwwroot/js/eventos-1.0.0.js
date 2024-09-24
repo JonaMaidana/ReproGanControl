@@ -434,8 +434,19 @@ function mostrarCamposPorTipoEvento() {
             break;
         case '4': // Servicio
             document.querySelector("#divTipoInseminacion").style.display = "block";
-            document.querySelector("#divToroID").style.display = "block";
-            document.querySelector("#divDetalleToro").style.display = "block";
+
+            // Mostrar campo Toro o Detalle del Toro dependiendo del tipo de inseminación
+            const tipoInseminacion = document.querySelector("#TipoInseminacion").value;
+            if (tipoEvento === '4' && tipoInseminacion === '1') { // Servicio y Monta
+                document.querySelector("#divToroID").style.display = "block";
+                document.querySelector("#divDetalleToro").style.display = "none";
+            } else if (tipoEvento === '4' && tipoInseminacion === '2') { // Servicio y Artificial
+                document.querySelector("#divToroID").style.display = "none";
+                document.querySelector("#divDetalleToro").style.display = "block";
+            } else {
+                document.querySelector("#divToroID").value = "0"; // Limpiar el valor del campo ToroID
+                document.querySelector("#divToroID").style.display = "none";
+            }
             break;
         case '7': // Venta
             document.querySelector("#divMotivoVenta").style.display = "block";
@@ -453,5 +464,22 @@ function mostrarCamposPorTipoEvento() {
             // Ningún campo específico es requerido para otros tipos de eventos
             break;
     }
-}
 
+    // Actualizar la visibilidad del campo ToroID y divDetalleToro cuando cambia el tipo de inseminación
+    const tipoInseminacionElement = document.querySelector("#TipoInseminacion");
+    tipoInseminacionElement.addEventListener("change", () => {
+        const tipoInseminacionValue = tipoInseminacionElement.value;
+        if (tipoEvento === '4' && tipoInseminacionValue === "1") { // Servicio y Monta
+            document.querySelector("#divToroID").style.display = "block";
+            document.querySelector("#divDetalleToro").style.display = "none";
+        } else if (tipoEvento === '4' && tipoInseminacionValue === "2") { // Servicio y Artificial
+            document.querySelector("#divToroID").style.display = "none";
+            document.querySelector("#divDetalleToro").style.display = "block";
+        } else {
+            document.querySelector("#divToroID").value = "0"; // Limpiar el valor del campo ToroID
+            document.querySelector("#divToroID").style.display = "none";
+            document.querySelector("#divDetalleToro").value = ""; // Limpiar el valor del campo DetalleToro
+            document.querySelector("#divDetalleToro").style.display = "none";
+        }
+    });
+}

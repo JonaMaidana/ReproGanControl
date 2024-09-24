@@ -109,7 +109,8 @@
                                 <!-- Campos dinámicos -->
                                 <!-- Parto -->
                                 <div id="divTipoParto" class="col-md-4 mb-3" style="display:none;">
-                                    <label for="TipoParto" class="form-label">Tipo Parto</label>
+                                    <label for="TipoParto" class="form-label">Tipo Parto<span
+                                            class="required-asterisk">*</span></label>
                                     <input type="text" style="text-transform: uppercase;" class="form-control"
                                         id="TipoParto" placeholder="Tipo de parto" />
                                 </div>
@@ -138,51 +139,57 @@
                                 </div>
                                 <!-- Aborto -->
                                 <div id="divCausaAborto" class="mb-3" style="display:none;">
-                                    <label for="CausaAborto" class="form-label">Causa</label>
+                                    <label for="CausaAborto" class="form-label">Causa <span
+                                            class="required-asterisk">*</span></label>
                                     <input type="text" class="form-control" id="CausaAborto"
                                         style="text-transform: uppercase;" placeholder="Causa del aborto" />
                                 </div>
                                 <!-- Servicio -->
                                 <div id="divTipoInseminacion" class="mb-3" style="display:none;">
-                                    <label for="TipoInseminacion" class="form-label">Inseminación <span
+                                    <label for="TipoInseminacion" class="form-label">Tipo de Inseminación <span
                                             class="required-asterisk">*</span></label>
                                     @Html.DropDownList("TipoInseminacion", (SelectList)ViewBag.TipoInseminacionID,
                                              htmlAttributes:
                                              new { @class = "form-control"})
                                 </div>
                                 <div id="divToroID" class="mb-3" style="display:none;">
-                                    <label for="ToroID" class="form-label">Toro <span
+                                    <label for="ToroID" class="form-label">Buscar Toro <span
                                             class="required-asterisk">*</span></label>
                                     @Html.DropDownList("ToroID", (SelectList)ViewBag.ToroID,
                                              htmlAttributes:
                                              new { @class = "form-control" })
                                 </div>
                                 <div id="divDetalleToro" class="mb-3" style="display:none;">
-                                    <label for="DetalleToro" class="form-label">Detalle del Toro</label>
+                                    <label for="DetalleToro" class="form-label">Detalle Inseminación Artificial <span
+                                            class="required-asterisk">*</span></label>
                                     <input type="text" class="form-control" id="DetalleToro"
-                                        style="text-transform: uppercase;" placeholder="" />
+                                        style="text-transform: uppercase;" placeholder="Agregar Detalle" />
                                 </div>
                                 <!-- Venta -->
                                 <div id="divMotivoVenta" class="mb-3" style="display:none;">
-                                    <label for="MotivoVenta" class="form-label">Motivo Venta</label>
+                                    <label for="MotivoVenta" class="form-label">Motivo Venta <span
+                                            class="required-asterisk">*</span></label>
                                     <input type="text" class="form-control" id="MotivoVenta"
                                         style="text-transform: uppercase;" placeholder="Motivo de la venta" />
                                 </div>
                                 <!-- Rechazo -->
                                 <div id="divCausaRechazo" class="mb-3" style="display:none;">
-                                    <label for="CausaRechazo" class="form-label">Causa Rechazo</label>
+                                    <label for="CausaRechazo" class="form-label">Causa Rechazo <span
+                                            class="required-asterisk">*</span></label>
                                     <input type="text" class="form-control" id="CausaRechazo"
                                         style="text-transform: uppercase;" placeholder="Causa del rechazo" />
                                 </div>
                                 <!-- Muerte -->
                                 <div id="divMotivoMuerte" class="mb-3" style="display:none;">
-                                    <label for="MotivoMuerte" class="form-label">Motivo Muerte</label>
+                                    <label for="MotivoMuerte" class="form-label">Motivo Muerte <span
+                                            class="required-asterisk">*</span></label>
                                     <input type="text" class="form-control" id="MotivoMuerte"
                                         style="text-transform: uppercase;" placeholder="Causa de la muerte" />
                                 </div>
                                 <!-- Otro -->
                                 <div id="divEspecifiqueOtro" class="mb-3" style="display:none;">
-                                    <label for="EspecifiqueOtro" class="form-label">Especifique</label>
+                                    <label for="EspecifiqueOtro" class="form-label">Especifique <span
+                                            class="required-asterisk">*</span></label>
                                     <input type="text" class="form-control" id="EspecifiqueOtro"
                                         style="text-transform: uppercase;" placeholder="Especifique el motivo" />
                                 </div>

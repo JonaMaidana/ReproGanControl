@@ -517,16 +517,6 @@ main {
     justify-content: center;
 }
 
-#total-items {
-  font-size: 1.3rem; /* Tamaño del texto */
-  font-weight: bold; /* Negrita */
-}
-  
-#total-items-eventos {
-  font-size: 1.3rem; /* Tamaño del texto */
-  font-weight: bold; /* Negrita */
-}
-
 .required-asterisk {
   color: red; 
   font-size: 1.5em;  
@@ -696,4 +686,27 @@ main {
 
 .btn-agregar:active {
   background-color: #758081; /* Color de fondo al hacer clic */
+}
+
+#total-items,
+#total-items-eventos,
+#total-items-registrosMedicos,
+#total-items-provincia,
+#total-items-localidades,
+#total-items-personas {
+  font-size: 20px; /* Tamaño del texto */
+  font-weight: bold; /* Negrita */
+  color: #6c757d; /* Color gris claro */
+}
+
+/* Estilos específicos para móviles */
+@media (max-width: 576px) {
+  #total-items,
+  #total-items-eventos,
+  #total-items-registrosMedicos,
+  #total-items-provincia,
+  #total-items-localidades,
+  #total-items-personas {
+      font-size: 12px; /* Ajusta el tamaño del texto en móviles (más pequeño) */
+  }
 }

@@ -122,21 +122,20 @@ function showEventDetails(eventoID) {
     myModal.show();
 }
 
-
 function GuardarEvento() {
     // Recopilar datos del formulario
-    let eventoID = document.getElementById("EventoID").value; // Cambia esto según tu estructura HTML
+    let eventoID = document.getElementById("EventoID").value;
     let animalID = document.getElementById("AnimalID").value;
-    let tipoEvento = document.getElementById("TipoEvento").value; // Suponiendo que tienes un dropdown para tipo de evento
+    let tipoEvento = document.getElementById("TipoEvento").value;  // Tipo de evento desde el select
     let fechaEvento = document.getElementById("FechaEvento").value;
     let observacion = document.getElementById("Observacion").value;
-    let tipoCria = document.getElementById("TipoCria").value; // Si es un dropdown
+    let tipoCria = document.getElementById("TipoCria").value;
     let tipoParto = document.getElementById("TipoParto").value;
-    let estadoCria = document.getElementById("EstadoCria").value; // Suponiendo que es un dropdown
+    let estadoCria = document.getElementById("EstadoCria").value;
     let fechaAproximadaSecado = document.getElementById("FechaAproximadaSecado").value;
     let fechaAproximadaParicion = document.getElementById("FechaAproximadaParicion").value;
     let causaAborto = document.getElementById("CausaAborto").value;
-    let tipoInseminacion = document.getElementById("TipoInseminacion").value; // Si es un dropdown
+    let tipoInseminacion = document.getElementById("TipoInseminacion").value;
     let toroID = document.getElementById("ToroID").value;
     let detalleToro = document.getElementById("DetalleToro").value;
     let motivoVenta = document.getElementById("MotivoVenta").value;
@@ -144,18 +143,70 @@ function GuardarEvento() {
     let causaRechazo = document.getElementById("CausaRechazo").value;
     let especifiqueOtro = document.getElementById("EspecifiqueOtro").value;
 
-    // Validación básica para campos obligatorios
-    if (!animalID || !tipoEvento || !fechaEvento) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Por favor, complete todos los campos obligatorios (Animal, Tipo de Evento, Fecha y Observación).',
-            confirmButtonText: 'OK'
-        });
-        return;
+    let camposFaltantes = [];
+    // Validaciones para campos obligatorios
+    if (!animalID || animalID === "0") camposFaltantes.push("Caravana");  // Validar que se haya seleccionado un animal
+    if (!tipoEvento || tipoEvento === "0") camposFaltantes.push("Tipo de Evento");  // Validar que se haya seleccionado un tipo de evento
+    if (!fechaEvento) camposFaltantes.push("Fecha del Evento");  // Validar la fecha del evento
+    // Validación para Parto
+    if (tipoEvento === '1') {
+        if (!tipoParto) camposFaltantes.push("Tipo de Parto");
+        if (!tipoCria || tipoCria === "0") camposFaltantes.push("Tipo de Cría");
+        if (!estadoCria || estadoCria === "0") camposFaltantes.push("Estado de la Cría");
+    }
+    // Validación para Preñez
+    if (tipoEvento === '2') {
+        if (!fechaAproximadaSecado) camposFaltantes.push("Fecha Aprox Secado");
+        if (!fechaAproximadaParicion) camposFaltantes.push("Fecha Aprox Paricion");
+    }
+    // Validación para Preñez
+    if (tipoEvento === '3') {
+        if (!causaAborto) camposFaltantes.push("Causa del Aborto");
+    }
+    // Validación para Servicio
+    if (tipoEvento === '4') {
+        // Verifica que se haya seleccionado un tipo de inseminación
+        if (!tipoInseminacion || tipoInseminacion === "0") {
+            camposFaltantes.push("Tipo de Inseminación");
+        } else {
+            // Solo si hay un tipo de inseminación válido, se procede a validar toroID y detalleToro
+            if (tipoInseminacion === '1' && (!toroID || toroID === "0")) {
+                camposFaltantes.push("Toro para la monta");
+            }
+            if (tipoInseminacion === '2' && !detalleToro) {
+                camposFaltantes.push("Detalle Inseminación Artificial");
+            }
+        }
+    }
+    // Validación para Venta
+    if (tipoEvento === '7') {
+        if (!motivoVenta) camposFaltantes.push("Motivo Venta");
+    }
+    // Validación para Rechazo
+    if (tipoEvento === '8') {
+        if (!causaRechazo) camposFaltantes.push("Causa Rechazo");
+    }
+    // Validación para Muerte
+    if (tipoEvento === '9') {
+        if (!motivoMuerte) camposFaltantes.push("Causa Muerte");
+    }
+    // Validación para Otro
+    if (tipoEvento === '10') {
+        if (!especifiqueOtro) camposFaltantes.push("Especifique");
     }
 
-    // Si todas las validaciones pasan, se procede con el envío del formulario
+    // Si hay campos faltantes, mostrar alerta y detener la ejecución
+    if (camposFaltantes.length > 0) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Faltan campos!',
+            text: 'Debe completar los siguientes campos: ' + camposFaltantes.join(", "),
+            confirmButtonText: 'OK'
+        });
+        return;  // Detener la ejecución si hay campos faltantes
+    }
+
+    // Si no hay campos faltantes, proceder con el envío del formulario
     $.ajax({
         url: '/Eventos/GuardarEventos',  // Cambia esta URL según tu configuración
         type: 'POST',
@@ -179,37 +230,34 @@ function GuardarEvento() {
             causaRechazo: causaRechazo,
             especifiqueOtro: especifiqueOtro
         },
-        success: function (response) {
-            console.log('Respuesta del servidor:', response);
-            if (response.success) {
-                // Cerrar el modal
-                $("#ModalEvento").modal("hide");
-
-                // Recargar la tabla o hacer otras acciones
-                ListadoEventos();
-
+        dataType: 'json',
+        success: function (resultado) {
+            if (!resultado.success) {
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Éxito',
-                    text: 'Evento guardado correctamente.',
+                    icon: 'error',
+                    title: '¡Error!',
+                    text: resultado.message,
                     confirmButtonText: 'OK'
                 });
             } else {
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: response.message,
+                    icon: 'success',
+                    title: '¡Guardado!',
+                    text: 'El evento se ha guardado correctamente.',
                     confirmButtonText: 'OK'
+                }).then(() => {
+                    ListadoEventos();  // Aquí puedes poner la función que actualiza el listado de eventos
                 });
             }
         },
         error: function (xhr, status) {
             Swal.fire({
                 icon: 'error',
-                title: 'Error',
+                title: '¡Error!',
                 text: 'Disculpe, existió un problema al guardar el evento.',
                 confirmButtonText: 'OK'
             });
+            console.log('Disculpe, existió un problema al guardar el evento');
         }
     });
 }
@@ -344,6 +392,21 @@ function configurarFechaActual() {
     fechaInput.setAttribute('min', hoy); // Restringir la selección a partir de la fecha actual
 }
 
+document.getElementById("FechaAproximadaSecado").addEventListener("change", function() {
+    const fechaSecadoInput = document.getElementById("FechaAproximadaSecado").value;
+
+    if (fechaSecadoInput) {
+        const fechaSecado = new Date(fechaSecadoInput);
+        const fechaParicion = new Date(fechaSecado);
+
+        // Sumar 2 meses a la fecha de secado
+        fechaParicion.setMonth(fechaParicion.getMonth() + 2);
+
+        // Establecer el valor en el campo de Fecha Aproximada de Parición
+        document.getElementById("FechaAproximadaParicion").value = fechaParicion.toISOString().split('T')[0];
+    }
+});
+
 function updateTotalItemsEventos() {
     const totalItems = eventosMostrar.length;
     document.getElementById("total-items-eventos").textContent = `Eventos cargados: ${totalItems}`;
@@ -355,6 +418,7 @@ function LimpiarModalEvento() {
     document.querySelector("#TipoEvento").value = 0;
     document.querySelector("#Observacion").value = "";
 
+
     // Restablecer los valores de los DropDownList a 'Seleccione'
     document.querySelector("#TipoCria").value = 0; // Mantener la opción 'Seleccione'
     document.querySelector("#EstadoCria").value = 0; // Mantener la opción 'Seleccione'
@@ -363,8 +427,8 @@ function LimpiarModalEvento() {
 
     // Limpiar los campos input específicos
     const campos = [
-        'TipoParto', 'CausaAborto', "divPreñezFechSecado",
-        'MotivoMuerte', 'DetalleToro', "divPreñezFechParicion",
+        'TipoParto', 'CausaAborto', "FechaAproximadaSecado",
+        'MotivoMuerte', 'DetalleToro', "FechaAproximadaParicion",
         'MotivoVenta', 'CausaRechazo', 'EspecifiqueOtro'
     ];
 

@@ -54,61 +54,79 @@
       </div>
     </div>
     <div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Gráficos
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <div class="card mb-3" style="height: 400px;">
-          <div class="card-body h-100">
-            <canvas id="animalChart" style="height: 100%; width: 100%;"></canvas>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Gráficos
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="card mb-3" style="height: 400px;">
+              <div class="card-body h-100">
+                <canvas id="animalChart" style="height: 100%; width: 100%;"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            Tabla de Datos
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="table-responsive mt-2">
+              <p class="text-primary d-block d-md-none text-center mb-3">
+                BOTÓN AZUL PARA VER MÁS DATOS
+              </p>
+              <table id="tabla-imprimir" class="content-table">
+                <thead>
+                  <tr>
+                    <th>Tipo Animal</th>
+                    <th>Caravana</th>
+                    <th class="ocultar-en-768px">Apodo</th>
+                    <th class="ocultar-en-768px">Establecimiento</th>
+                    <th class="ocultar-en-768px">Fecha Nacimiento</th>
+                    <th class="ocultar-en-768px">Nombre Padre</th>
+                    <th class="ocultar-en-768px">Nombre Madre</th>
+                    <th style="width: 70px"></th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-informeAnimales">
+                  <!-- Los datos se llenarán dinámicamente aquí -->
+                </tbody>
+              </table>
+              <!-- Segunda tabla -->
+              <table id="tabla-imprimir-2" class="content-table" style="display: none;">
+                <thead>
+                  <tr>
+                    <th>Tipo Animal</th>
+                    <th>Caravana</th>
+                    <th>Apodo</th>
+                    <th>Establecimiento</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Nombre Padre</th>
+                    <th>Nombre Madre</th>
+                    <th style="width: 70px"></th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-informeAnimales-2">
+                  <!-- Los datos se llenarán dinámicamente aquí -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-        aria-expanded="true" aria-controls="collapseOne">
-        Tabla de Datos
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <div class="table-responsive mt-2">
-          <p class="text-primary d-block d-md-none text-center mb-3">
-            BOTÓN AZUL PARA VER MÁS DATOS
-          </p>
-          <table id="tabla-imprimir" class="content-table">
-            <thead>
-              <tr>
-                <th>Tipo Animal</th>
-                <th>Caravana</th>
-                <th class="ocultar-en-768px">Apodo</th>
-                <th class="ocultar-en-768px">Establecimiento</th>
-                <th class="ocultar-en-768px">Fecha Nacimiento</th>
-                <th class="ocultar-en-768px">Nombre Padre</th>
-                <th class="ocultar-en-768px">Nombre Madre</th>
-                <th style="width: 70px"></th>
-              </tr>
-            </thead>
-            <tbody id="tbody-informeAnimales">
-              <!-- Los datos se llenarán dinámicamente aquí -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
   </div>
 </div>
@@ -152,7 +170,7 @@
       doc.setFontStyle('normal');
       doc.text('Fecha: ' + dateString, 14, 32);
 
-      var elem = document.getElementById("tabla-imprimir");
+      var elem = document.getElementById("tabla-imprimir-2");
       var res = doc.autoTableHtmlToJson(elem);
 
       // Remove last two columns

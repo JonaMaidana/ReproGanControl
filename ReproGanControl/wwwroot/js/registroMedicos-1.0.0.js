@@ -4,11 +4,11 @@ let registroMedicoMostrar = [];
 
 function ListadoRegistrosMedicos() {
     let buscarCaravana = document.getElementById("BuscarCaravana").value;
-    
+
     $.ajax({
         url: '../../RegistroMedicos/ListadoRegistrosMedicos',
         type: 'GET',
-        data: {BuscarCaravana: buscarCaravana},
+        data: { BuscarCaravana: buscarCaravana },
         dataType: 'json',
         success: function (data) {
             $("#ModalRegistroMedico").modal("hide");
@@ -23,11 +23,11 @@ function ListadoRegistrosMedicos() {
     });
 }
 
-// Función actualizada para renderizar la tabla (sin cambios)
+// Función para renderizar la tabla en ambas tablas
 function renderTableRegistroMedico() {
     let contenidoTabla = ``;
 
-    $.each(registroMedicoMostrar, function (index, medico) {  
+    $.each(registroMedicoMostrar, function (index, medico) {
         contenidoTabla += `
         <tr>
             <td>${medico.animalCaravana}</td>
@@ -50,7 +50,7 @@ function renderTableRegistroMedico() {
                 <button type="button" class="delete-button" title="Eliminar Registro Medico" onclick="EliminarRegistroMedico(${medico.registroMedicoID})">
                     <i class="fa-solid fa-trash"></i>
                 </button>
-                <button type="button" class="info-button" title="Ver mas Datos" onclick="showRegistroMedicoDetails(${medico.registroMedicoID})">
+                <button type="button" class="info-button" title="Ver más Datos" onclick="showRegistroMedicoDetails(${medico.registroMedicoID})">
                     <i class="fa-solid fa-info-circle"></i>
                 </button>
             </td>
@@ -58,8 +58,11 @@ function renderTableRegistroMedico() {
         `;
     });
 
+    // Asignar el mismo contenido a ambas tablas
     document.getElementById("tbody-registroMedico").innerHTML = contenidoTabla;
+    document.getElementById("tbody-registroMedico-2").innerHTML = contenidoTabla;
 }
+
 
     // Función actualizada para mostrar la imagen en grande con botones en posiciones originales
     function mostrarImagenGrande(imagenBase64, caravana) {

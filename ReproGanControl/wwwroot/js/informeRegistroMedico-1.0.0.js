@@ -54,7 +54,10 @@ function ListadoInformeRegistroMedico() {
                 });
             });
 
+            // Asignar el mismo contenido a ambas tablas
             document.getElementById("tbody-informesRegistroMedico").innerHTML = contenidoTabla;
+            // Si tienes otra tabla a la que asignar el mismo contenido, reemplaza el ID aquí
+            document.getElementById("tbody-informesRegistroMedico-2").innerHTML = contenidoTabla;
 
             // Crear o actualizar el gráfico
             createOrUpdateMedicalChart(vistaInformeRegistroMedico);
@@ -65,6 +68,7 @@ function ListadoInformeRegistroMedico() {
         }
     });
 }
+
 
 // Función para crear o actualizar el gráfico de registros médicos
 function createOrUpdateMedicalChart(data) {
@@ -101,6 +105,7 @@ function createOrUpdateMedicalChart(data) {
         plugins: {
             legend: {
                 position: 'top',
+                align: window.innerWidth < 768 ? 'start' : 'center', // Alineación basada en el tamaño de pantalla
             },
             title: {
                 display: true,
@@ -135,6 +140,7 @@ function createOrUpdateMedicalChart(data) {
     if (medicalChart) {
         medicalChart.data = chartData;
         medicalChart.options = options;
+        medicalChart.options.plugins.legend.align = window.innerWidth < 768 ? 'start' : 'center'; // Actualizar alineación
         medicalChart.update();
     } else {
         medicalChart = new Chart(ctx, {
@@ -144,6 +150,14 @@ function createOrUpdateMedicalChart(data) {
             plugins: [ChartDataLabels] // Asegúrate de incluir el plugin aquí
         });
     }
+
+    // Escuchar cambios de tamaño de la ventana
+    window.addEventListener('resize', function() {
+        if (medicalChart) {
+            medicalChart.options.plugins.legend.align = window.innerWidth < 768 ? 'start' : 'center'; // Actualizar alineación al redimensionar
+            medicalChart.update();
+        }
+    });
 }
 
 

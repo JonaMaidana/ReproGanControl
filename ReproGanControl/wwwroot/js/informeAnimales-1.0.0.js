@@ -22,10 +22,28 @@ function ListadoInformeAnimales() {
 
         success: function (vistaInformeAnimales) {
             vistaInformeAnimalesGlobal = vistaInformeAnimales;
-            let contenidoTabla = ``;
+            let contenidoTabla1 = ``;
+            let contenidoTabla2 = ``;
 
             $.each(vistaInformeAnimales, function (Index, Animal) {
-                contenidoTabla += `
+                contenidoTabla1 += `
+                <tr>
+                    <td class="text-center">${Animal.tipoAnimalNombre}</td>
+                    <td class="text-center"></td>
+                    <td class="ocultar-en-768px" class="text-center"></td>
+                    <td class="ocultar-en-768px" class="text-center"></td>
+                    <td class="ocultar-en-768px" class="text-center"></td>
+                    <td class="ocultar-en-768px" class="text-center"></td>
+                    <td class="ocultar-en-768px" class="text-center"></td>
+                    <td class="text-center">
+                        <button type="button" class="info-button" onclick="showAnimalDetails(${Animal.tipoAnimalID})">
+                            <i class="fa-solid fa-info-circle"></i>
+                        </button>
+                    </td>
+                </tr>
+                `;
+
+                contenidoTabla2 += `
                 <tr>
                     <td class="text-center">${Animal.tipoAnimalNombre}</td>
                     <td class="text-center"></td>
@@ -43,7 +61,20 @@ function ListadoInformeAnimales() {
                 `;
 
                 $.each(Animal.vistaAnimales, function (index, Animales) {
-                    contenidoTabla += `
+                    contenidoTabla1 += `
+                    <tr>
+                        <td class="text-center"></td>
+                        <td class="text-center">${Animales.caravana}</td>
+                        <td class="ocultar-en-768px" class="text-center">${Animales.apodo || ''}</td>
+                        <td class="ocultar-en-768px" class="text-center">${Animales.establecimiento}</td>
+                        <td class="ocultar-en-768px" class="text-center">${Animales.fechaNacimientoString}</td>
+                        <td class="ocultar-en-768px" class="text-center">${Animales.nombrePadre || ''}</td>
+                        <td class="ocultar-en-768px" class="text-center">${Animales.nombreMadre || ''}</td>
+                        <td class="text-center"></td>
+                    </tr>
+                    `;
+
+                    contenidoTabla2 += `
                     <tr>
                         <td class="text-center"></td>
                         <td class="text-center">${Animales.caravana}</td>
@@ -58,7 +89,8 @@ function ListadoInformeAnimales() {
                 });
             });
 
-            document.getElementById("tbody-informeAnimales").innerHTML = contenidoTabla;
+            document.getElementById("tbody-informeAnimales").innerHTML = contenidoTabla1;
+            document.getElementById("tbody-informeAnimales-2").innerHTML = contenidoTabla2;
 
             // Crear o actualizar el gráfico
             createOrUpdateAnimalChart(vistaInformeAnimales);
@@ -69,6 +101,7 @@ function ListadoInformeAnimales() {
         }
     });
 }
+
 
 function createOrUpdateAnimalChart(data) {
     const ctx = document.getElementById('animalChart').getContext('2d');
@@ -104,6 +137,7 @@ function createOrUpdateAnimalChart(data) {
         plugins: {
             legend: {
                 position: 'top',
+                align: window.innerWidth < 768 ? 'start' : 'center', // Alineación basada en el tamaño de pantalla
             },
             title: {
                 display: true,
@@ -138,6 +172,7 @@ function createOrUpdateAnimalChart(data) {
     if (animalChart) {
         animalChart.data = chartData;
         animalChart.options = options;
+        animalChart.options.plugins.legend.align = window.innerWidth < 768 ? 'start' : 'center'; // Actualizar alineación
         animalChart.update();
     } else {
         animalChart = new Chart(ctx, {
@@ -147,7 +182,16 @@ function createOrUpdateAnimalChart(data) {
             plugins: [ChartDataLabels] // Asegúrate de incluir el plugin aquí
         });
     }
+
+    // Escuchar cambios de tamaño de la ventana
+    window.addEventListener('resize', function() {
+        if (animalChart) {
+            animalChart.options.plugins.legend.align = window.innerWidth < 768 ? 'start' : 'center'; // Actualizar alineación al redimensionar
+            animalChart.update();
+        }
+    });
 }
+
 
 
 function showAnimalDetails(tipoAnimalID) {

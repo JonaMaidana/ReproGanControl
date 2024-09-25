@@ -184,6 +184,24 @@
                 <tbody id="tbody-registroMedico">
                 </tbody>
             </table>
+            <!-- Segunda tabla -->
+            <table id="tabla-imprimir2-2" class="content-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Caravana</th>
+                        <th>Veterinario</th>
+                        <th>Enfermedad</th>
+                        <th>Tratamiento</th>
+                        <th>Observación</th>
+                        <th>Fecha</th>
+                        <th>Imagen</th>
+                        <th style="width: 150px"></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-registroMedico-2">
+                    <!-- Los datos se llenarán dinámicamente aquí -->
+                </tbody>
+            </table>
         </div>
 
     </div>
@@ -227,7 +245,7 @@
             doc.setFontStyle('normal');
             doc.text('Fecha: ' + dateString, 14, 32);
 
-            var elem = document.getElementById("tabla-imprimir2");
+            var elem = document.getElementById("tabla-imprimir2-2");
             var res = doc.autoTableHtmlToJson(elem);
 
             // Remove last two columns

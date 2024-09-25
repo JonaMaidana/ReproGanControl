@@ -25,6 +25,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\lucas\\Desktop\\Carpetas\\TrabajoFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\LogoFInal.png",
+      "PackagePath": "staticwebassets\\img\\LogoFInal.png"
+    },
+    {
+      "Id": "C:\\Users\\lucas\\Desktop\\Carpetas\\TrabajoFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\LogoVentana.png",
+      "PackagePath": "staticwebassets\\img\\LogoVentana.png"
+    },
+    {
       "Id": "C:\\Users\\lucas\\Desktop\\Carpetas\\TrabajoFinal\\ReproGanControl\\ReproGanControl\\wwwroot\\img\\Pezuna.png",
       "PackagePath": "staticwebassets\\img\\Pezuna.png"
     },

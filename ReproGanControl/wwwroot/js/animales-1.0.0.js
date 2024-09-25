@@ -7,7 +7,6 @@ function ListadoAnimales() {
     let buscarCaravana = $("#BuscarCaravana").val();
     let buscarEstablecimiento = $("#BuscarEstablecimiento").val();
     let buscarApodo = $("#BuscarApodo").val();
-    // console.log('BuscarApodo:', buscarApodo);
 
     $.ajax({
         url: '../../Animales/ListadoAnimales',
@@ -23,7 +22,8 @@ function ListadoAnimales() {
             $("#ModalAnimal").modal("hide");
             LimpiarModal();
             animalesMostrar = data;
-            renderTable();
+            renderTable("tbody-animales"); // Para la primera tabla
+            renderTable("tbody-animales-duplicada"); // Para la segunda tabla
             updateTotalItems();
         },
         error: function (xhr, status) {
@@ -32,7 +32,7 @@ function ListadoAnimales() {
     });
 }
 
-function renderTable() {
+function renderTable(targetId) {
     let contenidoTabla = ``;
 
     $.each(animalesMostrar, function (index, animal) {
@@ -50,7 +50,7 @@ function renderTable() {
                 <button type="button" class="edit-button" title="Editar Animal" onclick="ModalEditarAnimal(${animal.animalID})">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
-                                <button type="button" class="delete-button" title="Eliminar Animal" onclick="EliminarAnimal(${animal.animalID})">
+                <button type="button" class="delete-button" title="Eliminar Animal" onclick="EliminarAnimal(${animal.animalID})">
                     <i class="fa-solid fa-trash"></i>
                 </button>
                 <button type="button" class="info-button" title="Ver Datos" onclick="showAnimalDetails(${animal.animalID})">
@@ -61,7 +61,7 @@ function renderTable() {
         `;
     });
 
-    document.getElementById("tbody-animales").innerHTML = contenidoTabla;
+    document.getElementById(targetId).innerHTML = contenidoTabla;
 }
 
 function showAnimalDetails(animalID) {

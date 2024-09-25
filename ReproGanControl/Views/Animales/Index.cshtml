@@ -162,27 +162,51 @@
 
 
         <!-- Tabla de Animales -->
+               <!-- Tabla de Animales -->
         <div class="table-responsive mt-2">
-        <p class="text-primary d-block d-md-none text-center mb-3">
-            BOTÓN AZUL PARA VER MÁS DATOS
-        </p>
-            <table id="tabla-imprimir" class="content-table">
-                <thead>
-                    <tr>
-                        <th>Caravana</th>
-                        <th>Tipo de Animal</th>
-                        <th class="ocultar-en-768px">Apodo</th>
-                        <th class="ocultar-en-768px">Padre</th>
-                        <th class="ocultar-en-768px">Madre</th>
-                        <th class="ocultar-en-768px">Establecimiento</th>
-                        <th class="ocultar-en-768px">Fecha de nacimiento</th>
-                        <th style="width: 150px"></th>
-                    </tr>
-                </thead>
-                <tbody id="tbody-animales">
-                </tbody>
-            </table>
-        </div>
+    <p class="text-primary d-block d-md-none text-center mb-3">
+        BOTÓN AZUL PARA VER MÁS DATOS
+    </p>
+    <table id="tabla-imprimir" class="content-table">
+        <thead>
+            <tr>
+                <th>Caravana</th>
+                <th>Tipo de Animal</th>
+                <th class="ocultar-en-768px">Apodo</th>
+                <th class="ocultar-en-768px">Padre</th>
+                <th class="ocultar-en-768px">Madre</th>
+                <th class="ocultar-en-768px">Establecimiento</th>
+                <th class="ocultar-en-768px">Fecha de nacimiento</th>
+                <th style="width: 150px"></th>
+            </tr>
+        </thead>
+        <tbody id="tbody-animales">
+        </tbody>
+    </table>
+</div>
+
+<!-- Nueva tabla duplicada -->
+<div class="table-responsive mt-2">
+    <p class="text-primary d-block d-md-none text-center mb-3">
+        BOTÓN AZUL PARA VER MÁS DATOS
+    </p>
+    <table id="tabla-imprimir-duplicada" class="content-table" style="display: none;">
+        <thead>
+            <tr>
+                <th>Caravana</th>
+                <th>Tipo de Animal</th>
+                <th>Apodo</th>
+                <th>Padre</th>
+                <th>Madre</th>
+                <th>Establecimiento</th>
+                <th>Fecha de nacimiento</th>
+                <th style="width: 150px"></th>
+            </tr>
+        </thead>
+        <tbody id="tbody-animales-duplicada">
+        </tbody>
+    </table>
+</div>
     </div>
 </div>
 
@@ -225,7 +249,7 @@
             doc.setFontStyle('normal');
             doc.text('Fecha: ' + dateString, 14, 32);
 
-            var elem = document.getElementById("tabla-imprimir");
+            var elem = document.getElementById("tabla-imprimir-duplicada");
             var res = doc.autoTableHtmlToJson(elem);
 
             // Remove last two columns

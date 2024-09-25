@@ -1,6 +1,8 @@
 window.onload = ListadoAnimales();
 
 let animalesMostrar = [];
+let paginaActual = 1; // Página actual para la primera tabla
+const itemsPorPagina = 10; // Define cuántos items por página mostrar
 
 function ListadoAnimales() {
     let buscarTipoAnimalID = $("#BuscarTipoAnimalID").val();
@@ -22,9 +24,11 @@ function ListadoAnimales() {
             $("#ModalAnimal").modal("hide");
             LimpiarModal();
             animalesMostrar = data;
-            renderTable("tbody-animales"); // Para la primera tabla
-            renderTable("tbody-animales-duplicada"); // Para la segunda tabla
+            paginaActual = 1; // Resetear a la primera página
+            renderTable("tbody-animales"); // Renderiza la primera tabla
+            renderTableDuplicada("tbody-animales-duplicada"); // Renderiza la segunda tabla
             updateTotalItems();
+            renderPagination(); // Renderiza la paginación
         },
         error: function (xhr, status) {
             console.log('Disculpe, existió un problema al cargar el listado de animales');
@@ -34,8 +38,11 @@ function ListadoAnimales() {
 
 function renderTable(targetId) {
     let contenidoTabla = ``;
+    const start = (paginaActual - 1) * itemsPorPagina;
+    const end = start + itemsPorPagina;
+    const paginatedItems = animalesMostrar.slice(start, end); // Obtén solo los elementos para la página actual
 
-    $.each(animalesMostrar, function (index, animal) {
+    $.each(paginatedItems, function (index, animal) {
         contenidoTabla += `
         <tr>
             <td>${animal.caravana}</td>
@@ -45,7 +52,6 @@ function renderTable(targetId) {
             <td class="ocultar-en-768px">${animal.nombreMadre}</td>
             <td class="ocultar-en-768px">${animal.establecimiento}</td>
             <td class="ocultar-en-768px">${animal.fechaNacimientoString}</td>
-            
             <td class="text-center">
                 <button type="button" class="edit-button" title="Editar Animal" onclick="ModalEditarAnimal(${animal.animalID})">
                     <i class="fa-solid fa-pen-to-square"></i>
@@ -62,6 +68,61 @@ function renderTable(targetId) {
     });
 
     document.getElementById(targetId).innerHTML = contenidoTabla;
+}
+
+function renderTableDuplicada(targetId) {
+    let contenidoTabla = ``;
+
+    $.each(animalesMostrar, function (index, animal) { // Renderiza todos los animales en la segunda tabla
+        contenidoTabla += `
+        <tr>
+            <td>${animal.caravana}</td>
+            <td>${animal.tipoAnimalNombre}</td>
+            <td class="ocultar-en-768px">${animal.apodo}</td>
+            <td class="ocultar-en-768px">${animal.nombrePadre}</td>
+            <td class="ocultar-en-768px">${animal.nombreMadre}</td>
+            <td class="ocultar-en-768px">${animal.establecimiento}</td>
+            <td class="ocultar-en-768px">${animal.fechaNacimientoString}</td>
+            <td class="text-center">
+                <button type="button" class="edit-button" title="Editar Animal" onclick="ModalEditarAnimal(${animal.animalID})">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button type="button" class="delete-button" title="Eliminar Animal" onclick="EliminarAnimal(${animal.animalID})">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+                <button type="button" class="info-button" title="Ver Datos" onclick="showAnimalDetails(${animal.animalID})">
+                    <i class="fa-solid fa-info-circle"></i>
+                </button>
+            </td>
+        </tr>
+        `;
+    });
+
+    document.getElementById(targetId).innerHTML = contenidoTabla; // Renderiza la segunda tabla sin paginación
+}
+
+function renderPagination() {
+    const totalPages = Math.ceil(animalesMostrar.length / itemsPorPagina);
+    let contenidoPaginacion = ``;
+
+    for (let i = 1; i <= totalPages; i++) {
+        contenidoPaginacion += `
+            <button class="page-button ${paginaActual === i ? 'active' : ''}" onclick="irAPagina(${i})">${i}</button>
+        `;
+    }
+
+    document.getElementById("pagination").innerHTML = contenidoPaginacion;
+}
+
+function irAPagina(pagina) {
+    paginaActual = pagina; // Actualiza la página actual
+    renderTable("tbody-animales"); // Renderiza la tabla para la nueva página
+    renderPagination(); // Renderiza la paginación
+}
+
+function updateTotalItems() {
+    const totalItems = animalesMostrar.length;
+    document.getElementById("total-items").textContent = `Animales cargados: ${totalItems}`;
 }
 
 function showAnimalDetails(animalID) {
@@ -87,11 +148,6 @@ function showAnimalDetails(animalID) {
     myModal.show();
 }
 
-
-function updateTotalItems() {
-    const totalItems = animalesMostrar.length;
-    document.getElementById("total-items").textContent = `Animales cargados: ${totalItems}`;
-}
 
 
 function LimpiarModal() {

@@ -710,3 +710,42 @@ main {
       font-size: 12px; /* Ajusta el tamaño del texto en móviles (más pequeño) */
   }
 }
+
+.pagination-container {
+  display: flex;
+  justify-content: flex-end; /* Alinear a la derecha */
+  margin-top: 10px; /* Espaciado superior */
+}
+
+.page-button {
+  background-color: #f8f9fa; /* Color de fondo claro */
+  color: #343a40; /* Color del texto gris oscuro */
+  border: 1px solid #ced4da; /* Borde gris claro */
+  padding: 4px 10px; /* Espaciado interno */
+  margin: 0 4px; /* Espaciado entre botones */
+  cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+  border-radius: 4px; /* Bordes redondeados */
+  transition: background-color 0.2s; /* Transición suave */
+}
+
+.page-button:hover {
+  background-color: #e9ecef; /* Color de fondo al pasar el mouse */
+}
+
+.page-button.active {
+  background-color: #153a61; /* Color de fondo para la página activa */
+  color: white; /* Color del texto para la página activa */
+  border: 1px solid #153a61; /* Borde del mismo color que el fondo */
+}
+
+
+.page-button:focus {
+  outline: none; /* Eliminar el contorno por defecto al enfocar */
+}
+
+.page-button:disabled {
+  background-color: #ffffff; /* Color para botones deshabilitados */
+  color: #6c757d; /* Texto gris para deshabilitados */
+  cursor: not-allowed; /* Cursor no permitido */
+  border: 1px solid #dee2e6; /* Borde gris claro */
+}

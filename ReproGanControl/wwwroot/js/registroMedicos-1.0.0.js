@@ -1,6 +1,8 @@
 window.onload = ListadoRegistrosMedicos();
 
 let registroMedicoMostrar = [];
+let paginaActualRegistroMedico = 1; // Página actual para la tabla con paginación
+const itemsPorPaginaRegistroMedico = 10; // Define cuántos items por página mostrar
 
 function ListadoRegistrosMedicos() {
     let buscarCaravana = document.getElementById("BuscarCaravana").value;
@@ -14,8 +16,11 @@ function ListadoRegistrosMedicos() {
             $("#ModalRegistroMedico").modal("hide");
             LimpiarModalRegistroMedico();
             registroMedicoMostrar = data;
-            renderTableRegistroMedico();
+            paginaActualRegistroMedico = 1; // Resetear a la primera página
+            renderTableRegistroMedico("tbody-registroMedico", true); // Renderiza la primera tabla con paginación
+            renderTableRegistroMedico("tbody-registroMedico-2", false); // Renderiza la segunda tabla sin paginación
             updateTotalItemsRegistroMedico();
+            renderPaginationRegistroMedico(); // Renderiza la paginación
         },
         error: function (xhr, status) {
             console.log('Disculpe, existió un problema al cargar el listado de eventos');
@@ -23,11 +28,16 @@ function ListadoRegistrosMedicos() {
     });
 }
 
-// Función para renderizar la tabla en ambas tablas
-function renderTableRegistroMedico() {
+// Función para renderizar la tabla
+function renderTableRegistroMedico(targetId, paginacion) {
     let contenidoTabla = ``;
 
-    $.each(registroMedicoMostrar, function (index, medico) {
+    // Si hay paginación, se obtienen solo los elementos para la página actual
+    const items = paginacion 
+        ? registroMedicoMostrar.slice((paginaActualRegistroMedico - 1) * itemsPorPaginaRegistroMedico, paginaActualRegistroMedico * itemsPorPaginaRegistroMedico) 
+        : registroMedicoMostrar; // Si no hay paginación, se usan todos los elementos
+
+    $.each(items, function (index, medico) {
         contenidoTabla += `
         <tr>
             <td>${medico.animalCaravana}</td>
@@ -58,9 +68,26 @@ function renderTableRegistroMedico() {
         `;
     });
 
-    // Asignar el mismo contenido a ambas tablas
-    document.getElementById("tbody-registroMedico").innerHTML = contenidoTabla;
-    document.getElementById("tbody-registroMedico-2").innerHTML = contenidoTabla;
+    document.getElementById(targetId).innerHTML = contenidoTabla; // Renderiza la tabla
+}
+
+function renderPaginationRegistroMedico() {
+    const totalPages = Math.ceil(registroMedicoMostrar.length / itemsPorPaginaRegistroMedico);
+    let contenidoPaginacion = ``;
+
+    for (let i = 1; i <= totalPages; i++) {
+        contenidoPaginacion += `
+            <button class="page-button ${paginaActualRegistroMedico === i ? 'active' : ''}" onclick="irAPaginaRegistroMedico(${i})">${i}</button>
+        `;
+    }
+
+    document.getElementById("pagination-registroMedico").innerHTML = contenidoPaginacion;
+}
+
+function irAPaginaRegistroMedico(pagina) {
+    paginaActualRegistroMedico = pagina; // Actualiza la página actual
+    renderTableRegistroMedico("tbody-registroMedico", true); // Renderiza la tabla para la nueva página
+    renderPaginationRegistroMedico(); // Renderiza la paginación
 }
 
 

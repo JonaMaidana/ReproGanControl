@@ -73,7 +73,7 @@ public class AnimalesController : Controller
             TipoAnimalID = a.TipoAnimalID,
             TipoAnimalNombre = a.TipoAnimal.Descripcion,
             Caravana = a.Caravana,
-            Apodo = string.IsNullOrEmpty(a.Apodo) ? "" : a.Apodo,
+            Apodo = string.IsNullOrEmpty(a.Apodo) ? "DESCONOCIDO" : a.Apodo,
             NombrePadre = string.IsNullOrEmpty(a.NombrePadre) ? "DESCONOCIDO" : a.NombrePadre,
             NombreMadre = string.IsNullOrEmpty(a.NombreMadre) ? "DESCONOCIDO" : a.NombreMadre,
             Establecimiento = a.Establecimiento,

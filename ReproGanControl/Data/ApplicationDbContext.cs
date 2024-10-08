@@ -19,4 +19,5 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<Provincia> Provincias { get; set; }
     public DbSet<RegistroMedico> RegistroMedicos { get; set; }
     public DbSet<TipoAnimal> TipoAnimales { get; set; }
+    public DbSet<Establecimiento> Establecimientos { get; set; }
 }

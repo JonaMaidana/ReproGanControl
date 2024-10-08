@@ -10,6 +10,7 @@ public class Localidad
     public string? NombreLocalidad { get; set; }
     public string? CodigoPostal { get; set; }
     public virtual ICollection<Persona> Personas { get; set; }
+    public virtual ICollection<Establecimiento> Establecimientos { get; set; }
     public virtual Provincia Provincia { get; set; }
 }
 

@@ -88,18 +88,31 @@ public class EventosController : Controller
         ViewBag.AnimalID = new SelectList(animales.OrderBy(d => d.Caravana), "AnimalID", "Caravana");
 
         var tipoAnimalToro = _context.TipoAnimales.FirstOrDefault(t => t.Descripcion == "TORO");
-        if (tipoAnimalToro != null)
+
+    if (tipoAnimalToro != null)
+    {
+        var toros = _context.Animales
+            .Where(a => a.TipoAnimalID == tipoAnimalToro.TipoAnimalID)
+            .ToList();
+
+        // Si no hay toros en la lista, solo agregar el "[SELECCIONE]"
+        if (!toros.Any())
         {
-            var toros = _context.Animales
-                .Where(a => a.TipoAnimalID == tipoAnimalToro.TipoAnimalID) // Suponiendo que `TipoAnimalID` está en el modelo de `Animal`
-                .ToList();
-
-            // Agregar un elemento "[SELECCIONE]" al inicio
-            toros.Insert(0, new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" });
-
-            // Llenar el ViewBag con los toros
-            ViewBag.ToroID = new SelectList(toros.OrderBy(d => d.Caravana), "AnimalID", "Caravana");
+            toros.Add(new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" });
         }
+        else
+        {
+            toros.Insert(0, new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" });
+        }
+
+        // Llenar el ViewBag con los toros
+        ViewBag.ToroID = new SelectList(toros.OrderBy(d => d.Caravana), "AnimalID", "Caravana");
+    }
+    else
+    {
+        // Si no se encuentra el tipo de animal "TORO", asignar una lista vacía con "[SELECCIONE]"
+        ViewBag.ToroID = new SelectList(new List<Animal> { new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" } }, "AnimalID", "Caravana");
+    }
         return View();
     }
 

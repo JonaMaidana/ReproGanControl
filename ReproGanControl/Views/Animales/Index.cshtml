@@ -17,6 +17,8 @@
                 <i class="fa-solid fa-file-pdf"></i>
                 <span class="btn-text">Descargar</span>
             </button>
+            <!-- Contenedor para contador y paginación -->
+            <div class="d-flex align-items-center">
                 <!-- Contador de elementos -->
                 <div class="d-flex align-items-center flex-grow-1 justify-content-end">
                     <span id="total-items">Animales cargados: 0</span>
@@ -158,52 +160,54 @@
             </div>
         </div>
 
+
         <!-- Tabla de Animales -->
         <div class="table-responsive mt-2">
-            <p class="text-primary d-block d-md-none text-center mb-3">
-                BOTÓN AZUL PARA VER MÁS DATOS
-            </p>
-            <table id="tabla-imprimir" class="content-table">
-                <thead>
-                    <tr>
-                        <th>Caravana</th>
-                        <th>Tipo de Animal</th>
-                        <th class="ocultar-en-768px">Apodo</th>
-                        <th class="ocultar-en-768px">Padre</th>
-                        <th class="ocultar-en-768px">Madre</th>
-                        <th class="ocultar-en-768px">Establecimiento</th>
-                        <th class="ocultar-en-768px">Fecha de nacimiento</th>
-                        <th style="width: 150px"></th>
-                    </tr>
-                </thead>
-                <tbody id="tbody-animales">
-                </tbody>
-            </table>
-                <div id="pagination" class="pagination-container"></div>
-        </div>
+    <p class="text-primary d-block d-md-none text-center mb-3">
+        BOTÓN AZUL PARA VER MÁS DATOS
+    </p>
+    <table id="tabla-imprimir" class="content-table">
+        <thead>
+            <tr>
+                <th>Caravana</th>
+                <th>Tipo de Animal</th>
+                <th class="ocultar-en-768px">Apodo</th>
+                <th class="ocultar-en-768px">Padre</th>
+                <th class="ocultar-en-768px">Madre</th>
+                <th class="ocultar-en-768px">Establecimiento</th>
+                <th class="ocultar-en-768px">Fecha de nacimiento</th>
+                <th style="width: 150px"></th>
+            </tr>
+        </thead>
+        <tbody id="tbody-animales">
+        </tbody>
+    </table>
+    <div id="pagination" class="pagination-container"></div>
+</div>
 
-        <!-- Nueva tabla duplicada -->
-        <div class="table-responsive mt-2">
-            <p class="text-primary d-block d-md-none text-center mb-3">
-                BOTÓN AZUL PARA VER MÁS DATOS
-            </p>
-            <table id="tabla-imprimir-duplicada" class="content-table" style="display: none;">
-                <thead>
-                    <tr>
-                        <th>Caravana</th>
-                        <th>Tipo de Animal</th>
-                        <th>Apodo</th>
-                        <th>Padre</th>
-                        <th>Madre</th>
-                        <th>Establecimiento</th>
-                        <th>Fecha de nacimiento</th>
-                        <th style="width: 150px"></th>
-                    </tr>
-                </thead>
-                <tbody id="tbody-animales-duplicada">
-                </tbody>
-            </table>
-        </div>
+<!-- Nueva tabla duplicada -->
+<div class="table-responsive mt-2">
+    <p class="text-primary d-block d-md-none text-center mb-3">
+        BOTÓN AZUL PARA VER MÁS DATOS
+    </p>
+    <table id="tabla-imprimir-duplicada" class="content-table" style="display: none;">
+        <thead>
+            <tr>
+                <th>Caravana</th>
+                <th>Tipo de Animal</th>
+                <th>Apodo</th>
+                <th>Padre</th>
+                <th>Madre</th>
+                <th>Establecimiento</th>
+                <th>Fecha de nacimiento</th>
+                <th style="width: 150px"></th>
+            </tr>
+        </thead>
+        <tbody id="tbody-animales-duplicada">
+        </tbody>
+    </table>
+</div>
+
     </div>
 </div>
 

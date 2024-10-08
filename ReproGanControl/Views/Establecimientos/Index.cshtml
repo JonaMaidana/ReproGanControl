@@ -1,0 +1,209 @@
+@{
+    ViewData["Title"] = "Establecimientos";
+}
+
+<div class="card" style="font-family: 'Arial', sans-serif;">
+    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 class="display-6" style="color: #555;">Establecimientos</h3>
+        <button type="button" class="btn-agregar" title="Agregar Establecimiento" onclick="CrearEstablecimiento()" data-bs-toggle="modal"
+            data-bs-target="#ModalEstablecimiento">
+            <i class="fa-solid fa-plus"></i> <span class="btn-text">Agregar Establecimiento</span>
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- Botón de Imprimir -->
+            <button class="btn-download" title="Descargar Datos" onclick="Imprimir()">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span class="btn-text">Descargar</span>
+            </button>
+            <!-- Contenedor para contador y paginación -->
+            <div class="d-flex align-items-center">
+                <!-- Contador de elementos -->
+                <div id="table-info" class="me-3">
+                    <span id="total-items-establecimiento">Establecimientos Cargados: 0</span>
+                </div>
+                <!-- Paginación -->
+                <nav aria-label="Page navigation example">
+                    <ul id="pagination" class="pagination mb-0">
+                        <!-- Los enlaces de paginación se generarán aquí -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="modal fade" data-bs-backdrop="static" id="ModalEstablecimiento" tabindex="-1"
+            aria-labelledby="establecimientoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalTitulo"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="LimpiarModal()"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <input type="hidden" id="EstablecimientoID" value="0" />
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="NombreEstablecimiento" class="form-label">Nombre Establecimiento<span
+                                            class="required-asterisk">*</span></label>
+                                    <input type="text" class="form-control" id="NombreEstablecimiento"
+                                        style="text-transform: uppercase;" placeholder="Nombre del Establecimiento">
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="ProvinciaID" class="form-label">Provincia <span
+                                            class="required-asterisk">*</span></label>
+                                    @Html.DropDownList("ProvinciaID", (SelectList)ViewBag.ProvinciaID, new
+                                        {
+                                            @class =
+                                             "form-control",
+                                            id = "ProvinciaID"
+                                        })
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="LocalidadID" class="form-label">Localidad <span
+                                            class="required-asterisk">*</span></label>
+                                    @Html.DropDownList("LocalidadID", (SelectList)ViewBag.LocalidadID, new
+                                        {
+                                            @class =
+                                             "form-control",
+                                            id = "LocalidadID"
+                                        })
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="display: flex; justify-content: flex-start; align-items: center;">
+                        <p style="font-weight: bold; text-transform: uppercase; color: rgb(19, 18, 18); margin: 0;">
+                            Completa todos los campos requeridos antes de guardar <span
+                                class="required-asterisk">*</span>
+                        </p>
+                        <div style="margin-left: auto;">
+                            <button type="button" onclick="LimpiarModal()" id="btnCancelar" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" onclick="GuardarEstablecimiento()" class="btn btn-success">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="establecimientoModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Detalles del Establecimiento</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Aquí se mostrará la información de la persona -->
+                        <div id="modalContentEstablecimiento"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <!-- Puedes añadir botones adicionales si es necesario -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive mt-2">
+        <p class="text-primary d-block d-md-none text-center mb-3">
+            BOTÓN AZUL PARA VER MÁS DATOS
+        </p>
+            <table id="tabla-imprimir" class="content-table">
+                <thead>
+                    <tr>
+                        <th>Nombre Establecimiento</th>
+                        <th class="ocultar-en-768px">Provincia</th>
+                        <th class="ocultar-en-768px">Localidad</th>
+                        <th style="width: 150px"></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-establecimiento">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/establecimiento-1.0.0.js"></script>
+    <script>
+        function Imprimir() {
+            var doc = new jsPDF({ orientation: 'landscape' }); // Configura la orientación a horizontal
+
+            var totalPagesExp = "{total_pages_count_string}";
+            var pageContent = function (data) {
+                var pageHeight = doc.internal.pageSize.height || doc.internal.pageSize.getHeight();
+                var pageWidth = doc.internal.pageSize.width || doc.internal.pageSize.getWidth();
+
+                // FOOTER
+                var str = "Pagina " + data.pageCount;
+                if (typeof doc.putTotalPages == 'function') {
+                    str = str + " de " + totalPagesExp;
+                }
+
+                doc.setLineWidth(8);
+                doc.setDrawColor(238, 238, 238);
+                doc.line(14, pageHeight - 11, pageWidth - 14, pageHeight - 11);
+
+                doc.setFontSize(10); // Tamaño de fuente del pie de página
+                doc.setFontStyle('bold');
+                doc.text(str, 17, pageHeight - 10);
+            };
+
+            // Add title and date to the first page
+            doc.setFontSize(15); // Tamaño de fuente del título
+            doc.setFontStyle('bold');
+            doc.text('Listado de Establecimientos', 14, 22);
+
+            // Add current date
+            var today = new Date();
+            var dateString = today.toLocaleDateString(); // Format date as needed
+            doc.setFontSize(12); // Tamaño de fuente de la fecha
+            doc.setFontStyle('normal');
+            doc.text('Fecha: ' + dateString, 14, 32);
+
+            var elem = document.getElementById("tabla-imprimir");
+            var res = doc.autoTableHtmlToJson(elem);
+
+            // Remove last two columns
+            res.columns = res.columns.slice(0, -2);
+            res.data = res.data.map(row => row.slice(0, -2));
+
+            doc.autoTable(res.columns, res.data, {
+                addPageContent: pageContent,
+                theme: 'grid',
+                styles: { fillColor: [70, 130, 180], halign: "center" },
+                columnStyles: {
+                    0: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    1: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    2: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    3: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    4: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    5: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    6: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    7: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] }
+                },
+                margin: { top: 40 } // Ajusta el margen superior para el título
+            });
+
+            if (typeof doc.putTotalPages === 'function') {
+                doc.putTotalPages(totalPagesExp);
+            }
+
+            var string = doc.output('datauristring');
+            var iframe = "<iframe width='100%' height='100%' src='" + string + "'></iframe>";
+
+            var x = window.open();
+            x.document.open();
+            x.document.write(iframe);
+            x.document.close();
+        }
+    </script>
+}

@@ -21,6 +21,13 @@ public class EstablecimientosController : Controller
 
     public ActionResult Index()
     {
+        var localidades = _context.Localidades.ToList();
+        localidades.Insert(0, new Localidad { LocalidadID = 0, NombreLocalidad = "[SELECCIONE]" });
+        ViewBag.LocalidadID = new SelectList(localidades.OrderBy(n => n.NombreLocalidad), "LocalidadID", "NombreLocalidad");
+
+        var provincias = _context.Provincias.ToList();
+        provincias.Insert(0, new Provincia { ProvinciaID = 0, Nombre = "[SELECCIONE]" });
+        ViewBag.ProvinciaID = new SelectList(provincias.OrderBy(n => n.Nombre), "ProvinciaID", "Nombre");
         return View();
     }
 
@@ -43,7 +50,7 @@ public class EstablecimientosController : Controller
         {
             establecimiento = establecimiento.Where(e => e.EstablecimientoID == id);
         }
-        var establecimientoMostrar = establecimiento
+        var establecimientosMostrar = establecimiento
         .Select(e => new VistaEstablecimientos
         {
             EstablecimientoID = e.EstablecimientoID,
@@ -54,73 +61,72 @@ public class EstablecimientosController : Controller
             NombreProvincia = e.Localidad.Provincia.Nombre,
         })
         .ToList();
-        return Json(establecimientoMostrar);
+        return Json(establecimientosMostrar);
     }
 
-    public JsonResult GuardarEstablecimientos(int establecimientoID, string nombreEstablecimiento)
+    public JsonResult TraerLocalidades(int provinciaID)
     {
-        string resultado = "";
-
-        if (!String.IsNullOrEmpty(nombreEstablecimiento))
+        IEnumerable<Localidad> localidades;
+        if (provinciaID == 0)
         {
-            nombreEstablecimiento = nombreEstablecimiento.ToUpper();
-
-            if (establecimientoID == 0)
-            {
-                var existeEstablecimiento = _context.Establecimientos.Where(t => t.NombreEstablecimiento == nombreEstablecimiento).Count();
-                if (existeEstablecimiento == 0)
-                {
-                    var establecimiento = new Establecimiento
-                    {
-                        NombreEstablecimiento = nombreEstablecimiento
-                    };
-                    _context.Add(establecimiento);
-                    _context.SaveChanges();
-                }
-                else
-                {
-                    resultado = "Ya existe un establecimiento con el mismo nombre";
-                }
-            }
-            else
-            {
-                var establecimientoEditar = _context.Establecimientos.Where(t => t.EstablecimientoID == establecimientoID).SingleOrDefault();
-                if (establecimientoEditar != null)
-                {
-                    var existeEstablecimientos = _context.Establecimientos.Where(t => t.NombreEstablecimiento == nombreEstablecimiento && t.EstablecimientoID != establecimientoID).Count();
-                    if (existeEstablecimientos == 0)
-                    {
-                        establecimientoEditar.NombreEstablecimiento = nombreEstablecimiento;
-                        _context.SaveChanges();
-                    }
-                    else
-                    {
-                        resultado = "Ya existe un establecimiento con el mismo nombre";
-                    }
-                }
-            }
+            localidades = _context.Localidades.ToList();
         }
         else
         {
-            resultado = "Debe ingresar un establecimiento.";
+            localidades = _context.Localidades.Where(p => p.ProvinciaID == provinciaID).ToList();
+        }
+        var resultado = localidades.Select(l => new { l.LocalidadID, l.NombreLocalidad }).ToList();
+        return Json(resultado);
+    }
+
+    public JsonResult CrearEstablecimientos(int establecimientoID, string nombreEstablecimiento, int localidadID)
+    {
+        nombreEstablecimiento = nombreEstablecimiento.ToUpper();
+
+        if (establecimientoID == 0)
+        {
+            var establecimiento = new Establecimiento
+            {
+                LocalidadID = localidadID,
+                NombreEstablecimiento = nombreEstablecimiento,
+            };
+            _context.Add(establecimiento);
+            _context.SaveChanges();
+        }
+        else
+        {
+            var establecimientoEditar = _context.Establecimientos.SingleOrDefault(p => p.EstablecimientoID == establecimientoID);
+            if (establecimientoEditar != null)
+            {
+                establecimientoEditar.LocalidadID = localidadID;
+                establecimientoEditar.NombreEstablecimiento = nombreEstablecimiento;
+
+                _context.SaveChanges();
+            }
         }
 
-        return Json(resultado);
+        return Json(new { success = true });
     }
 
     public JsonResult EliminarEstablecimientos(int establecimientoID)
     {
+        bool isInUse = _context.Animales.Where(o => o.EstablecimientoID == establecimientoID).Any();
+
+        if (isInUse)
+        {
+            return Json(new { success = false, message = "El Establecimiento está en uso en otra parte y no puede ser eliminada." });
+        }
+
         var establecimiento = _context.Establecimientos.Find(establecimientoID);
 
-        var establecimientoAsociadoEnAnimales = _context.Animales.Any(e => e.EstablecimientoID == establecimientoID);
-
-        if (establecimientoAsociadoEnAnimales)
+        if (establecimiento == null)
         {
-            return Json("No se puede eliminar porque esta asociado a un Animal");
+            return Json(new { success = false, message = "Establecimiento no encontrado." });
         }
-        _context.Remove(establecimiento);
+
+        _context.Establecimientos.Remove(establecimiento);
         _context.SaveChanges();
 
-        return Json(true);
+        return Json(new { success = true, message = "El Establecimiento fue eliminado exitosamente." });
     }
 }

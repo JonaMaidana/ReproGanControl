@@ -1,4 +1,5 @@
-# Ignorar carpetas bin y obj, y .vs
-/bin/
-/obj/
-/.vs/
+# Excluimos los archivos OBJ, BIN y la carpeta .vs ya que se crean nuevamente al ejecutarse.
+bin/
+obj/
+\.vs
+\ReproGanControl\.vs

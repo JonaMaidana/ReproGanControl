@@ -28,17 +28,20 @@ public class AnimalesController : Controller
         buscarTipoAnimal.Add(new TipoAnimal { TipoAnimalID = 0, Descripcion = "[SELECCIONE]" });
         ViewBag.BuscarTipoAnimalID = new SelectList(buscarTipoAnimal.OrderBy(d => d.Descripcion), "TipoAnimalID", "Descripcion");
 
-        // var buscarEstablecimiento = _context.Animales.Where(a => !string.IsNullOrEmpty(a.Establecimiento)).Select(a => a.Establecimiento).Distinct().OrderBy(e => e).ToList();
+        var establecimientos = _context.Establecimientos.ToList();
+        establecimientos.Add(new Establecimiento { EstablecimientoID = 0, NombreEstablecimiento = "[SELECCIONE]" });
+        ViewBag.EstablecimientoID = new SelectList(establecimientos.OrderBy(n => n.NombreEstablecimiento), "EstablecimientoID", "NombreEstablecimiento");
 
-        // buscarEstablecimiento.Insert(0, "[SELECCIONE]");
-        // ViewBag.BuscarEstablecimiento = new SelectList(buscarEstablecimiento);
+        var buscarEstablecimiento = _context.Establecimientos.ToList();
+        buscarEstablecimiento.Add(new Establecimiento { EstablecimientoID = 0, NombreEstablecimiento = "[SELECCIONE]" });
+        ViewBag.BuscarEstablecimientoID = new SelectList(buscarEstablecimiento.OrderBy(n => n.NombreEstablecimiento), "EstablecimientoID", "NombreEstablecimiento");
 
         return View();
     }
 
-    public JsonResult ListadoAnimales(int? id, int? BuscarTipoAnimalID, string? caravana, string? BuscarEstablecimiento, string? BuscarApodo)
+    public JsonResult ListadoAnimales(int? id, int? BuscarTipoAnimalID, string? caravana, int? BuscarEstablecimientoID, string? BuscarApodo)
     {
-        var animales = _context.Animales.Include(t => t.TipoAnimal).ToList();
+        var animales = _context.Animales.Include(t => t.TipoAnimal).Include(e => e.Establecimiento).ToList();
         if (id != null)
         {
             animales = animales.Where(t => t.AnimalID == id).ToList();
@@ -61,22 +64,23 @@ public class AnimalesController : Controller
             animales = animales.Where(a => a.Apodo != null && a.Apodo.ToUpper().Contains(buscarApodoUpper)).ToList();
         }
 
-        // if (!string.IsNullOrEmpty(BuscarEstablecimiento) && BuscarEstablecimiento != "[SELECCIONE]")
-        // {
-        //     animales = animales.Where(e => e.Establecimiento == BuscarEstablecimiento).ToList();
-        // }
+        if (BuscarEstablecimientoID != null && BuscarEstablecimientoID != 0)
+        {
+            animales = animales.Where(e => e.EstablecimientoID == BuscarEstablecimientoID).ToList();
+        }
 
         var animalesMostrar = animales
         .Select(a => new VistaAnimales
         {
             AnimalID = a.AnimalID,
             TipoAnimalID = a.TipoAnimalID,
+            EstablecimientoID = a.EstablecimientoID,
+            NombreEstablecimiento = a.Establecimiento.NombreEstablecimiento,
             TipoAnimalNombre = a.TipoAnimal.Descripcion,
             Caravana = a.Caravana,
             Apodo = string.IsNullOrEmpty(a.Apodo) ? "DESCONOCIDO" : a.Apodo,
             NombrePadre = string.IsNullOrEmpty(a.NombrePadre) ? "DESCONOCIDO" : a.NombrePadre,
             NombreMadre = string.IsNullOrEmpty(a.NombreMadre) ? "DESCONOCIDO" : a.NombreMadre,
-            // Establecimiento = a.Establecimiento,
             FechaNacimiento = a.FechaNacimiento,
             FechaNacimientoString = a.FechaNacimiento.ToString("dd/MM/yyyy"),
         })
@@ -86,10 +90,8 @@ public class AnimalesController : Controller
         return Json(animalesMostrar);
     }
 
-    public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, string caravana, string apodo, string nombrePadre, string nombreMadre, string establecimiento, DateTime fechaNacimiento)
+    public JsonResult GuardarAnimales(int animalID, int tipoAnimalID, int establecimientoID, string caravana, string apodo, string nombrePadre, string nombreMadre, DateTime fechaNacimiento)
     {
-
-
         bool existeCaravana = _context.Animales.Any(a => a.Caravana == caravana && a.AnimalID != animalID);
         if (existeCaravana)
         {
@@ -102,7 +104,6 @@ public class AnimalesController : Controller
 
         apodo = apodo.ToUpper();
         caravana = caravana.ToUpper();
-        establecimiento = establecimiento.ToUpper();
         nombrePadre = nombrePadre.ToUpper();
         nombreMadre = nombreMadre.ToUpper();
 
@@ -111,11 +112,11 @@ public class AnimalesController : Controller
             var animal = new Animal
             {
                 TipoAnimalID = tipoAnimalID,
+                EstablecimientoID = establecimientoID,
                 Caravana = caravana,
                 Apodo = apodo,
                 NombrePadre = nombrePadre,
                 NombreMadre = nombreMadre,
-                // Establecimiento = establecimiento,
                 FechaNacimiento = fechaNacimiento
             };
             _context.Add(animal);
@@ -131,7 +132,7 @@ public class AnimalesController : Controller
                 animalEditar.Apodo = apodo;
                 animalEditar.NombrePadre = nombrePadre;
                 animalEditar.NombreMadre = nombreMadre;
-                // animalEditar.Establecimiento = establecimiento;
+                animalEditar.EstablecimientoID = establecimientoID;
                 animalEditar.FechaNacimiento = fechaNacimiento;
 
                 _context.SaveChanges();
@@ -170,20 +171,17 @@ public class AnimalesController : Controller
         tiposAnimalesBuscar.Add(new TipoAnimal { TipoAnimalID = 0, Descripcion = "[SELECCIONE]" });
         ViewBag.TipoAnimalBuscarID = new SelectList(tiposAnimalesBuscar.OrderBy(c => c.Descripcion), "TipoAnimalID", "Descripcion");
 
-        // var buscarEstablecimiento = _context.Animales.Where(a => !string.IsNullOrEmpty(a.Establecimiento)).Select(a => a.Establecimiento).Distinct().OrderBy(e => e).ToList();
-
-        // buscarEstablecimiento.Insert(0, "[SELECCIONE]");
-        // ViewBag.BuscarEstablecimiento = new SelectList(buscarEstablecimiento);
+        var establecimientoBuscar = _context.Establecimientos.ToList();
+        establecimientoBuscar.Add(new Establecimiento{ EstablecimientoID = 0, NombreEstablecimiento ="[SELECCIONE]"});
+        ViewBag.EstablecimientoBuscarID = new SelectList(establecimientoBuscar.OrderBy(n => n.NombreEstablecimiento ), "EstablecimientoID", "NombreEstablecimiento" );
 
         return View();
     }
-    public JsonResult ListadoInformeAnimales(int? TipoAnimalBuscarID, string BuscarEstablecimiento)
+    public JsonResult ListadoInformeAnimales(int? TipoAnimalBuscarID, int? EstablecimientoBuscarID)
     {
-
         List<VistaInformeAnimales> vistaInformeAnimales = new List<VistaInformeAnimales>();
 
-
-        var animales = _context.Animales.Include(t => t.TipoAnimal).ToList();
+        var animales = _context.Animales.Include(t => t.TipoAnimal).Include(e => e.Establecimiento).ToList();
 
         // Filtro para buscar por Tipo Animal 
         if (TipoAnimalBuscarID != null && TipoAnimalBuscarID != 0)
@@ -191,10 +189,10 @@ public class AnimalesController : Controller
             animales = animales.Where(e => e.TipoAnimalID == TipoAnimalBuscarID).ToList();
         }
 
-        // if (!string.IsNullOrEmpty(BuscarEstablecimiento) && BuscarEstablecimiento != "[SELECCIONE]")
-        // {
-        //     animales = animales.Where(e => e.Establecimiento == BuscarEstablecimiento).ToList();
-        // }
+        if (EstablecimientoBuscarID != null && EstablecimientoBuscarID != 0)
+        {
+            animales = animales.Where(e => e.EstablecimientoID == EstablecimientoBuscarID).ToList();
+        }
 
         //filtro solo numeros
         // var regex = new Regex(@"\d+");
@@ -206,8 +204,6 @@ public class AnimalesController : Controller
 
         // Filtro para ordenar
         animales = animales.OrderBy(e => e.Caravana).ToList();
-
-
 
         foreach (var listadoAnimales in animales)
         {
@@ -228,7 +224,8 @@ public class AnimalesController : Controller
             {
                 Caravana = listadoAnimales.Caravana,
                 Apodo = listadoAnimales.Apodo,
-                // Establecimiento = listadoAnimales.Establecimiento,
+                EstablecimientoID = listadoAnimales.EstablecimientoID,
+                NombreEstablecimiento = listadoAnimales.Establecimiento.NombreEstablecimiento,
                 FechaNacimientoString = listadoAnimales.FechaNacimiento.ToString("dd/MM/yyyy"),
                 NombrePadre = listadoAnimales.NombrePadre,
                 NombreMadre = listadoAnimales.NombreMadre,

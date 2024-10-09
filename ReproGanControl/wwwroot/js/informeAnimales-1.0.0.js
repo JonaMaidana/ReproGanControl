@@ -9,13 +9,13 @@ window.onload = ListadoInformeAnimales();
 
 function ListadoInformeAnimales() {
     let tipoAnimalBuscarID = document.getElementById("TipoAnimalBuscarID").value;
-    let buscarEstablecimiento = document.getElementById("BuscarEstablecimiento").value;
+    let establecimientoBuscarID = document.getElementById("EstablecimientoBuscarID").value;
 
     $.ajax({
         url: '../../Animales/ListadoInformeAnimales',
         data: {
             tipoAnimalBuscarID: tipoAnimalBuscarID,
-            buscarEstablecimiento: buscarEstablecimiento
+            establecimientoBuscarID: establecimientoBuscarID
         },
         type: 'POST',
         dataType: 'json',
@@ -66,7 +66,7 @@ function ListadoInformeAnimales() {
                         <td class="text-center"></td>
                         <td class="text-center">${Animales.caravana}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.apodo || ''}</td>
-                        <td class="ocultar-en-768px" class="text-center">${Animales.establecimiento}</td>
+                        <td class="ocultar-en-768px" class="text-center">${Animales.nombreEstablecimiento}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.fechaNacimientoString}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.nombrePadre || ''}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.nombreMadre || ''}</td>
@@ -79,7 +79,7 @@ function ListadoInformeAnimales() {
                         <td class="text-center"></td>
                         <td class="text-center">${Animales.caravana}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.apodo || ''}</td>
-                        <td class="ocultar-en-768px" class="text-center">${Animales.establecimiento}</td>
+                        <td class="ocultar-en-768px" class="text-center">${Animales.nombreEstablecimiento}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.fechaNacimientoString}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.nombrePadre || ''}</td>
                         <td class="ocultar-en-768px" class="text-center">${Animales.nombreMadre || ''}</td>
@@ -206,7 +206,7 @@ function showAnimalDetails(tipoAnimalID) {
                 <li>
                     <strong>Caravana:</strong> ${a.caravana}<br>
                     <strong>Apodo:</strong> ${a.apodo}<br>
-                    <strong>Establecimiento:</strong> ${a.establecimiento}<br>
+                    <strong>Establecimiento:</strong> ${a.nombreEstablecimiento}<br>
                     <strong>Fecha de Nacimiento:</strong> ${a.fechaNacimientoString}<br>
                     <strong>Nombre del Padre:</strong> ${a.nombrePadre}<br>
                     <strong>Nombre de la Madre:</strong> ${a.nombreMadre}

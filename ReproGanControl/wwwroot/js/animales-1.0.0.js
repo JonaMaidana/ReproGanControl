@@ -7,7 +7,7 @@ const itemsPorPagina = 10; // Define cuántos items por página mostrar
 function ListadoAnimales() {
     let buscarTipoAnimalID = $("#BuscarTipoAnimalID").val();
     let buscarCaravana = $("#BuscarCaravana").val();
-    let buscarEstablecimiento = $("#BuscarEstablecimiento").val();
+    let buscarEstablecimientoID = $("#BuscarEstablecimientoID").val();
     let buscarApodo = $("#BuscarApodo").val();
 
     $.ajax({
@@ -17,7 +17,7 @@ function ListadoAnimales() {
         data: {
             BuscarTipoAnimalID: buscarTipoAnimalID,
             Caravana: buscarCaravana,
-            BuscarEstablecimiento: buscarEstablecimiento,
+            BuscarEstablecimientoID: buscarEstablecimientoID,
             BuscarApodo: buscarApodo
         },
         success: function (data) {
@@ -50,7 +50,7 @@ function renderTable(targetId) {
             <td class="ocultar-en-768px">${animal.apodo}</td>
             <td class="ocultar-en-768px">${animal.nombrePadre}</td>
             <td class="ocultar-en-768px">${animal.nombreMadre}</td>
-            <td class="ocultar-en-768px">${animal.establecimiento}</td>
+            <td class="ocultar-en-768px">${animal.nombreEstablecimiento}</td>
             <td class="ocultar-en-768px">${animal.fechaNacimientoString}</td>
             <td class="text-center">
                 <button type="button" class="edit-button" title="Editar Animal" onclick="ModalEditarAnimal(${animal.animalID})">
@@ -81,7 +81,7 @@ function renderTableDuplicada(targetId) {
             <td class="ocultar-en-768px">${animal.apodo}</td>
             <td class="ocultar-en-768px">${animal.nombrePadre}</td>
             <td class="ocultar-en-768px">${animal.nombreMadre}</td>
-            <td class="ocultar-en-768px">${animal.establecimiento}</td>
+            <td class="ocultar-en-768px">${animal.nombreEstablecimiento}</td>
             <td class="ocultar-en-768px">${animal.fechaNacimientoString}</td>
             <td class="text-center">
                 <button type="button" class="edit-button" title="Editar Animal" onclick="ModalEditarAnimal(${animal.animalID})">
@@ -136,7 +136,7 @@ function showAnimalDetails(animalID) {
         <p><strong>Apodo:</strong> ${animal.apodo}</p>
         <p><strong>Nombre del Padre:</strong> ${animal.nombrePadre}</p>
         <p><strong>Nombre de la Madre:</strong> ${animal.nombreMadre}</p>
-        <p><strong>Establecimiento:</strong> ${animal.establecimiento}</p>
+        <p><strong>Establecimiento:</strong> ${animal.nombreEstablecimiento}</p>
         <p><strong>Fecha de Nacimiento:</strong> ${animal.fechaNacimientoString}</p>
     `;
 
@@ -148,16 +148,14 @@ function showAnimalDetails(animalID) {
     myModal.show();
 }
 
-
-
 function LimpiarModal() {
     document.getElementById("AnimalID").value = 0;
     document.getElementById("TipoAnimalID").value = 0;
+    document.getElementById("EstablecimientoID").value = 0;
     document.getElementById("Caravana").value = "";
     document.getElementById("Apodo").value = "";
     document.getElementById("NombrePadre").value = "";
     document.getElementById("NombreMadre").value = "";
-    document.getElementById("Establecimiento").value = "";
     document.getElementById("FechaNacimiento").value = "";
 }
 
@@ -168,11 +166,11 @@ function NuevoAnimal() {
 function GuardarAnimal() {
     let animalID = document.getElementById("AnimalID").value;
     let tipoAnimalID = document.getElementById("TipoAnimalID").value;
+    let establecimientoID = document.getElementById("EstablecimientoID").value;
     let caravana = document.getElementById("Caravana").value;
     let apodo = document.getElementById("Apodo").value;
     let nombrePadre = document.getElementById("NombrePadre").value;
     let nombreMadre = document.getElementById("NombreMadre").value;
-    let establecimiento = document.getElementById("Establecimiento").value;
     let fechaNacimiento = document.getElementById("FechaNacimiento").value;
 
     // mensaje de error
@@ -180,7 +178,7 @@ function GuardarAnimal() {
     if (!caravana) camposFaltantes.push("Caravana");
     if (!animalID) camposFaltantes.push("ID del Animal");
     if (!tipoAnimalID) camposFaltantes.push("Tipo de Animal");
-    if (!establecimiento) camposFaltantes.push("Establecimiento");
+    if (!establecimientoID) camposFaltantes.push("ID del Establecimiento");
     if (!fechaNacimiento) camposFaltantes.push("Fecha de Nacimiento");
 
     // Verificar si hay campos faltantes
@@ -204,7 +202,7 @@ function GuardarAnimal() {
             apodo: apodo,
             nombrePadre: nombrePadre,
             nombreMadre: nombreMadre,
-            establecimiento: establecimiento,
+            establecimientoID: establecimientoID,
             fechaNacimiento: fechaNacimiento
         },
         type: 'POST',
@@ -266,7 +264,7 @@ function ModalEditarAnimal(animalID) {
             document.getElementById("Apodo").value = animal.apodo;
             document.getElementById("NombrePadre").value = animal.nombrePadre;
             document.getElementById("NombreMadre").value = animal.nombreMadre;
-            document.getElementById("Establecimiento").value = animal.establecimiento;
+            document.getElementById("EstablecimientoID").value = animal.establecimientoID;
 
 
             let fechaNacimiento = new Date(animal.fechaNacimiento);

@@ -80,33 +80,43 @@ public class EstablecimientosController : Controller
     }
 
     public JsonResult CrearEstablecimientos(int establecimientoID, string nombreEstablecimiento, int localidadID)
-    {
-        nombreEstablecimiento = nombreEstablecimiento.ToUpper();
+{
+    nombreEstablecimiento = nombreEstablecimiento.ToUpper();
 
-        if (establecimientoID == 0)
+    // Verificar si ya existe un establecimiento con el mismo nombre
+    var establecimientoExistente = _context.Establecimientos
+        .FirstOrDefault(e => e.NombreEstablecimiento == nombreEstablecimiento && e.LocalidadID == localidadID);
+
+    if (establecimientoExistente != null && establecimientoExistente.EstablecimientoID != establecimientoID)
+    {
+        // Si el nombre ya existe, devolver un error
+        return Json(new { success = false, message = "Ya existe un establecimiento con el mismo nombre en esta localidad." });
+    }
+
+    if (establecimientoID == 0)
+    {
+        var establecimiento = new Establecimiento
         {
-            var establecimiento = new Establecimiento
-            {
-                LocalidadID = localidadID,
-                NombreEstablecimiento = nombreEstablecimiento,
-            };
-            _context.Add(establecimiento);
+            LocalidadID = localidadID,
+            NombreEstablecimiento = nombreEstablecimiento,
+        };
+        _context.Add(establecimiento);
+        _context.SaveChanges();
+    }
+    else
+    {
+        var establecimientoEditar = _context.Establecimientos.SingleOrDefault(p => p.EstablecimientoID == establecimientoID);
+        if (establecimientoEditar != null)
+        {
+            establecimientoEditar.LocalidadID = localidadID;
+            establecimientoEditar.NombreEstablecimiento = nombreEstablecimiento;
+
             _context.SaveChanges();
         }
-        else
-        {
-            var establecimientoEditar = _context.Establecimientos.SingleOrDefault(p => p.EstablecimientoID == establecimientoID);
-            if (establecimientoEditar != null)
-            {
-                establecimientoEditar.LocalidadID = localidadID;
-                establecimientoEditar.NombreEstablecimiento = nombreEstablecimiento;
-
-                _context.SaveChanges();
-            }
-        }
-
-        return Json(new { success = true });
     }
+
+    return Json(new { success = true });
+}
 
     public JsonResult EliminarEstablecimientos(int establecimientoID)
     {

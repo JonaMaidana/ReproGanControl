@@ -124,7 +124,7 @@ public class EstablecimientosController : Controller
 
         if (isInUse)
         {
-            return Json(new { success = false, message = "El Establecimiento está en uso en otra parte y no puede ser eliminada." });
+            return Json(new { success = false, message = "El Establecimiento está asignado a un Animal y no puede ser eliminado." });
         }
 
         var establecimiento = _context.Establecimientos.Find(establecimientoID);

@@ -264,6 +264,17 @@ public class EventosController : Controller
         return Json(new { success = true });
     }
 
+  public JsonResult BuscarAnimales(string term)
+{
+    // Filtra los animales según el término de búsqueda
+    var animales = _context.Animales
+        .Where(a => a.Caravana.Contains(term)) // Asegúrate de que "Caravana" es la propiedad correcta
+        .Select(a => new { a.AnimalID, a.Caravana }) // Asegúrate de que estas propiedades existan
+        .ToList();
+
+    return Json(animales);
+}
+
     public JsonResult EliminarEvento(int eventoID)
     {
         var evento = _context.Eventos.Find(eventoID);

@@ -79,10 +79,10 @@
                                 <!-- Caravana y Tipo de Evento -->
                                 <div class="row mb-3">
                                     <div class="col-md-6 mb-3">
-                                        <label for="AnimalID" class="form-label">Caravana <span
-                                                class="required-asterisk">*</span></label>
-                                        @Html.DropDownList("AnimalID", (SelectList)ViewBag.AnimalID, htmlAttributes: new
-                                            { @class = "form-control" })
+                                        <label for="searchAnimal" class="form-label">Caravana <span class="required-asterisk">*</span></label>
+        <input type="text" id="searchAnimal" class="form-control" placeholder="Buscar Animal..." />
+        <ul id="animalResults" class="list-group mt-2" style="display: none;"></ul> <!-- Ocultamos la lista inicialmente -->
+        <input type="hidden" id="AnimalID" name="AnimalID" /> <!-- Campo oculto para el AnimalID -->
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="TipoEvento" class="form-label">Tipo de Evento <span

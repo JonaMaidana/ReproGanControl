@@ -392,7 +392,7 @@ function configurarFechaActual() {
     fechaInput.setAttribute('min', hoy); // Restringir la selección a partir de la fecha actual
 }
 
-document.getElementById("FechaAproximadaSecado").addEventListener("change", function() {
+document.getElementById("FechaAproximadaSecado").addEventListener("change", function () {
     const fechaSecadoInput = document.getElementById("FechaAproximadaSecado").value;
 
     if (fechaSecadoInput) {
@@ -414,7 +414,7 @@ function updateTotalItemsEventos() {
 
 function LimpiarModalEvento() {
     // Restablecer valores de campos generales
-    document.querySelector("#AnimalID").value = 0;
+    document.querySelector("#searchAnimal").value = "";
     document.querySelector("#TipoEvento").value = 0;
     document.querySelector("#Observacion").value = "";
 
@@ -475,57 +475,67 @@ function mostrarCamposPorTipoEvento() {
             "divMotivoMuerte", "divEspecifiqueOtro"
         ];
         campos.forEach(campo => {
-            document.querySelector(`#${campo}`).style.display = "none";
+            const elemento = document.querySelector(`#${campo}`);
+            if (elemento) {
+                elemento.style.display = "none"; // Asegurarse de ocultar
+                console.log(`Ocultando: ${campo}`); // Depuración
+            }
         });
     };
-
-    // Ocultar todos los campos
     ocultarCampos();
 
-    // Mostrar solo el campo correspondiente al evento seleccionado
+
     switch (tipoEvento) {
         case '1': // Parto
             document.querySelector("#divTipoParto").style.display = "block";
             document.querySelector("#divTipoCria").style.display = "block";
             document.querySelector("#divEstadoCria").style.display = "block";
+            console.log('Mostrando campos de parto');
             break;
         case '2': // Preñez
-            document.querySelector("#divPreñezFechSecado").style.display = "block";
-            document.querySelector("#divPreñezFechParicion").style.display = "block";
+            const divPreñezFechSecado = document.querySelector("#divPreñezFechSecado");
+            const divPreñezFechParicion = document.querySelector("#divPreñezFechParicion");
+            if (divPreñezFechSecado && divPreñezFechParicion) {
+                divPreñezFechSecado.style.display = "flex"; // Alinearlos en flex
+                divPreñezFechParicion.style.display = "inline-block"; // Mostrar parición como bloque
+                console.log('Mostrando campos de preñez');
+            }
             break;
         case '3': // Aborto
             document.querySelector("#divCausaAborto").style.display = "block";
+            console.log('Mostrando campo de aborto');
             break;
         case '4': // Servicio
             document.querySelector("#divTipoInseminacion").style.display = "block";
+            console.log('Mostrando campo de servicio');
 
-            // Mostrar campo Toro o Detalle del Toro dependiendo del tipo de inseminación
             const tipoInseminacion = document.querySelector("#TipoInseminacion").value;
-            if (tipoEvento === '4' && tipoInseminacion === '1') { // Servicio y Monta
+            if (tipoInseminacion === '1') { // Servicio y Monta
                 document.querySelector("#divToroID").style.display = "block";
                 document.querySelector("#divDetalleToro").style.display = "none";
-            } else if (tipoEvento === '4' && tipoInseminacion === '2') { // Servicio y Artificial
+            } else if (tipoInseminacion === '2') { // Servicio y Artificial
                 document.querySelector("#divToroID").style.display = "none";
                 document.querySelector("#divDetalleToro").style.display = "block";
-            } else {
-                document.querySelector("#divToroID").value = "0"; // Limpiar el valor del campo ToroID
-                document.querySelector("#divToroID").style.display = "none";
             }
             break;
         case '7': // Venta
             document.querySelector("#divMotivoVenta").style.display = "block";
+            console.log('Mostrando campo de venta');
             break;
         case '8': // Rechazo
             document.querySelector("#divCausaRechazo").style.display = "block";
+            console.log('Mostrando campo de rechazo');
             break;
         case '9': // Muerte
             document.querySelector("#divMotivoMuerte").style.display = "block";
+            console.log('Mostrando campo de muerte');
             break;
         case '10': // Otro
             document.querySelector("#divEspecifiqueOtro").style.display = "block";
+            console.log('Mostrando campo de otro');
             break;
         default:
-            // Ningún campo específico es requerido para otros tipos de eventos
+            console.log('No hay campos para mostrar en este tipo de evento');
             break;
     }
 
@@ -547,3 +557,46 @@ function mostrarCamposPorTipoEvento() {
         }
     });
 }
+
+$(document).ready(function () {
+    // Manejar el evento de entrada en el campo de búsqueda
+    $('#searchAnimal').on('input', function () {
+        var searchTerm = $(this).val(); // Obtener el valor del campo de búsqueda
+        if (searchTerm.length >= 2) { // Solo buscar si hay 2 caracteres o más
+            $.ajax({
+                url: '../../Eventos/BuscarAnimales', // Usa la URL correcta
+                type: 'GET', // Tipo de solicitud
+                data: { term: searchTerm }, // Parámetros de la solicitud
+                success: function (data) {
+                    var results = $('#animalResults'); // Elemento donde se mostrarán los resultados
+                    results.empty(); // Limpiar resultados anteriores
+                    if (data.length > 0) { // Si hay resultados
+                        $.each(data, function (index, animal) {
+                            console.log(animal); // Verifica los datos de cada animal
+                            results.append('<li class="list-group-item animal-item" data-id="' + animal.animalID + '">' + animal.caravana + '</li>');
+                        });
+                        results.show(); // Mostrar resultados
+                    } else {
+                        results.append('<li class="list-group-item">No se encontraron animales</li>'); // Mensaje si no hay resultados
+                        results.show(); // Mostrar resultados
+                    }
+                },
+                error: function () {
+                    alert('Error al buscar los animales'); // Mensaje de error en caso de fallo
+                }
+            });
+        } else {
+            $('#animalResults').empty(); // Limpiar resultados si hay menos de 2 caracteres
+        }
+    });
+
+    // Manejar el clic en un elemento de la lista
+    $(document).on('click', '.animal-item', function () {
+        var animalId = $(this).data('id'); // Obtener el AnimalID del elemento clicado
+        var animalName = $(this).text(); // Obtener el nombre de la caravana
+
+        $('#searchAnimal').val(animalName); // Poner el nombre de la caravana en el campo de búsqueda
+        $('#animalResults').empty().hide(); // Limpiar y ocultar la lista de resultados
+        $('#AnimalID').val(animalId); // Asignar el AnimalID al campo oculto del formulario
+    });
+});

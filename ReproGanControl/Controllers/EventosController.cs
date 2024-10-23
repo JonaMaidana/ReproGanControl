@@ -267,12 +267,11 @@ public class EventosController : Controller
  public JsonResult BuscarAnimales(string BuscarAnimales)
 {
     // Filtra los animales según el término de búsqueda
-    var animales = _context.Animales.Include(t => t.TipoAnimal)
+    var animales = _context.Animales
         .Where(a => a.Caravana.Contains(BuscarAnimales)) // Filtra por Caravana
         .Select(a => new {
             a.AnimalID,
             a.Caravana,
-            TipoAnimalNombre = a.TipoAnimal.Descripcion
         })
         .ToList();
 

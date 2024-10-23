@@ -78,7 +78,7 @@
                                 <input type="hidden" id="EventoID" value="0" />
 
                                 <div class="row mb-3">
-                                    <div class="col-md-6 mb-3" style="position: relative;">
+                                    <div class="col-md-4 mb-3" style="position: relative;">
                                         <label for="BuscarAnimal" class="form-label">Caravana <span
                                                 class="required-asterisk">*</span></label>
                                         <input type="text" id="BuscarAnimal" style="text-transform: uppercase;"
@@ -86,14 +86,12 @@
                                         <ul id="AnimalResultados" class="list-group mt-2" style="display: none;"></ul>
                                         <input type="hidden" id="AnimalID" animalNombre="AnimalID" />
                                     </div>
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="FechaEvento" class="form-label">Fecha de evento <span
                                                 class="required-asterisk">*</span></label>
                                         <input type="date" class="form-control" id="FechaEvento">
                                     </div>
-                                </div>
-                                <div class="row mb3">
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="TipoEvento" class="form-label">Tipo de Evento <span
                                                 class="required-asterisk">*</span></label>
                                         @Html.DropDownList("TipoEvento", (SelectList)ViewBag.TipoEventoID,
@@ -104,74 +102,113 @@
                                                  "mostrarCamposPorTipoEvento()"
                                                  })
                                     </div>
-                                    <div id="divTipoParto" class="col-md-6 mb-3" style="display:none;">
+                                </div>
+                                <!-- Aborto -->
+                                <div id="divCausaAborto" class="col-md-12 mb-3" style="display:none;">
+                                    <div>
+                                        <label for="CausaAborto" class="form-label">Causa <span
+                                                class="required-asterisk">*</span></label>
+                                        <input type="text" class="form-control" id="CausaAborto"
+                                            style="text-transform: uppercase;" placeholder="Causa del aborto" />
+                                    </div>
+                                </div>
+                                <!-- Muerte -->
+                                <div id="divMotivoMuerte" class="col-md-12 mb-3" style="display:none;">
+                                    <div>
+                                        <label for="MotivoMuerte" class="form-label">Motivo Muerte <span
+                                                class="required-asterisk">*</span></label>
+                                        <input type="text" class="form-control" id="MotivoMuerte"
+                                            style="text-transform: uppercase;" placeholder="Causa de la muerte" />
+                                    </div>
+                                </div>
+                                <!-- Otro -->
+                                <div id="divEspecifiqueOtro" class="col-md-12 mb-3" style="display:none;">
+                                    <div>
+                                        <label for="EspecifiqueOtro" class="form-label">Especifique <span
+                                                class="required-asterisk">*</span></label>
+                                        <input type="text" class="form-control" id="EspecifiqueOtro"
+                                            style="text-transform: uppercase;" placeholder="Especifique el motivo" />
+                                    </div>
+                                </div>
+                                <!-- Preñez -->
+                                <div class="row mb-3" id="divPreñezFechSecado" style="display:none;">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="FechaAproximadaSecado" class="form-label">Fecha Aprox Secado
+                                            <span class="required-asterisk">*</span></label>
+                                        <input type="date" class="form-control" id="FechaAproximadaSecado">
+                                    </div>
+                                    <div class="col-md-6 mb-3 " id="divPreñezFechParicion" style="display:none;">
+                                        <label for="FechaAproximadaParicion" class="form-label">Fecha Aprox Parición
+                                            <span class="required-asterisk">*</span></label>
+                                        <input type="date" class="form-control" id="FechaAproximadaParicion">
+                                    </div>
+                                </div>
+                                <!-- Rechazo -->
+                                <div id="divCausaRechazo" class="col-md-12 mb-3" style="display:none;">
+                                    <div>
+                                        <label for="CausaRechazo" class="form-label">Causa Rechazo <span
+                                                class="required-asterisk">*</span></label>
+                                        <input type="text" class="form-control" id="CausaRechazo"
+                                            style="text-transform: uppercase;" placeholder="Causa del rechazo" />
+                                    </div>
+                                </div>
+                                <!-- Venta -->
+                                <div id="divMotivoVenta" class="col-md-12 mb-3" style="display:none;">
+                                    <div>
+                                        <label for="MotivoVenta" class="form-label">Motivo Venta <span
+                                                class="required-asterisk">*</span></label>
+                                        <input type="text" class="form-control" id="MotivoVenta"
+                                            style="text-transform: uppercase;" placeholder="Motivo de la venta" />
+                                    </div>
+                                </div>
+                                     <!-- Servicio -->
+                                <div class="row mb-3" id="divTipoInseminacion" style="display:none;">
+                                    <div class="d-flex align-items-end gap-3 ">
+                                        <!-- Contenedor flex para alinear elementos -->
+                                        <div class="col-md-5 mb-3">
+                                            <label for="TipoInseminacion" class="form-label">Tipo de Inseminación <span
+                                                    class="required-asterisk">*</span></label>
+                                            @Html.DropDownList("TipoInseminacion",
+                                                     (SelectList)ViewBag.TipoInseminacionID, htmlAttributes: new
+                                                     {
+                                                         @class =
+                                                     "form-control"
+                                                     })
+                                        </div>
+
+                                        <div class="col-md-5 mb-3" id="divToroID" style="display:none;">
+                                            <label for="ToroID" class="form-label">Buscar Toro <span
+                                                    class="required-asterisk">*</span></label>
+                                            @Html.DropDownList("ToroID", (SelectList)ViewBag.ToroID, htmlAttributes: new
+                                                { @class = "form-control" })
+                                        </div>
+
+                                        <div class="col-md-5 mb-3" id="divDetalleToro" style="display:none;">
+                                            <label for="DetalleToro" class="form-label">Detalle Inseminación Artificial
+                                                <span class="required-asterisk">*</span></label>
+                                            <input type="text" class="form-control" id="DetalleToro"
+                                                style="text-transform: uppercase;" placeholder="Agregar Detalle" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- TipoParto -->
+                                <div class="row mb-3">
+                                    <div id="divTipoParto" class="col-md-12 mb-3" style="display:none;">
                                         <label for="TipoParto" class="form-label">Tipo Parto <span
                                                 class="required-asterisk">*</span></label>
                                         <input type="text" style="text-transform: uppercase;" class="form-control"
                                             id="TipoParto" placeholder="Tipo de parto" />
                                     </div>
-                                    <!-- Aborto -->
-                                    <div id="divCausaAborto" class="col-md-6 mb-3" style="display:none;">
-                                        <div>
-                                            <label for="CausaAborto" class="form-label">Causa <span
-                                                    class="required-asterisk">*</span></label>
-                                            <input type="text" class="form-control" id="CausaAborto"
-                                                style="text-transform: uppercase;" placeholder="Causa del aborto" />
-                                        </div>
-                                    </div>
-                                    <!-- Venta -->
-                                    <div id="divMotivoVenta" class="col-md-6 mb-3" style="display:none;">
-                                        <div>
-                                            <label for="MotivoVenta" class="form-label">Motivo Venta <span
-                                                    class="required-asterisk">*</span></label>
-                                            <input type="text" class="form-control" id="MotivoVenta"
-                                                style="text-transform: uppercase;" placeholder="Motivo de la venta" />
-                                        </div>
-                                    </div>
-
-                                    <!-- Rechazo -->
-                                    <div id="divCausaRechazo" class="col-md-6 mb-3" style="display:none;">
-                                        <div>
-                                            <label for="CausaRechazo" class="form-label">Causa Rechazo <span
-                                                    class="required-asterisk">*</span></label>
-                                            <input type="text" class="form-control" id="CausaRechazo"
-                                                style="text-transform: uppercase;" placeholder="Causa del rechazo" />
-                                        </div>
-                                    </div>
-
-                                    <!-- Muerte -->
-                                    <div id="divMotivoMuerte" class="col-md-6 mb-3" style="display:none;">
-                                        <div>
-                                            <label for="MotivoMuerte" class="form-label">Motivo Muerte <span
-                                                    class="required-asterisk">*</span></label>
-                                            <input type="text" class="form-control" id="MotivoMuerte"
-                                                style="text-transform: uppercase;" placeholder="Causa de la muerte" />
-                                        </div>
-                                    </div>
-
-                                    <!-- Otro -->
-                                    <div id="divEspecifiqueOtro" class="col-md-6 mb-3" style="display:none;">
-                                        <div>
-                                            <label for="EspecifiqueOtro" class="form-label">Especifique <span
-                                                    class="required-asterisk">*</span></label>
-                                            <input type="text" class="form-control" id="EspecifiqueOtro"
-                                                style="text-transform: uppercase;"
-                                                placeholder="Especifique el motivo" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div>
                                     <div class="row mb-3">
                                         <!-- TipoCria -->
-                                        <div class="col-md-6 mb-3" id="divTipoCria" style="display:none;">
+                                        <div class="col-md-6 " id="divTipoCria" style="display:none;">
                                             <label for="TipoCria" class="form-label">Tipo Cría <span
                                                     class="required-asterisk">*</span></label>
                                             @Html.DropDownList("TipoCria", (SelectList)ViewBag.TipoCriaID,
                                                      htmlAttributes: new { @class = "form-control" })
                                         </div>
                                         <!-- EstadoCria -->
-                                        <div class="col-md-6 mb-3" id="divEstadoCria" style="display:none;">
+                                        <div class="col-md-6 " id="divEstadoCria" style="display:none;">
                                             <label for="EstadoCria" class="form-label">Estado Cría <span
                                                     class="required-asterisk">*</span></label>
                                             @Html.DropDownList("EstadoCria", (SelectList)ViewBag.EstadoCriaID,
@@ -179,49 +216,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- Preñez -->
-                                <div id="divPreñezFechSecado" class="row mb-3" style="display:none;">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="FechaAproximadaSecado" class="form-label">Fecha Aprox Secado
-                                            <span class="required-asterisk">*</span></label>
-                                        <input type="date" class="form-control" id="FechaAproximadaSecado">
-                                    </div>
-                                    <div class="col-md-6 mb-3" id="divPreñezFechParicion" style="display:none;">
-                                        <label for="FechaAproximadaParicion" class="form-label">Fecha Aprox Parición
-                                            <span class="required-asterisk">*</span></label>
-                                        <input type="date" class="form-control" id="FechaAproximadaParicion">
-                                    </div>
-                                </div>
-
-                                <!-- Servicio -->
-                                <div id="divTipoInseminacion" class="row mb-3" style="display:none;">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="TipoInseminacion" class="form-label">Tipo de Inseminación <span
-                                                class="required-asterisk">*</span></label>
-                                        @Html.DropDownList("TipoInseminacion",
-                                                 (SelectList)ViewBag.TipoInseminacionID, htmlAttributes: new
-                                                 {
-                                                     @class =
-                                                 "form-control"
-                                                 })
-                                    </div>
-                                    <div class="col-md-6 mb-3" id="divToroID" style="display:none;">
-                                        <label for="ToroID" class="form-label">Buscar Toro <span
-                                                class="required-asterisk">*</span></label>
-                                        @Html.DropDownList("ToroID", (SelectList)ViewBag.ToroID, htmlAttributes: new
-                                            { @class = "form-control" })
-                                    </div>
-                                </div>
-                                <div class="row mb-3" id="divDetalleToro" style="display:none;">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="DetalleToro" class="form-label">Detalle Inseminación Artificial
-                                            <span class="required-asterisk">*</span></label>
-                                        <input type="text" class="form-control" id="DetalleToro"
-                                            style="text-transform: uppercase;" placeholder="Agregar Detalle" />
-                                    </div>
-                                </div>
-
                                 <!-- Observación -->
                                 <div class="mb-3">
                                     <label for="Observacion" class="form-label">Observación</label>

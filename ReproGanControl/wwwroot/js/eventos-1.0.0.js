@@ -414,7 +414,7 @@ function updateTotalItemsEventos() {
 
 function LimpiarModalEvento() {
     // Restablecer valores de campos generales
-    
+
     document.querySelector("#TipoEvento").value = 0;
     document.querySelector("#Observacion").value = "";
 
@@ -477,13 +477,12 @@ function mostrarCamposPorTipoEvento() {
         campos.forEach(campo => {
             const elemento = document.querySelector(`#${campo}`);
             if (elemento) {
-                elemento.style.display = "none"; // Asegurarse de ocultar
-                console.log(`Ocultando: ${campo}`); // Depuración
+                elemento.style.display = "none";
+                console.log(`Ocultando: ${campo}`);
             }
         });
     };
     ocultarCampos();
-
 
     switch (tipoEvento) {
         case '1': // Parto
@@ -496,8 +495,8 @@ function mostrarCamposPorTipoEvento() {
             const divPreñezFechSecado = document.querySelector("#divPreñezFechSecado");
             const divPreñezFechParicion = document.querySelector("#divPreñezFechParicion");
             if (divPreñezFechSecado && divPreñezFechParicion) {
-                divPreñezFechSecado.style.display = "flex"; // Alinearlos en flex
-                divPreñezFechParicion.style.display = "inline-block"; // Mostrar parición como bloque
+                divPreñezFechSecado.style.display = "flex";
+                divPreñezFechParicion.style.display = "inline-block";
                 console.log('Mostrando campos de preñez');
             }
             break;
@@ -507,16 +506,8 @@ function mostrarCamposPorTipoEvento() {
             break;
         case '4': // Servicio
             document.querySelector("#divTipoInseminacion").style.display = "block";
-            console.log('Mostrando campo de servicio');
-
             const tipoInseminacion = document.querySelector("#TipoInseminacion").value;
-            if (tipoInseminacion === '1') { // Servicio y Monta
-                document.querySelector("#divToroID").style.display = "block";
-                document.querySelector("#divDetalleToro").style.display = "none";
-            } else if (tipoInseminacion === '2') { // Servicio y Artificial
-                document.querySelector("#divToroID").style.display = "none";
-                document.querySelector("#divDetalleToro").style.display = "block";
-            }
+            actualizarCamposInseminacion(tipoInseminacion);
             break;
         case '7': // Venta
             document.querySelector("#divMotivoVenta").style.display = "block";
@@ -538,25 +529,32 @@ function mostrarCamposPorTipoEvento() {
             console.log('No hay campos para mostrar en este tipo de evento');
             break;
     }
-
-    // Actualizar la visibilidad del campo ToroID y divDetalleToro cuando cambia el tipo de inseminación
-    const tipoInseminacionElement = document.querySelector("#TipoInseminacion");
-    tipoInseminacionElement.addEventListener("change", () => {
-        const tipoInseminacionValue = tipoInseminacionElement.value;
-        if (tipoEvento === '4' && tipoInseminacionValue === "1") { // Servicio y Monta
-            document.querySelector("#divToroID").style.display = "block";
-            document.querySelector("#divDetalleToro").style.display = "none";
-        } else if (tipoEvento === '4' && tipoInseminacionValue === "2") { // Servicio y Artificial
-            document.querySelector("#divToroID").style.display = "none";
-            document.querySelector("#divDetalleToro").style.display = "block";
-        } else {
-            document.querySelector("#divToroID").value = "0"; // Limpiar el valor del campo ToroID
-            document.querySelector("#divToroID").style.display = "none";
-            document.querySelector("#divDetalleToro").value = ""; // Limpiar el valor del campo DetalleToro
-            document.querySelector("#divDetalleToro").style.display = "none";
-        }
-    });
 }
+
+function actualizarCamposInseminacion(tipoInseminacionValue) {
+    const divToroID = document.querySelector("#divToroID");
+    const divDetalleToro = document.querySelector("#divDetalleToro");
+
+    // Primero ocultamos ambos
+    divToroID.style.display = "none";
+    divDetalleToro.style.display = "none";
+
+    if (tipoInseminacionValue === "1") { // Servicio y Monta
+        divToroID.style.display = "block";
+    } else if (tipoInseminacionValue === "2") { // Servicio y Artificial
+        divDetalleToro.style.display = "block";
+    }
+}
+
+// Event listener para el cambio de tipo de inseminación (fuera de la función principal)
+document.addEventListener('DOMContentLoaded', () => {
+    const tipoInseminacionElement = document.querySelector("#TipoInseminacion");
+    if (tipoInseminacionElement) {
+        tipoInseminacionElement.addEventListener("change", (e) => {
+            actualizarCamposInseminacion(e.target.value);
+        });
+    }
+});
 
 $(document).ready(function () {
     // Manejar el evento de entrada en el campo de búsqueda
@@ -574,7 +572,7 @@ $(document).ready(function () {
                     if (data.length > 0) { // Si hay resultados
                         $.each(data, function (index, animal) {
                             console.log(animal); // Verifica los datos de cada animal
-                            resultado.append('<li class="list-group-item animal-item" data-id="' + animal.animalID + '">' + animal.caravana + ' - ' + animal.descripcion + '</li>');
+                            resultado.append('<li class="list-group-item animal-item" data-id="' + animal.animalID + '">' + animal.caravana + '</li>');
                         });
                         resultado.show(); // Mostrar resultados
                     } else {

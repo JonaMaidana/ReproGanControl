@@ -414,7 +414,7 @@ function updateTotalItemsEventos() {
 
 function LimpiarModalEvento() {
     // Restablecer valores de campos generales
-    document.querySelector("#searchAnimal").value = "";
+    
     document.querySelector("#TipoEvento").value = 0;
     document.querySelector("#Observacion").value = "";
 
@@ -560,25 +560,26 @@ function mostrarCamposPorTipoEvento() {
 
 $(document).ready(function () {
     // Manejar el evento de entrada en el campo de búsqueda
-    $('#searchAnimal').on('input', function () {
-        var searchTerm = $(this).val(); // Obtener el valor del campo de búsqueda
-        if (searchTerm.length >= 2) { // Solo buscar si hay 2 caracteres o más
+    $('#BuscarAnimal').on('input', function () {
+        var buscarAnimal = $(this).val(); // Obtener el valor del campo de búsqueda
+        if (buscarAnimal.length >= 2) { // Solo buscar si hay 2 caracteres o más
             $.ajax({
                 url: '../../Eventos/BuscarAnimales', // Usa la URL correcta
                 type: 'GET', // Tipo de solicitud
-                data: { term: searchTerm }, // Parámetros de la solicitud
+                data: { BuscarAnimales: buscarAnimal }, // Parámetros de la solicitud
                 success: function (data) {
-                    var results = $('#animalResults'); // Elemento donde se mostrarán los resultados
-                    results.empty(); // Limpiar resultados anteriores
+                    console.log(data); // Verifica la estructura de datos
+                    var resultado = $('#AnimalResultados'); // Elemento donde se mostrarán los resultados
+                    resultado.empty(); // Limpiar resultados anteriores
                     if (data.length > 0) { // Si hay resultados
                         $.each(data, function (index, animal) {
                             console.log(animal); // Verifica los datos de cada animal
-                            results.append('<li class="list-group-item animal-item" data-id="' + animal.animalID + '">' + animal.caravana + '</li>');
+                            resultado.append('<li class="list-group-item animal-item" data-id="' + animal.animalID + '">' + animal.caravana + ' - ' + animal.descripcion + '</li>');
                         });
-                        results.show(); // Mostrar resultados
+                        resultado.show(); // Mostrar resultados
                     } else {
-                        results.append('<li class="list-group-item">No se encontraron animales</li>'); // Mensaje si no hay resultados
-                        results.show(); // Mostrar resultados
+                        resultado.append('<li class="list-group-item">No se encontraron animales</li>'); // Mensaje si no hay resultados
+                        resultado.show(); // Mostrar resultados
                     }
                 },
                 error: function () {
@@ -586,17 +587,17 @@ $(document).ready(function () {
                 }
             });
         } else {
-            $('#animalResults').empty(); // Limpiar resultados si hay menos de 2 caracteres
+            $('#AnimalResultados').empty(); // Limpiar resultados si hay menos de 2 caracteres
         }
     });
 
     // Manejar el clic en un elemento de la lista
     $(document).on('click', '.animal-item', function () {
-        var animalId = $(this).data('id'); // Obtener el AnimalID del elemento clicado
-        var animalName = $(this).text(); // Obtener el nombre de la caravana
+        var animalID = $(this).data('id'); // Obtener el AnimalID del elemento clicado
+        var animalNombre = $(this).text(); // Obtener el nombre de la caravana
 
-        $('#searchAnimal').val(animalName); // Poner el nombre de la caravana en el campo de búsqueda
-        $('#animalResults').empty().hide(); // Limpiar y ocultar la lista de resultados
-        $('#AnimalID').val(animalId); // Asignar el AnimalID al campo oculto del formulario
+        $('#BuscarAnimal').val(animalNombre); // Poner el nombre de la caravana en el campo de búsqueda
+        $('#AnimalResultados').empty().hide(); // Limpiar y ocultar la lista de resultados
+        $('#AnimalID').val(animalID); // Asignar el AnimalID al campo oculto del formulario
     });
-});
+}); 

@@ -749,3 +749,17 @@ main {
   cursor: not-allowed; /* Cursor no permitido */
   border: 1px solid #dee2e6; /* Borde gris claro */
 }
+
+#AnimalResultados {
+  position: absolute;    /* Posición absoluta respecto al contenedor padre */
+  top: 100%;             /* Alinea el ul justo debajo del campo de búsqueda */
+  left: 0;               /* Alinea a la izquierda */
+  width: 100%;           /* Asegura que el ul tenga el mismo ancho que el input */
+  max-height: 200px;     /* Altura máxima con scroll */
+  overflow-y: auto;      /* Scroll si el contenido excede */
+  background-color: white; /* Fondo blanco para que resalte */
+  z-index: 1000;         /* Asegura que esté sobre otros elementos */
+  list-style-type: none; /* Elimina los marcadores de lista */
+  padding: 0;
+  margin: 0;
+}

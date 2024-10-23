@@ -35,8 +35,8 @@ public class EventosController : Controller
         {
             Value = ((int)e).ToString(), // Usa la conversión a entero si trabajas con valores numéricos
             Text = e.ToString().ToUpper()
-        }));
-
+        })
+        .OrderBy(item => item.Text));
         // Configurar ViewBag para los estados
         ViewBag.TipoEventoID = new SelectList(estadoSelectListItems, "Value", "Text");
 
@@ -264,12 +264,16 @@ public class EventosController : Controller
         return Json(new { success = true });
     }
 
-  public JsonResult BuscarAnimales(string term)
+ public JsonResult BuscarAnimales(string BuscarAnimales)
 {
     // Filtra los animales según el término de búsqueda
-    var animales = _context.Animales
-        .Where(a => a.Caravana.Contains(term)) // Asegúrate de que "Caravana" es la propiedad correcta
-        .Select(a => new { a.AnimalID, a.Caravana }) // Asegúrate de que estas propiedades existan
+    var animales = _context.Animales.Include(t => t.TipoAnimal)
+        .Where(a => a.Caravana.Contains(BuscarAnimales)) // Filtra por Caravana
+        .Select(a => new {
+            a.AnimalID,
+            a.Caravana,
+            TipoAnimalNombre = a.TipoAnimal.Descripcion
+        })
         .ToList();
 
     return Json(animales);

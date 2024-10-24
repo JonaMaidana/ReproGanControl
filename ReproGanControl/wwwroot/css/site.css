@@ -314,7 +314,6 @@ html, body {
 
 #sidebar.closed + #page-content-wrapper {
   margin-left: 0; /* Ajusta el margen cuando el sidebar está cerrado */
-  opacity: 0.9; /* Cambia ligeramente la opacidad cuando el sidebar está cerrado */
 }
 
 /* Estilos para el contenido principal */

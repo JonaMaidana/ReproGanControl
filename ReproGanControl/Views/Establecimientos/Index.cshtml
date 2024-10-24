@@ -5,8 +5,8 @@
 <div class="card" style="font-family: 'Arial', sans-serif;">
     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
         <h3 class="display-6" style="color: #555;">Establecimientos</h3>
-        <button type="button" class="btn-agregar" title="Agregar Establecimiento" onclick="CrearEstablecimiento()" data-bs-toggle="modal"
-            data-bs-target="#ModalEstablecimiento">
+        <button type="button" class="btn-agregar" title="Agregar Establecimiento" onclick="CrearEstablecimiento()"
+            data-bs-toggle="modal" data-bs-target="#ModalEstablecimiento">
             <i class="fa-solid fa-plus"></i> <span class="btn-text">Agregar Establecimiento</span>
         </button>
     </div>
@@ -34,7 +34,7 @@
 
         <div class="modal fade" data-bs-backdrop="static" id="ModalEstablecimiento" tabindex="-1"
             aria-labelledby="establecimientoModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="ModalTitulo"></h5>
@@ -44,48 +44,44 @@
                     <div class="modal-body">
                         <form>
                             <input type="hidden" id="EstablecimientoID" value="0" />
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="NombreEstablecimiento" class="form-label">Nombre Establecimiento<span
-                                            class="required-asterisk">*</span></label>
-                                    <input type="text" class="form-control" id="NombreEstablecimiento"
-                                        style="text-transform: uppercase;" placeholder="Nombre del Establecimiento" maxlength="30">
-                                </div>
-                                
+                            <div class="mb-3">
+                                <label for="NombreEstablecimiento" class="form-label">Nombre Establecimiento<span
+                                        class="required-asterisk">*</span></label>
+                                <input type="text" class="form-control" id="NombreEstablecimiento"
+                                    style="text-transform: uppercase;" placeholder="Nombre del Establecimiento"
+                                    maxlength="30">
                             </div>
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="ProvinciaID" class="form-label">Provincia <span
-                                            class="required-asterisk">*</span></label>
-                                    @Html.DropDownList("ProvinciaID", (SelectList)ViewBag.ProvinciaID, new
-                                        {
-                                            @class =
-                                             "form-control",
-                                            id = "ProvinciaID"
-                                        })
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="LocalidadID" class="form-label">Localidad <span
-                                            class="required-asterisk">*</span></label>
-                                    @Html.DropDownList("LocalidadID", (SelectList)ViewBag.LocalidadID, new
-                                        {
-                                            @class =
-                                             "form-control",
-                                            id = "LocalidadID"
-                                        })
-                                </div>
+                            <div class="mb-3">
+                                <label for="ProvinciaID" class="form-label">Provincia <span
+                                        class="required-asterisk">*</span></label>
+                                @Html.DropDownList("ProvinciaID", (SelectList)ViewBag.ProvinciaID, new
+                                    {
+                                        @class =
+                                         "form-control",
+                                        id = "ProvinciaID"
+                                    })
+                            </div>
+                            <div class="mb-3">
+                                <label for="LocalidadID" class="form-label">Localidad <span
+                                        class="required-asterisk">*</span></label>
+                                @Html.DropDownList("LocalidadID", (SelectList)ViewBag.LocalidadID, new
+                                    {
+                                        @class =
+                                         "form-control",
+                                        id = "LocalidadID"
+                                    })
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer" style="display: flex; justify-content: flex-start; align-items: center;">
                         <p style="font-weight: bold; text-transform: uppercase; color: rgb(19, 18, 18); margin: 0;">
-                            Completa todos los campos requeridos antes de guardar <span
-                                class="required-asterisk">*</span>
+                            Completar los campos<span class="required-asterisk">*</span>
                         </p>
                         <div style="margin-left: auto;">
                             <button type="button" onclick="LimpiarModal()" id="btnCancelar" class="btn btn-secondary"
                                 data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" onclick="GuardarEstablecimiento()" class="btn btn-success">Guardar</button>
+                            <button type="button" onclick="GuardarEstablecimiento()"
+                                class="btn btn-success">Guardar</button>
                         </div>
                     </div>
                 </div>
@@ -112,9 +108,9 @@
         </div>
 
         <div class="table-responsive mt-2">
-        <p class="text-primary d-block d-md-none text-center mb-3">
-            BOTÓN AZUL PARA VER MÁS DATOS
-        </p>
+            <p class="text-primary d-block d-md-none text-center mb-3">
+                BOTÓN AZUL PARA VER MÁS DATOS
+            </p>
             <table id="tabla-imprimir" class="content-table">
                 <thead>
                     <tr>

@@ -30,7 +30,7 @@ namespace ReproGanControl.Controllers
             // Llamar al método CrearSuperusuario
             // await CrearSuperusuario();
 
-  
+
             return View();
         }
 
@@ -53,6 +53,13 @@ namespace ReproGanControl.Controllers
             if (nombreRolCrearExiste == null)
             {
                 await _rolManager.CreateAsync(new IdentityRole("ADMINISTRADOR"));
+            }
+
+            // Crear rol USUARIO si no existe
+            var nombreRolUsuario = await _context.Roles.Where(r => r.Name == "USUARIO").SingleOrDefaultAsync();
+            if (nombreRolUsuario == null)
+            {
+                await _rolManager.CreateAsync(new IdentityRole("USUARIO"));
             }
 
             // Crear el usuario superusuario

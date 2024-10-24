@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = "Tipo de Ejercicios";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Usuarios</h1>
+</div>
+
+<div class="mb-2">
+    <button type="button" class="btn btn-success shadow" onclick="NuevoUsuari()" data-bs-toggle="modal"
+        data-bs-target="#ModalTipoEjercicio">
+        Agregar Usuario
+    </button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="ModalTipoEjercicio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="ModalTitulo"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <input type="hidden" id="TipoEjercicioID" value="0" />
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="Email del usuario">
+
+                    <label for="password" class="form-label mt-2">Contraseña</label>
+                    <input type="password" class="form-control" id="password" placeholder="Contraseña del usuario">
+
+                    <label for="rol" class="form-label mt-2">Rol</label>
+                    <select id="rol" class="form-select">
+                        <option value="USUARIO">Usuario</option>
+                        <option value="ADMINISTRADOR">Administrador</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="LimpiarUsuario()" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" onclick="GuardarUsuario()" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-hover table-bordered table-condensed shadow tabla" style="background-color: white;">
+    <thead class="table-dark">
+        <tr>
+            <th>Email</th>
+            <th>Rol</th>
+            <th style="width: 70px"></th>
+            <th style="width: 70px"></th>
+        </tr>
+    </thead>
+    <tbody id="tbody-usuarios">
+        <!-- Los usuarios se agregarán aquí -->
+    </tbody>
+</table>
+@section Scripts {
+    <script src="~/js/usuarios-1.0.0.js"></script>
+}

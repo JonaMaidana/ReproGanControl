@@ -8,7 +8,7 @@ using System.Reflection;
 using System.ComponentModel.DataAnnotations;
 
 namespace ReproGanControl.Controllers;
-[Authorize]
+ [Authorize(Roles = "ADMINISTRADOR")]
 public class PersonasController : Controller
 {
     private ApplicationDbContext _context;

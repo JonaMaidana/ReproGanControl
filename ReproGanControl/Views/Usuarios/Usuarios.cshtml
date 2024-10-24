@@ -7,13 +7,13 @@
 </div>
 
 <div class="mb-2">
-    <button type="button" class="btn btn-success shadow" onclick="NuevoUsuari()" data-bs-toggle="modal"
-        data-bs-target="#ModalTipoEjercicio">
+    <button type="button" class="btn btn-success shadow" onclick="NuevoUsuario()" data-bs-toggle="modal"
+        data-bs-target="#ModalUsuarios">
         Agregar Usuario
     </button>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="ModalTipoEjercicio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalUsuarios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -22,7 +22,7 @@
             </div>
             <div class="modal-body">
                 <div class="mb-3">
-                    <input type="hidden" id="TipoEjercicioID" value="0" />
+                    <input type="hidden" id="UsuarioID" value="0" />
                     <label for="email" class="form-label">Email</label>
                     <input type="text" class="form-control" id="email" placeholder="Email del usuario">
 
@@ -38,7 +38,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" onclick="LimpiarUsuario()" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" onclick="GuardarUsuario()" class="btn btn-primary">Guardar</button>
+                <button type="button" onclick="GuardarUsuarios()" class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </div>

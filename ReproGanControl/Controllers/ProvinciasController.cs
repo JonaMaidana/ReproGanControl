@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ReproGanControl.Controllers;
-[Authorize]
+ [Authorize(Roles = "ADMINISTRADOR")]
 public class ProvinciasController : Controller
 {
     private ApplicationDbContext _context;

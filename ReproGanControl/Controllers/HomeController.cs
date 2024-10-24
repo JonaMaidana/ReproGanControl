@@ -27,7 +27,7 @@ namespace ReproGanControl.Controllers
 
         public async Task<IActionResult> Index()
         {
-            // Llamar al método CrearSuperusuario
+
             // await CrearSuperusuario();
 
 

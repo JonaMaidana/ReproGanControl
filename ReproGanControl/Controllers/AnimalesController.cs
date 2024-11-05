@@ -235,5 +235,6 @@ public class AnimalesController : Controller
 
         return Json(vistaInformeAnimales);
     }
+
 }
 

@@ -24,37 +24,43 @@ function MostrarPersonas() {
 }
 
 function renderTablePersonas() {
-    let contenidoTabla = ``;
+    let contenidoTarjetas = ``;
 
     $.each(personasMostrar, function (index, persona) {
-        contenidoTabla += `
-        <tr>
-            <td>${persona.nombreCompleto}</td>
-            <td>${persona.numeroDocumento}</td>
-            <td class="ocultar-en-768px">${persona.fechaNacimientoString}</td>
-            <td class="ocultar-en-768px">${persona.tel}</td>
-            <td class="ocultar-en-768px">${persona.email}</td>
-            <td class="ocultar-en-768px">${persona.nombreProvincia}</td>
-            <td class="ocultar-en-768px">${persona.nombreLocalidad}</td>
-            <td class="ocultar-en-768px">${persona.domicilio}</td>
-            
-            <td class="text-center">
-                <button type="button" class="edit-button" title="Editar Persona" onclick="ModalEditarPersonas(${persona.personaID})">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-                <button type="button" class="delete-button" title="Eliminar Persona" onclick="EliminarPersona(${persona.personaID})">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-                <button type="button" class="info-button" title="Ver todos los datos" onclick="showPersonaDetails(${persona.personaID})">
-                    <i class="fa-solid fa-info-circle"></i>
-                </button>
-            </td>
-        </tr>
+        contenidoTarjetas += `
+        <div class="card-persona">
+            <div class="profile-image">
+                <img src="/img/User.png" alt="${persona.nombreCompleto}">
+            </div>
+            <div class="profile-info">
+                <h5>${persona.nombreCompleto}</h5>
+                <p>Documento: ${persona.numeroDocumento}</p>
+                <p class="ocultar-en-768px">Fecha de Nacimiento: ${persona.fechaNacimientoString}</p>
+                <p class="ocultar-en-768px">Teléfono: ${persona.tel}</p>
+                <p class="ocultar-en-768px">Email: ${persona.email}</p>
+                <p class="ocultar-en-768px">Provincia: ${persona.nombreProvincia}</p>
+                <p class="ocultar-en-768px">Localidad: ${persona.nombreLocalidad}</p>
+                <p class="ocultar-en-768px">Domicilio: ${persona.domicilio}</p>
+                <div class="text-center">
+                    <button type="button" class="btn btn-outline-success" title="Editar Persona" onclick="ModalEditarPersonas(${persona.personaID})">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" title="Eliminar Persona" onclick="EliminarPersona(${persona.personaID})">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" title="Ver todos los datos" onclick="showPersonaDetails(${persona.personaID})">
+                        <i class="fa-solid fa-info-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
         `;
     });
 
-    document.getElementById("tbody-personas").innerHTML = contenidoTabla;
+    document.getElementById("contenedor-tarjetas").innerHTML = contenidoTarjetas; // Asegúrate de tener un contenedor con este ID en tu HTML
 }
+
+
 
 function showPersonaDetails(personaID) {
     // Encuentra la persona con el ID dado

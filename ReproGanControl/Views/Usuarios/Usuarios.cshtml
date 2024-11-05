@@ -2,18 +2,31 @@
     ViewData["Title"] = "Tipo de Ejercicios";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Usuarios</h1>
-</div>
+<div class="card" style="font-family: 'Arial', sans-serif;">
+    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 class="display-6" style="color: #555;">Usuarios</h3>
+        <button type="button" class="btn-agregar" title="Agregar Usuario" onclick="NuevoUsuario()" 
+            data-bs-toggle="modal" data-bs-target="#ModalUsuarios">
+            <i class="fa-solid fa-plus"></i> <span class="btn-text">Agregar Usuario</span>
+        </button>
+    </div>
 
-<div class="mb-2">
-    <button type="button" class="btn btn-success shadow" onclick="NuevoUsuario()" data-bs-toggle="modal"
-        data-bs-target="#ModalUsuarios">
-        Agregar Usuario
-    </button>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="ModalUsuarios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <button class="btn-download" title="Descargar Datos" onclick="Imprimir()">
+                <i class="fa-solid fa-file-pdf"></i> <span class="btn-text">Descargar</span>
+            </button>
+            <div class="d-flex align-items-center">
+                <div id="table-info" class="me-3">
+                    <span id="total-items-usuarios"></span>
+                </div>
+                <nav aria-label="Page navigation example">
+                    <ul id="pagination" class="pagination mb-0"></ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="modal fade" id="ModalUsuarios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -44,19 +57,96 @@
     </div>
 </div>
 
-<table class="table table-hover table-bordered table-condensed shadow tabla" style="background-color: white;">
-    <thead class="table-dark">
-        <tr>
-            <th>Email</th>
-            <th>Rol</th>
-            <th style="width: 70px"></th>
-            <th style="width: 70px"></th>
-        </tr>
-    </thead>
-    <tbody id="tbody-usuarios">
-        <!-- Los usuarios se agregarán aquí -->
-    </tbody>
-</table>
+        <div class="table-responsive mt-2">
+            <table id="tabla-imprimir" class="content-table">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th style="width: 70px"></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-usuarios">
+                    <!-- Los usuarios se agregarán aquí -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     <script src="~/js/usuarios-1.0.0.js"></script>
+    <script>
+        function Imprimir() {
+            var doc = new jsPDF({ orientation: 'landscape' }); // Configura la orientación a horizontal
+
+            var totalPagesExp = "{total_pages_count_string}";
+            var pageContent = function (data) {
+                var pageHeight = doc.internal.pageSize.height || doc.internal.pageSize.getHeight();
+                var pageWidth = doc.internal.pageSize.width || doc.internal.pageSize.getWidth();
+
+                // FOOTER
+                var str = "Pagina " + data.pageCount;
+                if (typeof doc.putTotalPages == 'function') {
+                    str = str + " de " + totalPagesExp;
+                }
+
+                doc.setLineWidth(8);
+                doc.setDrawColor(238, 238, 238);
+                doc.line(14, pageHeight - 11, pageWidth - 14, pageHeight - 11);
+
+                doc.setFontSize(10); // Tamaño de fuente del pie de página
+                doc.setFontStyle('bold');
+                doc.text(str, 17, pageHeight - 10);
+            };
+
+            // Add title and date to the first page
+            doc.setFontSize(15); // Tamaño de fuente del título
+            doc.setFontStyle('bold');
+            doc.text('Listado de Personas', 14, 22);
+
+            // Add current date
+            var today = new Date();
+            var dateString = today.toLocaleDateString(); // Format date as needed
+            doc.setFontSize(12); // Tamaño de fuente de la fecha
+            doc.setFontStyle('normal');
+            doc.text('Fecha: ' + dateString, 14, 32);
+
+            var elem = document.getElementById("tabla-imprimir");
+            var res = doc.autoTableHtmlToJson(elem);
+
+            // Remove last two columns
+            res.columns = res.columns.slice(0, -1);
+            res.data = res.data.map(row => row.slice(0, -1));
+
+            doc.autoTable(res.columns, res.data, {
+                addPageContent: pageContent,
+                theme: 'grid',
+                styles: { fillColor: [70, 130, 180], halign: "center" },
+                columnStyles: {
+                    0: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    1: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    2: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    3: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    4: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    5: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    6: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] },
+                    7: { halign: 'center', fontSize: 8, cellWidth: 20, fillColor: [255, 255, 255] }
+                },
+                margin: { top: 40 } // Ajusta el margen superior para el título
+            });
+
+            if (typeof doc.putTotalPages === 'function') {
+                doc.putTotalPages(totalPagesExp);
+            }
+
+            var string = doc.output('datauristring');
+            var iframe = "<iframe width='100%' height='100%' src='" + string + "'></iframe>";
+
+            var x = window.open();
+            x.document.open();
+            x.document.write(iframe);
+            x.document.close();
+        }
+    </script>
 }

@@ -24,8 +24,8 @@ body {
     padding: 1rem;
     display: flex;
     place-items: center;
-    background: var(--background);
-    background-color: #3e6cc279;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+
 }
 
 * {

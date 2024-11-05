@@ -3,7 +3,6 @@ window.onload = function () {
 };
 
 function ListadoUsuarios() {
-
     $.ajax({
         url: '/Usuarios/ListadoUsuarios',
         type: 'GET',
@@ -11,14 +10,15 @@ function ListadoUsuarios() {
             var tbody = $('#tbody-usuarios');
             tbody.empty(); // Limpiar el cuerpo de la tabla
 
-            // Iterar sobre la lista de usuarios y agregarlos a la tabla
             vistaUsuarios.forEach(function (usuario) {
                 var fila = `
                     <tr>
                         <td>${usuario.email}</td>
                         <td>${usuario.rol}</td>
                         <td>
-                            <button class="btn btn-warning btn-sm" onclick="EditarUsuario('${usuario.usuarioID}')">Editar</button>
+                            <button class="delete-button" onclick="EliminarUsuario('${usuario.usuarioID}')">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
                         </td>
                     </tr>
                 `;
@@ -26,7 +26,7 @@ function ListadoUsuarios() {
             });
         },
         error: function () {
-            alert('Error al cargar la lista de usuarios.');
+            Swal.fire('Error', 'Error al cargar la lista de usuarios.', 'error');
         }
     });
 }
@@ -37,15 +37,13 @@ function GuardarUsuarios() {
     var password = $('#password').val();
     var rol = $('#rol').val();
 
-    // Validar que los campos no estén vacíos
     if (!email || !password || !rol) {
-        alert('Todos los campos son obligatorios.');
+        Swal.fire('Atención', 'Todos los campos son obligatorios.', 'warning');
         return;
     }
 
-    // Petición AJAX para guardar el usuario
     $.ajax({
-        url: '/Usuarios/CrearUsuario', // Ruta hacia el controlador de crear usuario
+        url: '/Usuarios/CrearUsuario',
         type: 'POST',
         data: {
             email: email,
@@ -54,42 +52,51 @@ function GuardarUsuarios() {
         },
         success: function (response) {
             if (response.exito) {
-                alert(response.mensaje);
-                $('#ModalUsuarios').modal('hide'); // Ocultar el modal
-                LimpiarUsuario(); // Limpiar el formulario del modal
-                ListadoUsuarios(); // Actualizar la lista de usuarios
+                Swal.fire('Éxito', response.mensaje, 'success').then(() => {
+                    $('#ModalUsuarios').modal('hide');
+                    LimpiarUsuario();
+                    ListadoUsuarios();
+                });
             } else {
-                alert(response.mensaje);
+                Swal.fire('Atención', response.mensaje, 'warning');
             }
         },
         error: function () {
-            alert('Error al guardar el usuario.');
+            Swal.fire('Error', 'Error al guardar el usuario.', 'error');
         }
     });
 }
 
 // Función para eliminar un usuario
 function EliminarUsuario(usuarioID) {
-    // Confirmar antes de eliminar
-    if (!confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
-        return;
-    }
-
-    // Petición AJAX para eliminar el usuario
-    $.ajax({
-        url: '/Usuarios/EliminarUsuario', // Ruta hacia el controlador de eliminar usuario
-        type: 'POST',
-        data: { usuarioId: usuarioID },
-        success: function (response) {
-            if (response.exito) {
-                alert(response.mensaje);
-                ListadoUsuarios(); // Actualizar la lista de usuarios
-            } else {
-                alert(response.mensaje);
-            }
-        },
-        error: function () {
-            alert('Error al eliminar el usuario.');
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'Esta acción no se puede deshacer.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '/Usuarios/EliminarUsuario',
+                type: 'POST',
+                data: { usuarioId: usuarioID },
+                success: function (response) {
+                    if (response.exito) {
+                        Swal.fire('Eliminado', response.mensaje, 'success').then(() => {
+                            ListadoUsuarios();
+                        });
+                    } else {
+                        Swal.fire('Atención', response.mensaje, 'warning');
+                    }
+                },
+                error: function () {
+                    Swal.fire('Error', 'Error al eliminar el usuario.', 'error');
+                }
+            });
         }
     });
 }
@@ -98,6 +105,6 @@ function EliminarUsuario(usuarioID) {
 function LimpiarUsuario() {
     $('#email').val('');
     $('#password').val('');
-    $('#rol').val('USUARIO'); // Restablecer el rol por defecto
-    $('#UsuarioID').val('0'); // Resetear el ID de usuario (si se usa para edición)
+    $('#rol').val('USUARIO');
+    $('#UsuarioID').val('0');
 }

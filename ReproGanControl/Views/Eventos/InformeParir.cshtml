@@ -1,0 +1,117 @@
+@{
+    ViewData["Title"] = "Listado de Vacas a Parir";
+}
+
+<div class="card" style="font-family: 'Arial', sans-serif;">
+    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 class="display-6" style="color: #555;">Listado de vacas a Parir</h3>
+    </div>
+
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <button class="btn-download" title="Descargar Datos" onclick="Imprimir()">
+                <i class="fa-solid fa-file-pdf"></i> <span class="btn-text">Descargar</span>
+            </button>
+            <div class="d-flex align-items-center">
+                <div id="table-info" class="me-3">
+                    <span id="total-items-vacas"></span>
+                </div>
+                <nav aria-label="Page navigation example">
+                    <ul id="pagination" class="pagination mb-0"></ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="table-responsive mt-2">
+            <table id="tabla-imprimir" class="content-table">
+                <thead>
+                    <tr>
+                        <th>Caravana</th>
+                        <th>Fecha Aprox. de Parir</th>
+                        <th>Días Restantes</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-vacas">
+                    <tr>
+                        <td>12345</td>
+                        <td>2024-11-01</td>
+                        <td>64</td>
+                    </tr>
+                    <tr>
+                        <td>67890</td>
+                        <td>2024-12-15</td>
+                        <td>53</td>
+                    </tr>
+                    <tr>
+                        <td>54321</td>
+                        <td>2024-10-30</td>
+                        <td>52</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Sección de alerta para vacas próximas a secar -->
+<div class="alert alert-warning d-flex align-items-center" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <i class="fa-solid fa-exclamation-triangle me-2"></i>
+    <div id="alerta-proximas-vacas">No hay vacas próximas a Parir.</div>
+</div>
+
+@section Scripts {
+    <script src="~/js/eventos-1.0.0.js"></script>
+    <script>
+        // Función para mostrar alerta de vacas próximas a secar
+        function VerificarProximasVacas() {
+            const hoy = new Date();
+            const vacas = obtenerVacas(); // Supuesta función que trae las vacas
+            const proximas = vacas.filter(vaca => {
+                const fechaSecado = new Date(vaca.fechaSecado);
+                const diff = (fechaSecado - hoy) / (1000 * 60 * 60 * 24); // Diferencia en días
+                return diff >= 0 && diff <= 7; // Dentro de una semana
+            });
+
+            const alerta = document.getElementById('alerta-proximas-vacas');
+            if (proximas.length > 0) {
+                alerta.textContent = `Hay ${proximas.length} vacas próximas a secar en la próxima semana.`;
+            } else {
+                alerta.textContent = "No hay vacas próximas a secar.";
+            }
+        }
+
+        // Simulación de datos de vacas (ejemplo)
+        function obtenerVacas() {
+            return [
+                { id: 1, nombre: 'Vaca 1', fechaSecado: '2024-11-02', estado: 'Activa' },
+                { id: 2, nombre: 'Vaca 2', fechaSecado: '2024-11-05', estado: 'Activa' }
+            ];
+        }
+
+        document.addEventListener('DOMContentLoaded', VerificarProximasVacas);
+
+        function Imprimir() {
+            var doc = new jsPDF({ orientation: 'landscape' });
+            doc.text('Listado de Vacas a Secar', 14, 22);
+
+            var today = new Date().toLocaleDateString();
+            doc.text('Fecha: ' + today, 14, 32);
+
+            var elem = document.getElementById("tabla-imprimir");
+            var res = doc.autoTableHtmlToJson(elem);
+
+            doc.autoTable(res.columns, res.data, {
+                theme: 'grid',
+                margin: { top: 40 }
+            });
+
+            var string = doc.output('datauristring');
+            var iframe = "<iframe width='100%' height='100%' src='" + string + "'></iframe>";
+
+            var x = window.open();
+            x.document.open();
+            x.document.write(iframe);
+            x.document.close();
+        }
+    </script>
+}

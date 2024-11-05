@@ -89,30 +89,30 @@ public class EventosController : Controller
 
         var tipoAnimalToro = _context.TipoAnimales.FirstOrDefault(t => t.Descripcion == "TORO");
 
-    if (tipoAnimalToro != null)
-    {
-        var toros = _context.Animales
-            .Where(a => a.TipoAnimalID == tipoAnimalToro.TipoAnimalID)
-            .ToList();
-
-        // Si no hay toros en la lista, solo agregar el "[SELECCIONE]"
-        if (!toros.Any())
+        if (tipoAnimalToro != null)
         {
-            toros.Add(new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" });
+            var toros = _context.Animales
+                .Where(a => a.TipoAnimalID == tipoAnimalToro.TipoAnimalID)
+                .ToList();
+
+            // Si no hay toros en la lista, solo agregar el "[SELECCIONE]"
+            if (!toros.Any())
+            {
+                toros.Add(new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" });
+            }
+            else
+            {
+                toros.Insert(0, new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" });
+            }
+
+            // Llenar el ViewBag con los toros
+            ViewBag.ToroID = new SelectList(toros.OrderBy(d => d.Caravana), "AnimalID", "Caravana");
         }
         else
         {
-            toros.Insert(0, new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" });
+            // Si no se encuentra el tipo de animal "TORO", asignar una lista vacía con "[SELECCIONE]"
+            ViewBag.ToroID = new SelectList(new List<Animal> { new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" } }, "AnimalID", "Caravana");
         }
-
-        // Llenar el ViewBag con los toros
-        ViewBag.ToroID = new SelectList(toros.OrderBy(d => d.Caravana), "AnimalID", "Caravana");
-    }
-    else
-    {
-        // Si no se encuentra el tipo de animal "TORO", asignar una lista vacía con "[SELECCIONE]"
-        ViewBag.ToroID = new SelectList(new List<Animal> { new Animal { AnimalID = 0, Caravana = "[SELECCIONE]" } }, "AnimalID", "Caravana");
-    }
         return View();
     }
 
@@ -171,7 +171,7 @@ public class EventosController : Controller
                 TipoInseminacion = e.TipoInseminacion,
                 TipoInseminacionString = e.TipoInseminacion?.ToString().ToUpper(),
                 ToroID = e.ToroID,
-                ToroString = e.ToroID != null ?_context.Animales.FirstOrDefault(a => a.AnimalID == e.ToroID)?.Caravana :"",
+                ToroString = e.ToroID != null ? _context.Animales.FirstOrDefault(a => a.AnimalID == e.ToroID)?.Caravana : "",
                 DetalleToro = e.DetalleToro?.ToUpper(),
                 MotivoVenta = e.MotivoVenta?.ToUpper(),
                 CausaRechazo = e.CausaRechazo?.ToUpper(),
@@ -264,19 +264,20 @@ public class EventosController : Controller
         return Json(new { success = true });
     }
 
- public JsonResult BuscarAnimales(string BuscarAnimales)
-{
-    // Filtra los animales según el término de búsqueda
-    var animales = _context.Animales
-        .Where(a => a.Caravana.Contains(BuscarAnimales)) // Filtra por Caravana
-        .Select(a => new {
-            a.AnimalID,
-            a.Caravana,
-        })
-        .ToList();
+    public JsonResult BuscarAnimales(string BuscarAnimales)
+    {
+        // Filtra los animales según el término de búsqueda
+        var animales = _context.Animales
+            .Where(a => a.Caravana.Contains(BuscarAnimales)) // Filtra por Caravana
+            .Select(a => new
+            {
+                a.AnimalID,
+                a.Caravana,
+            })
+            .ToList();
 
-    return Json(animales);
-}
+        return Json(animales);
+    }
 
     public JsonResult EliminarEvento(int eventoID)
     {
@@ -364,5 +365,15 @@ public class EventosController : Controller
         }
 
         return Json(vistaInformeEventos);
+    }
+
+    public IActionResult InformeSecar()
+    {
+        return View();
+    }
+    
+    public IActionResult InformeParir()
+    {
+        return View();
     }
 }

@@ -267,26 +267,52 @@
                     <thead>
                         <tr>
                             <th>Caravana</th>
-                            <th>Evento</th>
-                            <th class="ocultar-en-768px">Fecha de evento</th>
-                            <th class="ocultar-en-768px">Observación</th>
-                            <th class="ocultar-en-768px">Tipo de Parto</th>
-                            <th class="ocultar-en-768px">Tipo de Cría</th>
-                            <th class="ocultar-en-768px">Estado de la Cría</th>
-                            <th class="ocultar-en-768px">Fecha Aprox Secado</th>
-                            <th class="ocultar-en-768px">Fecha Aprox Paricion</th>
-                            <th class="ocultar-en-768px">Toro</th>
-                            <th class="ocultar-en-768px">Tipo de Inseminación</th>
-                            <th class="ocultar-en-768px">Detalle Insem. Artificial</th>
-                            <th class="ocultar-en-768px">Causa del Aborto</th>
-                            <th class="ocultar-en-768px">Motivo de la Venta</th>
-                            <th class="ocultar-en-768px">Causa del Rechazo</th>
-                            <th class="ocultar-en-768px">Motivo de la Muerte</th>
-                            <th class="ocultar-en-768px">Otra Especificación </th>
+                            <th>Tipo Evento</th>
+                            <th>Fecha</th>
+                            <th class="ocultar-en-1024px">Observación</th>
+                            <th class="ocultar-en-1024px">Tipo de Parto</th>
+                            <th class="ocultar-en-1024px">Tipo de Cría</th>
+                            <th class="ocultar-en-1024px">Estado de la Cría</th>
+                            <th class="ocultar-en-1024px">Fecha Aprox Secado</th>
+                            <th class="ocultar-en-1024px">Fecha Aprox Paricion</th>
+                            <th class="ocultar-en-1024px">Toro</th>
+                            <th class="ocultar-en-1024px">Tipo de Inseminación</th>
+                            <th class="ocultar-en-1024px">Detalle Insem. Artificial</th>
+                            <th class="ocultar-en-1024px">Causa del Aborto</th>
+                            <th class="ocultar-en-1024px">Motivo de la Venta</th>
+                            <th class="ocultar-en-1024px">Causa del Rechazo</th>
+                            <th class="ocultar-en-1024px">Motivo de la Muerte</th>
+                            <th class="ocultar-en-1024px">Otra Especificación </th>
                             <th style="width: 200px"></th>
                         </tr>
                     </thead>
                     <tbody id="tbody-eventos"></tbody>
+                </table>
+
+                <table id="tabla-imprimir1" class="content-table" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Caravana</th>
+                            <th>Evento</th>
+                            <th>Fecha de evento</th>
+                            <th>Observación</th>
+                            <th>Tipo de Parto</th>
+                            <th>Tipo de Cría</th>
+                            <th>Estado de la Cría</th>
+                            <th>Fecha Aprox Secado</th>
+                            <th>Fecha Aprox Paricion</th>
+                            <th>Toro</th>
+                            <th>Tipo de Inseminación</th>
+                            <th>Detalle Insem. Artificial</th>
+                            <th>Causa del Aborto</th>
+                            <th>Motivo de la Venta</th>
+                            <th>Causa del Rechazo</th>
+                            <th>Motivo de la Muerte</th>
+                            <th>Otra Especificación </th>
+                            <th style="width: 200px"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-eventos-oculto"></tbody>
                 </table>
             </div>
         </div>
@@ -330,7 +356,7 @@
                 doc.setFontStyle('normal');
                 doc.text('Fecha: ' + dateString, 14, 32);
 
-                var elem = document.getElementById("tabla-imprimir2");
+                var elem = document.getElementById("tabla-imprimir1");
                 var res = doc.autoTableHtmlToJson(elem);
 
                 // Remove last two columns

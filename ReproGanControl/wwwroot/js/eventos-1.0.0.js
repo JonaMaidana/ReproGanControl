@@ -26,6 +26,7 @@ function ListadoEventos() {
             // Recargar la lista de eventos en la tabla
             eventosMostrar = data;  // Asegúrate de que 'data' contiene los eventos más recientes
             renderTableEventos();   // Esta función debería encargarse de renderizar los eventos
+            renderTableEventosOculto();
 
             // Actualizar el total de eventos (si tienes un contador de items)
             updateTotalItemsEventos();
@@ -51,21 +52,65 @@ function renderTableEventos() {
         <tr>
             <td>${evento.animalCaravana}</td>
             <td>${evento.tipoEventoString}</td>
-            <td class="ocultar-en-768px">${evento.fechaEventoString}</td>
-            <td class="ocultar-en-768px">${evento.observacion}</td> 
-            <td class="ocultar-en-768px">${evento.tipoParto || ''}</td>
-            <td class="ocultar-en-768px">${evento.tipoCriaString || ''}</td>
-            <td class="ocultar-en-768px">${evento.estadoCriaString || ''}</td>
-            <td class="ocultar-en-768px">${evento.fechaAproximadaSecadoString || ''}</td>
-            <td class="ocultar-en-768px">${evento.fechaAproximadaParicionString || ''}</td>
-            <td class="ocultar-en-768px">${evento.toroString || ''}</td>
-            <td class="ocultar-en-768px">${evento.tipoInseminacionString || ''}</td>
-            <td class="ocultar-en-768px">${evento.detalleToro || ''}</td>
-            <td class="ocultar-en-768px">${evento.causaAborto || ''}</td>
-            <td class="ocultar-en-768px"d>${evento.motivoVenta || ''}</td>
-            <td class="ocultar-en-768px">${evento.causaRechazo || ''}</td> 
-            <td class="ocultar-en-768px">${evento.motivoMuerte || ''}</td>
-            <td class="ocultar-en-768px">${evento.especifiqueOtro || ''}</td>
+            <td>${evento.fechaEventoString}</td>
+            <td class="ocultar-en-1024px">${evento.observacion}</td> 
+            <td class="ocultar-en-1024px">${evento.tipoParto || ''}</td>
+            <td class="ocultar-en-1024px">${evento.tipoCriaString || ''}</td>
+            <td class="ocultar-en-1024px">${evento.estadoCriaString || ''}</td>
+            <td class="ocultar-en-1024px">${evento.fechaAproximadaSecadoString || ''}</td>
+            <td class="ocultar-en-1024px">${evento.fechaAproximadaParicionString || ''}</td>
+            <td class="ocultar-en-1024px">${evento.toroString || ''}</td>
+            <td class="ocultar-en-1024px">${evento.tipoInseminacionString || ''}</td>
+            <td class="ocultar-en-1024px">${evento.detalleToro || ''}</td>
+            <td class="ocultar-en-1024px">${evento.causaAborto || ''}</td>
+            <td class="ocultar-en-1024px"d>${evento.motivoVenta || ''}</td>
+            <td class="ocultar-en-1024px">${evento.causaRechazo || ''}</td> 
+            <td class="ocultar-en-1024px">${evento.motivoMuerte || ''}</td>
+            <td class="ocultar-en-1024px">${evento.especifiqueOtro || ''}</td>
+
+            <td class="text-center">
+                <button type="button" class="edit-button" title="Editar Evento"  onclick="ModalEditarEventos(${evento.eventoID})">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button type="button" class="delete-button" title="Eliminar Evento"  onclick="EliminarEventos(${evento.eventoID})">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+                <button type="button" class="infoEvento-button" title="Ver detalles del evento" onclick="showEventDetails(${evento.eventoID})">
+                    <i class="fa-solid fa-info-circle"></i>
+                </button>
+            </td>
+        </tr>
+        `;
+    });
+
+    $("#tbody-eventos").html(contenidoTabla);
+}
+function renderTableEventosOculto() {
+    eventosMostrarGlobal = eventosMostrar; 
+    let contenidoTabla = '';
+
+    console.log('Eventos a mostrar (oculto):', eventosMostrar);
+
+    $.each(eventosMostrar, function (index, evento) {
+        contenidoTabla += `
+        <tr>
+            <td>${evento.animalCaravana}</td>
+            <td>${evento.tipoEventoString}</td>
+            <td>${evento.fechaEventoString}</td>
+            <td>${evento.observacion}</td> 
+            <td>${evento.tipoParto || ''}</td>
+            <td>${evento.tipoCriaString || ''}</td>
+            <td>${evento.estadoCriaString || ''}</td>
+            <td>${evento.fechaAproximadaSecadoString || ''}</td>
+            <td>${evento.fechaAproximadaParicionString || ''}</td>
+            <td>${evento.toroString || ''}</td>
+            <td>${evento.tipoInseminacionString || ''}</td>
+            <td>${evento.detalleToro || ''}</td>
+            <td>${evento.causaAborto || ''}</td>
+            <td>${evento.motivoVenta || ''}</td>
+            <td>${evento.causaRechazo || ''}</td> 
+            <td>${evento.motivoMuerte || ''}</td>
+            <td>${evento.especifiqueOtro || ''}</td>
 
             <td class="text-center">
                 <button type="button" class="edit-button" title="Editar Evento"  onclick="ModalEditarEventos(${evento.eventoID})">
@@ -82,7 +127,7 @@ function renderTableEventos() {
         `;
     });
 
-    $("#tbody-eventos").html(contenidoTabla);
+    $("#tbody-eventos-oculto").html(contenidoTabla);
 }
 
 // Función para mostrar detalles en un modal
@@ -90,27 +135,67 @@ function showEventDetails(eventoID) {
     // Encuentra el evento con el ID dado en la variable global
     const evento = eventosMostrarGlobal.find(e => e.eventoID === eventoID);
 
+    // Crea un array para almacenar los elementos de la lista
+    const detalles = [];
+
+    // Agrega los detalles solo si están disponibles
+    if (evento.animalCaravana) {
+        detalles.push(`<li><strong>Caravana:</strong> ${evento.animalCaravana}</li>`);
+    }
+    if (evento.tipoEventoString) {
+        detalles.push(`<li><strong>Tipo Evento:</strong> ${evento.tipoEventoString}</li>`);
+    }
+    if (evento.fechaEventoString) {
+        detalles.push(`<li><strong>Fecha Evento:</strong> ${evento.fechaEventoString}</li>`);
+    }
+    if (evento.observacion) {
+        detalles.push(`<li><strong>Observación:</strong> ${evento.observacion}</li>`);
+    }
+    if (evento.tipoParto) {
+        detalles.push(`<li><strong>Tipo Cría:</strong> ${evento.tipoParto}</li>`);
+    }
+    if (evento.tipoCriaString) {
+        detalles.push(`<li><strong>Tipo Cría:</strong> ${evento.tipoCriaString}</li>`);
+    }
+    if (evento.estadoCriaString) {
+        detalles.push(`<li><strong>Estado Cría:</strong> ${evento.estadoCriaString}</li>`);
+    }
+    if (evento.fechaAproximadaSecadoString) {
+        detalles.push(`<li><strong>Fecha Aproximada Secado:</strong> ${evento.fechaAproximadaSecadoString}</li>`);
+    }
+    if (evento.fechaAproximadaParicionString) {
+        detalles.push(`<li><strong>Fecha Aproximada Parto:</strong> ${evento.fechaAproximadaParicionString}</li>`);
+    }
+    if (evento.causaAborto) {
+        detalles.push(`<li><strong>Causa Aborto:</strong> ${evento.causaAborto}</li>`);
+    }
+    if (evento.tipoInseminacionString) {
+        detalles.push(`<li><strong>Inseminación:</strong> ${evento.tipoInseminacionString}</li>`);
+    }
+    if (evento.toroID) {
+        detalles.push(`<li><strong>Causa Aborto:</strong> ${evento.toroID}</li>`);
+    }
+    if (evento.detalleToro) {
+        detalles.push(`<li><strong>Causa Celo:</strong> ${evento.detalleToro}</li>`);
+    }
+    if (evento.motivoVenta) {
+        detalles.push(`<li><strong>Especifique Secado:</strong> ${evento.motivoVenta}</li>`);
+    }
+    if (evento.causaRechazo) {
+        detalles.push(`<li><strong>Motivo Venta:</strong> ${evento.causaRechazo}</li>`);
+    }
+    if (evento.motivoMuerte) {
+        detalles.push(`<li><strong>Causa Rechazo:</strong> ${evento.motivoMuerte}</li>`);
+    }
+    if (evento.especifiqueOtro) {
+        detalles.push(`<li><strong>Especifique Otro:</strong> ${evento.especifiqueOtro}</li>`);
+    }
+
     // Crea el contenido para el modal
     const modalContent = `
         <h5>Detalles del Evento</h5>
         <ul>
-            <li><strong>Caravana:</strong> ${evento.animalCaravana}</li>
-            <li><strong>Tipo Evento:</strong> ${evento.tipoEventoString}</li>
-            <li><strong>Fecha Evento:</strong> ${evento.fechaEventoString}</li>
-            <li><strong>Observación:</strong> ${evento.observacion}</li>
-            <li><strong>Tipo Cría:</strong> ${evento.tipoParto || 'N/A'}</li>
-            <li><strong>Tipo Cría:</strong> ${evento.tipoCriaString || 'N/A'}</li>
-            <li><strong>Tipo Cría:</strong> ${evento.estadoCriaString || 'N/A'}</li>
-            <li><strong>Tipo Cría:</strong> ${evento.fechaAproximadaSecadoString || 'N/A'}</li>
-            <li><strong>Tipo Parto:</strong> ${evento.fechaAproximadaParicionString || 'N/A'}</li>
-            <li><strong>Estado Cría:</strong> ${evento.causaAborto || 'N/A'}</li>
-            <li><strong>Inseminación:</strong> ${evento.tipoInseminacionString || 'N/A'}</li>
-            <li><strong>Causa Aborto:</strong> ${evento.toroID || 'N/A'}</li>
-            <li><strong>Causa Celo:</strong> ${evento.detalleToro || 'N/A'}</li>
-            <li><strong>Especifique Secado:</strong> ${evento.motivoVenta || 'N/A'}</li>
-            <li><strong>Motivo Venta:</strong> ${evento.causaRechazo || 'N/A'}</li>
-            <li><strong>Causa Rechazo:</strong> ${evento.motivoMuerte || 'N/A'}</li>
-            <li><strong>Especifique Otro:</strong> ${evento.especifiqueOtro || 'N/A'}</li>
+            ${detalles.join('')}
         </ul>
     `;
 

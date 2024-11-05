@@ -1,0 +1,225 @@
+@{
+    ViewData["Title"] = "Listado de Vacas";
+}
+
+<div class="container-fluid">
+    <div class="card" style="font-family: 'Arial', sans-serif; width: 100%; max-width: 100%; margin: 20px auto;">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="display-6" style="color: #555;">Listados de Vacas</h3>
+        </div>
+
+        <div class="card-body">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="secar-tab" data-bs-toggle="tab" href="#secar" role="tab"
+                        aria-controls="secar" aria-selected="true">Vacas a Secar</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="parir-tab" data-bs-toggle="tab" href="#parir" role="tab"
+                        aria-controls="parir" aria-selected="false">Vacas a Parir</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-3" id="myTabContent">
+                <!-- Contenido Vacas a Secar -->
+                <div class="tab-pane fade show active" id="secar" role="tabpanel" aria-labelledby="secar-tab">
+                    <div class="table-responsive mt-2">
+                        <table id="tabla-imprimir-secar" class="content-table">
+                            <thead>
+                                <tr>
+                                    <th>Caravana</th>
+                                    <th>Fecha Aprox. de Secado</th>
+                                    <th>Días Restantes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-vacas-secar">
+                                <tr>
+                                    <td>A1018</td>
+                                    <td>10/11/2025</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>A1004</td>
+                                    <td>24/11/2024</td>
+                                    <td>18</td>
+                                </tr>
+                                <tr>
+                                    <td>A1015 </td>
+                                    <td>11/01/2025</td>
+                                    <td>66</td>
+                                </tr>
+                                <tr>
+                                    <td>A1012 </td>
+                                    <td>10/03/2025</td>
+                                    <td>124</td>
+                                </tr>
+                                <tr>
+                                    <td>A1019 </td>
+                                    <td>02/04/2025</td>
+                                    <td>147</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Sección de alerta para vacas próximas a secar -->
+                        <div class="alert alert-warning d-flex align-items-center" role="alert"
+                            style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+                            <i class="fa-solid fa-exclamation-triangle me-2"></i>
+                            <div id="alerta-proximas-vacas">Hay 1 vaca próxima a Secar.</div>
+                        </div>
+                    </div>
+
+                    <!-- Canvas para el gráfico de Vacas a Secar -->
+                    <canvas id="chart-secar" style="height: 300px; width: 100%;"></canvas>
+                </div>
+
+                <!-- Contenido Vacas a Parir -->
+                <div class="tab-pane fade" id="parir" role="tabpanel" aria-labelledby="parir-tab">
+                    <div class="table-responsive mt-2">
+                        <table id="tabla-imprimir-parir" class="content-table">
+                            <thead>
+                                <tr>
+                                    <th>Caravana</th>
+                                    <th>Fecha Aprox. de Parir</th>
+                                    <th>Días Restantes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-vacas-parir">
+                                <tr>
+                                    <td>A1018</td>
+                                    <td>10/01/2025</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>A1004</td>
+                                    <td>24/01/2025</td>
+                                    <td>80</td>
+                                </tr>
+                                <tr>
+                                    <td>A1015 </td>
+                                    <td>11/03/2025</td>
+                                    <td>125</td>
+                                </tr>
+                                <tr>
+                                    <td>A1012 </td>
+                                    <td>10/05/2025</td>
+                                    <td>186</td>
+                                </tr>
+                                <tr>
+                                    <td>A1019 </td>
+                                    <td>05/06/2025</td>
+                                    <td>212</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Sección de alerta para vacas próximas a secar -->
+                        <div class="alert alert-warning d-flex align-items-center" role="alert"
+                            style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+                            <i class="fa-solid fa-exclamation-triangle me-2"></i>
+                            <div id="alerta-proximas-vacas">No hay vacas próximas a Parir.</div>
+                        </div>
+                    </div>
+
+                    <!-- Canvas para el gráfico de Vacas a Parir -->
+                    <canvas id="chart-parir" style="height: 70px; width: 100%;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Función para agrupar vacas a secar por mes
+        function datosSecarPorMes() {
+            return {
+                '2024-11': 2,
+                '2025-01': 1,
+                '2025-03': 1,
+                '2025-04': 1
+            };
+        }
+
+        // Función para agrupar vacas a parir por mes
+        function datosParirPorMes() {
+            return {
+                '2025-01': 2,
+                '2025-03': 1,
+                '2025-05': 1,
+                '2025-06': 1
+            };
+        }
+
+        // Función para crear gráficos con Chart.js
+        function crearGraficoSecar() {
+            const ctx = document.getElementById('chart-secar').getContext('2d');
+            const datos = datosSecarPorMes();
+            const etiquetas = Object.keys(datos);
+            const cantidades = Object.values(datos);
+
+            const chartData = {
+                labels: etiquetas,
+                datasets: [{
+                    label: 'Vacas a Secar',
+                    data: cantidades,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            };
+
+            const opciones = {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            };
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: opciones
+            });
+        }
+
+        function crearGraficoParir() {
+            const ctx = document.getElementById('chart-parir').getContext('2d');
+            const datos = datosParirPorMes();
+            const etiquetas = Object.keys(datos);
+            const cantidades = Object.values(datos);
+
+            const chartData = {
+                labels: etiquetas,
+                datasets: [{
+                    label: 'Vacas a Parir',
+                    data: cantidades,
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            };
+
+            const opciones = {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            };
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: opciones
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            crearGraficoSecar(); // Crear gráfico de vacas a secar
+            crearGraficoParir(); // Crear gráfico de vacas a parir
+        });
+    </script>
+}

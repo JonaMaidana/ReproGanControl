@@ -28,7 +28,7 @@ namespace ReproGanControl.Controllers
         public async Task<IActionResult> Index()
         {
 
-            // await CrearSuperusuario();
+            await CrearSuperusuario();
 
 
             return View();
@@ -68,7 +68,7 @@ namespace ReproGanControl.Controllers
             if (usuario == null)
             {
                 var user = new IdentityUser { UserName = "admin@ReproGan.com", Email = "admin@ReproGan.com" };
-                var result = await _userManager.CreateAsync(user, "ReproGan@@"); // Cambia por una contraseña segura
+                var result = await _userManager.CreateAsync(user, "ReproGan@@");
 
                 if (result.Succeeded)
                 {

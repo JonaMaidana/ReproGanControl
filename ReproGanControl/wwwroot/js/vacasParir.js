@@ -1,4 +1,4 @@
-window.onload = ListadoInformeVacasParir(); 
+window.onload = ListadoInformeVacasParir;
 
 function ListadoInformeVacasParir() {
     $.ajax({
@@ -30,12 +30,32 @@ function ListadoInformeVacasParir() {
 
             // Llamada para actualizar el gráfico
             crearGraficoParir(vacasPorMes);
+
+            // Funcionalidad de alerta para vacas próximas a parir
+            const alertaProximasVacas = document.getElementById("alerta-proximas-vacas");
+            if (alertaProximasVacas) {
+                const vacasProximas = vacasParir.filter(vaca => 
+                    vaca.diasRestantesParicion !== null && vaca.diasRestantesParicion <= 7
+                );
+
+                // Si hay vacas próximas a parir, mostrar la alerta
+                if (vacasProximas.length > 0) {
+                    const mensajeAlerta = `¡Atención! ${vacasProximas.length} vaca(s) próxima(s) a parir en 7 días o menos.`;
+                    alertaProximasVacas.textContent = mensajeAlerta;
+                    alertaProximasVacas.closest('.alert').style.display = 'flex';
+                } else {
+                    // Si no hay vacas próximas a parir, mostrar un mensaje de no hay vacas
+                    alertaProximasVacas.textContent = "No hay vacas próximas a parir en los próximos 7 días.";
+                    alertaProximasVacas.closest('.alert').style.display = 'flex';
+                }
+            }
         },
         error: function(xhr, status, error) {
             alert('Disculpe, existió un problema al cargar el listado de vacas a parir');
         }
     });
 }
+
 
 // Función para agrupar vacas a parir por mes
 function datosParirPorMes(vacasParir) {
@@ -52,35 +72,64 @@ function datosParirPorMes(vacasParir) {
     return datos;
 }
 
-// Función para crear el gráfico con los datos de vacas a parir
 function crearGraficoParir(vacasPorMes) {
-    const ctx = document.getElementById('chart-parir').getContext('2d');
-    const etiquetas = Object.keys(vacasPorMes);
-    const cantidades = Object.values(vacasPorMes);
-
-    const chartData = {
-        labels: etiquetas,
-        datasets: [{
-            label: 'Vacas a Parir',
-            data: cantidades,
-            backgroundColor: 'rgba(255, 159, 64, 0.2)', // Color para las vacas a parir
-            borderColor: 'rgba(255, 159, 64, 1)', // Color para las vacas a parir
-            borderWidth: 1
-        }]
-    };
-
-    const opciones = {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
+    try {
+        console.log("Creando gráfico con datos:", vacasPorMes);
+        
+        // Verificar si Chart está definido
+        if (typeof Chart === 'undefined') {
+            console.error("Chart.js no está cargado");
+            return;
         }
-    };
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: chartData,
-        options: opciones
-    });
+        // Obtener el contexto del canvas con id "chart-parir"
+        const ctx = document.getElementById('chart-parir');
+        
+        if (!ctx) {
+            console.error("No se encontró el elemento canvas con id 'chart-parir'");
+            return;
+        }
+
+        const meses = Object.keys(vacasPorMes);
+        const cantidades = Object.values(vacasPorMes);
+
+        // Destruir gráfico existente si ya está creado
+        if (window.graficoVacasParir) {
+            window.graficoVacasParir.destroy();
+        }
+
+        // Crear nuevo gráfico
+        window.graficoVacasParir = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: meses,
+                datasets: [{
+                    label: 'Vacas a Parir',
+                    data: cantidades,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Número de Vacas'
+                        }
+                    }
+                }
+            }
+        });
+
+        console.log("Gráfico creado exitosamente");
+    } catch (error) {
+        console.error("Error al crear el gráfico:", error);
+    }
 }
+
+
+

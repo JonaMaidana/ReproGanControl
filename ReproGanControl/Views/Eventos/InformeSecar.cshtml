@@ -41,33 +41,15 @@
                         <div class="alert alert-warning d-flex align-items-center" role="alert"
                             style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
                             <i class="fa-solid fa-exclamation-triangle me-2"></i>
-                            <div id="alerta-proximas-vacas">Hay 1 vaca próxima a Secar.</div>
+                            <div id="alerta-proximas-vacas"></div>
                         </div>
+
                     </div>
 
                     <!-- Canvas para el gráfico de Vacas a Secar -->
-                    <canvas id="chart-secar" style="height: 300px; width: 100%;"></canvas>
-                </div>
+                    <canvas id="grafico-vacas-secar" width="400" height="100"></canvas>
 
-                <!-- Contenido Vacas a secar -->
-                <div class="tab-pane fade" id="secar" role="tabpanel" aria-labelledby="secar-tab">
-                    <div class="table-responsive mt-2">
-                        <table id="tabla-imprimir-secar" class="content-table">
-                            <thead>
-                                <tr>
-                                    <th>Caravana</th>
-                                    <th>Fecha Aprox. de Secar</th>
-                                    <th>Días Restantes</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody-vacas-secar">
-                                <!-- Datos de Vacas a secar se insertan aquí -->
-                            </tbody>
-                        </table>
-                    </div>
 
-                    <!-- Canvas para el gráfico de Vacas a secar -->
-                    <canvas id="chart-secar" style="height: 300px; width: 100%;"></canvas>
                 </div>
             </div>
         </div>

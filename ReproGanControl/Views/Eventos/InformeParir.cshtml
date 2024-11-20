@@ -41,34 +41,15 @@
                         <div class="alert alert-warning d-flex align-items-center" role="alert"
                             style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
                             <i class="fa-solid fa-exclamation-triangle me-2"></i>
-                            <div id="alerta-proximas-vacas">Hay 1 vaca próxima a parir.</div>
+                            <div id="alerta-proximas-vacas"></div>
                         </div>
+
                     </div>
 
                     <!-- Canvas para el gráfico de Vacas a parir -->
                     <canvas id="chart-parir" style="height: 300px; width: 100%;"></canvas>
                 </div>
 
-                <!-- Contenido Vacas a Parir -->
-                <div class="tab-pane fade" id="parir" role="tabpanel" aria-labelledby="parir-tab">
-                    <div class="table-responsive mt-2">
-                        <table id="tabla-imprimir-parir" class="content-table">
-                            <thead>
-                                <tr>
-                                    <th>Caravana</th>
-                                    <th>Fecha Aprox. de Parir</th>
-                                    <th>Días Restantes</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody-vacas-parir">
-                                <!-- Datos de Vacas a Parir se insertan aquí -->
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- Canvas para el gráfico de Vacas a Parir -->
-                    <canvas id="chart-parir" style="height: 300px; width: 100%;"></canvas>
-                </div>
             </div>
         </div>
     </div>

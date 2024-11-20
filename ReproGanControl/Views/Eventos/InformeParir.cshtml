@@ -1,117 +1,80 @@
 @{
-    ViewData["Title"] = "Listado de Vacas a Parir";
+    ViewData["Title"] = "Listado de Vacas";
 }
 
-<div class="card" style="font-family: 'Arial', sans-serif;">
-    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 class="display-6" style="color: #555;">Listado de vacas a Parir</h3>
-    </div>
+<div class="container-fluid">
+    <div class="card" style="font-family: 'Arial', sans-serif; width: 100%; max-width: 100%; margin: 20px auto;">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="display-6" style="color: #555;">Listados de Vacas</h3>
+        </div>
 
-    <div class="card-body">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <button class="btn-download" title="Descargar Datos" onclick="Imprimir()">
-                <i class="fa-solid fa-file-pdf"></i> <span class="btn-text">Descargar</span>
-            </button>
-            <div class="d-flex align-items-center">
-                <div id="table-info" class="me-3">
-                    <span id="total-items-vacas"></span>
+        <div class="card-body">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="secar-tab" href="@Url.Action("InformeSecar", "Eventos")" role="tab"
+                        aria-controls="secar" aria-selected="true">Vacas a Secar</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="parir-tab" data-bs-toggle="tab" href="#parir" role="tab"
+                        aria-controls="parir" aria-selected="true">Vacas a Parir</a>
+                </li>
+            </ul>
+
+            <div class="tab-content mt-3" id="myTabContent">
+                <!-- Contenido Vacas a parir -->
+                <div class="tab-pane fade show active" id="parir" role="tabpanel" aria-labelledby="parir-tab">
+                    <div class="table-responsive mt-2">
+                        <table id="tabla-imprimir-parir" class="content-table">
+                            <thead>
+                                <tr>
+                                    <th>Caravana</th>
+                                    <th>Fecha Aprox. de Secado</th>
+                                    <th>Días Restantes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-vacas-parir">
+                                <!-- Datos de Vacas a parir se insertan aquí -->
+                            </tbody>
+                        </table>
+
+                        <!-- Sección de alerta para vacas próximas a parir -->
+                        <div class="alert alert-warning d-flex align-items-center" role="alert"
+                            style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+                            <i class="fa-solid fa-exclamation-triangle me-2"></i>
+                            <div id="alerta-proximas-vacas">Hay 1 vaca próxima a parir.</div>
+                        </div>
+                    </div>
+
+                    <!-- Canvas para el gráfico de Vacas a parir -->
+                    <canvas id="chart-parir" style="height: 300px; width: 100%;"></canvas>
                 </div>
-                <nav aria-label="Page navigation example">
-                    <ul id="pagination" class="pagination mb-0"></ul>
-                </nav>
+
+                <!-- Contenido Vacas a Parir -->
+                <div class="tab-pane fade" id="parir" role="tabpanel" aria-labelledby="parir-tab">
+                    <div class="table-responsive mt-2">
+                        <table id="tabla-imprimir-parir" class="content-table">
+                            <thead>
+                                <tr>
+                                    <th>Caravana</th>
+                                    <th>Fecha Aprox. de Parir</th>
+                                    <th>Días Restantes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-vacas-parir">
+                                <!-- Datos de Vacas a Parir se insertan aquí -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Canvas para el gráfico de Vacas a Parir -->
+                    <canvas id="chart-parir" style="height: 300px; width: 100%;"></canvas>
+                </div>
             </div>
         </div>
-
-        <div class="table-responsive mt-2">
-            <table id="tabla-imprimir" class="content-table">
-                <thead>
-                    <tr>
-                        <th>Caravana</th>
-                        <th>Fecha Aprox. de Parir</th>
-                        <th>Días Restantes</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody-vacas">
-                    <tr>
-                        <td>12345</td>
-                        <td>2024-11-01</td>
-                        <td>64</td>
-                    </tr>
-                    <tr>
-                        <td>67890</td>
-                        <td>2024-12-15</td>
-                        <td>53</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>2024-10-30</td>
-                        <td>52</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
-</div>
-
-<!-- Sección de alerta para vacas próximas a secar -->
-<div class="alert alert-warning d-flex align-items-center" role="alert" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-    <i class="fa-solid fa-exclamation-triangle me-2"></i>
-    <div id="alerta-proximas-vacas">No hay vacas próximas a Parir.</div>
 </div>
 
 @section Scripts {
-    <script src="~/js/eventos-1.0.0.js"></script>
-    <script>
-        // Función para mostrar alerta de vacas próximas a secar
-        function VerificarProximasVacas() {
-            const hoy = new Date();
-            const vacas = obtenerVacas(); // Supuesta función que trae las vacas
-            const proximas = vacas.filter(vaca => {
-                const fechaSecado = new Date(vaca.fechaSecado);
-                const diff = (fechaSecado - hoy) / (1000 * 60 * 60 * 24); // Diferencia en días
-                return diff >= 0 && diff <= 7; // Dentro de una semana
-            });
-
-            const alerta = document.getElementById('alerta-proximas-vacas');
-            if (proximas.length > 0) {
-                alerta.textContent = `Hay ${proximas.length} vacas próximas a secar en la próxima semana.`;
-            } else {
-                alerta.textContent = "No hay vacas próximas a secar.";
-            }
-        }
-
-        // Simulación de datos de vacas (ejemplo)
-        function obtenerVacas() {
-            return [
-                { id: 1, nombre: 'Vaca 1', fechaSecado: '2024-11-02', estado: 'Activa' },
-                { id: 2, nombre: 'Vaca 2', fechaSecado: '2024-11-05', estado: 'Activa' }
-            ];
-        }
-
-        document.addEventListener('DOMContentLoaded', VerificarProximasVacas);
-
-        function Imprimir() {
-            var doc = new jsPDF({ orientation: 'landscape' });
-            doc.text('Listado de Vacas a Secar', 14, 22);
-
-            var today = new Date().toLocaleDateString();
-            doc.text('Fecha: ' + today, 14, 32);
-
-            var elem = document.getElementById("tabla-imprimir");
-            var res = doc.autoTableHtmlToJson(elem);
-
-            doc.autoTable(res.columns, res.data, {
-                theme: 'grid',
-                margin: { top: 40 }
-            });
-
-            var string = doc.output('datauristring');
-            var iframe = "<iframe width='100%' height='100%' src='" + string + "'></iframe>";
-
-            var x = window.open();
-            x.document.open();
-            x.document.write(iframe);
-            x.document.close();
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/vacasParir.js"></script>
 }

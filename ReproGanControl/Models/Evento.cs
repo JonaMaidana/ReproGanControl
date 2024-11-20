@@ -52,15 +52,15 @@ public enum EnumEstadoCria
 
 public enum EnumTipoCria
 {
-    [Display(Name = "Macho")]
+    [Display(Name = "MACHO")]
     Macho = 1,
-    [Display(Name = "Hembra")]
+    [Display(Name = "HEMBRA")]
     Hembra,
-    [Display(Name = "Macho - Hembra")]
+    [Display(Name = "MACHO - HEMBRA")]
     MachoHembra,
-    [Display(Name = "Macho - Macho")]
+    [Display(Name = "MACHO - MACHO")]
     MachoMacho,
-    [Display(Name = "Hembra - Hembra")]
+    [Display(Name = "HEMBRA - HEMBRA")]
     HembraHembra
 }
 
@@ -109,4 +109,6 @@ public class VistaEventos
     public string? CausaRechazo { get; set; }
     public string? MotivoMuerte { get; set; }
     public string? EspecifiqueOtro { get; set; }
+
+    public int DiasRestantesSecado { get; set; }
 }

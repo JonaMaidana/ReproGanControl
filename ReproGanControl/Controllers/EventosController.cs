@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Reflection;
+using ReproGanControl.Extensions;
 using System.ComponentModel.DataAnnotations;
 
 namespace ReproGanControl.Controllers;
@@ -49,7 +50,7 @@ public class EventosController : Controller
         tipoCriaSelectListItems.AddRange(tipoCriaEnumValues.Select(e => new SelectListItem
         {
             Value = ((int)e).ToString(),
-            Text = e.ToString().ToUpper()
+            Text = e.GetDisplayName()
         }));
 
         ViewBag.TipoCriaID = new SelectList(tipoCriaSelectListItems, "Value", "Text");
@@ -63,7 +64,7 @@ public class EventosController : Controller
         estadoCriaSelectListItems.AddRange(estadoCriaEnumValues.Select(e => new SelectListItem
         {
             Value = ((int)e).ToString(),
-            Text = e.ToString().ToUpper()
+            Text = e.GetDisplayName().ToUpper()
         }));
 
         ViewBag.EstadoCriaID = new SelectList(estadoCriaSelectListItems, "Value", "Text");
@@ -115,6 +116,25 @@ public class EventosController : Controller
         }
         return View();
     }
+    // Método para formatear el Enum separando los valores por guion
+    private string FormatearEnumString(Enum? enumValue)
+    {
+        if (enumValue == null) return string.Empty;
+
+        // Obtener el nombre del enum
+        var enumString = enumValue.ToString();
+
+        // Reemplazar los guiones bajos con espacios
+        var formattedString = enumString.Replace("Hembra", "Hembra -").Replace("Macho", "Macho -");
+
+        // Eliminar el guion final extra si existe
+        if (formattedString.EndsWith(" -"))
+        {
+            formattedString = formattedString.Substring(0, formattedString.Length - 2);
+        }
+
+        return formattedString;
+    }
 
     public JsonResult ListadoEventos(int? id, int? BuscarTipoEventoID, DateTime? FechaDesde, DateTime? FechaHasta)
     {
@@ -160,9 +180,9 @@ public class EventosController : Controller
 
                 TipoParto = e.TipoParto?.ToUpper(),
                 TipoCria = e.TipoCria,
-                TipoCriaString = e.TipoCria?.ToString().ToUpper(),
+                TipoCriaString = FormatearEnumString(e.TipoCria).ToUpper(),
                 EstadoCria = e.EstadoCria,
-                EstadoCriaString = e.EstadoCria?.ToString().ToUpper(),
+                EstadoCriaString = FormatearEnumString(e.EstadoCria).ToUpper(),
                 FechaAproximadaSecado = e.FechaAproximadaSecado,
                 FechaAproximadaSecadoString = e.FechaAproximadaSecado?.ToString("dd/MM/yyyy"),
                 FechaAproximadaParicion = e.FechaAproximadaParicion,
@@ -184,6 +204,7 @@ public class EventosController : Controller
 
         return Json(eventosMostrar);
     }
+
 
 
     public JsonResult GuardarEventos(int eventoID, int animalID, EventoEnum tipoEvento, DateTime fechaEvento, string? observacion, EnumTipoCria? tipoCria,
@@ -371,9 +392,70 @@ public class EventosController : Controller
     {
         return View();
     }
-    
+    public JsonResult ListadoInformeVacasSecar()
+    {
+        var fechaActual = DateTime.Now;
+
+        // Filtramos los eventos de tipo "preñez"
+        var eventos = _context.Eventos
+            .Include(t => t.Animal)
+            .Where(e => e.TipoEvento == EventoEnum.Preñez && e.FechaAproximadaSecado != null)
+            .ToList();
+
+        var vacasSecar = new List<VistaInformeVacasSecar>();
+
+        foreach (var evento in eventos)
+        {
+            // Calculamos los días restantes hasta la fecha aproximada de secado
+            var diasRestantesSecado = evento.FechaAproximadaSecado.Value.Subtract(fechaActual).Days;
+
+            // Creamos el objeto de vista para cada vaca
+            var vaca = new VistaInformeVacasSecar
+            {
+                AnimalCaravana = evento.Animal.Caravana,
+                FechaAproximadaSecadoString = evento.FechaAproximadaSecado?.ToString("dd/MM/yyyy"),
+                DiasRestantesSecado = diasRestantesSecado
+            };
+
+            vacasSecar.Add(vaca);
+        }
+
+        return Json(vacasSecar);
+    }
+
     public IActionResult InformeParir()
     {
         return View();
+    }
+
+    public JsonResult ListadoInformeVacasParir()
+    {
+        var fechaActual = DateTime.Now;
+
+        // Filtramos los eventos de tipo "preñez"
+        var eventos = _context.Eventos
+            .Include(t => t.Animal)
+            .Where(e => e.TipoEvento == EventoEnum.Preñez && e.FechaAproximadaParicion != null)
+            .ToList();
+
+        var vacasParir = new List<VistaInformeVacasParir>();
+
+        foreach (var evento in eventos)
+        {
+            // Calculamos los días restantes hasta la fecha aproximada de parición
+            var diasRestantesParicion = evento.FechaAproximadaParicion.Value.Subtract(fechaActual).Days;
+
+            // Creamos el objeto de vista para cada vaca
+            var vaca = new VistaInformeVacasParir
+            {
+                Caravana = evento.Animal.Caravana,
+                FechaAproxParir = evento.FechaAproximadaParicion?.ToString("dd/MM/yyyy"),
+                DiasRestantesParicion = diasRestantesParicion
+            };
+
+            vacasParir.Add(vaca);
+        }
+
+        return Json(vacasParir);
     }
 }

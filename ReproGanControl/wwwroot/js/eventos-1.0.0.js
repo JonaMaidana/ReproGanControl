@@ -497,18 +497,17 @@ function updateTotalItemsEventos() {
     document.getElementById("total-items-eventos").textContent = `Eventos cargados: ${totalItems}`;
 }
 
-function LimpiarModalEvento() {
-    // Restablecer valores de campos generales
-
-    document.querySelector("#TipoEvento").value = 0;
-    document.querySelector("#Observacion").value = "";
-
-
-    // Restablecer los valores de los DropDownList a 'Seleccione'
-    document.querySelector("#TipoCria").value = 0; // Mantener la opción 'Seleccione'
-    document.querySelector("#EstadoCria").value = 0; // Mantener la opción 'Seleccione'
-    document.querySelector("#TipoInseminacion").value = 0; // Mantener la opción 'Seleccione'
-    document.querySelector("#ToroID").value = 0; // Mantener la opción 'Seleccione'
+// Función para limpiar los campos del modal
+function LimpiarModalEvento(limpiarTodo = true) {
+    // Restablecer valores de campos generales si es una limpieza completa
+    if (limpiarTodo) {
+        document.querySelector("#TipoEvento").value = 0;
+        document.querySelector("#Observacion").value = "";
+        document.querySelector("#TipoCria").value = 0; 
+        document.querySelector("#EstadoCria").value = 0; 
+        document.querySelector("#TipoInseminacion").value = 0;
+        document.querySelector("#ToroID").value = 0;
+    }
 
     // Limpiar los campos input específicos
     const campos = [
@@ -524,27 +523,38 @@ function LimpiarModalEvento() {
         }
     });
 
-    // Ocultar TODOS los campos dinámicos
-    const divCampos = [
-        "divTipoParto", "divTipoCria", "divEstadoCria",
-        "divPreñezFechSecado", "divPreñezFechParicion",
-        "divCausaAborto", "divTipoInseminacion", "divToroID",
-        "divDetalleToro", "divMotivoVenta", "divCausaRechazo",
-        "divMotivoMuerte", "divEspecifiqueOtro"
-    ];
+    // Ocultar los campos dinámicos solo en una limpieza completa
+    if (limpiarTodo) {
+        const divCampos = [
+            "divTipoParto", "divTipoCria", "divEstadoCria",
+            "divPreñezFechSecado", "divPreñezFechParicion",
+            "divCausaAborto", "divTipoInseminacion", "divToroID",
+            "divDetalleToro", "divMotivoVenta", "divCausaRechazo",
+            "divMotivoMuerte", "divEspecifiqueOtro"
+        ];
 
-    divCampos.forEach(divCampo => {
-        const divElemento = document.querySelector(`#${divCampo}`);
-        if (divElemento) {
-            divElemento.style.display = 'none'; // Ocultar los divs dinámicos
-        }
-    });
+        divCampos.forEach(divCampo => {
+            const divElemento = document.querySelector(`#${divCampo}`);
+            if (divElemento) {
+                divElemento.style.display = 'none'; // Ocultar los divs dinámicos
+            }
+        });
+    }
 }
 
-// Llamar a LimpiarModalEvento cuando el modal se cierre
-$('#ModalEvento').on('hidden.bs.modal', function () {
-    LimpiarModalEvento();
+// Configuración de eventos
+document.addEventListener("DOMContentLoaded", function () {
+    // Llamar a LimpiarModalEvento con limpieza completa al cerrar el modal
+    $('#ModalEvento').on('hidden.bs.modal', function () {
+        LimpiarModalEvento(true);
+    });
+
+    // Llamar a LimpiarModalEvento sin ocultar los divs al cambiar TipoEvento
+    document.querySelector("#TipoEvento").addEventListener("change", function () {
+        LimpiarModalEvento(false);
+    });
 });
+
 
 function mostrarCamposPorTipoEvento() {
     // Obtener el valor seleccionado del DropDownList
@@ -651,12 +661,12 @@ $(document).ready(function () {
                 type: 'GET', // Tipo de solicitud
                 data: { BuscarAnimales: buscarAnimal }, // Parámetros de la solicitud
                 success: function (data) {
-                    console.log(data); // Verifica la estructura de datos
+                    console.log(data); 
                     var resultado = $('#AnimalResultados'); // Elemento donde se mostrarán los resultados
                     resultado.empty(); // Limpiar resultados anteriores
-                    if (data.length > 0) { // Si hay resultados
+                    if (data.length > 0) { 
                         $.each(data, function (index, animal) {
-                            console.log(animal); // Verifica los datos de cada animal
+                            console.log(animal); 
                             resultado.append('<li class="list-group-item animal-item" data-id="' + animal.animalID + '">' + animal.caravana + '</li>');
                         });
                         resultado.show(); // Mostrar resultados
@@ -683,4 +693,4 @@ $(document).ready(function () {
         $('#AnimalResultados').empty().hide(); // Limpiar y ocultar la lista de resultados
         $('#AnimalID').val(animalID); // Asignar el AnimalID al campo oculto del formulario
     });
-}); 
+});
